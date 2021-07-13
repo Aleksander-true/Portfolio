@@ -1,0 +1,206 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding-left: 40px;
+  padding-right: 40px;
+
+  font-family: "Roboto", sans-serif;
+}
+
+.card {
+  display: block;
+  text-decoration: none;
+  color: #000;
+  padding-bottom: 75px;
+}
+
+.section {
+  max-width: 1920px;
+}
+
+.wrapper {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header_flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 200px;
+}
+
+.logo__icon {
+  position: relative;
+  top: 8px;
+  width: 50px;
+  height: 34px;
+  margin-right: 20px;
+  display: inline-block;
+}
+
+.logo__text {
+  font-family: "Forum", cursive;
+  font-size: 28px;
+  letter-spacing: 5px;
+  line-height: 50px;
+  text-transform: uppercase;
+}
+
+.navigation {
+  max-width: 724px;
+  flex-grow: 2;
+  scroll-behavior: smooth;
+}
+
+.navigation_flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigation__link {
+  display: block;
+  padding: 10px 0 10px 4px;
+
+  font-size: 21px;
+  letter-spacing: 2px;
+  color: #fff;
+  text-decoration: none;
+  line-height: 50px;
+}
+.navigation__link:hover {
+  color: #9d8665;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.title {
+  margin-bottom: 26px;
+  font-family: "Forum", cursive;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.welcome-louvre__title {
+  padding-top: 114px;
+  max-width: 600px;
+}
+
+.welcome-louvre__subtitle {
+  font-size: 27px;
+  letter-spacing: 2px;
+  margin-bottom: 77px;
+}
+
+.welcome-louvre {
+  height: 750px;
+  background-position: calc(1920px - 1215px) calc(100%);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("assets/img/louvre_entrance.jpg");
+}
+
+.section__title {
+  font-size: 80px;
+  font-weight: 400;
+  line-height: 90px;
+  margin-top: 75px;
+  margin-bottom: 105px;
+  color: #9d8665;
+}
+
+.section__title_underlined::after {
+  display: block;
+  width: 100%;
+  height: 3px;
+  content: "";
+  background-color: #9d8665;
+}
+
+.section_dark {
+  background-color: #030303;
+  color: #fff;
+}
+
+.section_dark .section__title {
+  color: #fff;
+}
+
+.section_dark .section__title_underlined::after {
+  background-color: #710707;
+}
+
+.section__title_underline {
+  border-bottom: 3px solid #9d8665;
+}
+
+.card__title {
+  /*  position: relative;*/
+  font-size: 32px;
+  font-weight: 400;
+  margin-top: 25px;
+  margin-bottom: 21px;
+}
+
+.card__title::after {
+  display: block;
+  /* position: absolute;*/
+  margin-top: 9px;
+  content: "";
+  width: 300px;
+  height: 2px;
+  background-color: #710707;
+}
+
+.card__subtitle {
+  font-size: 21px;
+  margin-bottom: 12px;
+}
+
+.wrapper__flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.button {
+  width: 360px;
+  height: 75px;
+  border-radius: 10px;
+
+  font-size: 21px;
+  letter-spacing: 2px;
+  text-align: center;
+  line-height: 75px;
+}
+
+.button:hover {
+  background-color: #9d8665;
+}
+
+.button_colored {
+  background-color: #710707;
+}
+
+h2 {
+  margin: 0;
+}
+
+.section__column-50persent {
+  max-width: 720px;
+}
