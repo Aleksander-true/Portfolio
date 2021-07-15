@@ -93,28 +93,65 @@
       </div>
     </div>
   </section>
-      <section class="Picture explore section section_dark" id="picture-explore"> 
+      <section class="Picture-explore section section_dark" id="picture-explore"> 
         <div class="wrapper wrapper__flex">
-          <div class="section__column-50persent">
+          <div class="section__half-column">
           <h2 class="title section__title section__title_underlined">Picture explore</h2>
           
-            <p>Las Meninas is a 1656 painting by Diego Velázquez, the leading artist of the Spanish Golden Age.</p>
-            <p>It was cleaned in 1984 to remove a <span class="section__text_colored">"yellow veil"</span> of dust that had gathered since the previous restoration in the 19th century.</p>
-            <p>The cleaning provoked furious protests, not because the picture had been damaged in any way, but because it looked different.</p>
+            <p class="section__text">Las Meninas is a 1656 painting by Diego Velázquez, the leading artist of the Spanish Golden Age.</p>
+            <p class="section__text">It was cleaned in 1984 to remove a <span class="section__text_colored">"yellow veil"</span> of dust that had gathered since the previous restoration in the 19th century.</p>
+            <p class="section__text">The cleaning provoked furious protests, not because the picture had been damaged in any way, but because it looked different.</p>
           </div>
-          <div class="section__column-50persent">
+          <div class="img-wrapper">
             <img src="assets/img/Las_meninas.jpg" alt="Las Meninas picture" width="720px" height="700px">
           </div>
         </div>
       </section> 
-      <section class="Video-journey section video-section" id="video-journey">
+      <section class="video-journey section video-section" id="video-journey">
         <div class="wrapper">
-          <video src="" poster=""></video>
+          <div class="video-wrapper">
+          <!--  <img src="assets/img/preview.jpg" alt="video preview" width="1440px" height="630px"> -->
+            <img class="video-wrapper__play-icon" src="assets/svg/Play_big.svg" alt="play video" width="220px" height="220px">
+          </div>
+            <div class="video-wrapper__tool-bar">
+              <div class="tool-bar__button tool-bar__previous"></div>
+              <div class="tool-bar__button tool-bar__play"></div>
+              <div class="tool-bar__button tool-bar__next"></div>
+              <input class="tool-bar__progress tool-bar__time-bar" type="range" id="time" name="time" min="0" max="100">
+              <div class="tool-bar__button tool-bar__volume"></div>
+              <input class="tool-bar__progress tool-bar__volume-bar" type="range" id="volume" name="volume" min="0" max="100">
+              <div class="tool-bar__button tool-bar__full-screen"></div>
+            </div>
+            <div class="wrapper__flex">
+              <div class="section__half-column">
+                <h2 class="title section__title video-journey__title">Video journey</h2>
+              </div>
+              <div class="section__half-column">
+                <p class="video-journey__text section__text">Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or Hammurabi's Code</p>
+              </div>
+            </div>
+        </div>
+      </section>
+      <section class="buy-tickets section section_dark" id="buy-tickets">
+        <div class="wrapper">
+          <h2 class="title section__title section__title_underlined">Buy tickets</h2>
+          <div class="wrapper__flex">
+            <img src="assets/img/buy_tickets_pic.jpg" alt="the ecstasy of St. Catherine" width="720px" height="550px">
+            <div class="section__half-column"></div>
+          </div>
         </div>
       </section>
       
     </div>
   </section>
   </main>
+
+  <script>
+  const progress = document.querySelector('.video-wrapper__tool-bar');
+  progress.addEventListener('input', function(event) {
+    const value = event.target.value;
+    event.target.style.background = `linear-gradient(to right, #24809e 0%, #24809e ${value}%, #fff ${value}%, #fff 100%)`
+  })
+  </script>
 </body>
 </html>
