@@ -7,6 +7,7 @@ body {
   padding-right: 40px;
 
   font-family: "Roboto", sans-serif;
+  font-size: 17px;
 }
 
 .card {
@@ -132,7 +133,7 @@ h1 {
 .section__title_underlined::after {
   display: block;
   position: relative;
-  top: 22px;
+  top: 25px;
   width: 100%;
   height: 3px;
   content: "";
@@ -148,16 +149,12 @@ h1 {
   color: #fff;
 }
 
-.section__title_underline {
-  border-bottom: 3px solid #9d8665;
-}
-
 .card__title {
   position: relative;
   font-size: 32px;
   font-weight: 400;
   margin-top: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
 }
 
 .card__title::after {
@@ -183,14 +180,10 @@ h1 {
 }
 
 .button {
-  width: 360px;
-  height: 75px;
   border-radius: 10px;
-
   font-size: 21px;
   letter-spacing: 2px;
   text-align: center;
-  line-height: 75px;
 }
 
 .button:hover {
@@ -198,26 +191,40 @@ h1 {
 }
 
 .button_colored {
+  width: 360px;
+  height: 75px;
+  line-height: 75px;
   background-color: #710707;
 }
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   margin: 0;
 }
 
 .section__half-column {
   max-width: 660px;
+  flex-grow: 2;
 }
 
 .img-wrapper {
   max-width: 720px;
+  margin-top: 10px;
+}
+
+.section__text-wrapper {
+  padding-top: 60px;
 }
 
 .section__text {
+  font-size: 22px;
+  line-height: 39px;
+}
+
+.section__text_small {
   font-size: 21px;
-  line-height: 38px;
 }
 
 .section__text_colored {
@@ -228,7 +235,7 @@ h3 {
   position: relative;
   width: 100%;
   height: 630px;
-  margin-top: 30px;
+  margin-top: 10px;
   background-image: url("assets/img/preview.jpg");
 }
 
@@ -258,7 +265,7 @@ h3 {
 .tool-bar__button {
   display: block;
   height: 30px;
-  width: 38px;
+  width: 40px;
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -284,6 +291,7 @@ h3 {
 
 .tool-bar__full-screen {
   height: 36px;
+  width: 36px;
   background-image: url("assets/svg/Full_screen_button.svg");
 }
 
@@ -301,9 +309,9 @@ h3 {
   background: linear-gradient(
     to right,
     #24809e 0%,
-    #24809e 50%,
-    #fff 50%,
-    #fff 100%
+    #24809e 45%,
+    #c4c4c4 45%,
+    #c4c4c4 100%
   );
   -webkit-appearance: none;
 }
@@ -317,7 +325,138 @@ h3 {
   cursor: ew-resize;
   background: #fff;
 }
-.video-journey__text,
 .video-journey__title {
   margin-top: 40px;
+  margin-bottom: 0px;
+}
+
+.video-journey__text {
+  max-width: 660px;
+  padding: 55px 55px 0 0;
+}
+
+.buy-tickets__subtitle {
+  display: inline-block;
+  font-size: 28px;
+  font-weight: 600;
+}
+.buy-tickets__subtitle_right {
+  text-align: right;
+}
+
+.buy-tickets__wrapper {
+  display: flex;
+  padding-top: 75px;
+  justify-content: space-between;
+}
+
+.tickets-form {
+  display: block;
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.tickets-form__customize-radio-button,
+.tickets-form__radio-button {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0px;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.tickets-form__customize-radio-button {
+  opacity: 1;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.tickets-form__customize-radio-button::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  display: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.tickets-form__radio-button:checked
+  ~ .tickets-form__customize-radio-button::after {
+  display: block;
+}
+
+.tickets-form__radio-label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-top: 50px;
+  cursor: pointer;
+  font-size: 21px;
+}
+
+.ticket-form__uppertext {
+  width: 100%;
+  margin-top: 20px;
+  font-size: 22px;
+  font-weight: 400;
+  text-align: left;
+}
+.amount-form {
+  display: flex;
+  width: 150px;
+  height: 50px;
+  border: 3px solid #fff;
+  margin-bottom: 50px;
+  justify-content: stretch;
+}
+
+.ticket-form__button {
+  width: 40px;
+  height: 50px;
+  background-color: transparent;
+  font-size: 28px;
+  color: #fff;
+  border: none;
+}
+
+.ticket-form__button:hover {
+  opacity: 0.5;
+}
+
+.ticket-form__amount-number {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 32px;
+  font-weight: 400;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.ticket-form__amount-number_wide {
+  font-size: 28px;
+  font-weight: 400;
+  width: 70px;
+}
+
+.buy-tickets__calculator {
+  position: relative;
+}
+
+.button_small {
+  position: absolute;
+  bottom: -50px;
+  transform: translate(-100%, 100%);
+  width: 175px;
+  height: 50px;
+  line-height: 50px;
+  background-color: #fff;
 }
