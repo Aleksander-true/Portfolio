@@ -13,40 +13,31 @@
 </head>
 <body>
   <header class="header section section_dark">
-    <div class="wrapper">
-      <div class="header_flex">
+      <div class="wrapper wrapper__flex">
         <div class="logo">
-          <div class="logo__icon">
-           <img src="assets\svg\logo.svg" alt="icon" width="50px" height="34px"> 
-          </div>
+          <div class="logo__icon"></div>
           <span class="logo__text">Louvre</span>
         </div>
-        <nav class="navigation">
-          <ul class="navigation_flex">
+        <nav class="navigation wrapper__flex">
             <li><a href="#virtual-tour" class="navigation__link">Visiting</a></li>
             <li><a href="#picture-explore" class="navigation__link">Explore</a></li>
             <li><a href="#video-journey" class="navigation__link">Video</a></li>
-            <li><a href="#" class="navigation__link">Tickets</a></li>
-            <li><a href="#" class="navigation__link">Contacts</a></li>
-          </ul>
+            <li><a href="#buy-tickets" class="navigation__link">Tickets</a></li>
+            <li><a href="#contacts" class="navigation__link">Contacts</a></li>
         </nav>
       </div>  
-    </div>
   </header>
   <main>
   <section class="welcome-louvre section section_dark" id="welcome">
-    <div class="wrapper">
-      <div class="welcome-louvre__title">
-        <h1 class="title section__title">Welcome <br>to the Louvre</h1>
+    <div class="wrapper">     
+        <h1 class="title section__title welcome-louvre__title">Welcome <br>to the Louvre</h1>
         <p class="welcome-louvre__subtitle">From the castle to the museum</p>
-        <div class="button button_colored">Discover the Louvre</div>    
-      </div>
+        <div class="button button_colored">Discover the Louvre</div>       
     </div>
   </section>
-  <section class="Virtual-tour section" id="virtual-tour">
+  <section class="virtual-tour section" id="virtual-tour">
     <div class="wrapper">
       <h2 class="title section__title section__title_underlined">Virtual tour</h2>
-
       <div class="wrapper__flex">
         <a class="card" href=""> 
           <img src="assets/img/royal_palace.jpg" alt="Royal palace picture" width="440px" height="285px">
@@ -93,19 +84,17 @@
       </div>
     </div>
   </section>
-      <section class="Picture-explore section section_dark" id="picture-explore"> 
+      <section class="picture-explore section section_dark" id="picture-explore"> 
         <div class="wrapper wrapper__flex">
           <div class="section__half-column">
           <h2 class="title section__title section__title_underlined">Picture explore</h2>
           <div class="section__text-wrapper">
             <p class="section__text">Las Meninas is a 1656 painting by Diego Velázquez, the leading artist of the Spanish Golden Age.</p>
-            <p class="section__text section__text_small">It was cleaned in 1984 to remove a <span class="section__text_colored">"yellow veil"</span> of dust that had gathered since the previous restoration in the 19th century.</p>
+            <p class="section__text">It was cleaned in 1984 to remove a <span class="section__text_colored">"yellow veil"</span> of dust that had gathered since the previous restoration in the 19th century.</p>
             <p class="section__text">The cleaning provoked furious protests, not because the picture had been damaged in any way, but because it looked different.</p>
           </div>
-            </div>
-          <div class="img-wrapper">
+            </div>      
             <img src="assets/img/Las_meninas.jpg" alt="Las Meninas picture" width="720px" height="700px">
-          </div>
         </div>
       </section> 
       <section class="video-journey section video-section" id="video-journey">
@@ -135,7 +124,7 @@
       <section class="buy-tickets section section_dark" id="buy-tickets">
         <div class="wrapper">
           <h2 class="title section__title section__title_underlined">Buy tickets</h2>
-          <div class="buy-tickets__wrapper ">
+          <div class="section__wrapper ">
             <img class="" src="assets/img/buy_tickets_pic.jpg" alt="the ecstasy of St. Catherine" width="720px" height="550px">
             <div class="section__half-column wrapper__flex">
               <div class="buy-tickets__subtitle">Ticket Type 
@@ -170,16 +159,57 @@
                   <button class="ticket-form__button" type="button" onclick="this.previousElementSibling.stepUp()">+</button>
                 </form>
                 <div class="buy-tickets__calculator">Total €
-                  <input class="ticket-form__amount-number ticket-form__amount-number_wide" type="number" value="220" min="0" max="999">
+                  <input class="ticket-form__amount-number ticket-form__amount-number_wide" type="number" value="220" min="0" max="999" readonly>
                   <button class="button button_small">Buy Now</button>
-                </div>
-                
+                </div> 
               </div>
             </div>  
           </div>
         </div>
       </section>
-      
+      <section class="contacts section" id="contacts">
+        <div class="wrapper">
+          <h2 class="title section__title section__title_underlined">Contacts</h2>
+          <div class=" section__wrapper ">
+            <div class="section__half-column">          
+              <div class="contacts__subtitle">Palais Royal <br> Musee du Louvre</div>
+              <p class="section__text">address: <span class="section__text_small">
+                 75001 Paris, France</span>
+              </p>
+              <p class="section__text">phone: <a href="tel:+330140205050" class="contacts__link">
+                  +33(0) 1 40 20 50 50</a>
+              </p>
+              <p class="section__text">mail: <a href="mailto:info@louvre.fr" class="contacts__link">
+                  info@louvre.fr</a>
+              </p>
+            </div>
+            <img src="assets/img/map.jpg" alt="map" width="960px" height="620px">
+        </div>  
+        </div>
+      </section>
+      <footer class="footer section section_dark">
+        <div class="wrapper wrapper__flex">
+          <div class="logo">
+            <span class="logo__text">Louvre</span>
+          </div>
+            <ul class="navigation_footer wrapper__flex">
+              <li><a href="#welcome" class="navigation__link">Welcome</a></li>
+              <li><a href="#virtual-tour" class="navigation__link">Visiting</a></li>
+              <li><a href="#picture-explore" class="navigation__link">Explore</a></li>
+              <li><a href="#video-journey" class="navigation__link">Video</a></li>
+              <li><a href="#" class="navigation__link">Tickets</a></li>
+              <li><a href="#" class="navigation__link">Contacts</a></li>
+            </ul>
+          <ul class="footer__social-icon-wrapper wrapper__flex">
+            <li class="footer__social-icon social-icon_youtube"></li>
+            <li class="footer__social-icon social-icon_instagram"></li>
+            <li class="footer__social-icon social-icon_facebook"></li>
+            <li class="footer__social-icon social-icon_twitter"></li>
+            <li class="footer__social-icon social-icon_pinterest"></li>
+          </ul>
+        </div>
+
+      </footer>
     </div>
   </section>
   </main>

@@ -8,6 +8,7 @@ body {
 
   font-family: "Roboto", sans-serif;
   font-size: 17px;
+  background-color: #e5e5e5;
 }
 
 .card {
@@ -28,23 +29,16 @@ body {
   margin-right: auto;
   padding-top: 75px;
   padding-bottom: 75px;
-  border: 1px solid red;
-}
-
-.header_flex {
-  display: flex;
-  box-sizing: border-box;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .logo__icon {
+  display: inline-block;
   position: relative;
   top: 8px;
   width: 50px;
   height: 34px;
   margin-right: 16px;
-  display: inline-block;
+  background-image: url("assets/svg/logo.svg");
 }
 
 .logo__text {
@@ -55,16 +49,17 @@ body {
   text-transform: uppercase;
 }
 
+.logo__text:hover {
+  color: #9d8665;
+}
+
 .navigation {
   max-width: 724px;
   flex-grow: 2;
-  scroll-behavior: smooth;
 }
 
-.navigation_flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.navigation_footer {
+  max-width: 330px;
 }
 
 .navigation__link {
@@ -100,12 +95,8 @@ li {
 }
 
 .welcome-louvre__title {
-  padding-top: 35px;
+  margin-top: 35px;
   max-width: 600px;
-}
-
-h1 {
-  margin: 0;
 }
 
 .welcome-louvre__subtitle {
@@ -207,11 +198,6 @@ h4 {
 .section__half-column {
   max-width: 660px;
   flex-grow: 2;
-}
-
-.img-wrapper {
-  max-width: 720px;
-  margin-top: 10px;
 }
 
 .section__text-wrapper {
@@ -335,6 +321,7 @@ h4 {
   padding: 55px 55px 0 0;
 }
 
+.contacts__subtitle,
 .buy-tickets__subtitle {
   display: inline-block;
   font-size: 28px;
@@ -344,7 +331,7 @@ h4 {
   text-align: right;
 }
 
-.buy-tickets__wrapper {
+.section__wrapper {
   display: flex;
   padding-top: 75px;
   justify-content: space-between;
@@ -459,4 +446,56 @@ h4 {
   height: 50px;
   line-height: 50px;
   background-color: #fff;
+}
+
+.navigation_footer {
+  column-gap: 100px;
+  justify-content: flex-start;
+}
+.navigation_footer li {
+  max-width: 105px;
+  flex-grow: 2;
+}
+
+.contacts__link {
+  text-decoration: none;
+  color: inherit;
+  font-size: 21px;
+}
+
+.footer__social-icon-wrapper {
+  max-width: 340px;
+}
+
+.footer__social-icon {
+  width: 48px;
+  height: 48px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  align-self: flex-end;
+  background-position: 50%;
+  background-size: 50%;
+  background-repeat: no-repeat;
+}
+
+.social-icon_youtube {
+  background-image: url("assets/svg/youtube.svg");
+}
+
+.social-icon_instagram {
+  background-image: url("assets/svg/Instagram.svg");
+}
+
+.social-icon_facebook {
+  background-image: url("assets/svg/facebook.svg");
+}
+
+.social-icon_twitter {
+  background-image: url("assets/svg/twitter.svg");
+}
+
+.social-icon_pinterest {
+  background-size: 80%;
+  background-position: 50% 100%;
+  background-image: url("assets/svg/pinterest.svg");
 }
