@@ -3,8 +3,7 @@ html {
 }
 
 body {
-  padding-left: 40px;
-  padding-right: 40px;
+  padding: 10px 0;
 
   font-family: "Roboto", sans-serif;
   font-size: 17px;
@@ -19,14 +18,12 @@ body {
 }
 
 .section {
-  max-width: 1920px;
 }
 
 .wrapper {
   max-width: 1440px;
   box-sizing: border-box;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   padding-top: 75px;
   padding-bottom: 75px;
 }
@@ -42,8 +39,10 @@ body {
 }
 
 .logo__text {
+  display: inline;
   font-family: "Forum", cursive;
   font-size: 28px;
+  font-weight: 400;
   letter-spacing: 5px;
   line-height: 50px;
   text-transform: uppercase;
@@ -107,7 +106,7 @@ li {
 
 .welcome-louvre {
   height: 750px;
-  background-position: calc(1920px - 1215px) calc(100%);
+  background-position: calc(50% + 350px) calc(100%);
   background-size: contain;
   background-repeat: no-repeat;
   background-image: url("assets/img/louvre_entrance.jpg");
@@ -172,6 +171,7 @@ li {
 
 .button {
   border-radius: 10px;
+  border: none;
   font-size: 21px;
   letter-spacing: 2px;
   text-align: center;
@@ -186,6 +186,7 @@ li {
   height: 75px;
   line-height: 75px;
   background-color: #710707;
+  color: #fff;
 }
 
 h1,
@@ -209,8 +210,8 @@ h4 {
   line-height: 39px;
 }
 
-.section__text_small {
-  font-size: 21px;
+.section__text_bold {
+  font-weight: 600;
 }
 
 .section__text_colored {
@@ -326,9 +327,11 @@ h4 {
   display: inline-block;
   font-size: 28px;
   font-weight: 600;
+  letter-spacing: 1.65px;
 }
 .buy-tickets__subtitle_right {
   text-align: right;
+  position: relative;
 }
 
 .section__wrapper {
@@ -388,17 +391,18 @@ h4 {
 
 .ticket-form__uppertext {
   width: 100%;
-  margin-top: 20px;
+  margin: 10px 0;
   font-size: 22px;
   font-weight: 400;
   text-align: left;
 }
 .amount-form {
   display: flex;
+  box-sizing: border-box;
   width: 150px;
   height: 50px;
   border: 3px solid #fff;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   justify-content: stretch;
 }
 
@@ -406,7 +410,7 @@ h4 {
   width: 40px;
   height: 50px;
   background-color: transparent;
-  font-size: 28px;
+  font-size: 36px;
   color: #fff;
   border: none;
 }
@@ -435,36 +439,47 @@ h4 {
 }
 
 .buy-tickets__calculator {
-  position: relative;
+  position: absolute;
+  right: -20px;
+  width: 176px;
+  font-weight: 400;
 }
 
 .button_small {
-  position: absolute;
-  bottom: -50px;
-  transform: translate(-100%, 100%);
+  position: relative;
+  right: 20px;
+  top: 45px;
   width: 175px;
   height: 50px;
+  border-radius: 2px;
   line-height: 50px;
   background-color: #fff;
 }
 
+.footer__logo {
+  max-width: 340px;
+  flex-grow: 2;
+}
+
 .navigation_footer {
-  column-gap: 100px;
+  column-gap: 130px;
   justify-content: flex-start;
 }
+
 .navigation_footer li {
-  max-width: 105px;
+  max-width: 100px;
   flex-grow: 2;
 }
 
 .contacts__link {
   text-decoration: none;
   color: inherit;
-  font-size: 21px;
 }
 
 .footer__social-icon-wrapper {
   max-width: 340px;
+  column-gap: 20px;
+  padding: 10px 0;
 }
 
 .footer__social-icon {
@@ -476,6 +491,11 @@ h4 {
   background-position: 50%;
   background-size: 50%;
   background-repeat: no-repeat;
+}
+
+.footer__social-icon:hover {
+  border-color: #9d8665;
+  background-size: 80%;
 }
 
 .social-icon_youtube {
@@ -498,4 +518,9 @@ h4 {
   background-size: 80%;
   background-position: 50% 100%;
   background-image: url("assets/svg/pinterest.svg");
+}
+
+.social-icon_pinterest:hover {
+  background-size: 100%;
+  background-position: 0% -50%;
 }

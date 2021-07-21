@@ -16,23 +16,25 @@
       <div class="wrapper wrapper__flex">
         <div class="logo">
           <div class="logo__icon"></div>
-          <span class="logo__text">Louvre</span>
+          <h1 class="logo__text">Louvre</h1>
         </div>
-        <nav class="navigation wrapper__flex">
+        <nav class="navigation">
+          <ul class="wrapper__flex">
             <li><a href="#virtual-tour" class="navigation__link">Visiting</a></li>
             <li><a href="#picture-explore" class="navigation__link">Explore</a></li>
             <li><a href="#video-journey" class="navigation__link">Video</a></li>
             <li><a href="#buy-tickets" class="navigation__link">Tickets</a></li>
             <li><a href="#contacts" class="navigation__link">Contacts</a></li>
+          </ul>            
         </nav>
       </div>  
   </header>
   <main>
   <section class="welcome-louvre section section_dark" id="welcome">
     <div class="wrapper">     
-        <h1 class="title section__title welcome-louvre__title">Welcome <br>to the Louvre</h1>
+        <h2 class="title section__title welcome-louvre__title">Welcome <br>to the Louvre</h2>
         <p class="welcome-louvre__subtitle">From the castle to the museum</p>
-        <div class="button button_colored">Discover the Louvre</div>       
+        <button class="button button_colored">Discover the Louvre</button>       
     </div>
   </section>
   <section class="virtual-tour section" id="virtual-tour">
@@ -40,42 +42,42 @@
       <h2 class="title section__title section__title_underlined">Virtual tour</h2>
       <div class="wrapper__flex">
         <a class="card" href=""> 
-          <img src="assets/img/royal_palace.jpg" alt="Royal palace picture" width="440px" height="285px">
+          <img src="assets/img/royal_palace.jpg" alt="Royal palace picture" width="440" height="285">
           <h3 class="title card__title ">Royal Palace</h3>
           <div class="card__subtitle">360° Virtual Tour</div>
           <div class="card__subtitle-description">Google Street Panorama View</div>
         </a>
 
         <a class="card" href="">         
-          <img src="assets/img/denon_wing.jpg" alt="Denon Wing picture" width="440px" height="285px">       
+          <img src="assets/img/denon_wing.jpg" alt="Denon Wing picture" width="440" height="285">       
           <h3 class="title card__title ">Denon Wing</h3>
           <div class="card__subtitle">360° Virtual Tour</div>
           <div class="card__subtitle-description">Google Street Panorama View</div>
         </a>
 
         <a class="card" href="">          
-          <img src="assets/img/colonnade.jpg" alt="Colonnade Perrault picture" width="440px" height="285px">         
+          <img src="assets/img/colonnade.jpg" alt="Colonnade Perrault picture" width="440" height="285">         
           <h3 class="title card__title ">Colonnade Perrault</h3>
           <div class="card__subtitle">360° Virtual Tour</div>
           <div class="card__subtitle-description">Google Street Panorama View</div>
         </a>
 
         <a class="card" href="">
-          <img src="assets/img/greek_hall.jpg" alt="Greek hall picture" width="440px" height="285px">
+          <img src="assets/img/greek_hall.jpg" alt="Greek hall picture" width="440" height="285">
           <h3 class="title card__title ">Greek hall</h3>
           <div class="card__subtitle">360° Virtual Tour</div>
           <div class="card__subtitle-description">Google Street Panorama View</div>
         </a>
 
         <a class="card" href="">
-          <img src="assets/img/mona_lisa.jpg" alt="Mona Lisa picture" width="440px" height="285px">
+          <img src="assets/img/mona_lisa.jpg" alt="Mona Lisa picture" width="440" height="285">
           <h3 class="title card__title ">Mona Lisa</h3>
           <div class="card__subtitle">360° Virtual Tour</div>
           <div class="card__subtitle-description">Google Street Panorama View</div>
         </a>
 
         <a class="card" href="">
-          <img src="assets/img/nigth_palace.jpg" alt="Night Palace picture" width="440px" height="285px">
+          <img src="assets/img/nigth_palace.jpg" alt="Night Palace picture" width="440" height="285">
           <h3 class="title card__title">Night Palace</h3>
           <div class="card__subtitle">360° Virtual Tour</div>
           <div class="card__subtitle-description">Google Street Panorama View</div>
@@ -94,21 +96,21 @@
             <p class="section__text">The cleaning provoked furious protests, not because the picture had been damaged in any way, but because it looked different.</p>
           </div>
             </div>      
-            <img src="assets/img/Las_meninas.jpg" alt="Las Meninas picture" width="720px" height="700px">
+            <img src="assets/img/Las_meninas.jpg" alt="Las Meninas picture" width="720" height="700">
         </div>
       </section> 
       <section class="video-journey section video-section" id="video-journey">
         <div class="wrapper">
           <div class="video-wrapper">
-            <img class="video-wrapper__play-icon" src="assets/svg/Play_big.svg" alt="play video" width="220px" height="220px">
+            <img class="video-wrapper__play-icon" src="assets/svg/Play_big.svg" alt="play video" width="220" height="220">
           </div>
             <div class="video-wrapper__tool-bar">
               <div class="tool-bar__button tool-bar__previous"></div>
               <div class="tool-bar__button tool-bar__play"></div>
               <div class="tool-bar__button tool-bar__next"></div>
-              <input class="tool-bar__progress tool-bar__time-bar" type="range" id="time" name="time" min="0" max="100" value="45">
+              <input type="range" class="tool-bar__progress tool-bar__time-bar"  id="time" name="time" min="0" max="100" value="45">
               <label for="volume" class="tool-bar__button tool-bar__volume"></label>
-              <input class="tool-bar__progress tool-bar__volume-bar" type="range" id="volume" name="volume" min="0" max="100" value="45">
+              <input type="range" class="tool-bar__progress tool-bar__volume-bar"  id="volume" name="volume" min="0" max="100" value="45">
               <div class="tool-bar__button tool-bar__full-screen"></div>
             </div>
             <div class="wrapper__flex">
@@ -125,10 +127,10 @@
         <div class="wrapper">
           <h2 class="title section__title section__title_underlined">Buy tickets</h2>
           <div class="section__wrapper ">
-            <img class="" src="assets/img/buy_tickets_pic.jpg" alt="the ecstasy of St. Catherine" width="720px" height="550px">
+            <img class="" src="assets/img/buy_tickets_pic.jpg" alt="the ecstasy of St. Catherine" width="720" height="550">
             <div class="section__half-column wrapper__flex">
               <div class="buy-tickets__subtitle">Ticket Type 
-                <form action="" class="tickets-form" id="tickets-form">
+                <form  class="tickets-form" id="tickets-form">
                   <label for="permanent-exhibition" class="tickets-form__radio-label">Permanent exhibition 
                     <input type="radio" class="tickets-form__radio-button" name="ticket-type" id="permanent-exhibition" checked>
                     <span class="tickets-form__customize-radio-button"></span>
@@ -138,7 +140,7 @@
                     <span class="tickets-form__customise-radio-button"></span>
                     <span class="tickets-form__customize-radio-button"></span>
                   </label>
-                  <label for="combined-admissionn"class="tickets-form__radio-label" >Combined Admissionn
+                  <label for="combined-admissionn" class="tickets-form__radio-label">Combined Admissionn
                     <input type="radio" class="tickets-form__radio-button"  name="ticket-type" id="combined-admissionn">
                     <span class="tickets-form__customise-radio-button"></span>
                     <span class="tickets-form__customize-radio-button"></span>
@@ -147,22 +149,23 @@
               </div>
               <div class="buy-tickets__subtitle buy-tickets__subtitle_right">Amount
                 <div class="ticket-form__uppertext">Basic 18+</div>
-                <form action="" class="amount-form">
+                <form class="amount-form">
                   <button class="ticket-form__button" type="button" onclick="this.nextElementSibling.stepDown()">-</button>
-                  <input class="ticket-form__amount-number" type="number" value="1" min="0" max="99" readonly>
+                  <input type="number" class="ticket-form__amount-number"  value="1" min="0" max="99" readonly>
                   <button class="ticket-form__button" type="button" onclick="this.previousElementSibling.stepUp()">+</button>
                 </form>
                 <div class="ticket-form__uppertext">Senior 65+</div>
-                <form action="" class="amount-form">
+                <form  class="amount-form">
                   <button class="ticket-form__button" type="button" onclick="this.nextElementSibling.stepDown()">-</button>
-                  <input class="ticket-form__amount-number"  type="number" value="1" min="0" max="99" readonly>
+                  <input  type="number" class="ticket-form__amount-number"   value="1" min="0" max="99" readonly>
                   <button class="ticket-form__button" type="button" onclick="this.previousElementSibling.stepUp()">+</button>
                 </form>
                 <div class="buy-tickets__calculator">Total €
-                  <input class="ticket-form__amount-number ticket-form__amount-number_wide" type="number" value="220" min="0" max="999" readonly>
+                  <input type="number" class="ticket-form__amount-number ticket-form__amount-number_wide"  value="220" min="0" max="999" readonly>
                   <button class="button button_small">Buy Now</button>
-                </div> 
+                </div>
               </div>
+               
             </div>  
           </div>
         </div>
@@ -173,45 +176,46 @@
           <div class=" section__wrapper ">
             <div class="section__half-column">          
               <div class="contacts__subtitle">Palais Royal <br> Musee du Louvre</div>
-              <p class="section__text">address: <span class="section__text_small">
-                 75001 Paris, France</span>
+              <p class="section__text"><span class="section__text_bold">address: 
+                 </span>75001 Paris, France
               </p>
-              <p class="section__text">phone: <a href="tel:+330140205050" class="contacts__link">
+              <p class="section__text"><span class="section__text_bold">phone: </span><a href="tel:+330140205050" class="contacts__link">
                   +33(0) 1 40 20 50 50</a>
               </p>
-              <p class="section__text">mail: <a href="mailto:info@louvre.fr" class="contacts__link">
+              <p class="section__text"><span class="section__text_bold">mail: </span><a href="mailto:info@louvre.fr" class="contacts__link">
                   info@louvre.fr</a>
               </p>
             </div>
-            <img src="assets/img/map.jpg" alt="map" width="960px" height="620px">
+            <img src="assets/img/map.png" alt="map" width="960" height="620">
         </div>  
         </div>
       </section>
       <footer class="footer section section_dark">
         <div class="wrapper wrapper__flex">
-          <div class="logo">
+          <div class="logo footer__logo">
             <span class="logo__text">Louvre</span>
           </div>
+          <nav class="navigation">
             <ul class="navigation_footer wrapper__flex">
               <li><a href="#welcome" class="navigation__link">Welcome</a></li>
               <li><a href="#virtual-tour" class="navigation__link">Visiting</a></li>
               <li><a href="#picture-explore" class="navigation__link">Explore</a></li>
               <li><a href="#video-journey" class="navigation__link">Video</a></li>
-              <li><a href="#" class="navigation__link">Tickets</a></li>
-              <li><a href="#" class="navigation__link">Contacts</a></li>
+              <li><a href="buy-tickets#" class="navigation__link">Tickets</a></li>
+              <li><a href="contacts#" class="navigation__link">Contacts</a></li>
             </ul>
+          </nav>
           <ul class="footer__social-icon-wrapper wrapper__flex">
-            <li class="footer__social-icon social-icon_youtube"></li>
-            <li class="footer__social-icon social-icon_instagram"></li>
-            <li class="footer__social-icon social-icon_facebook"></li>
-            <li class="footer__social-icon social-icon_twitter"></li>
-            <li class="footer__social-icon social-icon_pinterest"></li>
-          </ul>
+            <a href="https://www.youtube.com/user/louvre">    <li class="footer__social-icon social-icon_youtube">    </li></a>
+            <a href="https://www.instagram.com/museelouvre/"> <li class="footer__social-icon social-icon_instagram">  </li></a>
+            <a href="https://www.facebook.com/museedulouvre"> <li class="footer__social-icon social-icon_facebook">   </li></a>
+            <a href="http://twitter.com/museelouvre">         <li class="footer__social-icon social-icon_twitter">    </li></a>
+            <a href="https://www.pinterest.fr/museedulouvre/"><li class="footer__social-icon social-icon_pinterest">  </li></a>
+          </ul>   
+          
         </div>
 
       </footer>
-    </div>
-  </section>
   </main>
 
   <script>
@@ -220,6 +224,21 @@
     const value = event.target.value;
     event.target.style.background = `linear-gradient(to right, #24809e 0%, #24809e ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`
   })
+
+  const anchors = document.querySelectorAll('a[href*="#"]')
+
+  for (let anchor of anchors) {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault()
+    
+    const blockID = anchor.getAttribute('href').substr(1)
+    
+    document.getElementById(blockID).scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+  })
+}
   </script>
 </body>
 </html>
