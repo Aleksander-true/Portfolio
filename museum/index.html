@@ -5,19 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/favicon.ico">
     <title>Museum</title>
 </head>
 <body>
   <header class="header section section_dark">
       <div class="wrapper wrapper__flex">
-        <div class="logo">
+        <a  class="logo" href="">
           <div class="logo__icon"></div>
           <h1 class="logo__text">Louvre</h1>
-        </div>
+        </a>
         <nav class="navigation">
           <ul class="wrapper__flex">
             <li><a href="#virtual-tour" class="navigation__link">Visiting</a></li>
@@ -26,7 +26,7 @@
             <li><a href="#buy-tickets" class="navigation__link">Tickets</a></li>
             <li><a href="#contacts" class="navigation__link">Contacts</a></li>
           </ul>            
-        </nav>
+        </nav>  
       </div>  
   </header>
   <main>
@@ -88,7 +88,7 @@
   </section>
       <section class="picture-explore section section_dark" id="picture-explore"> 
         <div class="wrapper wrapper__flex">
-          <div class="section__half-column">
+          <div class="section__half-with-gap">
           <h2 class="title section__title section__title_underlined">Picture explore</h2>
           <div class="section__text-wrapper">
             <p class="section__text">Las Meninas is a 1656 painting by Diego Velázquez, the leading artist of the Spanish Golden Age.</p>
@@ -113,22 +113,18 @@
               <input type="range" class="tool-bar__progress tool-bar__volume-bar"  id="volume" name="volume" min="0" max="100" value="45">
               <div class="tool-bar__button tool-bar__full-screen"></div>
             </div>
-            <div class="wrapper__flex">
-              <div class="section__half-column">
-                <h2 class="title section__title video-journey__title">Video journey</h2>
-              </div>
-              <div class="">
-                <div class="video-journey__text section__text">Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or Hammurabi's Code</div>
-              </div>
+            <div class="wrapper__flex wrapper__flex_centered">
+                <h2 class="title section__title section__half-with-gap">Video journey</h2>
+                <div class="section__text section__half-width">Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or Hammurabi's Code</div>
             </div>
         </div>
       </section>
       <section class="buy-tickets section section_dark" id="buy-tickets">
         <div class="wrapper">
           <h2 class="title section__title section__title_underlined">Buy tickets</h2>
-          <div class="section__wrapper ">
+          <div class="wrapper__flex wrapper_top-indent">
             <img class="" src="assets/img/buy_tickets_pic.jpg" alt="the ecstasy of St. Catherine" width="720" height="550">
-            <div class="section__half-column wrapper__flex">
+            <div class="section__half-with-gap wrapper__flex">
               <div class="buy-tickets__subtitle">Ticket Type 
                 <form  class="tickets-form" id="tickets-form">
                   <label for="permanent-exhibition" class="tickets-form__radio-label">Permanent exhibition 
@@ -148,22 +144,32 @@
                 </form>
               </div>
               <div class="buy-tickets__subtitle buy-tickets__subtitle_right">Amount
-                <div class="ticket-form__uppertext">Basic 18+</div>
-                <form class="amount-form">
-                  <button class="ticket-form__button" type="button" onclick="this.nextElementSibling.stepDown()">-</button>
-                  <input type="number" class="ticket-form__amount-number"  value="1" min="0" max="99" readonly>
-                  <button class="ticket-form__button" type="button" onclick="this.previousElementSibling.stepUp()">+</button>
-                </form>
-                <div class="ticket-form__uppertext">Senior 65+</div>
-                <form  class="amount-form">
-                  <button class="ticket-form__button" type="button" onclick="this.nextElementSibling.stepDown()">-</button>
-                  <input  type="number" class="ticket-form__amount-number"   value="1" min="0" max="99" readonly>
-                  <button class="ticket-form__button" type="button" onclick="this.previousElementSibling.stepUp()">+</button>
-                </form>
-                <div class="buy-tickets__calculator">Total €
-                  <input type="number" class="ticket-form__amount-number ticket-form__amount-number_wide"  value="220" min="0" max="999" readonly>
-                  <button class="button button_small">Buy Now</button>
+                <div class="ticket-form__wrapper">
+                  <div class="ticket-form__uppertext">Basic 18+</div>
+                  <form class="amount-form">
+                    <button class="ticket-form__button" type="button" onclick="this.nextElementSibling.stepDown()">
+                      <span class="button__sign_minus"></span>
+                    </button>
+                    <input type="number" class="ticket-form__amount-number"  value="1" min="0" max="99" readonly>
+                    <button class="ticket-form__button" type="button" onclick="this.previousElementSibling.stepUp()">
+                      <span class="button__sign_plus"></span>
+                    </button>
+                  </form>
+                  <div class="ticket-form__uppertext">Senior 65+</div>
+                  <form  class="amount-form">
+                    <button class="ticket-form__button" type="button" onclick="this.nextElementSibling.stepDown()">
+                      <span class="button__sign_minus"></span>
+                    </button>
+                    <input  type="number" class="ticket-form__amount-number"   value="1" min="0" max="99" readonly>
+                    <button class="ticket-form__button" type="button" onclick="this.previousElementSibling.stepUp()">
+                      <span class="button__sign_plus"></span>
+                    </button>
+                  </form>
                 </div>
+                <div class="buy-tickets__calculator">Total €<!-- 
+                --><input type="number" class="ticket-form__amount-number ticket-form__amount-number_wide"  value="220" min="0" max="999" readonly>
+                </div>
+                <button class="button button_small">Buy Now</button>
               </div>
                
             </div>  
@@ -171,18 +177,18 @@
         </div>
       </section>
       <section class="contacts section" id="contacts">
-        <div class="wrapper">
+        <div class="wrapper ">
           <h2 class="title section__title section__title_underlined">Contacts</h2>
-          <div class=" section__wrapper ">
-            <div class="section__half-column">          
+          <div class="wrapper__flex wrapper_top-indent">
+            <div class="section__half-with-gap">          
               <div class="contacts__subtitle">Palais Royal <br> Musee du Louvre</div>
-              <p class="section__text"><span class="section__text_bold">address: 
+              <p class="section__text contacts__text"><span class="section__text_bold">address: 
                  </span>75001 Paris, France
               </p>
-              <p class="section__text"><span class="section__text_bold">phone: </span><a href="tel:+330140205050" class="contacts__link">
+              <p class="section__text contacts__text"><span class="section__text_bold">phone: </span><a href="tel:+330140205050" class="contacts__link">
                   +33(0) 1 40 20 50 50</a>
               </p>
-              <p class="section__text"><span class="section__text_bold">mail: </span><a href="mailto:info@louvre.fr" class="contacts__link">
+              <p class="section__text contacts__text"><span class="section__text_bold">mail: </span><a href="mailto:info@louvre.fr" class="contacts__link">
                   info@louvre.fr</a>
               </p>
             </div>
@@ -192,26 +198,27 @@
       </section>
       <footer class="footer section section_dark">
         <div class="wrapper wrapper__flex">
-          <div class="logo footer__logo">
-            <span class="logo__text">Louvre</span>
-          </div>
+          <a class="logo footer__logo" href="">
+            <div class="logo__icon"></div>
+          <h1 class="logo__text">Louvre</h1>
+          </a>
           <nav class="navigation">
             <ul class="navigation_footer wrapper__flex">
               <li><a href="#welcome" class="navigation__link">Welcome</a></li>
-              <li><a href="#virtual-tour" class="navigation__link">Visiting</a></li>
-              <li><a href="#picture-explore" class="navigation__link">Explore</a></li>
               <li><a href="#video-journey" class="navigation__link">Video</a></li>
+              <li><a href="#virtual-tour" class="navigation__link">Visiting</a></li>
               <li><a href="buy-tickets#" class="navigation__link">Tickets</a></li>
+              <li><a href="#picture-explore" class="navigation__link">Explore</a></li>
               <li><a href="contacts#" class="navigation__link">Contacts</a></li>
             </ul>
           </nav>
           <ul class="footer__social-icon-wrapper wrapper__flex">
-            <a href="https://www.youtube.com/user/louvre">    <li class="footer__social-icon social-icon_youtube">    </li></a>
-            <a href="https://www.instagram.com/museelouvre/"> <li class="footer__social-icon social-icon_instagram">  </li></a>
-            <a href="https://www.facebook.com/museedulouvre"> <li class="footer__social-icon social-icon_facebook">   </li></a>
-            <a href="http://twitter.com/museelouvre">         <li class="footer__social-icon social-icon_twitter">    </li></a>
-            <a href="https://www.pinterest.fr/museedulouvre/"><li class="footer__social-icon social-icon_pinterest">  </li></a>
-          </ul>   
+            <li > <a class="footer__social-icon social-icon_youtube"   href="https://www.youtube.com/user/louvre"   >    </a></li>
+            <li > <a class="footer__social-icon social-icon_instagram" href="https://www.instagram.com/museelouvre">  </a></li>
+            <li > <a class="footer__social-icon social-icon_facebook"  href="https://www.facebook.com/museedulouvre">   </a></li>
+            <li > <a class="footer__social-icon social-icon_twitter"   href="http://twitter.com/museelouvre"        >    </a></li>
+            <li > <a class="footer__social-icon social-icon_pinterest" href="https://www.pinterest.fr/museedulouvre">  </a></li>
+          </ul> 
           
         </div>
 
@@ -219,26 +226,45 @@
   </main>
 
   <script>
-  const progress = document.querySelector('.video-wrapper__tool-bar');
-  progress.addEventListener('input', function(event) {
-    const value = event.target.value;
-    event.target.style.background = `linear-gradient(to right, #24809e 0%, #24809e ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`
-  })
-
-  const anchors = document.querySelectorAll('a[href*="#"]')
-
-  for (let anchor of anchors) {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault()
-    
-    const blockID = anchor.getAttribute('href').substr(1)
-    
-    document.getElementById(blockID).scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
+    /*Progress bars for video player  */
+    const progress = document.querySelector('.video-wrapper__tool-bar');
+    progress.addEventListener('input', function(event) {
+      const value = event.target.value;
+      event.target.style.background = `linear-gradient(to right, #24809e 0%, #24809e ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`
     })
-  })
-}
+
+    /*Smooth scrolling of the anchors  */
+    /*
+    const anchors = document.querySelectorAll('a[href*="#"]')
+
+    for (let anchor of anchors) {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault()
+      
+      const blockID = anchor.getAttribute('href').substr(1);
+      
+      document.getElementById(blockID).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    });    
+  }
+  */
+/* Animation at srolling */
+  const observer = new IntersectionObserver(entries => {
+   entries.forEach(entry => {
+      if (entry.isIntersecting) {
+       entry.target.classList.add('section_visible');
+      }
+    });
+  });
+  observer.observe(document.querySelector('.title'));
+  observer.observe(document.querySelector('.virtual-tour .title'));
+  observer.observe(document.querySelector('.video-journey .title'));
+  observer.observe(document.querySelector('.picture-explore .title'));
+  observer.observe(document.querySelector('.buy-tickets .title'));
+  observer.observe(document.querySelector('.contacts .title'));
+
   </script>
 </body>
 </html>
