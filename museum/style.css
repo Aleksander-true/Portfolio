@@ -59,6 +59,10 @@ body {
   background-image: url("assets/svg/logo.svg");
 }
 
+.logo {
+  transition: all 0.3s;
+}
+
 .logo:hover {
   color: var(--font-gold);
   filter: invert(49%) sepia(4%) saturate(3412%) hue-rotate(356deg)
@@ -91,6 +95,7 @@ body {
   letter-spacing: 2px;
   color: var(--bg-light);
   line-height: 50px;
+  transition: all 0.3s;
 }
 .navigation__link:hover {
   color: var(--font-gold);

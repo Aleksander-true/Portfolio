@@ -128,16 +128,16 @@
               <div class="buy-tickets__subtitle">Ticket Type 
                 <form  class="tickets-form" id="tickets-form">
                   <label for="permanent-exhibition" class="tickets-form__radio-label">Permanent exhibition 
-                    <input type="radio" class="tickets-form__radio-button" name="ticket-type" id="permanent-exhibition" checked>
+                    <input type="radio" class="tickets-form__radio-button" name="ticket-type" id="permanent-exhibition" value="100" checked>
                     <span class="tickets-form__customize-radio-button"></span>
                   </label>
                   <label for="temporary-exhibition" class="tickets-form__radio-label">Temporary exhibition
-                    <input type="radio" class="tickets-form__radio-button" name="ticket-type" id="temporary-exhibition">
+                    <input type="radio" class="tickets-form__radio-button" name="ticket-type" id="temporary-exhibition" value="200">
                     <span class="tickets-form__customise-radio-button"></span>
                     <span class="tickets-form__customize-radio-button"></span>
                   </label>
-                  <label for="combined-admissionn" class="tickets-form__radio-label">Combined Admissionn
-                    <input type="radio" class="tickets-form__radio-button"  name="ticket-type" id="combined-admissionn">
+                  <label for="combined-admission" class="tickets-form__radio-label">Combined Admissionn
+                    <input type="radio" class="tickets-form__radio-button"  name="ticket-type" id="combined-admission" value="150">
                     <span class="tickets-form__customise-radio-button"></span>
                     <span class="tickets-form__customize-radio-button"></span>
                   </label>
@@ -150,7 +150,7 @@
                     <button class="ticket-form__button" type="button" onclick="this.nextElementSibling.stepDown()">
                       <span class="button__sign_minus"></span>
                     </button>
-                    <input type="number" class="ticket-form__amount-number"  value="1" min="0" max="99" readonly>
+                    <input type="number" class="ticket-form__amount-number" id="ticket-form__amount-number_basic"  value="1" min="0" max="99" readonly>
                     <button class="ticket-form__button" type="button" onclick="this.previousElementSibling.stepUp()">
                       <span class="button__sign_plus"></span>
                     </button>
@@ -160,14 +160,14 @@
                     <button class="ticket-form__button" type="button" onclick="this.nextElementSibling.stepDown()">
                       <span class="button__sign_minus"></span>
                     </button>
-                    <input  type="number" class="ticket-form__amount-number"   value="1" min="0" max="99" readonly>
+                    <input  type="number" class="ticket-form__amount-number"  id="ticket-form__amount-number_senior"   value="1" min="0" max="99" readonly>
                     <button class="ticket-form__button" type="button" onclick="this.previousElementSibling.stepUp()">
                       <span class="button__sign_plus"></span>
                     </button>
                   </form>
                 </div>
                 <div class="buy-tickets__calculator">Total €<!-- 
-                --><input type="number" class="ticket-form__amount-number ticket-form__amount-number_wide"  value="220" min="0" max="999" readonly>
+                --><input type="number" class="ticket-form__amount-number ticket-form__amount-number_wide" id="ticket-form__calculation" value="220" min="0" max="999" readonly>
                 </div>
                 <button class="button button_small">Buy Now</button>
               </div>
@@ -264,6 +264,25 @@
   observer.observe(document.querySelector('.picture-explore .title'));
   observer.observe(document.querySelector('.buy-tickets .title'));
   observer.observe(document.querySelector('.contacts .title'));
+  
+  /*Ticket Calculator*/
+  let buyTickets = document.querySelector('.buy-tickets');
+  let permanentExh = document.getElementById('permanent-exhibition');
+  let temporaryExh = document.getElementById('temporary-exhibition');
+  let combinedExh = document.getElementById('combined-admission');
+  let basicAmount = document.getElementById('ticket-form__amount-number_basic');
+  let seniorAmount = document.getElementById('ticket-form__amount-number_senior');
+  let calculation = document.getElementById('ticket-form__calculation');
+  let ticketCost = permanentExh.value;
+
+  buyTickets.addEventListener('click', function(event) {
+    if (permanentExh.checked) {ticketCost = permanentExh.value};
+    if (temporaryExh.checked) {ticketCost = temporaryExh.value};
+    if (combinedExh.checked)  {ticketCost = combinedExh.value}; 
+    calculation.value = ticketCost * 1.2 * +basicAmount.value + ticketCost * +seniorAmount.value;
+    if (calculation.value >= 1000 ) {calculation.style.width = '90px'}
+    else {calculation.style.width = '70px'}
+    })
 
   </script>
 </body>
