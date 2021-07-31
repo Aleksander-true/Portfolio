@@ -250,6 +250,12 @@ h4 {
   margin: 0;
 }
 
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
 .section__half-width {
   max-width: 720px;
   flex-grow: 2;
@@ -462,6 +468,10 @@ h4 {
   cursor: pointer;
 }
 
+.tickets-form__radio-label:hover {
+  text-decoration: underline;
+}
+
 .ticket-form__uppertext {
   width: 100%;
   margin: 12px 0;
@@ -485,6 +495,10 @@ h4 {
   font-size: 36px;
   color: var(--font-color-light);
   border: none;
+}
+
+.ticket-form__button:hover {
+  opacity: 0.6;
 }
 
 .ticket-form__amount-number {
