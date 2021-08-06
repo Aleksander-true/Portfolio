@@ -1,59 +1,75 @@
 let upBtn = document.querySelector('.up-button');
-let downBtn = document.querySelector('.down-button');
+let downBtn = document.querySelector('.down-button'); 
 
+addServiceElements()
+turnButtons('on');
 
-upBtn.addEventListener('click', slideUp);
-downBtn.addEventListener('click', slideDown);
-
-
-
-function slideUp() {
-  upBtn.removeEventListener('click', slideUp);
-
+function slide (direction) {
+  turnButtons('off');
   let slideRight = document.querySelector('.right-slide');
   let slidersImg = document.querySelectorAll('.right-slide > div');
-  let newRightSlide = slidersImg[slidersImg.length-1].cloneNode();
-  slideRight.prepend(newRightSlide);
-  slidersImg[slidersImg.length-1].style.top = "-100%";
-
+  let firstRightSlide = slidersImg[2].cloneNode();
+  let lastRightSlide = slidersImg[slidersImg.length-1];
   let slideLeft = document.querySelector('.left-slide');
-  let slidersTxts = document.querySelectorAll('.left-slide > div');
-  let newLeftSlide = slidersTxts[slidersTxts.length-1].cloneNode(true);
-  slideLeft.prepend(newLeftSlide);
-  slidersTxts[slidersTxts.length-1].style.top = "100%";
-  console.log(slidersTxts[slidersTxts.length-1]);
+  let slidersTxt = document.querySelectorAll('.left-slide > div');
+  let firstLeftSlide = slidersTxt[2].cloneNode(true);
+  let lastLeftSlide = slidersTxt[slidersTxt.length-1];
 
-  setTimeout (()=>{
-    upBtn.addEventListener('click', slideUp);
-    slidersImg[slidersImg.length-1].remove();
-    slidersTxts[slidersTxts.length-1].remove();
-  }, 500);
-    
+  if (direction === 'up') { 
+    lastRightSlide.after(firstRightSlide);
+    slidersImg[1].style.height = "0";
+
+    slidersTxt[1].after(lastLeftSlide);
+    slidersTxt[1].remove();
+    slidersTxt[0].removeAttribute('class');
+  }else{ 
+    lastLeftSlide.after(firstLeftSlide);
+    slidersTxt[1].style.height = "0"; 
+    slidersImg[1].after(lastRightSlide);
+    slidersImg[1].remove();
+    slidersImg[0].removeAttribute('class');
+  };
+  
+  setTimeout (()=>{ 
+    let emptyDiv = document.createElement('div');
+      emptyDiv.className = 'empty-div';
+      
+    if (direction ==='up') {
+        slideLeft.prepend(emptyDiv);
+        slidersImg[1].remove();
+    } else {
+        slidersTxt[1].remove();
+        slideRight.prepend(emptyDiv);
+    }
+    turnButtons('on');
+    }, 500);  
+  } 
+
+function turnButtons(str) {
+  if (str === 'off') {
+      upBtn.removeEventListener('click', slideUp);
+      downBtn.removeEventListener('click', slideDown);
+} else {
+      upBtn.addEventListener('click', slideUp);
+      downBtn.addEventListener('click', slideDown);
+  }  
 }
 
-function slideDown () {
-  downBtn.removeEventListener('click', slideDown);
+function slideUp () { slide('up') };
+function slideDown () { slide('down')};
+
+function addServiceElements() {
+  let slideRight = document.querySelector('.right-slide');
+  let slideLeft = document.querySelector('.left-slide');
+
+  slideRight.prepend(document.createElement('div'));
+  slideRight.prepend(document.createElement('div'));
+  
   let slidersImg = document.querySelectorAll('.right-slide > div');
-  let lastSlide =  slidersImg[slidersImg.length-1];
-  let newLastSlide = lastSlide.cloneNode();
-  lastSlide.before(slidersImg[0]);  
-  lastSlide.style.top = "100%";
-  slidersImg[0].before(newLastSlide); 
-
-  let slidersTxts = document.querySelectorAll('.left-slide > div');
-  let lastSlideTxt =  slidersTxts[slidersImg.length-1];
-  let newTxtSlide = lastSlideTxt.cloneNode(true);
-
-  lastSlideTxt.before(slidersTxts[0]);  
-  lastSlideTxt.style.top = "-100%";
-  slidersTxts[0].before(newTxtSlide); 
-
-  setTimeout (()=>{
-    downBtn.addEventListener('click', slideDown);
-    slidersImg = document.querySelectorAll('.right-slide > div');
-    lastSlide.remove();
-    lastSlideTxt.remove();
-  }, 500);
-
+  slidersImg[0].className = 'empty-div'; 
+  
+  slideLeft.prepend(document.createElement('div'));
+  slideLeft.prepend(document.createElement('div'));
+  let slidersTxt = document.querySelectorAll('.left-slide > div');
+  slidersTxt[0].className = 'empty-div'; 
 }
-

@@ -22,14 +22,11 @@ body {
   height: 100%;
   width: 35%;
   position: absolute;
-  top: 0;
+  top: -100%;
   left: 0;
 }
 
 .left-slide > div {
-  position: absolute;
-  overflow: hidden;
-  top: 0;
   height: 100%;
   width: 100%;
   display: flex;
@@ -37,7 +34,7 @@ body {
   align-items: center;
   justify-content: center;
   color: #fff;
-  transition: top 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .left-slide h1 {
@@ -49,26 +46,27 @@ body {
 .right-slide {
   height: 100%;
   position: absolute;
-
+  top: -100%;
   left: 35%;
   width: 65%;
 }
 
 .right-slide > div {
-  position: absolute;
-  top: 0;
+  /*  position: absolute;
+  top: 0;*/
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   height: 100%;
   width: 100%;
-  transition: top 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
-/*
-.right-slide > div:hover {
-  height: 10%;
+.left-slide > .empty-div,
+.right-slide > .empty-div {
+  height: 0%;
+  transition: all 0.5s ease-in-out;
 }
-*/
+
 button {
   background-color: #fff;
   border: none;
