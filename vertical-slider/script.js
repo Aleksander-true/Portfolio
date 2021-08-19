@@ -2,13 +2,15 @@ const upBtn = document.querySelector('.up-button');
 const downBtn = document.querySelector('.down-button');
 const slider = document.querySelector('.slider-container');
 let dragDirection = '';
-const minDragLength = 200;
-
+const minDragLength = slider.clientHeight * 0.2;
 let mouseStartCoordinate = { x:0, y:0 };
 let mouseEndCoordinate = {x:0, y:0};
+slider.setAttribute('tabindex', '-1');
 
-addServiceElements()
+addServiceElements();
 turnSlider('on');
+turnTransition('on');
+
 
 function slide (direction) {
   turnSlider('off');
@@ -29,7 +31,7 @@ function slide (direction) {
   
   setTimeout (()=>{ 
     const emptyDiv = document.createElement('div');
-      emptyDiv.className = 'empty-div';
+      emptyDiv.classList.add('empty-div','transition');
     if (direction ==='up') {
         slideLeft.firstElementChild.replaceWith(slideLeft.lastElementChild);
         slideLeft.prepend(emptyDiv);
@@ -81,15 +83,20 @@ function addServiceElements() {
 
 function wheelSlider(event) {
   if (event.deltaY<0) { slideUp() 
-  } else { slideDown() }
+
+  } else { slideDown() }1
 }
 
 function pressArrowKey (key) {
-  if (key.code === "ArrowUp") { slideUp() } 
-  if (key.code === "ArrowDown") { slideDown() } 
+  key.preventDefault();
+  console.log(key.code);
+  if (key.code == "ArrowUp") { slide('up') } 
+  if (key.code == "ArrowDown") { slide('down') } 
 }
 
 function mouseStartSwipe(e) {
+  e.preventDefault();
+  turnTransition('off');
   const slideRight = document.querySelector('.right-slide');
   if (e.which == 1) {
     let field = slider.getBoundingClientRect();
@@ -107,9 +114,12 @@ function mouseStartSwipe(e) {
 }
 
 function mouseEndSwipe (e) {
+  e.preventDefault();
   mouseEndCoordinate = {x:e.pageX , y:e.pageY }
   document.removeEventListener('pointermove', dragSlide)
   dragLength = mouseEndCoordinate.y - mouseStartCoordinate.y;
+  turnTransition('on');
+
   cancelDragOffset();
   if (Math.abs(dragLength) >= minDragLength) {
     if ((dragLength > 0 && dragDirection == "draggingRight")  || (dragLength <= 0 && dragDirection == "draggingLeft")  ) { slideDown() }
@@ -128,6 +138,8 @@ function cancelDragOffset () {
 }
 
 function dragSlide(e) {
+  e.preventDefault();
+
   const slidersImg = document.querySelectorAll('.right-slide > div');
   const slidersTxt = document.querySelectorAll('.left-slide > div');
   let trek = e.pageY - mouseStartCoordinate.y;
@@ -142,6 +154,18 @@ if (dragDirection === 'draggingLeft') { trek = -trek};
   }
 } 
 
-slider.ondragstart = function() {
-  return false;
-};
+function turnTransition(str) {
+  const slidersImg = document.querySelectorAll('.right-slide > div');
+  const slidersTxt = document.querySelectorAll('.left-slide > div');
+  if (str == 'on') {
+    slidersImg.forEach(element=>element.classList.add('transition'));
+    slidersTxt.forEach(element=>element.classList.add('transition'));
+  } else {
+    slidersImg.forEach(element=>element.classList.remove('transition'));
+    slidersTxt.forEach(element=>element.classList.remove('transition'));  
+  }
+}
+
+slider.ontouchmove = function () {
+  return false
+}
