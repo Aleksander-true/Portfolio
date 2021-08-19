@@ -3,15 +3,14 @@ const downBtn = document.querySelector('.down-button');
 const slider = document.querySelector('.slider-container');
 let dragDirection = '';
 const minDragLength = slider.clientHeight * 0.2;
-
 let mouseStartCoordinate = { x:0, y:0 };
 let mouseEndCoordinate = {x:0, y:0};
-
 slider.setAttribute('tabindex', '-1');
 
 addServiceElements();
 turnSlider('on');
 turnTransition('on');
+
 
 function slide (direction) {
   turnSlider('off');
@@ -43,7 +42,6 @@ function slide (direction) {
         slideRight.prepend(emptyDiv);
     }
     turnSlider('on');
-    
     }, 500);  
   } 
 
@@ -85,6 +83,7 @@ function addServiceElements() {
 
 function wheelSlider(event) {
   if (event.deltaY<0) { slideUp() 
+
   } else { slideDown() }1
 }
 
@@ -120,6 +119,7 @@ function mouseEndSwipe (e) {
   document.removeEventListener('pointermove', dragSlide)
   dragLength = mouseEndCoordinate.y - mouseStartCoordinate.y;
   turnTransition('on');
+
   cancelDragOffset();
   if (Math.abs(dragLength) >= minDragLength) {
     if ((dragLength > 0 && dragDirection == "draggingRight")  || (dragLength <= 0 && dragDirection == "draggingLeft")  ) { slideDown() }
@@ -139,6 +139,7 @@ function cancelDragOffset () {
 
 function dragSlide(e) {
   e.preventDefault();
+
   const slidersImg = document.querySelectorAll('.right-slide > div');
   const slidersTxt = document.querySelectorAll('.left-slide > div');
   let trek = e.pageY - mouseStartCoordinate.y;
