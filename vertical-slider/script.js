@@ -96,7 +96,6 @@ function pressArrowKey (key) {
 }
 
 function mouseStartSwipe(e) {
-  e.preventDefault();
   turnTransition('off');
   const slideRight = document.querySelector('.right-slide');
   if (e.which == 1) {
@@ -115,7 +114,6 @@ function mouseStartSwipe(e) {
 }
 
 function mouseEndSwipe (e) {
-  e.preventDefault();
   mouseEndCoordinate = {x:e.pageX , y:e.pageY }
   document.removeEventListener('pointermove', dragSlide)
   dragLength = mouseEndCoordinate.y - mouseStartCoordinate.y;
