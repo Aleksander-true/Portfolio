@@ -3,10 +3,8 @@ const downBtn = document.querySelector('.down-button');
 const slider = document.querySelector('.slider-container');
 let dragDirection = '';
 const minDragLength = slider.clientHeight * 0.2;
-
 let mouseStartCoordinate = { x:0, y:0 };
 let mouseEndCoordinate = {x:0, y:0};
-
 slider.setAttribute('tabindex', '-1');
 
 addServiceElements();
@@ -43,7 +41,6 @@ function slide (direction) {
         slideRight.prepend(emptyDiv);
     }
     turnSlider('on');
-    
     }, 500);  
   } 
 
