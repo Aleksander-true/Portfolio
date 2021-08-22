@@ -50,7 +50,6 @@ function  slideDown() {
   currentSlide--;
   updateSlideNumbers();
   updateSlidesClasses();
- 
 }
 
 function transitionEnd() {
@@ -119,12 +118,14 @@ function mouseStartSwipe(e) {
 }
 
 function mouseEndSwipe (e) {
+  if (e.which == 1) {
   mouseEndCoordinate = {x:e.pageX , y:e.pageY }
   dragLength = mouseEndCoordinate.y - mouseStartCoordinate.y;
   if (Math.abs(dragLength) >= minDragLength) {
     if ((dragLength > 0 && dragDirection == "draggingRight")  || (dragLength <= 0 && dragDirection == "draggingLeft")  ) { slideDown() }
     else (slideUp());
   }
+ }
 }
 
 slider.ontouchmove = function () {
