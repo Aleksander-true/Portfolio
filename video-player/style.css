@@ -15,10 +15,10 @@ body {
 }
 
 .video-wrapper {
+  overflow: hidden;
   position: relative;
   margin: 0 auto;
   max-width: 1200px;
-
   height: 630px;
   margin-top: 15px;
   padding-bottom: 85px;
@@ -121,7 +121,7 @@ body {
   border: 1px solid #24809e;
   border-radius: 50%;
   -webkit-appearance: none;
-  /*  cursor: ew-resize;*/
+  cursor: ew-resize;
   background: #fff;
 }
 
@@ -133,4 +133,68 @@ body {
   color: white;
   font-size: 1.5em;
   background-color: rgba(0, 0, 0, 0.7);
+}
+
+:root {
+  --transition-time: 2s;
+}
+
+.video-player.shift-left {
+  animation: right var(--transition-time) linear reverse;
+  visibility: visible;
+}
+
+.video-player.shift-right {
+  animation: left var(--transition-time) linear reverse;
+  visibility: visible;
+}
+
+.video-wrapper__video-preview {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: calc(100% - 85px);
+  width: 100%;
+  visibility: hidden;
+}
+
+.video-wrapper__video-preview img {
+  height: 100%;
+  width: auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .video-wrapper__video-preview img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.shift-right {
+  animation: right var(--transition-time) linear;
+  visibility: visible;
+}
+
+.shift-left {
+  animation: left var(--transition-time) linear;
+  visibility: visible;
+}
+
+@keyframes right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
