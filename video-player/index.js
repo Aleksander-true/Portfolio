@@ -6,18 +6,42 @@ const volumeBar = document.querySelector('.tool-bar__volume-bar');
 const volumeBtn = document.querySelector('.tool-bar__volume');
 const playBtn = document.querySelector('.tool-bar__play');
 const speedRateIndicator = document.querySelector('.speed-rate');
+const playlistModal = document.querySelector('.video-player__playlist');
+playlistModal.style.visibility = 'hidden';
 
+const qtyOfVideo = 5;
 let isMute = false;
 let currentVideo = 0;
-let preview = document.createElement('div');
-preview.innerHTML = '<img src="">'
-preview.classList.add('video-wrapper__video-preview');
-video.after(preview);
 
+
+/* Add posters to playlist  */ 
+for (let i = qtyOfVideo-1; i >= 0; i--) {
+ let posterSrc = `assets/video/poster${i}.jpg`
+ let posterName = `Video ${i}`
+ poster(playlistModal, "playlist__poster", posterSrc, posterName, i)
+}
+/*Add preview DIV for slide video*/
+poster(frame,'video-wrapper__video-preview', ' ');
+const preview = document.querySelector('.video-wrapper__video-preview');
 const previewImg = document.querySelector('.video-wrapper__video-preview img')
 
 updateVolumeBar(volumeBar.value);
 updateTimeProgressBar();
+
+playlistModal.addEventListener('click', playFromPlaylist);
+function playFromPlaylist(e) {
+  console.log('e.path=', e.path);
+  for (let i=0; i < e.path.length; i++) {
+    if (e.path[i].nodeName == 'DIV' && e.path[i].classList.contains('playlist__poster')) {
+      currentVideo = e.path[i].dataset.numberOfVideo;
+      console.log('currentVideo=', currentVideo);
+      togglePlaylist();
+      switchVideo(currentVideo);
+      break;
+    }
+  }
+}
+
 
 /* Click on video player handlers*/
 frame.addEventListener('click', clickHandler);
@@ -44,7 +68,17 @@ function clickHandler(e) {
   if (e.target.classList.contains('tool-bar__next')) {
     nextVideo();
   }
+/*Open close playlist modal window */
+  if (e.target.classList.contains('button_playlist')) {
+    togglePlaylist();
+  }
+  if (e.target.classList.contains('playlist__close-button')) {
+    togglePlaylist();
+  }
 }
+
+
+
 function mute() {
   if (isMute) { 
     isMute = false;
@@ -117,7 +151,7 @@ function toggleFullscreen(elem) {
 function nextVideo() {
   console.log(video.width);
   currentVideo++;
-  if (currentVideo >= 5) {currentVideo = 0};
+  if (currentVideo >= qtyOfVideo) {currentVideo = 0};
   slideVideo(currentVideo, 'shift-right'); 
   
 }
@@ -130,10 +164,10 @@ function previousVideo() {
 
 function slideVideo(n, shiftClass) {
   video.pause();
+  
   previewImg.src = `assets/video/poster${n}.jpg`;
   preview.classList.add(shiftClass);
   video.classList.add(shiftClass);
-  
 }
 preview.addEventListener('animationend', slideEnded);
 
@@ -145,7 +179,7 @@ function slideEnded () {
 } 
 
 /* Switch to video with number n from video catalog */
-function switchVideo(n) {
+function switchVideo(n=0) {
     video.src = `assets/video/video${n}.mp4`
     video.poster = `assets/video/poster${n}.jpg`
 }
@@ -202,7 +236,7 @@ function speedVideoDown() {
   showSpeedIndicator(video.playbackRate);
 }
 function showSpeedIndicator (speedRate) { 
-  speedRateIndicator.textContent = `${video.playbackRate}x`
+  speedRateIndicator.textContent = ` ${video.playbackRate}x `
   speedRateIndicator.style.visibility = 'visible';
   if (speedRate == 1) {
     setTimeout(()=>speedRateIndicator.style.visibility = 'hidden', 2000);
@@ -218,4 +252,25 @@ function setVideoTime (percent) {
   if (percent >= 0 && percent <= 100) {
     video.currentTime = video.duration / 100 * percent;2
   }
+}
+
+function togglePlaylist() {
+  video.pause();
+  if (playlistModal.style.visibility == 'hidden') {
+    playlistModal.style.visibility = 'visible';
+  } else {playlistModal.style.visibility = 'hidden'; }
+}
+
+function  poster(parentElement,posterClass ,posterSrc ,posterName, linkedVideo) {
+  let poster = document.createElement('div');
+  
+  if (linkedVideo != undefined) {poster.dataset.numberOfVideo = linkedVideo;}
+  if (posterSrc != undefined) { 
+    poster.insertAdjacentHTML('beforeend',`<img src="${posterSrc}">`)
+  }
+  if (posterName != undefined) {
+    poster.insertAdjacentHTML('beforeend',`<p>Name: ${posterName}</p>`);
+  }
+  poster.classList.add(posterClass);
+  parentElement.prepend(poster);
 }
