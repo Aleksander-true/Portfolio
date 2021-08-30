@@ -271,3 +271,28 @@ body {
 .playlist__poster img {
   width: 100%;
 }
+
+.features-description {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: rgb(206, 205, 205);
+}
+
+.hotkeys {
+  font-size: 24px;
+  max-width: 550px;
+  margin-top: 20px;
+}
+
+.feat {
+  font-size: 18px;
+  font-style: italic;
+}
+
+.marked {
+  font-weight: 400;
+  color: #24809e;
+}
