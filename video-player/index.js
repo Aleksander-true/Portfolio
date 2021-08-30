@@ -13,13 +13,13 @@ const qtyOfVideo = 5;
 let isMute = false;
 let currentVideo = 0;
 
-
 /* Add posters to playlist  */ 
 for (let i = qtyOfVideo-1; i >= 0; i--) {
  let posterSrc = `assets/video/poster${i}.jpg`
  let posterName = `Video ${i}`
- poster(playlistModal, "playlist__poster", posterSrc, posterName, i)
+ poster(playlistModal, "playlist__poster", posterSrc, posterName, i, 0);
 }
+
 /*Add preview DIV for slide video*/
 poster(frame,'video-wrapper__video-preview', ' ');
 const preview = document.querySelector('.video-wrapper__video-preview');
@@ -28,19 +28,6 @@ const previewImg = document.querySelector('.video-wrapper__video-preview img')
 updateVolumeBar(volumeBar.value);
 updateTimeProgressBar();
 
-playlistModal.addEventListener('click', playFromPlaylist);
-function playFromPlaylist(e) {
-  console.log('e.path=', e.path);
-  for (let i=0; i < e.path.length; i++) {
-    if (e.path[i].nodeName == 'DIV' && e.path[i].classList.contains('playlist__poster')) {
-      currentVideo = e.path[i].dataset.numberOfVideo;
-      console.log('currentVideo=', currentVideo);
-      togglePlaylist();
-      switchVideo(currentVideo);
-      break;
-    }
-  }
-}
 
 
 /* Click on video player handlers*/
@@ -77,7 +64,19 @@ function clickHandler(e) {
   }
 }
 
-
+/* Playlist handler*/
+playlistModal.addEventListener('click', playFromPlaylist);
+function playFromPlaylist(e) {
+  for (let i=0; i < e.path.length; i++) {
+    if (e.path[i].nodeName == 'DIV' && e.path[i].classList.contains('playlist__poster')) {
+      currentVideo = e.path[i].dataset.numberOfVideo;
+//      e.path[i].lastElementChild.textContent = `Wtched: ${video.time} sec`;
+      togglePlaylist();
+      switchVideo(currentVideo);
+      break;
+    }
+  }
+}
 
 function mute() {
   if (isMute) { 
@@ -90,20 +89,25 @@ function mute() {
     updateVolumeBar(0);
   }
 }
-function pauseHandler() {
+/* Actions when pause appears*/
+//video.addEventListener('pause', videoPauseHandler);
+function videoPauseHandler() {
+  video.pause();
   wrapperPlayIcon.style.visibility = 'visible';
   playBtn.classList.remove('tool-bar__pause');
+  let currentPoster = playlistModal.querySelector(`[data-number-of-video="${currentVideo}"]`);
+  if (video.currentTime > 0) {
+    currentPoster.lastElementChild.textContent = `Watched: ${Math.floor(video.currentTime)} sec`;
+  }
 }
 
-/* Actions when pause appears*/
-video.addEventListener('pause', pauseHandler);
 function togglePlayPause() {
   if (video.paused) {
     wrapperPlayIcon.style.visibility  = 'hidden';
     playBtn.classList.add('tool-bar__pause')
     video.play();
   } else {
-    video.pause();
+    videoPauseHandler();
   }
 }
 
@@ -149,22 +153,22 @@ function toggleFullscreen(elem) {
 }
 /* Next video */
 function nextVideo() {
-  console.log(video.width);
+  videoPauseHandler();
   currentVideo++;
   if (currentVideo >= qtyOfVideo) {currentVideo = 0};
   slideVideo(currentVideo, 'shift-right'); 
-  
 }
 /* Previous video */
 function previousVideo() {
+  videoPauseHandler();
   currentVideo--;
   if (currentVideo < 0) {currentVideo = 4};
   slideVideo(currentVideo, 'shift-left' );
 }
 
 function slideVideo(n, shiftClass) {
-  video.pause();
-  
+  document.removeEventListener('keydown', keyDownHandler); 
+  frame.removeEventListener('click', clickHandler);
   previewImg.src = `assets/video/poster${n}.jpg`;
   preview.classList.add(shiftClass);
   video.classList.add(shiftClass);
@@ -172,38 +176,44 @@ function slideVideo(n, shiftClass) {
 preview.addEventListener('animationend', slideEnded);
 
 function slideEnded () {
-  console.log('animationend');
   preview.classList.remove('shift-right', 'shift-left');
   video.classList.remove('shift-right', 'shift-left');
   switchVideo(currentVideo);
+  document.addEventListener('keydown', keyDownHandler); 
+  frame.addEventListener('click', clickHandler);
 } 
 
 /* Switch to video with number n from video catalog */
 function switchVideo(n=0) {
-    video.src = `assets/video/video${n}.mp4`
-    video.poster = `assets/video/poster${n}.jpg`
+    video.src = `assets/video/video${n}.mp4`;
+    video.poster = `assets/video/poster${n}.jpg`;
+    if (speedRateIndicator.style.visibility == 'visible') {
+      showSpeedIndicator(video.playbackRate);
+    }
 }
 /* Hot keys */
 document.addEventListener('keydown', keyDownHandler); 
 function keyDownHandler(e) {
+  e.preventDefault();
   switch (e.code) {
     case 'Space': 
+      
       togglePlayPause();
       break;
     case 'KeyK': 
       togglePlayPause();
       break;
-    case 'KeyM': 
-      mute();
+    case 'KeyM':
+        if (e.shiftKey) mute();   
       break;
     case 'KeyF': 
-      toggleFullscreen(frame);
+      if (e.shiftKey)  toggleFullscreen(frame) ;
       break;
     case 'Period': 
-      speedVideoUp();
+      if (e.shiftKey) speedVideoUp();
       break;
     case 'Comma': 
-      speedVideoDown();
+      if (e.shiftKey) speedVideoDown();
       break;
     case 'KeyJ': 
       stepVideoTimeTo(10);
@@ -212,14 +222,13 @@ function keyDownHandler(e) {
       stepVideoTimeTo(-10);
       break; 
     case 'KeyP': 
-      previousVideo();
+    if (e.shiftKey) previousVideo();
       break; 
     case 'KeyN': 
-      nextVideo();
+    if (e.shiftKey) nextVideo();
       break;
     default :
       if (e.code.match(/(Digit[0-9])|(Numpad[0-9])/)) {
-        console.log(e.code.slice(-1));
         setVideoTime(e.code.slice(-1)*10);
       }
       break;
@@ -236,10 +245,10 @@ function speedVideoDown() {
   showSpeedIndicator(video.playbackRate);
 }
 function showSpeedIndicator (speedRate) { 
-  speedRateIndicator.textContent = ` ${video.playbackRate}x `
-  speedRateIndicator.style.visibility = 'visible';
-  if (speedRate == 1) {
-    setTimeout(()=>speedRateIndicator.style.visibility = 'hidden', 2000);
+    speedRateIndicator.textContent = ` ${video.playbackRate}x `
+    speedRateIndicator.style.visibility = 'visible';
+    if (speedRate == 1) {
+      setTimeout(()=>speedRateIndicator.style.visibility = 'hidden', 2000);
   }
 }
 function stepVideoTimeTo (time) {
@@ -255,13 +264,13 @@ function setVideoTime (percent) {
 }
 
 function togglePlaylist() {
-  video.pause();
+  videoPauseHandler();
   if (playlistModal.style.visibility == 'hidden') {
     playlistModal.style.visibility = 'visible';
   } else {playlistModal.style.visibility = 'hidden'; }
 }
 
-function  poster(parentElement,posterClass ,posterSrc ,posterName, linkedVideo) {
+function  poster(parentElement,posterClass ,posterSrc ,posterName, linkedVideo, watchedTime) {
   let poster = document.createElement('div');
   
   if (linkedVideo != undefined) {poster.dataset.numberOfVideo = linkedVideo;}
@@ -271,6 +280,21 @@ function  poster(parentElement,posterClass ,posterSrc ,posterName, linkedVideo) 
   if (posterName != undefined) {
     poster.insertAdjacentHTML('beforeend',`<p>Name: ${posterName}</p>`);
   }
+  if (watchedTime != undefined) {
+    poster.insertAdjacentHTML('beforeend',`<p>Unwatched</p>`);
+  }
   poster.classList.add(posterClass);
   parentElement.prepend(poster);
 }
+console.log('Самооценка:')
+console.log('Разобрался в коде - 10 баллов')
+console.log('Hotkeys обязательный функционал - 10 баллов')
+console.log('Hotkeys дополнительный функционал - 10 баллов')
+console.log('Слайдер (анимация смены видео) дополнительный функционал - 10 баллов')
+console.log('Плейлист дополнительный функционал - 10 баллов')
+console.log('Итого: 30 баллов точно можно поставить')
+
+
+
+
+  
