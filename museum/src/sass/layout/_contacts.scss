@@ -1,0 +1,16 @@
+.contacts__subtitle {
+  display: inline-block;
+  font-size: $font-size-3;
+  line-height: 33px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.contacts__link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.contacts__text {
+  line-height: 26px;
+}

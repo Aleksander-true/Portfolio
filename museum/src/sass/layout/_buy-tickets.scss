@@ -1,0 +1,14 @@
+.buy-tickets__subtitle {
+  display: inline-block;
+  font-size: var(--font-sise-3);
+  line-height: 33px;
+  font-weight: 500;
+
+  &_right {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    text-align: right;
+    position: relative;
+  }
+}
