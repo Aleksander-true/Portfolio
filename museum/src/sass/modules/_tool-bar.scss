@@ -47,10 +47,10 @@
   flex-grow: 2;
   background: linear-gradient(
     to right,
-    #24809e 0%,
-    #24809e 45%,
-    #c4c4c4 45%,
-    #c4c4c4 100%
+    $dark-red 0%,
+    $dark-red 45%,
+    $bg-light 45%,
+    $bg-light 100%
   );
   -webkit-appearance: none;
 

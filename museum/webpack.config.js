@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   watch: true,
   optimization: {
-    minimize: false
+    minimize: false,
   },
   entry: './src/index.js',
   output: {
