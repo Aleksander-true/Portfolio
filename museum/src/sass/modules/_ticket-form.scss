@@ -16,7 +16,7 @@
     position: absolute;
     width: 18px;
     height: 18px;
-    top: 0;
+    top: 5px;
     left: 0;
     opacity: 0;
     cursor: pointer;
@@ -25,7 +25,7 @@
 
   &__customize-radio-button {
     opacity: 1;
-    border: 3px solid $bg-light;
+    border: 3px solid $bg-dark;
     border-radius: 50%;
 
     &:after {
@@ -38,7 +38,7 @@
       height: 6px;
       width: 6px;
       border-radius: 50%;
-      background-color: $bg-light;
+      background-color: $bg-dark;
     }
   }
 
@@ -46,7 +46,7 @@
     display: block;
     position: relative;
     padding-left: 40px;
-    margin-top: 50px;
+    margin-bottom: 25px;
     cursor: pointer;
 
     &:hover {
@@ -56,7 +56,8 @@
 
   &__uppertext {
     width: 100%;
-    margin: 12px 0;
+    margin-top: -22px;
+    margin-bottom: 15px;
     text-align: left;
   }
 
@@ -78,17 +79,17 @@
     height: 45px;
     padding: 0;
     background: transparent;
-    color: $font-color-light;
+    color: $font-color-dark;
     font-size: $font-size-4;
     line-height: 50px;
-    font-weight: 300;
+    font-weight: 700;
     border: none;
     text-align: center;
     margin: 0 auto;
 
     &_wide {
       font-size: $font-size-3;
-      font-weight: 400;
+      font-weight: 700;
       width: 70px;
     }
   }
@@ -104,18 +105,20 @@
   box-sizing: border-box;
   width: 150px;
   height: 50px;
-  border: 3px solid $bg-light;
-  margin-bottom: 40px;
+  border: 4px solid $bg-dark;
+  margin-bottom: 30px;
   padding: 0 4px;
   justify-content: stretch;
 }
 
 .buy-ticket__calculator {
   position: relative;
+  left: 20px;
+  font-size: $font-size-3;
+  font-weight: 700;
   line-height: 33px;
   letter-spacing: 1.65px;
-  left: 20px;
-  font-weight: 500;
+  margin-top: 15px;
 }
 
 .buy-ticket__subtitle {
@@ -137,10 +140,11 @@
   position: relative;
   width: 175px;
   height: 50px;
-  margin-top: 45px;
+  margin-top: 55px;
   border-radius: 2px;
   line-height: 50px;
-  background-color: $bg-light;
+  color: $font-color-light;
+  background-color: $bg-dark;
 }
 
 .button__sign_minus {
@@ -148,7 +152,7 @@
   position: relative;
   height: 3px;
   width: 18px;
-  background-color: $font-color-light;
+  background-color: $font-color-dark;
 }
 .button__sign_plus {
   display: block;
@@ -156,7 +160,7 @@
   right: 0;
   height: 3px;
   width: 18px;
-  background-color: $font-color-light;
+  background-color: $font-color-dark;
 }
 .button__sign_plus:after {
   content: "";
@@ -166,5 +170,5 @@
   transform: rotate(90deg);
   height: 3px;
   width: 18px;
-  background-color: $font-color-light;
+  background-color: $font-color-dark;
 }

@@ -1,21 +1,17 @@
 .welcome-louvre {
   position: relative;
   height: 810px;
-  /*
-  background-position: calc(50% + 350px) calc(100%);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-image: url("assets/img/louvre_entrance.jpg");
-  */
 
   &__title {
-    margin-top: 38px;
+    padding-top: 150px;
     max-width: 600px;
   }
 
   &__subtitle {
     font-size: $font-size-3;
+    line-height: 33px;
     letter-spacing: 2px;
-    margin-bottom: 77px;
+    margin-top: 25px;
+    margin-bottom: 75px;
   }
 }

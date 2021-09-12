@@ -1,0 +1,24 @@
+.picture-explore {
+  &__container {
+    height: 700px;
+    position: relative;
+  }
+}
+
+.picture-explore__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 720px;
+  height: 700px;
+
+  &_before {
+    width: 60%;
+    border-right: solid 6px #fff;
+    background-image: url("assets/img/explore-slider/before.jpg");
+  }
+
+  &_after {
+    background-image: url("assets/img/explore-slider/after.jpg");
+  }
+}

@@ -1,8 +1,9 @@
-.buy-tickets__subtitle {
-  display: inline-block;
-  font-size: var(--font-sise-3);
+.buy-ticket__subtitle {
+  display: block;
+  font-size: $font-size-3;
   line-height: 33px;
   font-weight: 500;
+  margin-bottom: 50px;
 
   &_right {
     display: flex;

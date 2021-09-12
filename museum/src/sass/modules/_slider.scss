@@ -23,12 +23,14 @@
   }
 
   &__panel {
+    box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     position: absolute;
     bottom: -60px;
     right: 0;
+    padding: 0 75px;
     height: 120px;
     width: 600px;
     background-color: $bg-dark;
@@ -52,12 +54,18 @@
   &__counter {
     font-size: 22px;
     line-height: 40px;
+    pointer-events: none;
   }
 
   &__bullet {
     width: 16px;
     height: 16px;
     background-color: $bg-light;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $bg-round-bullet-marked;
+    }
 
     &_marked {
       background-color: $font-gold;
@@ -68,6 +76,11 @@
       height: 12px;
       border-radius: 50%;
       background-color: $bg-round-bullet;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $font-gold;
+      }
 
       &_marked {
         background-color: $bg-round-bullet-marked;
@@ -86,7 +99,12 @@
 .arrow {
   height: 8px;
   width: 30px;
-  background-image: url(assets/svg/arrow-left.svg);
+  background-image: url("assets/svg/arrow-left.svg");
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.5;
+  }
 
   &_right {
     transform: rotateY(180deg);
@@ -96,9 +114,10 @@
 .chevron {
   height: 10px;
   width: 12px;
-  background-image: url(assets/svg/double_chevron.svg);
+  background-image: url("assets/svg/double_chevron.svg");
   background-size: contain;
   background-repeat: no-repeat;
+  cursor: pointer;
 
   &_right {
     transform: rotateY(180deg);
