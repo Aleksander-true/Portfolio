@@ -1,0 +1,30 @@
+.footer {
+  padding: 75px 0 45px 0;
+}
+
+.footer__logo {
+  max-width: 330px;
+  flex-grow: 2;
+}
+
+.footer__social-icon-wrapper {
+  max-width: 360px;
+  column-gap: 25px;
+  padding: 15px 0;
+  align-self: flex-end;
+}
+
+.footer-rsschool {
+  padding: 50px 0;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 22px;
+  line-height: 22px;
+}
+.separator {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #666666;
+}

@@ -1,0 +1,25 @@
+.button {
+  border-radius: 10px;
+  border: none;
+  font-size: $font-size-4;
+  font-family: $font-family-main;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-align: center;
+  transition: all 0.3s;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+
+  &:hover {
+    background-color: $font-gold;
+  }
+
+  &_colored {
+    width: 360px;
+    height: 75px;
+    line-height: 75px;
+    background-color: $dark-red;
+    color: $font-color-light;
+  }
+}
