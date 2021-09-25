@@ -1,0 +1,25 @@
+.wrapper {
+  position: relative;
+  max-width: 1440px;
+  box-sizing: border-box;
+  margin: 0 auto;
+
+  &__flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    column-gap: 10px;
+
+    &_centered {
+      justify-content: center;
+    }
+  }
+
+  &_centered {
+    align-items: center;
+  }
+
+  &_top-indent {
+    padding-top: 75px;
+  }
+}

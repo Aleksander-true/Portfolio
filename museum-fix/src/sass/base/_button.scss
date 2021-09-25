@@ -1,0 +1,103 @@
+.button {
+  border-radius: 10px;
+  border: none;
+  font-size: $font-size-4;
+  font-family: $font-family-main;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-align: center;
+  transition: all 0.3s;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+
+  &:hover {
+    background-color: $font-gold;
+  }
+
+  &_colored {
+    width: 360px;
+    height: 75px;
+    line-height: 75px;
+    background-color: $dark-red;
+    color: $font-color-light;
+  }
+
+  &_small {
+    position: relative;
+    width: 175px;
+    height: 50px;
+    margin-top: 55px;
+    border-radius: 2px;
+    line-height: 50px;
+    color: $font-color-light;
+    background-color: $bg-dark;
+  }
+}
+
+.button__sign_minus {
+  display: block;
+  position: relative;
+  height: 3px;
+  width: 18px;
+  background-color: $font-color-dark;
+
+  &_light {
+    height: 2px;
+    width: 10px;
+    background-color: $font-color-light;
+  }
+}
+
+.button__sign_plus {
+  display: block;
+  position: relative;
+  right: 0;
+  height: 3px;
+  width: 18px;
+  background-color: $font-color-dark;
+
+  &:after {
+    content: "";
+    display: block;
+    position: relative;
+    right: 0;
+    transform: rotate(90deg);
+    height: 3px;
+    width: 18px;
+    background-color: $font-color-dark;
+  }
+
+  &_light {
+    height: 2px;
+    width: 10px;
+    background-color: $font-color-light;
+
+    &:after {
+      height: 2px;
+      width: 10px;
+      background-color: $font-color-light;
+    }
+  }
+}
+
+.button_ticket-form {
+  width: 40px;
+  height: 45px;
+  background-color: transparent;
+  font-size: 36px;
+  color: $font-color-light;
+  border: none;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.button_booking-tickets {
+  width: 35px;
+  height: 24px;
+  background-color: $bg-dark;
+  border-radius: 0;
+  padding: 10px 12px;
+}
