@@ -23,6 +23,16 @@
     color: $font-color-light;
   }
 
+  &_book {
+    position: relative;
+    left: 250px;
+    width: 220px;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    border-radius: 0;
+  }
+
   &_small {
     position: relative;
     width: 175px;
@@ -100,4 +110,20 @@
   background-color: $bg-dark;
   border-radius: 0;
   padding: 10px 12px;
+}
+
+.button_credit-card {
+  position: relative;
+  width: 28px;
+  height: 16px;
+  border-radius: 0;
+  background-color: #ffffff;
+  background-image: url("../assets/svg/arrow_small.svg");
+  background-repeat: no-repeat;
+  background-position: 11px 10px;
+  //border: 1px solid $border-credit-sard;
+
+  &_mirror {
+    transform: rotate(180deg);
+  }
 }

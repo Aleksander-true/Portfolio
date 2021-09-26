@@ -18,6 +18,88 @@
   }
 }
 
+.form__icon {
+  display: block;
+  width: 15px;
+  height: 15px;
+  padding-left: 45px;
+  border-width: 1px;
+  background-repeat: no-repeat;
+  background-position: 15px;
+
+  &_date::before,
+  &_time::before {
+    display: block;
+    position: relative;
+    left: 0;
+    content: "";
+    width: calc(100% - 50px);
+    font-family: $font-family-main;
+  }
+
+  &_date::before {
+    content: "Date";
+  }
+
+  &_time::before {
+    content: "Time";
+  }
+
+  &_date::after,
+  &_time::after {
+    position: relative;
+    top: 0;
+    right: 17px;
+    width: 20px;
+    height: 17px;
+    content: "";
+    background-repeat: no-repeat;
+    background-image: url("../assets/svg/arrow.svg");
+  }
+
+  &:focus::before,
+  &:valid::before {
+    display: none;
+  }
+
+  &::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    z-index: 2;
+  }
+
+  &::-webkit-input-placeholder {
+    color: $font-color-dark;
+  }
+
+  &_date {
+    background-image: url("../assets/svg/date.svg");
+  }
+
+  &_time {
+    background-image: url("../assets/svg/time.svg");
+  }
+
+  &_name {
+    background-image: url("../assets/svg/name.svg");
+  }
+
+  &_email {
+    background-image: url("../assets/svg/email.svg");
+  }
+
+  &_tel {
+    background-image: url("../assets/svg/tel.svg");
+  }
+
+  &_type {
+    background-repeat: no-repeat, no-repeat;
+    background-position: 15px, calc(100% - 15px);
+    background-image: url("../assets/svg/ballot.svg"),
+      url("../assets/svg/arrow.svg");
+    -webkit-appearance: none;
+  }
+}
+
 .entry-ticket {
   border: 1px solid $bg-dark;
   padding: 10px 15px 15px;
@@ -31,6 +113,7 @@
     color: $font-gold;
     margin-bottom: 25px;
     font-size: $font-size-5;
+    font-weight: 400;
 
     &:after {
       display: block;
