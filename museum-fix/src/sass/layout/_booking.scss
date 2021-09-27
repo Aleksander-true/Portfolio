@@ -1,5 +1,5 @@
 .booking {
-  display: none;
+  display: block;
   position: fixed;
   top: 0;
   left: 0;
@@ -7,13 +7,16 @@
   width: 100%;
   height: 100%;
   z-index: 100;
+  visibility: hidden;
 
   &__form {
     max-width: 400px;
+    max-height: 665px;
   }
 
   &__overview {
     max-width: 530px;
+    max-height: 665px;
     padding: 25px 30px;
   }
 
@@ -29,8 +32,8 @@
   &__close-cross {
     display: inline-block;
     position: absolute;
-    top: 40px;
-    right: 40px;
+    top: -36px;
+    right: -180px;
     width: 35px;
     height: 35px;
     padding: 5px;
@@ -62,7 +65,28 @@
   }
 
   &__overview {
+    position: relative;
+    top: 15px;
     padding: 25px 30px;
     border: 1px solid $bg-dark;
+  }
+
+  &__arrive {
+    visibility: visible;
+  }
+
+  & .section {
+    width: 1000px;
+    height: 670px;
+    padding: 0;
+    position: relative;
+    top: 50%;
+    left: -100%;
+    transform: translateY(-50%);
+    transition: left 0.8s ease-in-out;
+
+    &.booking__arrive {
+      left: 0;
+    }
   }
 }

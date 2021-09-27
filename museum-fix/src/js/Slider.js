@@ -21,7 +21,7 @@ class Slider {
       createElement(this.container, 'div', this.slideClass, url);
     });
     this.slidersArray = this.container.querySelectorAll('.slider__slide');
-    console.log('this.currentSlide=', this.currentSlide)
+    //console.log('this.currentSlide=', this.currentSlide)
     this.turnSliderOn();
     this.slideEnded();
   }
@@ -47,7 +47,7 @@ class Slider {
     let previousSlide = this.currentSlide;
     this.currentSlide++;
     if (this.currentSlide >= this.qtySlides) {this.currentSlide = 0};
-    console.log('currentSlide=', this.currentSlide);
+    //console.log('currentSlide=', this.currentSlide);
     this.slideOut('from-right');
   }
 
@@ -55,7 +55,7 @@ class Slider {
     let previousSlide = this.currentSlide;
     this.currentSlide--;
     if (this.currentSlide < 0) {this.currentSlide = this.qtySlides-1};
-    console.log('currentSlide=', this.currentSlide);
+    //console.log('currentSlide=', this.currentSlide);
     this.slideOut('from-left');
   }
 
@@ -75,7 +75,7 @@ class Slider {
   }
 
   panelHandler(e) {
-    console.log (e)
+  //  console.log (e)
   }
 }
 

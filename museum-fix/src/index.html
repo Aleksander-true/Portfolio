@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
@@ -151,28 +151,29 @@
 
             <div class="wrapper__flex">
               <iframe
+              style="border: 0;"
               width="452"
               height="254"
               src="https://www.youtube.com/embed/aWmJ5DgyWPI?autoplay=0"
-              frameborder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
               title="Demo video">
             </iframe>
             <iframe
+            style="border: 0;"
               width="452"
               height="254"
               src="https://www.youtube.com/embed/Vi5D6FKhRmo?autoplay=0"
-              frameborder="0"
+
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
               title="Demo video">
             </iframe>
             <iframe
+            style="border: 0;"
               width="452"
               height="254"
               src="https://www.youtube.com/embed/NOhDysLnTvY?autoplay=0"
-              frameborder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
               title="Demo video">
@@ -194,21 +195,21 @@
         <div class="wrapper">
           <h2 class="title section__title">Art gallery</h2>
           <div class="gallery__colomns">
-            <img src="assets/img/gallery/gallery2.jpg" alt="" class="gallery_img order">
-            <img src="assets/img/gallery/gallery9.jpg" alt="" class="gallery_img">
-            <img src="assets/img/gallery/gallery4.jpg" alt="" class="gallery_img">
-            <img src="assets/img/gallery/gallery6.jpg" alt="" class="gallery_img">
-            <img src="assets/img/gallery/gallery11.jpg" alt="" class="gallery_img">
-            <img src="assets/img/gallery/gallery1.jpg" alt="" class="gallery_img">
-            <img src="assets/img/gallery/gallery8.jpg" alt="" class="gallery_img">
-            <img src="assets/img/gallery/gallery3.jpg" alt="" class="gallery_img">
-            <img src="assets/img/gallery/gallery5.jpg" alt="" class="gallery_img">
-            <img src="assets/img/gallery/gallery13.jpg" alt="" class="gallery_img">
-            <img src="assets/img/gallery/gallery7.jpg" alt="" class="gallery_img">
-            <img src="assets/img/gallery/gallery10.jpg" alt="" class="gallery_img">
-            <img src="assets/img/gallery/gallery15.jpg" alt="" class="gallery_img">
-            <img src="assets/img/gallery/gallery12.jpg" alt="" class="gallery_img">
-            <img src="assets/img/gallery/gallery14.jpg" alt="" class="gallery_img">
+            <img src="assets/img/gallery/gallery2.jpg" alt="gallery" class="gallery_img order">
+            <img src="assets/img/gallery/gallery9.jpg" alt="gallery" class="gallery_img">
+            <img src="assets/img/gallery/gallery4.jpg" alt="gallery" class="gallery_img">
+            <img src="assets/img/gallery/gallery6.jpg" alt="gallery" class="gallery_img">
+            <img src="assets/img/gallery/gallery11.jpg" alt="gallery" class="gallery_img">
+            <img src="assets/img/gallery/gallery1.jpg" alt="gallery" class="gallery_img">
+            <img src="assets/img/gallery/gallery8.jpg" alt="gallery" class="gallery_img">
+            <img src="assets/img/gallery/gallery3.jpg" alt="gallery" class="gallery_img">
+            <img src="assets/img/gallery/gallery5.jpg" alt="gallery" class="gallery_img">
+            <img src="assets/img/gallery/gallery13.jpg" alt="gallery" class="gallery_img">
+            <img src="assets/img/gallery/gallery7.jpg" alt="gallery" class="gallery_img">
+            <img src="assets/img/gallery/gallery10.jpg" alt="gallery" class="gallery_img">
+            <img src="assets/img/gallery/gallery15.jpg" alt="gallery" class="gallery_img">
+            <img src="assets/img/gallery/gallery12.jpg" alt="gallery" class="gallery_img">
+            <img src="assets/img/gallery/gallery14.jpg" alt="gallery" class="gallery_img">
           </div>
         </div>
       </section>
@@ -245,7 +246,7 @@
                     <button class="button_ticket-form" type="button" onclick="this.nextElementSibling.stepDown()">
                       <span class="button__sign_minus"></span>
                     </button>
-                    <input type="number" class="ticket-form__amount-number" id="ticket-form__amount-number_basic"  value="1" min="0" max="99" readonly>
+                    <input type="number" class="ticket-form__amount-number" id="ticket-form__amount-number_basic"  value="1" min="0" max="20" readonly>
                     <button class="button_ticket-form" type="button" onclick="this.previousElementSibling.stepUp()">
                       <span class="button__sign_plus"></span>
                     </button>
@@ -255,7 +256,7 @@
                     <button class="button_ticket-form" type="button" onclick="this.nextElementSibling.stepDown()">
                       <span class="button__sign_minus"></span>
                     </button>
-                    <input type="number" class="ticket-form__amount-number"  id="ticket-form__amount-number_senior"   value="1" min="0" max="99" readonly>
+                    <input type="number" class="ticket-form__amount-number" id="ticket-form__amount-number_senior"   value="1" min="0" max="20" readonly>
                     <button class="button_ticket-form" type="button" onclick="this.previousElementSibling.stepUp()">
                       <span class="button__sign_plus"></span>
                     </button>
@@ -281,8 +282,8 @@
               <h3 class="title section__title section__title_small">Booking tickets</h3>
               <div class="booking__subtitle ">Tour to Louvre</div>
               <form class="booking__form wrapper__flex" name="booking" action="bookingHandler.js">
-                <input class="form_half form__icon form__icon_date" type="date" name="" id="" required aria-required="true">
-                <input class="form_half form__icon form__icon_time" type="time" name="date" id="booking-date" required aria-required="true">
+                <input class="form_half form__icon form__icon_date" type="date" name="date" id="booking-date" required aria-required="true">
+                <input class="form_half form__icon form__icon_time" type="time" name="time" id="booking-time" required aria-required="true">
                 <input class="form_full form__icon form__icon_name" type="text" name="name" id="booking-name" placeholder="Name">
                 <input class="form_full form__icon form__icon_email" type="email" name="email" id="booking-email" placeholder="E-mail">
                 <input class="form_full form__icon form__icon_tel" type="tel" name="tel" id="booking-tel" placeholder="Phone">
@@ -300,7 +301,7 @@
                     <button class="button button_booking-tickets" type="button" onclick="this.nextElementSibling.stepDown()">
                       <span class="button__sign_minus button__sign_minus_light"></span>
                     </button>
-                    <input type="number" class=" ticket-form__amount-number ticket-form__amount-number_small"  name="basic" id="ticket-form__amount-number_basic"  value="1" min="0" max="99" readonly>
+                    <input type="number" class=" ticket-form__amount-number ticket-form__amount-number_small"  name="basic"   value="2" min="0" max="20" readonly>
                     <button class="button button_booking-tickets" type="button" onclick="this.previousElementSibling.stepUp()">
                       <span class="button__sign_plus button__sign_plus_light"></span>
                     </button>
@@ -310,7 +311,7 @@
                     <button class="button button_booking-tickets" type="button" onclick="this.nextElementSibling.stepDown()">
                       <span class="button__sign_minus button__sign_minus_light"></span>
                     </button>
-                    <input type="number" class="ticket-form__amount-number ticket-form__amount-number_small" name="senior" id="ticket-form__amount-number_senior"   value="1" min="0" max="99" readonly>
+                    <input type="number" class="ticket-form__amount-number ticket-form__amount-number_small" name="senior"  value="2" min="0" max="20" readonly>
                     <button class="button button_booking-tickets" type="button" onclick="this.previousElementSibling.stepUp()">
                       <span class="button__sign_plus button__sign_plus_light"></span>
                     </button>
@@ -343,11 +344,11 @@
                 <hr class="overview__hr">
                 <fieldset class="overview__type">
                   <div class="overview__text">Total: </div>
-                  <input class="overview__text overview__total" type="text" name="senior-sum" id="senior-sum" value="60" readonly>
+                  <input class="overview__text overview__total" type="text" name="senior-sum" id="total-sum" value="60" readonly>
                   <span class="overview__text overview__text_euro">€</span>
                 </fieldset>
               </div>
-              <form action="" class="credit-card">
+              <form  class="credit-card">
                 <div class="credit-card__back">
                   <div class="credit-card__magnet-strip"></div>
                   <div class="credit-card__code-container">
@@ -367,7 +368,7 @@
                     <button class="button button_credit-card" type="button" onclick="form.elements.creditMonth.stepDown()"></button>
                     <button class="button button_credit-card button button_credit-card_mirror" type="button" onclick="form.elements.creditMonth.stepUp()"></button>
                   </div>
-                  <input type="number" class="credit-card__field credit-card__field_year" name="creditYear" id="ticket-form__amount-number_senior"   value="2024" min="1900" max="2100">
+                  <input type="number" class="credit-card__field credit-card__field_year" name="creditYear" id="card-year"   value="2024" min="1900" max="2100">
                   <div class="credit-card__button-container">
                     <button class="button button_credit-card" type="button" onclick="form.elements.creditYear.stepDown()"></button>
                     <button class="button button_credit-card button_credit-card_mirror" type="button" onclick="form.elements.creditYear.stepUp()"></button>
@@ -382,8 +383,8 @@
         </div>
       </div>
 
-      <section class="parallax" id="parallax">
-      </section>
+      <div class="parallax" id="parallax">
+      </div>
       <section class="contacts section" id="contacts">
         <div class="wrapper ">
           <h2 class="title section__title section__title_underlined">Contacts</h2>
@@ -423,13 +424,13 @@
               <li><a href="#contacts" class="navigation__link">Contacts</a></li>
             </ul>
           </nav>
-          <div class="footer__social-icon-wrapper wrapper__flex">
+          <ul class="footer__social-icon-wrapper wrapper__flex">
             <li> <a class="footer__social-icon social-icon_youtube"   href="https://www.youtube.com/user/louvre"   >    </a></li>
             <li> <a class="footer__social-icon social-icon_instagram" href="https://www.instagram.com/museelouvre/">  </a></li>
             <li> <a class="footer__social-icon social-icon_facebook"  href="https://www.facebook.com/museedulouvre">   </a></li>
             <li> <a class="footer__social-icon social-icon_twitter"   href="http://twitter.com/museelouvre"        >    </a></li>
             <li> <a class="footer__social-icon social-icon_pinterest" href="https://www.pinterest.fr/museedulouvre/">  </a></li>
-          </div>
+          </ul>
 
         </div>
 

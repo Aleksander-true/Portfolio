@@ -30,11 +30,12 @@
     font-size: $font-size-4;
     line-height: 26px;
     color: $dark-red;
-    margin-bottom: 10px;
+    margin: 6px 0 12px;
   }
 
   &__received {
     margin-left: 15px;
+    margin-bottom: 6px;
 
     &::before {
       display: inline-block;
@@ -61,6 +62,7 @@
   &__type {
     display: flex;
     align-items: center;
+    margin: 6px 0;
 
     &_text {
       display: inline-block;
