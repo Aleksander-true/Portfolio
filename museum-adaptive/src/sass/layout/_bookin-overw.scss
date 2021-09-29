@@ -1,0 +1,126 @@
+.overview {
+  &__hr {
+    background-color: $dark-red;
+    margin: 10px 0;
+    border-width: 2px;
+  }
+
+  &_img {
+    width: 150px;
+    height: 120px;
+    background-image: url("../assets/img/louvre_entrance.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: $font-size-2;
+    line-height: 37px;
+    flex-grow: 2;
+
+    &_euro {
+      flex-grow: 0;
+      margin: 0;
+    }
+  }
+
+  &__subtext {
+    font-weight: 500;
+    font-size: $font-size-4;
+    line-height: 26px;
+    color: $dark-red;
+    margin: 6px 0 12px;
+  }
+
+  &__received {
+    margin-left: 15px;
+    margin-bottom: 6px;
+
+    &::before {
+      display: inline-block;
+      position: relative;
+      left: -15px;
+      content: "";
+      width: 15px;
+      height: 15px;
+    }
+
+    &_date::before {
+      background-image: url("../assets/svg/date.svg");
+    }
+
+    &_time::before {
+      background-image: url("../assets/svg/time.svg");
+    }
+
+    &_type::before {
+      background-image: url("../assets/svg/check_circle_outline.svg");
+    }
+  }
+
+  &__type {
+    display: flex;
+    align-items: center;
+    margin: 6px 0;
+
+    &_text {
+      display: inline-block;
+      flex-grow: 2;
+      margin-left: 10px;
+      font-weight: 400;
+      font-size: $font-size-4;
+      line-height: 26px;
+
+      &_euro {
+        flex-grow: 0;
+        margin: 0;
+      }
+    }
+  }
+
+  &__cost {
+    width: 100%;
+  }
+
+  &__qty {
+    width: 32px;
+    height: 20px;
+    background-color: $bg-dark;
+    color: $font-color-light;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  &__sum {
+    width: 30px;
+    height: 25px;
+    border: none;
+    background-color: transparent;
+    flex-grow: 0;
+
+    &:after {
+      display: block;
+      position: relative;
+      content: "€";
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__total {
+    width: 45px;
+    height: 37px;
+    border: none;
+    background-color: transparent;
+    flex-grow: 0;
+
+    &:after {
+      display: block;
+      position: relative;
+      content: "€";
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

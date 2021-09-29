@@ -1,0 +1,58 @@
+.welcome-louvre {
+  position: relative;
+  height: 810px;
+
+  @media (max-width: $break-laptop) {
+    height: 585px;
+  }
+
+  @media (max-width: $break-tablet) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  &__title {
+    padding-top: 150px;
+    max-width: 600px;
+
+    @media (max-width: $break-laptop) {
+      padding-top: 50px;
+      max-width: 400px;
+    }
+
+    @media (max-width: $break-tablet) {
+      padding-top: 0;
+      text-align: center;
+    }
+  }
+
+  &__subtitle {
+    font-size: $font-size-3;
+    line-height: 33px;
+    letter-spacing: 2px;
+    margin-top: 25px;
+    margin-bottom: 75px;
+
+    @media (max-width: $break-laptop) {
+      margin-bottom: 50px;
+      font-size: $font-size-subtitle-laptop;
+      line-height: 28px;
+    }
+
+    @media (max-width: $break-tablet) {
+      font-size: $font-size-subtitle-tablet;
+      line-height: 23px;
+    }
+
+    @media (max-width: $break-phone) {
+      font-size: $font-size-subtitle-phone;
+      line-height: 19px;
+    }
+  }
+
+  &.open .wrapper {
+    display: none;
+  }
+}

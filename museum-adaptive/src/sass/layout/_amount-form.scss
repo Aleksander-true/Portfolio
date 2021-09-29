@@ -1,0 +1,19 @@
+.amount-form {
+  display: flex;
+  box-sizing: border-box;
+  width: 150px;
+  height: 50px;
+  border: 4px solid $bg-dark;
+  margin-bottom: 30px;
+  padding: 0 4px;
+  justify-content: stretch;
+
+  &_small {
+    width: 105px;
+    height: 25px;
+    border: 1px solid $bg-dark;
+    margin-top: 0;
+    margin-bottom: 18px;
+    padding: 0;
+  }
+}

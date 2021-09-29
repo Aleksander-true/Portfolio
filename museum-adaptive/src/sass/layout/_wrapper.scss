@@ -1,0 +1,31 @@
+.wrapper {
+  position: relative;
+  max-width: 1440px;
+  box-sizing: border-box;
+  margin: 0 auto;
+
+  @media (max-width: $break-laptop) {
+    margin: 0 20px;
+    max-width: 1024px;
+  }
+
+  &__flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    column-gap: 10px;
+
+    &_centered {
+      justify-content: center;
+      column-gap: 40px;
+    }
+  }
+
+  &_centered {
+    align-items: center;
+  }
+
+  &_top-indent {
+    padding-top: 75px;
+  }
+}
