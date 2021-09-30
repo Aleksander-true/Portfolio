@@ -8,3 +8,8 @@ burgerMenu.addEventListener('click', () => {
   welcomeSection.classList.toggle('open');
 });
 
+welcomeSection.addEventListener('click', () => {
+  burgerMenu.classList.remove('open');
+  navigation.classList.remove('open');
+  welcomeSection.classList.remove('open');
+});

@@ -1,47 +1,64 @@
 .welcome-louvre {
   position: relative;
-  height: 810px;
+  //height: 810px;
 
-  @media (max-width: $break-laptop) {
-    height: 585px;
+  @media (max-width: $break-small-laptop) {
   }
-
-  @media (max-width: $break-tablet) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: auto;
+  & .wrapper {
+    @media (max-width: $break-tablet) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: auto;
+    }
   }
 
   &__title {
-    padding-top: 150px;
+    position: absolute;
+    top: 150px;
+    left: 0;
     max-width: 600px;
 
     @media (max-width: $break-laptop) {
-      padding-top: 50px;
+      top: 22%;
+    }
+
+    @media (max-width: $break-small-laptop) {
+      top: 50px;
       max-width: 400px;
+      line-height: 90px;
     }
 
     @media (max-width: $break-tablet) {
-      padding-top: 0;
+      position: relative;
+      top: 0;
       text-align: center;
     }
   }
 
   &__subtitle {
+    position: absolute;
+    top: 355px;
+    left: 0;
+    margin: 0;
     font-size: $font-size-3;
     line-height: 33px;
     letter-spacing: 2px;
-    margin-top: 25px;
-    margin-bottom: 75px;
 
     @media (max-width: $break-laptop) {
-      margin-bottom: 50px;
+      top: 52.8%;
+    }
+
+    @media (max-width: $break-small-laptop) {
+      top: 230px;
+      margin: 25px 0 50px;
       font-size: $font-size-subtitle-laptop;
       line-height: 28px;
     }
 
     @media (max-width: $break-tablet) {
+      position: relative;
+      height: 120px;
       font-size: $font-size-subtitle-tablet;
       line-height: 23px;
     }
@@ -49,6 +66,28 @@
     @media (max-width: $break-phone) {
       font-size: $font-size-subtitle-phone;
       line-height: 19px;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    top: 463px;
+    left: 0;
+
+    @media (max-width: $break-laptop) {
+      top: 62%;
+    }
+
+    @media (max-width: $break-small-laptop) {
+      top: 333px;
+      font-size: $font-size-subtitle-tablet;
+      line-height: 60px;
+      width: 300px;
+      height: 60px;
+    }
+
+    @media (max-width: $break-tablet) {
+      display: none;
     }
   }
 

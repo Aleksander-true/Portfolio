@@ -38,34 +38,36 @@
   </header>
   <main>
   <section class="welcome-louvre section_dark" id="welcome">
-    <div class="slider__wrapper">
-      <div class="slider__container">
-        <img class='slider__slide' src="assets/img/welcome-slider/1.jpg" alt="slide">
-        <img class='slider__slide' src="assets/img/welcome-slider/2.jpg" alt="slide">
-        <img class='slider__slide' src="assets/img/welcome-slider/3.jpg" alt="slide">
-        <img class='slider__slide' src="assets/img/welcome-slider/4.jpg" alt="slide">
-        <img class='slider__slide' src="assets/img/welcome-slider/5.jpg" alt="slide">
-      </div>
-    </div>
-    <div class='slider__panel'>
-      <div class="panel__counter">01&nbsp;&nbsp;|&nbsp;&nbsp;05</div>
-      <div class="panel__bullets">
-        <div class="panel__bullet panel__bullet_marked"></div>
-        <div class="panel__bullet"></div>
-        <div class="panel__bullet"></div>
-        <div class="panel__bullet"></div>
-        <div class="panel__bullet"></div>
-      </div>
-      <div class="panel__arrows">
-        <div class="arrow left-button"></div>
-        <div class="arrow arrow_right right-button"></div>
-      </div>
-    </div>
+
     <div class="wrapper">
+      <div class="slider__wrapper">
+        <div class="slider__container">
+          <img class='slider__slide' src="assets/img/welcome-slider/5.jpg" alt="slide">
+          <img class='slider__slide' src="assets/img/welcome-slider/1.jpg" alt="slide">
+          <img class='slider__slide' src="assets/img/welcome-slider/2.jpg" alt="slide">
+          <img class='slider__slide' src="assets/img/welcome-slider/3.jpg" alt="slide">
+          <img class='slider__slide' src="assets/img/welcome-slider/4.jpg" alt="slide">
+        </div>
+
+        <div class='slider__panel'>
+          <div class="panel__counter">01&nbsp;&nbsp;|&nbsp;&nbsp;05</div>
+          <div class="panel__bullets">
+            <div class="panel__bullet panel__bullet_marked"></div>
+            <div class="panel__bullet"></div>
+            <div class="panel__bullet"></div>
+            <div class="panel__bullet"></div>
+            <div class="panel__bullet"></div>
+          </div>
+          <div class="panel__arrows">
+            <div class="arrow left-button"></div>
+            <div class="arrow arrow_right right-button"></div>
+          </div>
+        </div>
+      </div>
       <h2 class="title section__title welcome-louvre__title">Welcome <br>to the Louvre</h2>
       <p class="welcome-louvre__subtitle">From the castle to the museum</p>
       <form action="tours/tour1.html" target="_blank">
-        <button type="submit" class="button button_colored">Discover the Louvre</button>
+        <button type="submit" class="button button_colored welcome-louvre__button">Discover the Louvre</button>
       </form>
     </div>
   </section>
@@ -74,43 +76,43 @@
       <h2 class="title section__title section__title_underlined">Virtual tour</h2>
       <div class="wrapper__flex">
         <a class="card" href="./assets/tours/tour2.html" target="_blank">
-          <img src="assets/img/royal_palace.jpg" alt="Royal palace picture" width="440" height="285">
+          <img class="card__img" src="assets/img/royal_palace.jpg" alt="Royal palace picture" >
           <h3 class="title card__title ">Royal Palace</h3>
           <div class="card__subtitle">360° Virtual Tour</div>
           <div class="card__subtitle-description">Google Street Panorama View</div>
         </a>
 
         <a class="card" href="./assets/tours/tour3.html" target="_blank">
-          <img src="assets/img/denon_wing.jpg" alt="Denon Wing picture" width="440" height="285">
+          <img class="card__img" src="assets/img/denon_wing.jpg" alt="Denon Wing picture">
           <h3 class="title card__title ">Denon Wing</h3>
           <div class="card__subtitle">360° Virtual Tour</div>
           <div class="card__subtitle-description">Google Street Panorama View</div>
         </a>
 
         <a class="card" href="./assets/tours/tour4.html" target="_blank">
-          <img src="assets/img/colonnade.jpg" alt="Colonnade Perrault picture" width="440" height="285">
-          <h3 class="title card__title ">Colonnade Perrault</h3>
+          <img class="card__img" src="assets/img/colonnade.jpg" alt="Colonnade Perrault picture" >
+          <h3 class="title card__title card__title_narrow">Colonnade Perrault</h3>
           <div class="card__subtitle">360° Virtual Tour</div>
           <div class="card__subtitle-description">Google Street Panorama View</div>
         </a>
 
         <a class="card" href="./assets/tours/tour5.html" target="_blank">
-          <img src="assets/img/greek_hall.jpg" alt="Greek hall picture" width="440" height="285">
+          <img class="card__img" src="assets/img/greek_hall.jpg" alt="Greek hall picture" >
           <h3 class="title card__title ">Greek hall</h3>
           <div class="card__subtitle">360° Virtual Tour</div>
           <div class="card__subtitle-description">Google Street Panorama View</div>
         </a>
 
         <a class="card" href="./assets/tours/tour5.html" target="_blank">
-          <img src="assets/img/mona_lisa.jpg" alt="Mona Lisa picture" width="440" height="285">
-          <h3 class="title card__title ">Mona Lisa</h3>
+          <img class="card__img" src="assets/img/mona_lisa.jpg" alt="Mona Lisa picture" >
+          <h3 class="title card__title card__title_narrow">Mona Lisa</h3>
           <div class="card__subtitle">360° Virtual Tour</div>
           <div class="card__subtitle-description">Google Street Panorama View</div>
         </a>
 
         <a class="card" href="./assets/tours/tour6.html" target="_blank">
-          <img src="assets/img/nigth_palace.jpg" alt="Night Palace picture" width="440" height="285">
-          <h3 class="title card__title">Night Palace</h3>
+          <img class="card__img" src="assets/img/nigth_palace.jpg" alt="Night Palace picture">
+          <h3 class="title card__title card__title_narrow">Night Palace</h3>
           <div class="card__subtitle">360° Virtual Tour</div>
           <div class="card__subtitle-description">Google Street Panorama View</div>
         </a>
@@ -129,7 +131,7 @@
             </div>
           </div>
             <div class="picture-explore__container section__half-width">
-              <div class="picture-explore__img picture-explore__img_after"></div>
+              <img  class="picture-explore__img picture-explore__img_after" src="assets/img/explore-slider/after.jpg" alt="after">
               <div class="picture-explore__img picture-explore__img_before">
                 <div class="wand">
                   <span class="wand__rod"></span>
@@ -158,7 +160,7 @@
               <button class="tool-bar__button tool-bar__full-screen"></button>
             </div>
 
-            <div class="wrapper__flex">
+            <div class="video-journey__slider wrapper__flex">
               <iframe
               style="border: 0;"
               width="452"
@@ -226,9 +228,9 @@
         <div class="wrapper">
           <h2 class="title section__title section__title_underlined">Buy tickets</h2>
           <div class="wrapper__flex wrapper_top-indent">
-            <img class="" src="assets/img/buy_tickets_pic.jpg" alt="the ecstasy of St. Catherine" width="720" height="550">
+            <img class="buy-ticket__img" src="assets/img/buy_tickets_pic.jpg" alt="the ecstasy of St. Catherine" width="720" height="550">
             <div class="section__half-with-gap wrapper__flex">
-              <div>
+              <div class="buy-ticket__ticket-type">
                 <div class="buy-ticket__subtitle">Ticket Type</div>
                 <form  class="ticket-form" id="ticket-form">
                   <label for="permanent-exhibition" class="ticket-form__radio-label">Permanent exhibition

@@ -103,6 +103,10 @@
   line-height: 33px;
   letter-spacing: 1.65px;
   margin-top: 15px;
+
+  @media (max-width: $break-small-laptop) {
+    left: 0;
+  }
 }
 
 .buy-ticket__subtitle {

@@ -6,7 +6,6 @@
 
   @media (max-width: $break-laptop) {
     margin: 0 20px;
-    max-width: 1024px;
   }
 
   &__flex {
@@ -27,5 +26,9 @@
 
   &_top-indent {
     padding-top: 75px;
+
+    @media (max-width: $break-laptop) {
+      padding-top: 60px;
+    }
   }
 }

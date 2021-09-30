@@ -21,17 +21,6 @@
     line-height: 75px;
     background-color: $dark-red;
     color: $font-color-light;
-
-    @media (max-width: $break-laptop) {
-      font-size: $font-size-subtitle-tablet;
-      line-height: 60px;
-      width: 300px;
-      height: 60px;
-    }
-
-    @media (max-width: $break-tablet) {
-      display: none;
-    }
   }
 
   &_book {

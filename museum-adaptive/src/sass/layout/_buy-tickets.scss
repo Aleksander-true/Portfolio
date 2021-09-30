@@ -1,15 +1,40 @@
-.buy-ticket__subtitle {
-  display: block;
-  font-size: $font-size-3;
-  line-height: 33px;
-  font-weight: 500;
-  margin-bottom: 50px;
+.buy-ticket {
+  &__img {
+    @media (max-width: $break-small-laptop) {
+      height: 440px;
+      max-width: 71%;
+      object-fit: cover;
+    }
+  }
 
-  &_right {
-    display: flex;
-    align-items: flex-end;
-    flex-direction: column;
-    text-align: right;
-    position: relative;
+  &__subtitle {
+    display: block;
+    font-size: $font-size-3;
+    line-height: 33px;
+    font-weight: 500;
+    margin-bottom: 50px;
+
+    &_right {
+      display: flex;
+      align-items: flex-end;
+      flex-direction: column;
+      text-align: right;
+      position: relative;
+
+      @media (max-width: $break-small-laptop) {
+        align-items: flex-start;
+      }
+    }
+  }
+  & .section__half-with-gap {
+    @media (max-width: $break-small-laptop) {
+      justify-content: flex-end;
+    }
+  }
+
+  &__ticket-type {
+    @media (max-width: $break-small-laptop) {
+      display: none;
+    }
   }
 }

@@ -3,6 +3,10 @@
   height: 2200px;
   overflow: hidden;
 
+  @media (max-width: $break-small-laptop) {
+    height: 1460px;
+  }
+
   &:after {
     position: absolute;
     left: 0;

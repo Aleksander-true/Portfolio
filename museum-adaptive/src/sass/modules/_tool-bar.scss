@@ -27,12 +27,22 @@
 
 .tool-bar__volume {
   background-image: url("../assets/svg/Volume_button.svg");
+
+  @media (max-width: $break-small-laptop) {
+    height: 20px;
+    width: 26px;
+  }
 }
 
 .tool-bar__full-screen {
   height: 36px;
   width: 36px;
   background-image: url("../assets/svg/Full_screen_button.svg");
+
+  @media (max-width: $break-small-laptop) {
+    height: 26px;
+    width: 26px;
+  }
 }
 
 .tool-bar__time-bar {

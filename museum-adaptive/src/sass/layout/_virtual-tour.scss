@@ -1,0 +1,8 @@
+.virtual-tour {
+  & .wrapper__flex {
+    @media (max-width: $break-laptop) {
+      justify-content: space-evenly;
+      column-gap: 0;
+    }
+  }
+}

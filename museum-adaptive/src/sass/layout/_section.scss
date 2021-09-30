@@ -1,6 +1,11 @@
 .section {
   padding-top: 75px;
   padding-bottom: 75px;
+
+  @media (max-width: $break-laptop) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
 }
 
 .section_dark {
@@ -19,8 +24,9 @@
   line-height: 90px;
   color: $font-gold;
 
-  @media (max-width: $break-laptop) {
+  @media (max-width: $break-small-laptop) {
     font-size: $font-size-title-laptop;
+    line-height: 75px;
   }
 
   @media (max-width: $break-tablet) {
@@ -52,6 +58,10 @@
   &_underlined {
     padding-bottom: 26px;
 
+    @media (max-width: $break-laptop) {
+      padding-bottom: 20px;
+    }
+
     &:after {
       display: block;
       position: relative;
@@ -60,6 +70,10 @@
       height: 3px;
       content: "";
       background-color: $dark-red;
+
+      @media (max-width: $break-laptop) {
+        top: 20px;
+      }
     }
   }
 }
@@ -67,20 +81,41 @@
 .section__half-width {
   max-width: 720px;
   flex-grow: 2;
+  margin-top: 60px;
 }
 
 .section__half-with-gap {
   max-width: 660px;
   flex-grow: 2;
+
+  @media (max-width: $break-laptop) {
+    max-width: none;
+  }
 }
 
 .section__text {
   font-size: $font-size-4;
   line-height: 39px;
 
+  @media (max-width: $break-laptop) {
+    font-size: $font-size-4-laptop;
+    line-height: 35px;
+    margin: 0;
+  }
+
+  &:nth-of-type(3) {
+    @media (max-width: $break-laptop) {
+      display: none;
+    }
+  }
+
   &-wrapper {
     padding-top: 55px;
     padding-right: 10px;
+
+    @media (max-width: $break-laptop) {
+      padding-top: 60px;
+    }
   }
 
   &_bold {

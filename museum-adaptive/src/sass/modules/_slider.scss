@@ -1,25 +1,25 @@
 .slider {
   &__wrapper {
-    position: absolute;
+    position: relative;
     left: calc(50% - 280px);
     right: auto;
     width: 1000px;
-    max-height: 750px;
+    height: 100%;
     overflow: hidden;
+    padding-bottom: 60px;
 
     @media (max-width: $break-laptop) {
-      right: 20px;
-      left: auto;
-      width: 700px;
-      max-height: 525px;
+      left: 30%;
+      width: 70%;
+      padding-bottom: 67px;
     }
 
     @media (max-width: $break-tablet) {
       position: relative;
       top: 0;
       left: 0;
-      width: calc(100% - 40px);
-      max-height: 546px;
+      width: 100%;
+      padding-bottom: 0;
       order: 2;
     }
 
@@ -31,6 +31,10 @@
       height: 100%;
       width: 40%;
       background: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+
+      @media (max-width: $break-tablet) {
+        display: none;
+      }
     }
   }
 
@@ -64,26 +68,36 @@
     justify-content: space-between;
     position: absolute;
     bottom: 0px;
-    top: auto;
-    left: calc(50% + 120px);
+    right: 0;
     padding: 0 75px;
     height: 120px;
     width: 600px;
     background-color: $bg-dark;
 
     @media (max-width: $break-laptop) {
-      width: 700px;
-      right: 20px;
-      left: auto;
-      padding: 0 75px 0 224px;
+      right: 0;
+    }
+
+    @media (max-width: $break-small-laptop) {
+      width: 100%;
+      padding: 0 75px 0 0;
+      column-gap: 45px;
+      justify-content: flex-end;
     }
 
     @media (max-width: $break-tablet) {
-      position: static;
-      width: 400px;
+      position: relative;
+      max-width: 400px;
       height: 100px;
-      padding: 0;
+      padding: 0 auto;
+
       order: 3;
+    }
+
+    @media (max-width: $break-phone) {
+      width: 230px;
+      height: 80px;
+      column-gap: 24px;
     }
 
     &_chevron {
@@ -100,12 +114,24 @@
   &__bullets {
     display: flex;
     column-gap: 25px;
+
+    @media (max-width: $break-phone) {
+      column-gap: 10px;
+    }
   }
 
   &__counter {
-    font-size: 22px;
+    font-size: $font-size-4;
     line-height: 40px;
     pointer-events: none;
+
+    @media (max-width: $break-small-laptop) {
+      font-size: $font-size-4-laptop;
+    }
+
+    @media (max-width: $break-phone) {
+      font-size: 15px;
+    }
   }
 
   &__bullet {
@@ -117,6 +143,11 @@
     @media (max-width: $break-laptop) {
       width: 12px;
       height: 12px;
+    }
+
+    @media (max-width: $break-phone) {
+      width: 7px;
+      height: 7px;
     }
 
     &:hover {
@@ -149,6 +180,10 @@
     column-gap: 20px;
     height: 8px;
     width: 80px;
+
+    @media (max-width: $break-phone) {
+      column-gap: 15px;
+    }
   }
 }
 
@@ -157,6 +192,10 @@
   width: 30px;
   background-image: url("../assets/svg/arrow-left.svg");
   cursor: pointer;
+
+  @media (max-width: $break-phone) {
+    width: 20px;
+  }
 
   &:hover {
     opacity: 0.5;
