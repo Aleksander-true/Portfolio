@@ -4,5 +4,9 @@
       justify-content: space-evenly;
       column-gap: 0;
     }
+
+    @media (max-width: $break-tablet) {
+      margin-bottom: 40px;
+    }
   }
 }

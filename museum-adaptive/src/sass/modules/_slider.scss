@@ -87,9 +87,9 @@
 
     @media (max-width: $break-tablet) {
       position: relative;
-      max-width: 400px;
       height: 100px;
-      padding: 0 auto;
+      padding: 0;
+      justify-content: center;
 
       order: 3;
     }
@@ -105,7 +105,11 @@
       justify-content: center;
       align-items: center;
       column-gap: 20px;
-      margin-top: 40px;
+      margin: 40px 0 0;
+
+      @media (max-width: $break-tablet) {
+        margin: 20px 0 40px;
+      }
     }
   }
 }
@@ -121,6 +125,8 @@
   }
 
   &__counter {
+    display: flex;
+    column-gap: 10px;
     font-size: $font-size-4;
     line-height: 40px;
     pointer-events: none;
@@ -164,6 +170,11 @@
       border-radius: 50%;
       background-color: $bg-round-bullet;
       cursor: pointer;
+
+      @media (max-width: $break-tablet) {
+        width: 10px;
+        height: 10px;
+      }
 
       &:hover {
         background-color: $font-gold;

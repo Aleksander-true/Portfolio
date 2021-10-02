@@ -9,14 +9,20 @@
   z-index: 100;
   visibility: hidden;
 
+  & .wrapper {
+    margin: 0;
+  }
+
   &__form {
     max-width: 400px;
-    max-height: 665px;
+
+    @media (max-width: 1000px) {
+      max-width: 530px;
+    }
   }
 
   &__overview {
     max-width: 530px;
-    max-height: 665px;
     padding: 25px 30px;
   }
 
@@ -27,6 +33,10 @@
     font-size: $font-size-5;
     line-height: 21px;
     font-weight: 400;
+
+    @media (max-width: $break-tablet) {
+      margin: 10px 0 52px;
+    }
   }
 
   &__close-cross {
@@ -38,6 +48,15 @@
     height: 35px;
     padding: 5px;
     //overflow: hidden;
+
+    @media (max-width: $break-laptop) {
+      top: -35px;
+      right: 23px;
+    }
+
+    @media (max-width: $break-small-laptop) {
+      top: 40px;
+    }
 
     &:hover {
       opacity: 0.4;
@@ -69,6 +88,21 @@
     top: 15px;
     padding: 25px 30px;
     border: 1px solid $bg-dark;
+
+    @media (max-width: $break-tablet) {
+      padding: 20px 15px;
+    }
+
+    & .overview {
+      @media (max-width: $break-tablet) {
+        padding: 5px 0 10px;
+      }
+    }
+
+    & .button_book {
+      margin-left: auto;
+      margin-top: 25px;
+    }
   }
 
   &__arrive {
@@ -85,8 +119,31 @@
     transform: translateY(-50%);
     transition: left 0.8s ease-in-out;
 
+    @media (max-width: $break-laptop) {
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+    }
+
+    @media (max-width: $break-small-laptop) {
+      width: 100%;
+      height: 100%;
+      transform: none;
+      overflow-y: scroll;
+      top: 0;
+      padding: 75px 0;
+    }
+
     &.booking__arrive {
       left: 0;
+
+      @media (max-width: $break-laptop) {
+        left: 50%;
+      }
+
+      @media (max-width: $break-small-laptop) {
+        left: 0;
+      }
     }
   }
 }

@@ -4,6 +4,16 @@
   line-height: 33px;
   font-weight: 500;
   margin-bottom: 28px;
+
+  @media (max-width: $break-laptop) {
+    font-size: $font-size-3-laptop;
+    line-height: 28px;
+  }
+
+  @media (max-width: $break-tablet) {
+    font-size: $font-size-3-tablet;
+    line-height: 24px;
+  }
 }
 
 .contacts__link {
@@ -14,4 +24,26 @@
 .contacts__text {
   line-height: 26px;
   margin: 25px 0;
+
+  @media (max-width: $break-laptop) {
+    margin: 7px 0 11px;
+  }
+
+  @media (max-width: $break-tablet) {
+    margin: 10px 0 10px;
+  }
+}
+
+.contacts__map {
+  @media (max-width: $break-laptop) {
+    width: calc(100vw - 330px);
+    height: calc(44.5vw);
+    object-fit: contain;
+  }
+
+  @media (max-width: $break-tablet) {
+    width: 100%;
+    height: auto;
+    margin: 30px 0;
+  }
 }

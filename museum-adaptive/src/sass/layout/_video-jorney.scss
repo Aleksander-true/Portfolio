@@ -4,12 +4,37 @@
       display: none;
     }
   }
+  & .wrapper {
+    overflow: hidden;
+  }
 
   &__slider {
+    flex-wrap: nowrap;
+    width: fit-content;
+
     & iframe {
-      width: 30%;
-      height: 170px;
-      column-gap: 10px;
+      //width: 30.5vw;
+
+      @media (max-width: $break-laptop) {
+        width: 30.5vw;
+      }
+
+      @media (max-width: $break-small-laptop) {
+        width: 29.5vw;
+        height: 170px;
+      }
+
+      @media (max-width: $break-tablet) {
+        width: calc(48.7vw - 20px);
+        height: 200px;
+      }
+    }
+
+    &.wrapper__flex {
+      column-gap: 42px;
+      @media (max-width: $break-tablet) {
+        column-gap: 20px;
+      }
     }
   }
 }

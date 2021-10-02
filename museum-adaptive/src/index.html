@@ -42,15 +42,20 @@
     <div class="wrapper">
       <div class="slider__wrapper">
         <div class="slider__container">
-          <img class='slider__slide' src="assets/img/welcome-slider/5.jpg" alt="slide">
           <img class='slider__slide' src="assets/img/welcome-slider/1.jpg" alt="slide">
           <img class='slider__slide' src="assets/img/welcome-slider/2.jpg" alt="slide">
           <img class='slider__slide' src="assets/img/welcome-slider/3.jpg" alt="slide">
           <img class='slider__slide' src="assets/img/welcome-slider/4.jpg" alt="slide">
+          <img class='slider__slide' src="assets/img/welcome-slider/5.jpg" alt="slide">
         </div>
 
         <div class='slider__panel'>
-          <div class="panel__counter">01&nbsp;&nbsp;|&nbsp;&nbsp;05</div>
+          <div class="panel__counter">
+            <div class="panel__counter_number">01</div>
+            <div class="panel__counter_qseparator">|</div>
+            <div class="panel__counter_qty">05</div>
+          </div>
+
           <div class="panel__bullets">
             <div class="panel__bullet panel__bullet_marked"></div>
             <div class="panel__bullet"></div>
@@ -64,11 +69,13 @@
           </div>
         </div>
       </div>
-      <h2 class="title section__title welcome-louvre__title">Welcome <br>to the Louvre</h2>
-      <p class="welcome-louvre__subtitle">From the castle to the museum</p>
-      <form action="tours/tour1.html" target="_blank">
-        <button type="submit" class="button button_colored welcome-louvre__button">Discover the Louvre</button>
-      </form>
+      <div class="welcome-louvre__title-wrapper">
+        <h2 class="title section__title welcome-louvre__title">Welcome <br>to the Louvre</h2>
+        <p class="welcome-louvre__subtitle">From the castle to the museum</p>
+        <form action="assets/tours/tour1.html" target="_blank">
+          <button type="submit" class="button button_colored welcome-louvre__button">Discover the Louvre</button>
+        </form>
+      </div>
     </div>
   </section>
   <section class="virtual-tour section" id="virtual-tour">
@@ -252,8 +259,7 @@
               <div class="buy-ticket__subtitle_right">
                 <div class="buy-ticket__subtitle ">Amount</div>
                 <div class="ticket-form__wrapper">
-                  <div class="ticket-form__uppertext">Basic 18+</div>
-                  <form class="amount-form">
+                  <form class="amount-form amount-form_basic">
                     <button class="button_ticket-form" type="button" onclick="this.nextElementSibling.stepDown()">
                       <span class="button__sign_minus"></span>
                     </button>
@@ -262,8 +268,7 @@
                       <span class="button__sign_plus"></span>
                     </button>
                   </form>
-                  <div class="ticket-form__uppertext">Senior 65+</div>
-                  <form  class="amount-form">
+                  <form  class="amount-form amount-form_senior">
                     <button class="button_ticket-form" type="button" onclick="this.nextElementSibling.stepDown()">
                       <span class="button__sign_minus"></span>
                     </button>
@@ -412,7 +417,7 @@
                   info@louvre.fr</a>
               </p>
             </div>
-            <img src="assets/img/map.png" alt="map" width="960" height="620">
+            <img class="contacts__map" src="assets/img/map.png" alt="map" width="960" height="620">
         </div>
         </div>
       </section>
@@ -425,13 +430,10 @@
           <nav class="navigation">
             <ul class="navigation_footer wrapper__flex">
               <li><a href="#virtual-tour" class="navigation__link">Visiting</a></li>
-
               <li><a href="#gallery" class="navigation__link">Gallery</a></li>
               <li><a href="#picture-explore" class="navigation__link">Explore</a></li>
               <li><a href="#buy-tickets" class="navigation__link">Tickets</a></li>
               <li><a href="#video-journey" class="navigation__link">Video</a></li>
-
-
               <li><a href="#contacts" class="navigation__link">Contacts</a></li>
             </ul>
           </nav>
@@ -447,7 +449,7 @@
 
       </footer>
       <div class="separator"></div>
-      <div class="footer section_dark footer-rsschool">
+      <div class="section_dark footer-rsschool">
         <div class="wrapper wrapper__flex">
           <div>&copy; 2021</div>
           <div>The Rolling Scopes School</div>

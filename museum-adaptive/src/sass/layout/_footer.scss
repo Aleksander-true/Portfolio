@@ -1,17 +1,52 @@
 .footer {
   padding: 75px 0 45px 0;
-}
 
-.footer__logo {
-  max-width: 330px;
-  flex-grow: 2;
-}
+  @media (max-width: $break-small-laptop) {
+    padding: 50px 0 45px 0;
+  }
 
-.footer__social-icon-wrapper {
-  max-width: 360px;
-  column-gap: 25px;
-  padding: 15px 0;
-  align-self: flex-end;
+  @media (max-width: $break-tablet) {
+    padding: 40px 0;
+  }
+
+  & .navigation__link {
+    @media (max-width: $break-tablet) {
+      font-size: $font-size-4-tablet;
+      line-height: 21px;
+      font-weight: 200;
+    }
+  }
+
+  &__logo {
+    //max-width: 330px;
+    flex-grow: 2;
+
+    @media (max-width: $break-tablet) {
+      justify-self: flex-start;
+    }
+  }
+
+  &__social-icon-wrapper {
+    max-width: 360px;
+    column-gap: 25px;
+    padding: 15px 0;
+    align-self: flex-end;
+
+    @media (max-width: $break-small-laptop) {
+      padding: 10px 0;
+    }
+
+    @media (max-width: $break-tablet) {
+      padding: 0;
+      margin: 40px 90px 0 0;
+    }
+  }
+
+  & .wrapper__flex {
+    @media (max-width: $break-tablet) {
+      justify-content: flex-end;
+    }
+  }
 }
 
 .footer-rsschool {
@@ -21,7 +56,12 @@
   font-weight: 200;
   font-size: 22px;
   line-height: 22px;
+
+  @media (max-width: $break-tablet) {
+    padding: 40px 0;
+  }
 }
+
 .separator {
   display: block;
   height: 3px;

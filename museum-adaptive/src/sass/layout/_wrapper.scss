@@ -30,5 +30,9 @@
     @media (max-width: $break-laptop) {
       padding-top: 60px;
     }
+
+    @media (max-width: $break-tablet) {
+      padding-top: 40px;
+    }
   }
 }

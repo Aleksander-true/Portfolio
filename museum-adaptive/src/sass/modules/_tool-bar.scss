@@ -47,10 +47,25 @@
 
 .tool-bar__time-bar {
   max-width: 930px;
+
+  @media (max-width: $break-tablet) {
+    position: absolute;
+    top: -2.5px;
+    left: 0;
+    width: 100%;
+  }
 }
 
 .tool-bar__volume-bar {
   max-width: 155px;
+
+  @media (max-width: $break-small-laptop) {
+    flex-grow: 5;
+  }
+
+  @media (max-width: $break-small-laptop) {
+    max-width: 500px;
+  }
 }
 
 .tool-bar__progress {
@@ -64,6 +79,10 @@
     $bg-light 100%
   );
   -webkit-appearance: none;
+
+  @media (max-width: $break-small-laptop) {
+    height: 5px;
+  }
 
   &::-webkit-slider-thumb {
     width: 15px;

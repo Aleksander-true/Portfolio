@@ -11,6 +11,12 @@
   @media (max-width: $break-laptop) {
     margin-top: 60px;
   }
+
+  @media (max-width: $break-tablet) {
+    margin-top: 40px;
+    column-count: 2;
+    column-gap: 24px;
+  }
 }
 
 .gallery_img {

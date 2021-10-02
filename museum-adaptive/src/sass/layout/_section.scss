@@ -1,10 +1,12 @@
 .section {
-  padding-top: 75px;
-  padding-bottom: 75px;
+  padding: 75px 0;
 
   @media (max-width: $break-laptop) {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding: 60px 0;
+  }
+
+  @media (max-width: $break-tablet) {
+    padding: 40px 0;
   }
 }
 
@@ -81,7 +83,7 @@
 .section__half-width {
   max-width: 720px;
   flex-grow: 2;
-  margin-top: 60px;
+  margin-top: 18px;
 }
 
 .section__half-with-gap {
@@ -100,13 +102,12 @@
   @media (max-width: $break-laptop) {
     font-size: $font-size-4-laptop;
     line-height: 35px;
-    margin: 0;
+    margin: 3px 0 0;
   }
 
-  &:nth-of-type(3) {
-    @media (max-width: $break-laptop) {
-      display: none;
-    }
+  @media (max-width: $break-tablet) {
+    font-size: $font-size-4-tablet;
+    line-height: 21px;
   }
 
   &-wrapper {

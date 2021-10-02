@@ -1,6 +1,12 @@
 .booking__form {
   position: relative;
   width: 100%;
+  column-gap: 20px;
+
+  @media (max-width: $break-tablet) {
+    column-gap: 30px;
+    margin-bottom: 15px;
+  }
 
   & .form_full,
   & .form_half {
@@ -13,8 +19,13 @@
   }
 
   & .form_half {
-    max-width: 190px;
+    //max-width: 190px;
     flex-grow: 1;
+  }
+
+  & select {
+    font-size: $font-size-5;
+    font-family: $font-family-main;
   }
 }
 
@@ -33,13 +44,13 @@
     position: relative;
     left: 0;
     content: "";
-    width: calc(100% - 50px);
+    width: calc(100% - 20px);
+    font-size: $font-size-5;
     font-family: $font-family-main;
   }
 
   &_date::before {
     content: "Date";
-    font-size: $font-size-5;
     font-family: $font-family-main;
   }
 
@@ -54,9 +65,9 @@
     right: 17px;
     width: 20px;
     height: 17px;
-    content: "";
-    background-repeat: no-repeat;
-    background-image: url("../assets/svg/arrow.svg");
+    //content: "";
+    //background-repeat: no-repeat;
+    //background-image: url("../assets/svg/arrow.svg");
   }
 
   &:focus::before,
@@ -65,8 +76,15 @@
   }
 
   &::-webkit-calendar-picker-indicator {
-    opacity: 0;
-    z-index: 2;
+    width: 18px;
+    height: 17px;
+    position: relative;
+    top: 0;
+    right: 10px;
+    background-repeat: no-repeat;
+    background-image: url("../assets/svg/arrow.svg");
+    //opacity: 0;
+    //z-index: 2;
   }
 
   &::-webkit-input-placeholder {
@@ -133,5 +151,6 @@
   &__text {
     color: $font-color-dark;
     font-weight: 400;
+    width: 45%;
   }
 }

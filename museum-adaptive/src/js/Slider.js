@@ -7,7 +7,7 @@ class Slider {
     this.container = document.querySelector(`.${classOfContainer} .slider__container`);
     this.slideClass = firstSlideClass;
 
-    this.panel = document.querySelector(`.${classOfContainer} ~ .slider__panel`);
+    this.panel = document.querySelector(`.${classOfContainer} .slider__panel`);
     this.leftBtn = this.panel.querySelector('.left-button');
     this.rightBtn = this.panel.querySelector('.right-button');
 

@@ -6,6 +6,9 @@
   @media (max-width: $break-small-laptop) {
     height: 1460px;
   }
+  @media (max-width: $break-tablet) {
+    height: 1220px;
+  }
 
   &:after {
     position: absolute;

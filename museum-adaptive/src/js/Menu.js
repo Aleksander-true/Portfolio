@@ -1,5 +1,5 @@
 const burgerMenu = document.querySelector('.burger-menu');
-const navigation = document.querySelector('.navigation');
+const navigation = document.querySelector('.header .navigation');
 const welcomeSection = document.querySelector('.welcome-louvre');
 
 burgerMenu.addEventListener('click', () => {
