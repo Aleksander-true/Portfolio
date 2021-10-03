@@ -8,6 +8,11 @@
   border: none;
   cursor: pointer;
 
+  @media (max-width: $break-phone) {
+    height: 18px;
+    width: 18px;
+  }
+
   &:hover {
     opacity: 50%;
   }
@@ -32,6 +37,11 @@
     height: 20px;
     width: 26px;
   }
+
+  @media (max-width: $break-phone) {
+    height: 14px;
+    width: 18px;
+  }
 }
 
 .tool-bar__full-screen {
@@ -42,6 +52,11 @@
   @media (max-width: $break-small-laptop) {
     height: 26px;
     width: 26px;
+  }
+
+  @media (max-width: $break-phone) {
+    height: 18px;
+    width: 18px;
   }
 }
 
@@ -60,11 +75,11 @@
   max-width: 155px;
 
   @media (max-width: $break-small-laptop) {
-    flex-grow: 5;
   }
 
-  @media (max-width: $break-small-laptop) {
+  @media (max-width: $break-tablet) {
     max-width: 500px;
+    flex-grow: 5;
   }
 }
 
@@ -92,5 +107,10 @@
     -webkit-appearance: none;
     cursor: ew-resize;
     background: #fff;
+
+    @media (max-width: $break-phone) {
+      width: 10px;
+      height: 10px;
+    }
   }
 }

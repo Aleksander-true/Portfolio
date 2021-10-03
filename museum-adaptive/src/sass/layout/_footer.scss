@@ -15,6 +15,11 @@
       line-height: 21px;
       font-weight: 200;
     }
+
+    @media (max-width: $break-phone) {
+      font-size: $font-size-3-phone;
+      line-height: 19px;
+    }
   }
 
   &__logo {
@@ -23,6 +28,10 @@
 
     @media (max-width: $break-tablet) {
       justify-self: flex-start;
+    }
+
+    @media (max-width: $break-phone) {
+      margin-right: 15px;
     }
   }
 
@@ -40,11 +49,26 @@
       padding: 0;
       margin: 40px 90px 0 0;
     }
+
+    @media (max-width: 500px) {
+      column-gap: 5px;
+      margin: 30px 0 0;
+    }
   }
 
   & .wrapper__flex {
     @media (max-width: $break-tablet) {
       justify-content: flex-end;
+    }
+
+    @media (max-width: $break-phone) {
+      justify-content: center;
+    }
+
+    & .navigation_footer {
+      @media (max-width: $break-phone) {
+        justify-content: space-between;
+      }
     }
   }
 }
@@ -54,11 +78,21 @@
   font-family: Roboto;
   font-style: normal;
   font-weight: 200;
-  font-size: 22px;
+  font-size: $font-size-4;
   line-height: 22px;
+
+  @media (max-width: $break-phone) {
+    font-size: $font-size-3-phone;
+  }
 
   @media (max-width: $break-tablet) {
     padding: 40px 0;
+  }
+
+  &__school {
+    @media (max-width: $break-phone) {
+      display: none;
+    }
   }
 }
 

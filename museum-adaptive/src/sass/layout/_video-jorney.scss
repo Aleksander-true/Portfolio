@@ -28,6 +28,11 @@
         width: calc(48.7vw - 20px);
         height: 200px;
       }
+
+      @media (max-width: $break-tablet) {
+        width: calc(47.7vw - 20px);
+        height: 101px;
+      }
     }
 
     &.wrapper__flex {

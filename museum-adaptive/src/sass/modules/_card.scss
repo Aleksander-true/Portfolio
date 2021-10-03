@@ -40,22 +40,26 @@
     @media (max-width: $break-laptop) {
       font-size: $font-size-2-laptop;
       line-height: 31px;
+      letter-spacing: 3px;
     }
 
     @media (max-width: $break-tablet) {
       font-size: $font-size-2-tablet;
       line-height: 28px;
+      margin: 15px 0;
     }
 
-    @media (max-width: $break-tablet) {
-      margin: 15px 0;
-      letter-spacing: 3px;
+    @media (max-width: $break-phone) {
+      font-size: $font-size-2-phone;
+      line-height: 20px;
+      letter-spacing: 5px;
+      margin: 17px 0 20px;
     }
 
     &:after {
       display: block;
       position: relative;
-      top: 9px;
+      top: 10px;
       content: "";
       width: 300px;
       height: 2px;
@@ -64,12 +68,6 @@
 
       @media (max-width: $break-laptop) {
         width: 150px;
-      }
-    }
-
-    &_narrow {
-      @media (max-width: $break-laptop) {
-        letter-spacing: 3px;
       }
     }
   }
@@ -87,6 +85,11 @@
     @media (max-width: $break-tablet) {
       font-size: $font-size-4-tablet;
       line-height: 22px;
+    }
+
+    @media (max-width: $break-phone) {
+      font-size: $font-size-4-phone;
+      line-height: 19px;
     }
 
     &-description {

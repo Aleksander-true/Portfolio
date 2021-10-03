@@ -10,6 +10,11 @@
   background-repeat: no-repeat;
   transition: all 0.3s;
 
+  @media (max-width: 400px) {
+    width: 40px;
+    height: 40px;
+  }
+
   &:hover {
     background-size: 70%;
     filter: invert(49%) sepia(4%) saturate(3412%) hue-rotate(356deg)

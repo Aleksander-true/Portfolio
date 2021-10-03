@@ -18,11 +18,20 @@
     margin: 75px 0 -15px;
   }
 
+  @media (max-width: $break-tablet) {
+    margin: 55px 0 0;
+  }
+
   &:before {
     //content: "Basic 18+";
     position: absolute;
     top: -40px;
     left: -5px;
+
+    @media (max-width: $break-phone) {
+      font-size: $font-size-3-phone;
+      line-height: 19px;
+    }
   }
 
   &_basic:before {

@@ -84,6 +84,12 @@
       font-size: $font-size-3;
       font-weight: 700;
       width: 70px;
+
+      @media (max-width: $break-phone) {
+        font-size: $font-size-3-phone;
+        line-height: 21px;
+        width: 40px;
+      }
     }
 
     &_small {
@@ -117,19 +123,11 @@
   @media (max-width: $break-tablet) {
     margin-top: 50px;
   }
-}
 
-.buy-ticket__subtitle {
-  display: inline-block;
-  font-size: $font-size-3;
-  line-height: 33px;
-  font-weight: 500;
-
-  &__subtitle_right {
-    display: flex;
-    align-items: flex-end;
-    flex-direction: column;
-    text-align: right;
-    position: relative;
+  @media (max-width: $break-phone) {
+    font-size: $font-size-3-phone;
+    line-height: 19px;
+    margin-top: 25px;
+    letter-spacing: 0;
   }
 }

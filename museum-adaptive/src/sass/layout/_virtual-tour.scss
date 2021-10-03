@@ -8,5 +8,9 @@
     @media (max-width: $break-tablet) {
       margin-bottom: 40px;
     }
+
+    @media (max-width: $break-phone) {
+      margin-bottom: 0;
+    }
   }
 }

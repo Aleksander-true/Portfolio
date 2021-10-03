@@ -95,7 +95,6 @@
     }
 
     @media (max-width: $break-phone) {
-      width: 230px;
       height: 80px;
       column-gap: 24px;
     }
@@ -109,6 +108,10 @@
 
       @media (max-width: $break-tablet) {
         margin: 20px 0 40px;
+      }
+
+      @media (max-width: $break-phone) {
+        margin: 40px 0 0;
       }
     }
   }
@@ -136,7 +139,8 @@
     }
 
     @media (max-width: $break-phone) {
-      font-size: 15px;
+      font-size: $font-size-4-phone;
+      column-gap: 5px;
     }
   }
 
@@ -176,6 +180,11 @@
         height: 10px;
       }
 
+      @media (max-width: $break-phone) {
+        width: 8px;
+        height: 8px;
+      }
+
       &:hover {
         background-color: $font-gold;
       }
@@ -194,6 +203,10 @@
 
     @media (max-width: $break-phone) {
       column-gap: 15px;
+    }
+
+    @media (max-width: $break-phone) {
+      width: auto;
     }
   }
 }
