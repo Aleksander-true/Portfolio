@@ -21,7 +21,7 @@
     }
 
     @media (max-width: $break-phone) {
-      padding-left: 0;
+      padding-left: 5px;
     }
 
     &:hover {
@@ -57,12 +57,7 @@
     & li {
       max-width: 100px;
       flex-grow: 2;
-      padding: 12.5px 0;
-
-      @media (max-width: $break-phone) {
-        padding: 14.5px 0;
-        //width: 30%;
-      }
+      padding: 14.5px 0;
 
       &:nth-of-type(1) {
         @media (max-width: $break-phone) {
@@ -121,10 +116,12 @@
   @media (max-width: $break-tablet) {
     width: 100%;
     top: 60px;
+    padding: 50px 30px 0;
   }
 
   @media (max-width: $break-phone) {
     top: 58px;
+    padding: 20px 30px 0;
   }
 
   @media (max-width: 400px) {
@@ -135,6 +132,11 @@
     @media (max-width: $break-small-laptop) {
       flex-direction: column;
       row-gap: 25px;
+      margin-top: 15px;
+    }
+
+    @media (max-width: $break-phone) {
+      margin-top: 15px;
     }
 
     @media (max-width: 400px) {
@@ -184,6 +186,7 @@
 
     @media (max-width: $break-phone) {
       column-gap: 12px;
+      padding: 35px 0 20px;
     }
 
     @media (max-width: 400px) {
@@ -191,8 +194,13 @@
     }
 
     &_img {
-      width: calc(50% - 20px);
       object-fit: cover;
+      @media (max-width: $break-tablet) {
+        width: calc(50% - 10px);
+      }
+      @media (max-width: $break-phone) {
+        width: calc(50% - 20px);
+      }
 
       &:nth-of-type(1) {
         width: 100%;
@@ -215,6 +223,10 @@
   & .footer__social-icon-wrapper {
     padding: 0;
     margin: 30px 0 0;
+
+    @media (max-width: $break-phone) {
+      margin: 25px 0 0;
+    }
   }
 
   &.open {

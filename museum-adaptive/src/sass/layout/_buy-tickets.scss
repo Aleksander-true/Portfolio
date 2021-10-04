@@ -1,19 +1,27 @@
 .buy-ticket {
   &__img {
     @media (max-width: $break-small-laptop) {
-      height: 440px;
-      max-width: 71%;
+      width: calc(100vw - 324px);
+      height: calc((100vw - 324px) * 0.628);
       object-fit: cover;
     }
 
     @media (max-width: $break-tablet) {
-      height: 340px;
-      max-width: 61%;
+      height: calc((100vw - 324px) * 0.766);
+    }
+
+    @media (max-width: $break-tablet) {
+      height: 368px;
+    }
+
+    @media (max-width: 600px) {
+      height: 160px;
+      width: 100%;
     }
 
     @media (max-width: $break-phone) {
       height: 160px;
-      max-width: 100%;
+      width: 100%;
     }
   }
 
@@ -45,7 +53,7 @@
         margin: 0;
       }
 
-      @media (max-width: $break-tablet) {
+      @media (max-width: $break-phone) {
         align-items: center;
         margin: 40px 0 0;
       }
@@ -78,7 +86,7 @@
       margin-top: 35px;
     }
 
-    @media (max-width: $break-tablet) {
+    @media (max-width: $break-phone) {
       margin-top: 27px;
       font-size: $font-size-3-phone;
     }

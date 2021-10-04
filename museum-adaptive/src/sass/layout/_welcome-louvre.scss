@@ -40,12 +40,17 @@
   &__title {
     @media (max-width: $break-small-laptop) {
       max-width: 400px;
+      line-height: 90px;
     }
 
     @media (max-width: $break-tablet) {
-      position: relative;
-      top: -10px;
       text-align: center;
+      margin-top: -10px;
+      line-height: 60px;
+    }
+
+    @media (max-width: $break-phone) {
+      line-height: 40px;
     }
   }
 
@@ -68,7 +73,7 @@
 
     @media (max-width: $break-tablet) {
       position: relative;
-      margin: 15px 0 50px;
+      margin: 25px 0 50px;
       font-size: $font-size-subtitle-tablet;
       line-height: 23px;
     }
@@ -76,7 +81,7 @@
     @media (max-width: $break-phone) {
       font-size: $font-size-subtitle-phone;
       line-height: 19px;
-      margin: 15px 0 40px;
+      margin: 25px 0 40px;
     }
   }
 

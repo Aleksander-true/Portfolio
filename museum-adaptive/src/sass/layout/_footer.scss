@@ -2,7 +2,7 @@
   padding: 75px 0 45px 0;
 
   @media (max-width: $break-small-laptop) {
-    padding: 50px 0 45px 0;
+    padding: 50px 0 40px 0;
   }
 
   @media (max-width: $break-tablet) {
@@ -23,7 +23,7 @@
   }
 
   &__logo {
-    //max-width: 330px;
+    max-width: 330px;
     flex-grow: 2;
 
     @media (max-width: $break-tablet) {
@@ -31,7 +31,7 @@
     }
 
     @media (max-width: $break-phone) {
-      margin-right: 15px;
+      margin-right: 55px;
     }
   }
 
@@ -47,7 +47,7 @@
 
     @media (max-width: $break-tablet) {
       padding: 0;
-      margin: 40px 90px 0 0;
+      margin: 30px 90px 0 0;
     }
 
     @media (max-width: 500px) {

@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const ImageminWebpWebpackPlugin= require("imagemin-webp-webpack-plugin");
+
 
 const devServer = (isDev) => !isDev ? {} : {
   devServer: {
@@ -73,6 +75,7 @@ module.exports = ({ development }) => ({
       ],
     }),
     new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ['**/*']}),
+    new ImageminWebpWebpackPlugin()
   ],
   resolve: {
     extensions: ['.js'],

@@ -75,6 +75,7 @@
   max-width: 155px;
 
   @media (max-width: $break-small-laptop) {
+    max-width: 140px;
   }
 
   @media (max-width: $break-tablet) {

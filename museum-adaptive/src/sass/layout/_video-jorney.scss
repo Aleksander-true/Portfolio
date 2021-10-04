@@ -16,22 +16,18 @@
       //width: 30.5vw;
 
       @media (max-width: $break-laptop) {
-        width: 30.5vw;
-      }
-
-      @media (max-width: $break-small-laptop) {
-        width: 29.5vw;
-        height: 170px;
+        width: calc(33.4vw - 42px);
+        height: calc((33.4vw - 42px) * 0.567);
       }
 
       @media (max-width: $break-tablet) {
         width: calc(48.7vw - 20px);
-        height: 200px;
+        height: calc((48.7vw - 20px) * 0.567);
       }
 
-      @media (max-width: $break-tablet) {
+      @media (max-width: $break-phone) {
         width: calc(47.7vw - 20px);
-        height: 101px;
+        height: calc((47.7vw - 20px) * 0.567);
       }
     }
 

@@ -48,17 +48,17 @@
 .contacts__map {
   @media (max-width: $break-laptop) {
     width: calc(100vw - 330px);
-    height: calc(44.5vw);
+    height: calc((100vw - 330px) * 0.654);
     object-fit: contain;
   }
 
   @media (max-width: $break-tablet) {
-    width: 100%;
-    height: auto;
-    margin: 30px 0;
+    width: calc(100vw - 40px);
+    height: calc((100vw - 40px) * 0.654);
+    margin: 27px 0;
   }
 
   @media (max-width: $break-phone) {
-    margin: 30px 0 0;
+    margin: 20px 0 0;
   }
 }
