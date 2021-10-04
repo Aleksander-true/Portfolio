@@ -3,7 +3,6 @@ const qty = galleryImgs.length-1;
 
 galleryImgs.forEach( (img, i) => {
   let random = Math.ceil(Math.random() * qty);
-  console.log(random);
   if (random == i) random = 0;
   img.before(galleryImgs[random]);
 })

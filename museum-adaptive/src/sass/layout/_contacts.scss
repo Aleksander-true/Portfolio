@@ -46,10 +46,13 @@
 }
 
 .contacts__map {
+  width: 960px;
+  height: 620px;
+  object-fit: contain;
+
   @media (max-width: $break-laptop) {
     width: calc(100vw - 330px);
     height: calc((100vw - 330px) * 0.654);
-    object-fit: contain;
   }
 
   @media (max-width: $break-tablet) {
