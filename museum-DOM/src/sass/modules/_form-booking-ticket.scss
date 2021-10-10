@@ -37,6 +37,7 @@
   border-width: 1px;
   background-repeat: no-repeat;
   background-position: 15px;
+  font-size: $font-size-5;
 
   &_date::before,
   &_time::before {

@@ -5,6 +5,7 @@ const observer = new IntersectionObserver(entries => {
      }
    });
  });
+
  observer.observe(document.querySelector('.title'));
  observer.observe(document.querySelector('.virtual-tour .title'));
  observer.observe(document.querySelector('.video-journey .title'));

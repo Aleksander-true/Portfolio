@@ -116,13 +116,13 @@
     position: relative;
     top: 50%;
     left: -100%;
-    transform: translateY(-50%);
+    transform: translate(-50%, -50%);
     transition: left 0.8s ease-in-out;
 
     @media (max-width: $break-laptop) {
       width: auto;
       height: auto;
-      transform: translate(-50%, -50%);
+      //transform: translate(-50%, -50%);
     }
 
     @media (max-width: $break-small-laptop) {
@@ -135,7 +135,7 @@
     }
 
     &.booking__arrive {
-      left: 0;
+      left: 50%;
 
       @media (max-width: $break-laptop) {
         left: 50%;

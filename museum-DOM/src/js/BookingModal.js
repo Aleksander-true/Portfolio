@@ -3,7 +3,7 @@ const bookingModal = document.querySelector('.booking');
 const bookingCloseCross = document.querySelector('.booking__close-cross');
 const bookingSection = document.querySelector('.booking > .section');
 
-buyTicketBtn.addEventListener('click', ()=> {
+buyTicketBtn.addEventListener('click', () => {
   bookingModal.classList.add('booking__arrive');
   bookingSection.classList.add('booking__arrive');
 })

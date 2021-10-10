@@ -12,6 +12,7 @@ playlistModal.style.visibility = 'hidden';
 const qtyOfVideo = 5;
 let isMute = false;
 let currentVideo = 0;
+let isOnScreen = false;
 
 /* Add posters to playlist  */
 for (let i = qtyOfVideo-1; i >= 0; i--) {
@@ -190,6 +191,7 @@ function slideEnded () {
 */
 /* Switch to video with number n from video catalog */
 function switchVideo(n=0) {
+  console.log('switchVideo param=', n)
     video.src = `assets/video/video${n}.mp4`;
     video.poster = `assets/video/poster${n}.jpg`;
     if (speedRateIndicator.style.visibility == 'visible') {
@@ -199,17 +201,17 @@ function switchVideo(n=0) {
 /* Hot keys */
 document.addEventListener('keydown', keyDownHandler);
 function keyDownHandler(e) {
+  if (!isOnScreen) return
   e.preventDefault();
   switch (e.code) {
     case 'Space':
-
       togglePlayPause();
       break;
     case 'KeyK':
       togglePlayPause();
       break;
     case 'KeyM':
-      mmute();
+      mute();
       break;
     case 'KeyF':
       toggleFullscreen(frame) ;
@@ -291,3 +293,21 @@ function  poster(parentElement,posterClass ,posterSrc ,posterName, linkedVideo, 
   poster.classList.add(posterClass);
   parentElement.prepend(poster);
 }
+
+const observer = new IntersectionObserver( entries => {
+  console.log('in=',isOnScreen )
+  entries.forEach(entry => {
+    if (entry.intersectionRatio > 0) {
+       isOnScreen = true;
+    } else {
+      isOnScreen = false;
+      videoPauseHandler();
+    }
+     console.log('isOnScreen=',isOnScreen )
+   });
+ });
+
+ console.log('out=',isOnScreen )
+ observer.observe(frame);
+
+export {switchVideo, videoPauseHandler};

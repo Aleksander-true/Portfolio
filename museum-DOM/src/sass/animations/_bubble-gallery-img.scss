@@ -1,0 +1,18 @@
+.gallery-img_visible {
+  animation: img-arriving 0.8s ease-out;
+}
+
+@keyframes img-arriving {
+  0% {
+    transform: translateY(150px) scale(0.6);
+    opacity: 0;
+  }
+  80% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+  }
+}

@@ -85,10 +85,13 @@ class Slider {
       this.container.style.transitionProperty = 'left'
 
       if (direction == 'right') {
-
+        /*
         for (let i=0; i<this.shift; i++) {
-          this.container.append(this.slidersArray[i].cloneNode(true));
+          let clone = this.slidersArray[(i-this.currentSlide-1+this.qtySlides+this.shift) % this.qtySlides].cloneNode();
+          clone.style.order = i + this.qtySlides;
+          this.container.append(clone);
         }
+        */
       }
       this.container.style.left = `-${(this.shift+1)*this.slideWidth}px`;
       if (this.panelCounter) this.panelCounter.innerHTML = (this.currentSlide+1 < 10) ? `0${this.currentSlide+1}`: `${this.currentSlide+1}`;
@@ -103,11 +106,17 @@ class Slider {
   }
 
   slideEnded() {
+    this.slidersArray = this.container.querySelectorAll(`.${this.slideClass}`);
+    //console.log(this.slidersArray[0])
     if (this.shift == -1 ) {
       this.container.prepend(this.slidersArray[this.qtySlides-1]);
     } else {
       for (let i=0; i<this.shift; i++) {
-       this.slidersArray[i].remove();
+       // this.slidersArray[i+this.qtySlides].remove();
+      }
+      for (let i=0; i<this.qtySlides ; i++) {
+        //console.log((i-this.currentSlide-1+this.qtySlides) % this.qtySlides)
+        this.slidersArray[i].style.order = `${(i-this.currentSlide-1+this.qtySlides) % this.qtySlides}`
       }
     }
     this.container.style.transitionProperty = 'none'
