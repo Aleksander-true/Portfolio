@@ -295,7 +295,6 @@ function  poster(parentElement,posterClass ,posterSrc ,posterName, linkedVideo, 
 }
 
 const observer = new IntersectionObserver( entries => {
-  console.log('in=',isOnScreen )
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0) {
        isOnScreen = true;
@@ -303,11 +302,9 @@ const observer = new IntersectionObserver( entries => {
       isOnScreen = false;
       videoPauseHandler();
     }
-     console.log('isOnScreen=',isOnScreen )
    });
  });
 
- console.log('out=',isOnScreen )
  observer.observe(frame);
 
 export {switchVideo, videoPauseHandler};

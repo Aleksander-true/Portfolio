@@ -109,18 +109,9 @@
   }
 
   &__total {
-    width: 45px;
     height: 37px;
     border: none;
     background-color: transparent;
     flex-grow: 0;
-
-    &:after {
-      display: block;
-      position: relative;
-      content: "€";
-      width: 20px;
-      height: 20px;
-    }
   }
 }

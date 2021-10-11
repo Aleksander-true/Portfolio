@@ -317,9 +317,7 @@
                     </button>
                   </form>
                 </div>
-                <div class="buy-ticket__calculator">Total €<!--
-                --><input  type="number" class="ticket-form__amount-number ticket-form__amount-number_wide" id="ticket-form__calculation" value="30" min="0" max="999" readonly>
-                </div>
+                <div class="buy-ticket__calculator" id="ticket-form__calculation">Total € 30</div>
                 <button class="button button_small">Buy Now</button>
               </div>
 
@@ -377,30 +375,27 @@
               <div class="overview">
                 <div class="overview__text">Overview</div>
                 <div class="overview__subtext">Tour to Louvre</div>
-                <div class="overview__received overview__received_date">Friday, August 19</div>
+                <div class="overview__received overview__received_date">___, ___ __</div>
                 <div class="overview__received overview__received_time">__:__</div>
                 <div class="overview__received overview__received_type">Temporary exhibition</div>
               </div>
               <div class="overview_img"></div>
               <div class="overview__cost">
-                <fieldset class="overview__type">
+                <div class="overview__type">
                   <input class="overview__qty overview__qty_basic " type="text" name="basic-qty" id="basic-qty" value="2" readonly>
                   <div class="overview__type_text entry-ticket__text_basic">Basic (20€)</div>
-                  <input class="overview__type_text overview__sum overview__sum_basic" type="text" name="basic-sum" id="basic-sum" value="40" readonly>
-                  <span class="overview__type_text overview__type_text_euro">€</span>
-                </fieldset>
-                <fieldset class="overview__type">
+                  <span class="overview__type_text overview__type_text_euro overview__sum_basic">20€</span>
+                </div>
+                <div class="overview__type">
                   <input class="overview__qty overview__qty_senior" type="text" name="senior-qty" id="senior-qty" value="2" readonly>
                   <div class="overview__type_text entry-ticket__text_senior">Senior (10€)</div>
-                  <input class="overview__type_text overview__sum overview__sum_senior" type="text" name="senior-sum" id="senior-sum" value="20" readonly>
-                  <span class="overview__type_text overview__type_text_euro">€</span>
-                </fieldset>
+                  <span class="overview__type_text overview__type_text_euro overview__sum_senior">10€</span>
+                </div>
                 <hr class="overview__hr">
-                <fieldset class="overview__type">
+                <div class="overview__type">
                   <div class="overview__text">Total: </div>
-                  <input class="overview__text overview__total" type="text" name="senior-sum" id="total-sum" value="60" readonly>
-                  <span class="overview__text overview__text_euro">€</span>
-                </fieldset>
+                  <span class="overview__text overview__text_euro overview__total">30€</span>
+                </div>
               </div>
               <form  class="credit-card">
                 <div class="credit-card__back">

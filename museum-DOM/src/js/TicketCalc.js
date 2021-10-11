@@ -49,33 +49,19 @@ function changeTickets() {
 function preCalculate() {
   ticketTypeRoutine();
 
-  basicSum.value = ticketCost * +basicAmount.value;
-  seniorSum.value = ticketCost * +seniorAmount.value * 0.5;
-
-  calculation.value = +basicSum.value + +seniorSum.value;
-  totalCost.value = calculation.value;
-
-  if (String(calculation.value).length >= 4 ) {
-    calculation.style.width = '90px'
-    totalCost.style.width = '90px'
-  } else if (String(calculation.value).length >= 3 ) {
-    calculation.style.width = '70px'
-    totalCost.style.width = '70px'
-  } else {
-    totalCost.style.width = '45px'
-    }
+  basicSum.textContent = `${ticketCost * +basicAmount.value}€`;
+  seniorSum.textContent = `${ticketCost * +seniorAmount.value * 0.5}€`;
+  let total = ticketCost * +basicAmount.value + ticketCost * +seniorAmount.value * 0.5
+  calculation.textContent = `Total € ${total}`
+  totalCost.textContent = `${total}€`
 }
 
 function changeBooking() {
-  console.log('calculate')
   basicQty.value = bookingBasic.value
   seniorQty.value = bookingSenior.value
   basicAmount.value = bookingBasic.value
   seniorAmount.value = bookingSenior.value
   ticketType = bookingType.value
-
-
-
   saveChoice()
   preCalculate()
 }

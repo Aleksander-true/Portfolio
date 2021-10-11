@@ -39,6 +39,16 @@
   background-position: 15px;
   font-size: $font-size-5;
 
+  &.valid {
+    //background-color: rgba(0, 128, 0, 0.3);
+    border: 3px solid green;
+  }
+
+  &.invalid {
+    //background-color: rgba(128, 0, 0, 0.3);
+    border: 3px solid red;
+  }
+
   &_date::before,
   &_time::before {
     display: block;
@@ -96,6 +106,7 @@
 
   &_date {
     background-image: url("../assets/svg/date.svg");
+    font-size: 16px;
   }
 
   &_time {
