@@ -2,6 +2,7 @@
   position: relative;
   width: 100%;
   margin: 75px 0;
+  padding-bottom: 85px;
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: cover;
@@ -26,11 +27,12 @@
     box-sizing: border-box;
     align-items: center;
     justify-content: space-between;
-    position: relative;
-    bottom: 3px;
+    position: absolute;
+    bottom: 5px;
     column-gap: 5px;
-    max-width: 1440px;
-    margin: 0 auto;
+    width: 1440px;
+    left: 50%;
+    transform: translateX(-50%);
     height: 85px;
     padding: 0 30px;
     background-color: rgba(0, 0, 0);

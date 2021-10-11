@@ -191,7 +191,6 @@ function slideEnded () {
 */
 /* Switch to video with number n from video catalog */
 function switchVideo(n=0) {
-  console.log('switchVideo param=', n)
     video.src = `assets/video/video${n}.mp4`;
     video.poster = `assets/video/poster${n}.jpg`;
     if (speedRateIndicator.style.visibility == 'visible') {

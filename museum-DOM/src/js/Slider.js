@@ -24,6 +24,7 @@ class Slider {
 
     this.qtySlides = this.slidersArray.length;
     this.currentSlide = 0;
+    this.slideEnded();
   }
 
   turnSliderOn() {
@@ -69,27 +70,25 @@ class Slider {
     this.shift = 1
     this.currentSlide++;
     this.currentSlide = this.currentSlide % this.qtySlides;
-    this.slideOut('right');
+    this.slideOut();
   }
 
   slideLeft() {
     this.shift = -1;
     this.currentSlide--;
     this.currentSlide = (this.currentSlide + this.qtySlides ) % this.qtySlides;
-    this.slideOut('left');
+    this.slideOut();
   }
 
-  slideOut(direction = 'right') {
+  slideOut() {
       this.isReadySlide = false;
       this.slidersArray = this.container.querySelectorAll(`.${this.slideClass}`);
-      this.container.style.transitionProperty = 'left'
-
-      if (direction == 'right') {
-
-        for (let i=0; i<this.shift; i++) {
-          this.container.append(this.slidersArray[i].cloneNode(true));
-        }
+      for (let i=0; i<this.shift ; i++) {
+        let clone = this.slidersArray[(i+this.currentSlide-this.shift+this.qtySlides) % (this.qtySlides-1)].cloneNode()
+        clone.style.order = i + this.qtySlides;
+        this.container.append(clone)
       }
+      this.container.style.transitionProperty = 'left'
       this.container.style.left = `-${(this.shift+1)*this.slideWidth}px`;
       if (this.panelCounter) this.panelCounter.innerHTML = (this.currentSlide+1 < 10) ? `0${this.currentSlide+1}`: `${this.currentSlide+1}`;
       this.panelBullets.forEach( bullet => {
@@ -103,12 +102,12 @@ class Slider {
   }
 
   slideEnded() {
-    if (this.shift == -1 ) {
-      this.container.prepend(this.slidersArray[this.qtySlides-1]);
-    } else {
-      for (let i=0; i<this.shift; i++) {
-       this.slidersArray[i].remove();
-      }
+    this.slidersArray = this.container.querySelectorAll(`.${this.slideClass}`);
+    for (let i=0; i<this.shift; i++) {
+      this.slidersArray[i+this.qtySlides].remove();
+    }
+    for (let i=0; i<this.qtySlides ; i++) {
+      this.slidersArray[i].style.order = `${(i-this.currentSlide-1+this.qtySlides) % this.qtySlides}`
     }
     this.container.style.transitionProperty = 'none'
     this.container.style.left = `-${this.slideWidth}px`;
@@ -118,12 +117,8 @@ class Slider {
   panelHandler(e) {
     this.shift = e.target.dataset.slideNumber - this.currentSlide;
     this.currentSlide = +e.target.dataset.slideNumber;
-    if (this.shift > 0) {this.slideOut('right') }
-    if (this.shift == -1) {this.slideOut('left')}
-    if (this.shift < -1) {
-      this.shift = this.shift + this.qtySlides;
-      this.slideOut('right');
-    }
+    if (this.shift < -1) {this.shift = this.shift + this.qtySlides}
+    this.slideOut();
   }
 
   mouseStartSwipe(e) {
