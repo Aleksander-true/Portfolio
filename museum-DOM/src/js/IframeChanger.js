@@ -7,7 +7,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player = {};
 
 function onYouTubeIframeAPIReady(id) {
-    player[id] = new YT.Player(`_${id}`, {
+    player[id] = new YT.Player(`${id}`, {
     videoId: `${id}`,
     events: {
       'onReady': onPlayerReady,

@@ -11,7 +11,6 @@ class Slider {
     this.slidersArray = this.container.querySelectorAll(`.${firstSlideClass}`);
 
     this.slideWidth = this.slidersArray[0].offsetWidth;
-    //console.log('this.slidersArray[0]=',this.slidersArray[0], 'this.slideWidth=',this.slideWidth)
     if (isControlled) {
       this.initPanel();
       this.turnSliderOn();
