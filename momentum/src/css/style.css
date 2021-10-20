@@ -1,7 +1,11 @@
 @font-face {
-  font-family: 'Arial-MT';
+  font-family: "Arial-MT";
   src: url("../assets/fonts/Arial-MT.woff"); /* Путь к файлу со шрифтом */
- }
+}
+
+html {
+  font-size: 16px;
+}
 
 * {
   box-sizing: border-box;
@@ -12,13 +16,19 @@
 body {
   min-width: 480px;
   min-height: 100vh;
-  font-family: 'Arial', sans-serif;
-  font-size: 16px;
+  font-family: "Arial", sans-serif;
   color: #fff;
   text-align: center;
   background: url("../assets/img/bg.jpg") center/cover, rgba(0, 0, 0, 0.5);
   background-blend-mode: multiply;
+  background-repeat: no-repeat;
+  background-size: cover;
   transition: background-image 1s ease-in-out;
+}
+.wrapper-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .header {
@@ -27,7 +37,7 @@ body {
   align-items: flex-start;
   width: 100%;
   height: 30vh;
-  min-height: 220px;  
+  min-height: 220px;
   padding: 20px;
 }
 
@@ -48,9 +58,9 @@ body {
   padding: 5px;
   padding-left: 20px;
   list-style: none;
-  opacity: .8;
+  opacity: 0.8;
   cursor: pointer;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .play-item:hover {
@@ -58,7 +68,7 @@ body {
 }
 
 .play-item::before {
-  content: "\2713";  
+  content: "\2713";
   position: absolute;
   left: 0;
   top: 2px;
@@ -66,7 +76,7 @@ body {
 }
 
 .item-active::before {
-  color: #C5B358;
+  color: #c5b358;
 }
 
 .player-icon,
@@ -80,9 +90,9 @@ body {
   background-color: transparent;
   border: 0;
   outline: 0;
-  opacity: .8;
+  opacity: 0.8;
   cursor: pointer;
-  transition: .3s;  
+  transition: 0.3s;
 }
 
 .player-icon:hover,
@@ -95,7 +105,7 @@ body {
 .slider-icon:active,
 .change-quote:active {
   border: 0;
-  outline: 0;  
+  outline: 0;
   transform: scale(1.1);
 }
 
@@ -123,10 +133,12 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  row-gap: 5px;
-  width: 180px;
-  min-height: 180px;  
+  row-gap: 0.5rem;
+  width: 25rem;
+  min-height: 18rem;
   text-align: left;
+  font-size: 2rem;
+  line-height: 2.8rem;
 }
 
 .weather-error {
@@ -140,28 +152,31 @@ body {
   align-items: center;
   column-gap: 12px;
 }
+.temperature {
+  font-size: 3rem;
+}
 
 .weather-icon {
-  font-size: 44px;
+  font-size: 6rem;
 }
 
 .city {
-  width: 170px;
-  height: 34px;
-  padding: 5px;
-  font-size: 20px;
-  line-height: 24px;
-  color: #fff;  
+  width: 100%;
+  height: 3.4rem;
+  padding: 0.5rem;
+  font-size: 3.2rem;
+  line-height: 2.4rem;
+  color: #fff;
   border: 0;
   outline: 0;
-  border-bottom: 1px solid #fff;
+  border-bottom: 0.1rem solid #fff;
   background-color: transparent;
 }
 
-.city::placeholder {  
-  font-size: 20px;
+.city::placeholder {
+  font-size: 3.2rem;
   color: #fff;
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .main {
@@ -172,7 +187,7 @@ body {
   align-items: center;
   width: 100%;
   height: 40vh;
-  min-height: 260px;  
+  min-height: 260px;
   padding: 20px;
 }
 
@@ -196,15 +211,15 @@ body {
 .time {
   min-height: 124px;
   margin-bottom: 10px;
-  font-family: 'Arial-MT';
-  font-size: 100px;
-  letter-spacing: -4px;  
+  font-family: "Arial-MT";
+  font-size: 10rem;
+  letter-spacing: -4px;
 }
 
 .date {
-  min-height: 28px;
-  font-size: 24px;
-  margin-bottom: 20px;
+  min-height: 2.8rem;
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
 }
 
 .greeting-container {
@@ -212,22 +227,22 @@ body {
   flex-wrap: wrap;
   justify-content: stretch;
   align-items: center;
-  min-height: 48px;
+  min-height: 4.8rem;
   width: 100vw;
-  font-size: 40px;
+  font-size: 4rem;
 }
 
 .greeting {
-  flex: 1;  
-  padding: 10px;
+  flex: 1;
+  padding: 1rem;
   text-align: right;
 }
 
 .name {
   flex: 1;
   max-width: 50%;
-  padding: 10px;
-  font-size: 40px;
+  padding: 1rem;
+  font-size: 4rem;
   text-align: left;
   color: #fff;
   background-color: transparent;
@@ -237,7 +252,7 @@ body {
 
 .name::placeholder {
   color: #fff;
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .footer {
@@ -247,13 +262,13 @@ body {
   align-items: center;
   width: 100%;
   height: 30vh;
-  min-height: 160px;  
+  min-height: 160px;
   padding: 20px;
 }
 
 .change-quote {
   margin-bottom: 30px;
-  background-image: url("../assets/svg/reload.svg");  
+  background-image: url("../assets/svg/reload.svg");
 }
 
 .quote {
@@ -267,7 +282,7 @@ body {
 @media (max-width: 768px) {
   .time {
     min-height: 80px;
-    font-size: 72px;    
+    font-size: 72px;
   }
 
   .greeting-container {
