@@ -6,18 +6,23 @@
   <link href="assets/favicon.ico" rel="shortcut icon" />
   <link rel="stylesheet" href="css/owfont-regular.css" />
   <link rel="stylesheet" href="css/style.css" />
-  <title>momentum</title>
+  <title>Momentum</title>
 </head>
 <body>
    <div class="wrapper">
     <header class="header">
       <div class="player">
-        <div class="player-controls">
-          <button class="play-prev player-icon"></button>
-          <button class="play player-icon"></button>
-          <button class="play-next player-icon"></button>
+        <div class="panel">
+          <div class="player-controls">
+            <button class="play-prev player-icon" id="play-prev"></button>
+            <button class="play player-icon" id="play"></button>
+            <button class="play-next player-icon" id="play-next"></button>
+          </div>
+          <input type="range" class="audioVolume audio-range" name="audioVolume" id="audioVolume" >
+          <button class="volume player-icon" id="volume"></button>
         </div>
-        <ul class="play-list"></ul>
+        <input type="range" class="audioTime audio-range" name="audioTime" id="audioTime" >
+        <ul class="play-list" id="play-list"></ul>
       </div>
       <div class="weather">
         <input type="text" class="city" id="city" value="" />
@@ -46,11 +51,11 @@
       </div>
     </main>
     <footer class="footer">
-      <button class="change-quote"></button>
-      <div>
-        <div class="quote"></div>
-        <div class="author"></div>
-      </div>
+      <button class="change-quote" id="change-quote"></button>
+      <blockquote>
+        <q class="quote" id="quote"> </q>
+        <p class="author" id="author"></p>
+      </blockquote>
     </footer>
    </div>
   
