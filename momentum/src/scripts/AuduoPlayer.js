@@ -22,7 +22,7 @@ playList.addEventListener('click', clickPlaylistHandler)
 getPlayList()
 
 async function getPlayList() {  
-  const url = '../assets/Playlist.json';
+  const url = 'assets/Playlist.json';
   const res = await fetch(url);
   const songs = await res.json(); 
   createPlaylist(songs);
@@ -38,8 +38,9 @@ function createPlaylist(songs) {
     playList.append(li)
   });
   playItems = document.querySelectorAll('.play-item')
-  playAudio(playItems[0])
-  togglePlay()
+  audio.src = playItems[0].dataset.src;
+  //audio.play()
+  //pauseHandler()
 }
 
 function clickPlaylistHandler(e) {
@@ -54,6 +55,7 @@ function togglePlay() {
     audio.play()
     play.classList.add('pause')
   } else {
+    play.classList.remove('pause')
     audio.pause()
   }
 }

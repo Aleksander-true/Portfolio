@@ -9,7 +9,7 @@ getQuotes();
 
 async function getQuotes() {  
   let lang = state.language;
-  const url = '../assets/Quotes.json';
+  const url = 'assets/Quotes.json';
   const res = await fetch(url);
   const data = await res.json(); 
   

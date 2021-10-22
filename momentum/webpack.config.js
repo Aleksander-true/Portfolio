@@ -66,7 +66,7 @@ module.exports = ({ development }) => ({
               '**/*.ts',
               '**/*.scss',
               '**/*.sass',
-              '**/*.css',
+              //'**/*.css',
               '**/index.html',
             ],
           },
@@ -75,7 +75,7 @@ module.exports = ({ development }) => ({
         }
       ],
     }),
-    new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ['**/*']}),
+    new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ['**/*.css']}),
     new ImageminWebpWebpackPlugin()
   ],
   resolve: {
