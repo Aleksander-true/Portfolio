@@ -7,16 +7,16 @@ const btnPrev = document.querySelector('.slide-prev')
 let photos;
 let photoNumber;
 let isSliderOn = false; 
+const timeTag = ['night', 'morning', 'afternoon', 'evening'];
 getLinks()
-
 
 async function getLinks() {
   const api_key = 'dec87a841a63127676ff371d3a9b2da5';
-  const tags = `nature,${getTimeOfDay()}`
+  const tags = `nature,${timeTag[getTimeOfDay()]}`
   const extras = `url_h`
   const format='json';
   const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${api_key}&tags=${tags}&extras=${extras}&format=${format}&nojsoncallback=1`
-
+  console.log('tags', tags)
   let response = await fetch(url);
   let data = await response.json();
   let count = 0;

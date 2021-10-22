@@ -1,7 +1,7 @@
-import "./scripts/TimeAndDate";
-import "./scripts/Settings";
-import "./scripts/BackgroundImg"
-import "./scripts/Weather"
 import "./scripts/Quotes"
+import "./scripts/TimeAndDate"
+import "./scripts/Weather"
+import "./scripts/BackgroundImg"
 import "./scripts/AuduoPlayer"
+import "./scripts/Settings"
 

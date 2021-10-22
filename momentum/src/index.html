@@ -18,11 +18,19 @@
             <button class="play player-icon" id="play"></button>
             <button class="play-next player-icon" id="play-next"></button>
           </div>
-          <input type="range" class="audioVolume audio-range" name="audioVolume" id="audioVolume" >
+          <input type="range" class="audioVolume audio-range" name="audioVolume" id="audioVolume" value="50" step="1">
           <button class="volume player-icon" id="volume"></button>
         </div>
-        <input type="range" class="audioTime audio-range" name="audioTime" id="audioTime" >
+        <div class="panel">
+          <input type="range" class="audioTime audio-range" name="audioTime" id="audioTime" value="0">
+          <span class="duration" id="duration"> </span>
+        </div>
         <ul class="play-list" id="play-list"></ul>
+      </div>
+      <div class="settings" id="settings">
+        <span class="language language_eng active" id="en">ENG</span>
+        <span class="language spliter">/</span>
+        <span class="language language_ru" id="ru">RU</span>
       </div>
       <div class="weather">
         <input type="text" class="city" id="city" value="" />
@@ -59,6 +67,5 @@
     </footer>
    </div>
   
-  <script src="js/script.js"></script>
 </body>
 </html>

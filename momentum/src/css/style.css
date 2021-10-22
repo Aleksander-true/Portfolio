@@ -4,7 +4,7 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: 10px;
 }
 
 * {
@@ -46,22 +46,16 @@ body {
   align-items: center;
   margin-bottom: 2rem;
   column-gap: 2rem;
+  font-size: 1.2rem;
 }
 
 .audioTime {
   appearance: none;
-  width: 100%;
+  width: 70%;
   height: 1rem;
-  margin-bottom: 2rem;
   background-color: transparent;
   border: 0.2rem solid #fff;
-  background: linear-gradient(
-    to right,
-    #ffffff8c 0%,
-    #ffffffde 50%,
-    #ffffff00 50%,
-    #ffffff00 100%
-  );
+  background: #ffffff00;
 }
 
 .audioTime::-webkit-slider-thumb {
@@ -354,6 +348,17 @@ body {
   font-style: oblique;
   color: #c5b358;
   min-height: 20px;
+}
+
+.language {
+  font-size: 2rem;
+  line-height: 2.4rem;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.language.active {
+  opacity: 1;
 }
 
 @media (max-width: 768px) {

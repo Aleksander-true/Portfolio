@@ -1,29 +1,48 @@
+import { state } from "./TimeAndDate";
+
 const weatherIcon = document.querySelector('.weather-icon');
 const temperature = document.querySelector('.temperature');
 const weatherDescription = document.querySelector('.weather-description');
 const cityName = document.querySelector('.city');
 const wind = document.querySelector('.wind');
 const humidity = document.querySelector('.humidity');
+const weatherError = document.querySelector('.weather-error');
 
-getWeather('minsk', "en")
+let wetherTerms = {
+  'en': {wind: 'wind speed', windUnits: 'm/s', humidity: 'humidity'},
+  'ru': {wind: 'скорость ветра', windUnits: 'м/с', humidity: 'влажность'}
+}
+getWeather(cityName.value || 'minsk')
 
 cityName.addEventListener("change", () => {
-  getWeather(cityName.value, "en")
+  getWeather(cityName.value)
 })
 
-async function getWeather(city, lang = 'en') {
+async function getWeather(city='minsk') {
+  let lang = state.language
   const api_key = 'ef5e10fdc5ecfe3b8b6db6cb6096d245';
-
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=${lang}&appid=${api_key}&units=metric`
-  
-  const response = await fetch(url);
-  const data = await response.json(); 
-
-  cityName.value = data.name;
-  weatherIcon.className = 'weather-icon owf';
-  weatherIcon.classList.add(`owf-${data.weather[0].id}`);
-  wind.textContent = `Wind speed ${data.wind.speed}m/s`;
-  temperature.textContent = `${Math.round(data.main.temp)}°C`;
-  weatherDescription.textContent = data.weather[0].description;
+  try {
+    const response = await fetch(url);
+    if (response.ok) {
+      const data = await response.json(); 
+      cityName.value = data.name;
+      weatherIcon.className = 'weather-icon owf';
+      weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+      wind.textContent = wetherTerms[lang].wind + ' ' + Math.round(data.wind.speed) + ' ' + wetherTerms[lang].windUnits;
+      temperature.textContent = `${Math.round(data.main.temp)}°C`;
+      humidity.textContent = wetherTerms[lang].humidity + ' ' + Math.round(data.main.humidity) + '%';
+      weatherDescription.textContent = data.weather[0].description;
+    } else {
+      cityName.value = "Unavailable"
+      weatherError.textContent = response.statusText ;
+    }
+  } catch (error) {
+    cityName.value = "Unavailable"
+    weatherError.textContent = error.message ;
+  }
+    
+  setTimeout(getWeather, 600000 )
 }
 
+export {getWeather};

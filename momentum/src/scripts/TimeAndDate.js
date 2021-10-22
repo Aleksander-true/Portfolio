@@ -1,11 +1,29 @@
+const state = {
+  language: 'en',
+  photoSource: 'github',
+  blocks: ['time', 'date','greeting', 'quote', 'weather', 'audio', 'todolist']
+}
+
 const time = document.querySelector('#time');
 const date = document.querySelector('#date');
 const greeting = document.querySelector('#greeting');
+const name = document.querySelector('#name');
+
+function updateNamePlaceholder() {
+  if (state.language == 'en') name.placeholder = '[Enter name]' 
+  else name.placeholder = '[Введите имя]'
+}
 
 const options = { weekday: 'long', month: 'long', day: 'numeric'};
 let dateObj = new Date();
 let startHours;
 let startDate;
+
+const greetings = {
+  'en': ['Good night','Good morning','Good afternoon','Good evening'],
+  'ru': ['Доброй ночи', 'Доброе утро', 'Добрый день', 'Добрый вечер']
+}
+
 updateTime();
 
 function updateTime() {
@@ -23,23 +41,26 @@ function showTime(dateObj) {
   setTimeout(updateTime, 1000 );
 }
 
-function updateDate(currentDate) {
+function updateDate(currentDate=new Date()) {
   startDate = currentDate; 
-  date.textContent = dateObj.toLocaleDateString('en-US', options);
+  let language = state.language == 'en' ? 'en-US' : 'ru-Ru'
+  date.textContent = dateObj.toLocaleDateString(language, options);
 }
 
 function getTimeOfDay(currentHours = new Date().getHours()) {
   startHours = currentHours;
-  let timeOfDay;
-  if (currentHours>=0 && currentHours<6) timeOfDay = 'night';
-  else if (currentHours>=6 && currentHours<12) timeOfDay = 'morning';
-  else if (currentHours>=12 && currentHours<18) timeOfDay = 'afternoon';
-  else if (currentHours>=18 && currentHours<24) timeOfDay = 'evening';
-  return timeOfDay;
+  let dayQuoter = Math.floor(currentHours/6)
+  /*
+  if (currentHours>=0 && currentHours<6) timeOfDay = 0;
+  else if (currentHours>=6 && currentHours<12) timeOfDay = 1;
+  else if (currentHours>=12 && currentHours<18) timeOfDay = 2;
+  else if (currentHours>=18 && currentHours<24) timeOfDay = 3;
+  */
+  return dayQuoter;
 }
 
-function updateGreeting(currentHours) {
-  greeting.textContent = `Good ${getTimeOfDay(currentHours)}`
+function updateGreeting(currentHours = dateObj.getHours()) {
+  greeting.textContent = greetings[state.language][getTimeOfDay(currentHours)]
 }
 
-export {getTimeOfDay};
+export {getTimeOfDay, updateGreeting, updateDate, updateNamePlaceholder, state};
