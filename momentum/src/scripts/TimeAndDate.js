@@ -1,6 +1,6 @@
 const state = {
   language: 'en',
-  photoSource: 'github',
+  photoSource: {github:'github', unsplash:'unsplash', flickr:'flickr'},
   blocks: ['time', 'date','greeting', 'quote', 'weather', 'audio', 'todolist']
 }
 

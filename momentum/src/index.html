@@ -28,10 +28,21 @@
         <ul class="play-list" id="play-list"></ul>
       </div>
       <div class="settings" id="settings">
-        <span class="language language_eng active" id="en">ENG</span>
-        <span class="language spliter">/</span>
-        <span class="language language_ru" id="ru">RU</span>
+        <div class="settings-container"> 
+          <span class="language language_description">Language:</span>
+          <span class="language language_eng active" id="en">ENG</span>
+          <span class="language spliter">/</span>
+          <span class="language language_ru" id="ru">RU</span>
+        </div>
+        <div class="settings-container">
+          <span class="img-API img-API_description">Image source:</span>
+          <span class="img-API active" id="github">GitHub</span>
+          <span class="img-API " id="unsplash">Unsplash</span>
+          <span class="img-API " id="flickr">Flickr</span>
+        </div>
+        <div class="gear" id="gear"> </div>
       </div>
+      
       <div class="weather">
         <input type="text" class="city" id="city" value="" />
         <div class="description-container">
