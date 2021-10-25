@@ -14,22 +14,21 @@ const timeTag = ['night', 'morning', 'afternoon', 'evening'];
 
 getLinks()
 
-async function getLinks(source = 'github') {
+async function getLinks(source = 'github', tag = `nature,${timeTag[getTimeOfDay()]}`) {
   clearInterval(autoImgChange)
-  console.log('source', source)
   photos = [];
   let api_key, tags, extras,format, url, orientation, response, data;
   switch (source) {
     case 'github':
-      tags = timeTag[getTimeOfDay()]
+      tags = timeTag[getTimeOfDay()];
       for (let i=1; i<=20; i++) {
-        photos.push(`https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${tags}/${String(i).padStart(2,'0')}.jpg`)
+        photos.push(`https://raw.githubusercontent.com/Aleksander-true/stage1-tasks/assets/images/${tags}/${String(i).padStart(2,'0')}.jpg`)
       }
       break;
     case 'unsplash':
       api_key = 'af5Ad7xxQ5_kdj0tmATHfiOoO21RlGYPbuePYa98lzI';
       orientation = 'landscape'
-      tags = `nature,${timeTag[getTimeOfDay()]}`
+      tags = tag;
       url = `https://api.unsplash.com/photos?per_page=20&orientation=${orientation}&query=${tags}&client_id=${api_key}`;
       try {
         response = await fetch(url);
@@ -47,7 +46,7 @@ async function getLinks(source = 'github') {
     case 'flickr':
     default:
       api_key = 'dec87a841a63127676ff371d3a9b2da5';
-      tags = `nature,${timeTag[getTimeOfDay()]}`
+      tags = tag;
       extras = `url_h`
       format='json';
       url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${api_key}&tags=${tags}&extras=${extras}&format=${format}&nojsoncallback=1`

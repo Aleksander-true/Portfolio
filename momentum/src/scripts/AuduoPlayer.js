@@ -7,6 +7,7 @@ const btnVolume = document.querySelector('#volume');
 const audioTime = document.querySelector('#audioTime');
 const audioVolume = document.querySelector('#audioVolume');
 const duration = document.querySelector('#duration');
+const currentTrek = document.querySelector('#currentTrek');
 
 let songNumber = 0;
 let songQty = 0;
@@ -38,9 +39,10 @@ function createPlaylist(songs) {
     playList.append(li)
   });
   playItems = document.querySelectorAll('.play-item')
-  audio.src = playItems[0].dataset.src;
-  //audio.play()
-  //pauseHandler()
+  playAudio(playItems[0])
+  togglePlay()
+  //audio.src = playItems[0].dataset.src;
+  //playItems[0].classList.add('playing')
 }
 
 function clickPlaylistHandler(e) {
@@ -64,6 +66,7 @@ function playAudio(element) {
     if (element.classList.contains('playing')) return
     playItems.forEach(item => item.classList.remove('playing'))
     element.classList.add('playing')
+    currentTrek.textContent = 'Now: ' + element.textContent.replace(/[^a-z ]/ig, '');
     audio.src = element.dataset.src;
     audio.currentTime = 0;
     updateAudioTime()

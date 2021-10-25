@@ -33,16 +33,27 @@ async function getWeather(city='minsk') {
       temperature.textContent = `${Math.round(data.main.temp)}°C`;
       humidity.textContent = wetherTerms[lang].humidity + ' ' + Math.round(data.main.humidity) + '%';
       weatherDescription.textContent = data.weather[0].description;
+      weatherError.textContent = ''
     } else {
       cityName.value = "Unavailable"
+      clearWeather()
       weatherError.textContent = response.statusText ;
     }
   } catch (error) {
     cityName.value = "Unavailable"
+    clearWeather()
     weatherError.textContent = error.message ;
   }
     
   setTimeout(getWeather, 600000 )
+}
+
+function clearWeather() {
+  weatherIcon.className = 'weather-icon owf';
+  wind.textContent = '';
+  temperature.textContent = '';
+  humidity.textContent = '';
+  weatherDescription.textContent = '';
 }
 
 export {getWeather};
