@@ -20,7 +20,7 @@ categories: [
   {name: 'Prince', isPlayed: false, answeredQty: undefined, imgData: []}
 ]
 }
-
-
+if (localStorage.getItem('settings')) {settings = JSON.parse(localStorage.getItem('settings'))}
+window.addEventListener('beforeunload', () => localStorage.setItem('settings', JSON.stringify(settings))); 
 
 export {settings}

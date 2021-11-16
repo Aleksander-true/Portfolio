@@ -1,9 +1,6 @@
 import { Quiz } from "./Quiz";
 import { settings } from "./Settings";
 
-console.log('components START')
-
-
 // Components
 const HomeComponent = {
   render: () => {
@@ -12,12 +9,8 @@ const HomeComponent = {
     <main class="main-page" id="main-page">
       <div class="main-page__menu" id="main-page-menu">
         <div class="logo"></div>
-        <a href="#/category-artist">
-          <button class="button" id="artist-quiz-btn">Artist quiz</button>
-        </a>
-        <a href="#/category-pictures">
-          <button class="button" id="picture-quiz-btn">Pictures quiz</button>
-        </a>
+          <button onclick="location.href = '#/category-artist'" class="button" id="artist-quiz-btn">Artist quiz</button>
+          <button onclick="location.href = '#/category-pictures'" class="button" id="picture-quiz-btn">Pictures quiz</button>
       </div>
     </main>
     ${FooterComponent.render()}
@@ -54,6 +47,7 @@ const CategoryArtistComponent = {
       return html + CategoryCard.render(cat)
     },'');
     return `
+    ${HeaderComponent.render()}
     <div class="categories show-page" id="categories-page">
     <div class="logo logo_marked"></div>
     <div class="categories__title"><h2>Categories</h2></div>
@@ -100,7 +94,6 @@ const FooterMenu = {
 const QuizPage = {
   render: (id) => {
   let quiz = new Quiz(id);
-  //if (quiz.isLastQuestion) return QuizResultPage.render(id);
   let answers = quiz.nextQuestion();
   let rightAnswer = quiz.rightAnswer;
   return NextQuestionComponent.render(answers, rightAnswer, id)
@@ -152,9 +145,7 @@ const CheckAnswerComponent = {
         <div class="check-icon check-icon_${isRight} modal__check"></div>
         <h4 class="modal__picture-name">${rightAnswer.name}</h4>
         <h5 class="modal__author">${rightAnswer.author}, ${rightAnswer.year}</h5>
-        <a href="${href}">
-          <button class="button button_colored button_modal" id="next-btn">Next</button>
-        </a>
+          <button onclick="location.href = '${href}'" class="button button_colored button_modal" id="next-btn">Next</button>
       </div>
     </div>
     `
@@ -174,29 +165,14 @@ const QuizResultPage = {
         <h4 class="modal__congratulations">Congratulations!</h4>
         <h1 class=""modal__answered-questions">${answeredRight}/${amount}</h1>
         <div class="modal__buttons">
-        <a href="#/">
-          <button class="button button_modal" id="home-btn">Home</button>
-        </a>
-        <a href="#/category-artist">
-          <button class="button button_colored button_modal"  id="next-quiz-btn">Next Quiz</button>
-        </a>
+          <button onclick="location.href = '#/'" class="button button_modal">Home</button>
+          <button onclick="location.href = '#/category-artist'" class="button button_colored button_modal">Next Quiz</button>
         </div>
       </div>
     </div>
     `;
   }
 }
-
-const Page2Component = {
-  render: () => {
-    return `
-      <section>
-        <h1>Page 2</h1>
-        <p>This is just a test</p>
-      </section>
-    `;
-  }
-} 
 
 const ErrorComponent = {
   render: () => {
@@ -216,42 +192,11 @@ const routes = [
   { path: '/category-artist/quiz', component: QuizPage, },
   { path: '/modal/answer', component: CheckAnswerComponent, },
   { path: '/modal/result-quiz', component: QuizResultPage, },
-  { path: '/page2', component: Page2Component, },
 ];
 
-function parseLocation () {
-  console.log('location.hash', location.hash)
-  let pathStr = location.hash.slice(1).toLowerCase() || '/';
-  if (pathStr.includes('&')) return pathStr.split('&')
-  else return [pathStr, null]
-} 
 
-function findComponentByPath (path, routes) {
-  let regexp = new RegExp(`^\\${path}$`, 'gm')
-  return routes.find(route => route.path.match(regexp)) || undefined;
-}
+export {routes};
 
-const router = () => {
-  const mainPage = document.getElementById('main-page')
-  const coverPage = document.getElementById('cover-page')
 
-  const [path, ...param] = parseLocation();
-  console.log('path', path, 'param', param)
-  const { component = ErrorComponent } = findComponentByPath(path, routes) || {};
 
-  if (path.includes('modal')) coverPage.innerHTML = component.render(...param);
-  else {
-    coverPage.innerHTML = '';
-    mainPage.innerHTML = component.render(...param);
-  }
-  /*
-  coverPage.addEventListener('animationend', (event, html) => {
-    mainPage.innerHTML = html;
-    coverPage.innerHTML = 'hgtrh';
-  })
-  */
 
-};
-
-window.addEventListener('hashchange', router);
-window.addEventListener('load', router);
