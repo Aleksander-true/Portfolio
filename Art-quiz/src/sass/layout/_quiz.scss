@@ -1,0 +1,13 @@
+.quiz {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5rem;
+  height: 100%;
+  padding: 1.5rem;
+  background-color: $main-background;
+
+  &__img-tile {
+    width: 100%;
+    border-radius: 10%;
+  }
+}

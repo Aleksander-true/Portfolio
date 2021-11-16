@@ -1,0 +1,21 @@
+.check-icon {
+  width: 4rem;
+  height: 4rem;
+
+  &_true {
+    background: url("./assets/svg/check-success.svg") no-repeat center;
+    background-size: contain;
+  }
+
+  &_false {
+    background: url("./assets/svg/check-error.svg") no-repeat center;
+    background-size: contain;
+  }
+}
+
+.trophy-cup-icon {
+  width: 16rem;
+  height: 15rem;
+  background: url("./assets/svg/trophy-cup.svg") no-repeat center;
+  background-size: contain;
+}

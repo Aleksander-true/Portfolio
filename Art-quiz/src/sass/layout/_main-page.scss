@@ -1,0 +1,23 @@
+.main-page {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  &.hide-page {
+    display: none;
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    justify-content: flex-end;
+    align-items: center;
+    row-gap: 2rem;
+    padding-bottom: 25%;
+  }
+}
