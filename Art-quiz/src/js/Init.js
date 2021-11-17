@@ -1,33 +1,13 @@
-import {settings}  from "./Settings"
+import {Settings}  from "./Settings"
 import {images} from "./Images"
 import {routes} from "./Components"
 
 class Game {
   constructor() {
-    window.addEventListener('load', () => {this.setCategories();this.router();});    
+    window.addEventListener('load', () => {new Settings(), this.router();});    
     window.addEventListener('hashchange', () => this.router());
+    
     //this.setCategories()
-  }
-
-  setCategories() {
-    //let settings = {}
-    //console.log('localStorage', localStorage.getItem('settings'),'JSON', JSON.parse(localStorage.getItem('settings')))
-    
-    
-    settings.categories.forEach( (set,index) => {
-      set.id = this.convertToId(set.name);
-      set.totalQuestions = settings.questionsInCategory;
-      set.imgData = this.getImgData(index);
-    })
-    //console.log('settings.categories', settings.categories)
-  }
-
-  convertToId(str) {
-    return str.replace(' ', '_').toLowerCase()
-  }
-
-  getImgData(categoryNumber) {
-    return images.slice(categoryNumber * settings.questionsInCategory, categoryNumber * settings.questionsInCategory + settings.questionsInCategory)
   }
 
   router()  {

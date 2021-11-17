@@ -1,23 +1,26 @@
-import {settings} from "./Settings"
+import {Settings} from "./Settings"
 
 class Quiz {
   static _instance = {}
 
   constructor(id) {
-    if (Quiz._instance[id]) return Quiz._instance[id];
-    else Quiz._instance[id] = this;
-    
+    this.settings = new Settings()
+    if (Quiz._instance[id + this.settings.quizType]) return Quiz._instance[id + this.settings.quizType];
+    else Quiz._instance[id + this.settings.quizType] = this;
+
     console.log('Quiz id', id)
-    let category = settings.categories.find(category => category.id === id)
+    console.log('settings', this.settings)
+    let category = this.settings.categories[this.settings.quizType].find(category => category.id === id)
     console.log('category', category)
     this.categoryName = category.name;
-    this.amount = settings.questionsInCategory;
+    this.amount = this.settings.questionsInCategory;
     this.data = category.imgData;
     this.answeredRight =  0;
     this.numberOfQuestion = 0;
   }
 
   nextQuestion() {
+    console.log(' nextQuestion() ' )
     this.rightAnswer = this.data[this.numberOfQuestion];
     this.descriptions = this.getRandomDescriptions(this.rightAnswer)
     this.numberOfQuestion++;
@@ -43,17 +46,16 @@ class Quiz {
   }
 
   finishThisQuiz(id) {
-    settings.categories.forEach(category => {
+
+    this.settings.categories[this.settings.quizType].forEach(category => {
       if (category.id === id) {
         category.isPlayed = true;
         category.answeredQty = this.answeredRight;
       }
     })
-    Quiz._instance[id] = undefined;
-    console.log('settings', settings)
+    Quiz._instance[id + this.settings.quizType] = undefined;
+    //console.log('settings', settings)
   }
 }
-
-
 
 export {Quiz}

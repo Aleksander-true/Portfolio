@@ -1,7 +1,7 @@
 .quiz {
   display: flex;
   flex-direction: column;
-  row-gap: 5rem;
+  row-gap: 3rem;
   height: 100%;
   padding: 1.5rem;
   background-color: $main-background;
@@ -9,5 +9,12 @@
   &__img-tile {
     width: 100%;
     border-radius: 10%;
+  }
+
+  &__img-question {
+    width: 100%;
+    border-radius: 10%;
+    max-height: 50%;
+    object-fit: cover;
   }
 }

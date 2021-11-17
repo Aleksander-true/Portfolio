@@ -1,5 +1,5 @@
 import { Quiz } from "./Quiz";
-import { settings } from "./Settings";
+import { Settings } from "./Settings";
 
 // Components
 const HomeComponent = {
@@ -9,8 +9,8 @@ const HomeComponent = {
     <main class="main-page" id="main-page">
       <div class="main-page__menu" id="main-page-menu">
         <div class="logo"></div>
-          <button onclick="location.href = '#/category-artist'" class="button" id="artist-quiz-btn">Artist quiz</button>
-          <button onclick="location.href = '#/category-pictures'" class="button" id="picture-quiz-btn">Pictures quiz</button>
+          <button onclick="location.href = '#/category&artist'" class="button" id="artist-quiz-btn">Artist quiz</button>
+          <button onclick="location.href = '#/category&pictures'" class="button" id="picture-quiz-btn">Pictures quiz</button>
       </div>
     </main>
     ${FooterComponent.render()}
@@ -21,8 +21,8 @@ const HeaderComponent = {
   render: () => {
     return `
     <header class="header">
-      <a href="#/settings">
-        <span class="settings_icon settings_top-right"></span>
+      <a href="#/modal/settings">
+        <span class="settings-icon_icon settings-icon_top-right"></span>
       </a>
     </header>
     `;
@@ -41,9 +41,12 @@ const FooterComponent = {
   }
 } 
 
-const CategoryArtistComponent = {
-  render: () => {
-    let cardsHTML = settings.categories.reduce( (html,cat) => {
+const CategoryComponent = {
+  render: (type) => {
+    let settings = new Settings()
+    console.log('CategoryComponent settings', settings)
+    settings.quizType = type;
+    let cardsHTML = settings.categories[type].reduce( (html,cat) => {
       return html + CategoryCard.render(cat)
     },'');
     return `
@@ -65,7 +68,7 @@ const CategoryCard = {
     <div class="card played__${isPlayed}" id="${id}">
       <span class="card_name"> <h4>${name}</h4></span>
       <span class="card_solved-qty visible__${isPlayed}"><h4>${answeredQty}/${totalQuestions}</h4></span>
-      <a href="#/category-artist/quiz&${id}">
+      <a href="#/category/quiz&${id}">
         <img class="card_img" src="./base-img/square/${imgData[0].imageNum}.jpg" alt="picture">
       </a>
     </div>
@@ -93,14 +96,16 @@ const FooterMenu = {
 
 const QuizPage = {
   render: (id) => {
+  console.log('quizPage id', id)
   let quiz = new Quiz(id);
   let answers = quiz.nextQuestion();
   let rightAnswer = quiz.rightAnswer;
-  return NextQuestionComponent.render(answers, rightAnswer, id)
+  if (quiz.type === 'pictures') return NextPictureComponent.render(answers, rightAnswer, id)
+  else return NextArtistComponent.render(answers, rightAnswer, id)
   }
 }
 
-const NextQuestionComponent = {
+const NextArtistComponent = {
   render: (answers, rightAnswer, id) => {
     let images = answers.reduce( (html,item) => {
       return html + QuestionPictureComponent.render(item.imageNum, id)
@@ -115,13 +120,37 @@ const NextQuestionComponent = {
     `;
   }
 } 
-
 const QuestionPictureComponent = {
   render: (imageNum, id) => {
     return `
     <a href="#/modal/answer&${imageNum}&${id}">
-        <img class="quiz__img-tile" id="0" src="./base-img/square/${imageNum}.jpg" alt="choose-picture">
+        <img class="quiz__img-tile" src="./base-img/square/${imageNum}.jpg" alt="choose-picture">
     </a>
+    `
+  }
+}
+
+const NextPictureComponent = {
+  render: (answers, rightAnswer, id) => {
+    let names = answers.reduce( (html,item) => {
+      return html + QuestionAuthorComponent.render(item, id)
+    },'');
+    return `
+    <div class="quiz" id="artist-quiz">
+      <h4 class="quiz__question"><h4>Назовите автора этой картины?</h4>
+      <img class="quiz__img-question" src="./base-img/full/${rightAnswer.imageNum}full.jpg" alt="picture">
+      <div class="wrapper_2-col">
+      ${names}
+      </div>
+    </div>
+    `;
+  }
+} 
+
+const QuestionAuthorComponent = {
+  render: (item, id) => {
+    return `
+        <button onclick="location.href = '#/modal/answer&${item.imageNum}&${id}'" class="button button_question">${item.author}</button>
     `
   }
 }
@@ -135,7 +164,7 @@ const CheckAnswerComponent = {
       isRight = true;
       quiz.answeredRight++;
     }
-    let href = `#/category-artist/quiz&${id}`
+    let href = `#/category/quiz&${id}`
     if (quiz.isLastQuestion) href = `#/modal/result-quiz&${id}`
 
     return `
@@ -155,6 +184,7 @@ const CheckAnswerComponent = {
 const QuizResultPage = {
   render: (id) => {
     let quiz = new Quiz(id)
+    let type = quiz.type;
     let answeredRight = quiz.answeredRight;
     let amount = quiz.amount;
     quiz.finishThisQuiz(id)
@@ -166,12 +196,19 @@ const QuizResultPage = {
         <h1 class=""modal__answered-questions">${answeredRight}/${amount}</h1>
         <div class="modal__buttons">
           <button onclick="location.href = '#/'" class="button button_modal">Home</button>
-          <button onclick="location.href = '#/category-artist'" class="button button_colored button_modal">Next Quiz</button>
+          <button onclick="location.href = '#/category/quiz&${getNextId(id)}'" class="button button_colored button_modal">Next Quiz</button>
         </div>
       </div>
     </div>
     `;
   }
+}
+
+function getNextId(id) {
+  let settings = new Settings()
+  let index = settings.categories[settings.quizType].findIndex(item => item.id === id)
+  if (index + 1 == settings.categories[settings.quizType].length) return settings.categories[settings.quizType][0].id
+  else return settings.categories[settings.quizType][index + 1].id
 }
 
 const ErrorComponent = {
@@ -185,14 +222,54 @@ const ErrorComponent = {
   }
 }
 
+const SettingsComponent = {
+  render: () => {
+    let settings = new Settings();
+    settings.changeSettings();
+    return `
+    <div class="settings" id="settings-page"> 
+    <h4 class="header">Settings</h4>
+    <div class="settings__container ">
+      <h2 class="settings__title">Volume</h2>
+      <input class="volume__range" type="range" name="volume" id="volume-range">
+        <span class="volume__icon volume__icon_mute"></span>
+        <span class="volume__icon volume__icon_speaker"></span>
+    </div>
+    <div class="settings__container">
+      <h2 class="settings__title">Time game</h2>
+      <div class="settings__time">
+        <h2 class="settings__time-text">ON</h2>
+        <div class="switch-btn switch-on" id="time-game"></div>
+      </div>
+    </div>
+    <div class="settings__container" id="container-time-to-answer">
+      <h2 class="settings__title">Time to answer</h2>
+      <div class="settings__time">
+        <button class="button button_set-time button_colored" onclick="this.nextElementSibling.stepDown()"></button>
+        <input class="settings__input"   type="number" name="" id="time-to-answer" value="20" min="2" max="99">
+        <button class="button button_set-time button_set-time_plus" onclick="this.previousElementSibling.stepUp()"></button>
+      </div>
+    </div>
+    <div class="settings__container settings__container_buttons">
+      <button class="button button_question">Default</button>
+      <button onclick="location.href = '#/'" class="button button_question button_colored">Save</button>
+    </div>
+  </div>
+  <iframe style="display:none" id="frame" onload="" src=""></iframe>
+    `
+  }
+}
+
 // Routes 
 const routes = [
   { path: '/', component: HomeComponent, },
-  { path: '/category-artist', component: CategoryArtistComponent, },
-  { path: '/category-artist/quiz', component: QuizPage, },
+  { path: '/modal/settings', component: SettingsComponent, },
+  { path: '/category', component: CategoryComponent, },
+  { path: '/category/quiz', component: QuizPage, },
   { path: '/modal/answer', component: CheckAnswerComponent, },
   { path: '/modal/result-quiz', component: QuizResultPage, },
 ];
+
 
 
 export {routes};

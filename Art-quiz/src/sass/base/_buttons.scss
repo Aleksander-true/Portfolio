@@ -26,6 +26,46 @@
     border-color: #000;
   }
 
+  &_question {
+    width: 90%;
+    min-height: 4rem;
+    font-size: 1.6rem;
+    line-height: 1.7rem;
+    color: #fff;
+    border-color: #fff;
+  }
+
+  &_set-time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: #fff;
+
+    &:after {
+      display: block;
+      position: relative;
+      content: "";
+      height: 0.5rem;
+      width: 2rem;
+      border-radius: 1rem;
+      background-color: #000;
+    }
+
+    &_plus:before {
+      display: block;
+      position: absolute;
+      content: "";
+      height: 0.4rem;
+      width: 2rem;
+      border-radius: 1rem;
+      transform: rotate(90deg);
+      background-color: #000;
+    }
+  }
+
   &_colored {
     background-color: $color-active;
     border-color: $color-active;
