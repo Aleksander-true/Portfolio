@@ -1,0 +1,30 @@
+.escape-cross {
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+
+  &::before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2rem;
+    height: 0.2rem;
+    background-color: #fff;
+    transform: rotate(45deg);
+    transform-origin: left;
+  }
+  &::after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2rem;
+    height: 0.2rem;
+    background-color: #fff;
+    transform: translate(-0.5rem) rotate(-45deg);
+    transform-origin: right;
+  }
+}

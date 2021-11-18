@@ -1,10 +1,12 @@
 import {Settings}  from "./Settings"
-import {images} from "./Images"
+
 import {routes} from "./Components"
 
 class Game {
   constructor() {
-    window.addEventListener('load', () => {new Settings(), this.router();});    
+    new Settings()
+
+    window.addEventListener('load', () => {this.router();});    
     window.addEventListener('hashchange', () => this.router());
     
     //this.setCategories()
@@ -13,11 +15,12 @@ class Game {
   router()  {
     const mainPage = document.getElementById('main-page')
     const coverPage = document.getElementById('cover-page')
+    const header = document.getElementById('header-page')
   
     const [path, ...param] = parseLocation();
     const { component = ErrorComponent } = findComponentByPath(path, routes) || {};
-  
     if (path.includes('modal')) coverPage.innerHTML = component.render(...param);
+    else if (path.includes('header')) header.innerHTML = component.render(...param);
     else {
       coverPage.innerHTML = '';
       mainPage.innerHTML = component.render(...param);
@@ -29,7 +32,6 @@ class Game {
     }
   
     function parseLocation () {
-      //console.log('location.hash', location.hash)
       let pathStr = location.hash.slice(1).toLowerCase() || '/';
       if (pathStr.includes('&')) return pathStr.split('&')
       else return [pathStr, null]

@@ -1,5 +1,6 @@
 import { Quiz } from "./Quiz";
 import { Settings } from "./Settings";
+import { Timer } from "./Timer";
 
 // Components
 const HomeComponent = {
@@ -94,14 +95,37 @@ const FooterMenu = {
   }
 } 
 
+
 const QuizPage = {
   render: (id) => {
   console.log('quizPage id', id)
   let quiz = new Quiz(id);
   let answers = quiz.nextQuestion();
   let rightAnswer = quiz.rightAnswer;
+  new Timer(id)
+
   if (quiz.type === 'pictures') return NextPictureComponent.render(answers, rightAnswer, id)
   else return NextArtistComponent.render(answers, rightAnswer, id)
+  }
+}
+
+const TimerComponent = {
+  render: (seconds,total) => {
+    console.log('seconds',seconds,'total',total )
+  let percent = (seconds/total)*100
+  if (total == '0') return ''
+  else  return `
+  <div class="timer">
+    <input class="timer__range" type="range" name="time" value="${seconds}" style="background: linear-gradient(
+      to right,
+      #ffbca2 0%,
+      #ffbca2 ${percent}%,
+      #a4a4a4 ${percent}%,
+      #a4a4a4 100%
+    );">
+    <div class="timer__seconds">${seconds}</div>
+  </div>
+  `
   }
 }
 
@@ -112,14 +136,19 @@ const NextArtistComponent = {
     },'');
     return `
     <div class="quiz" id="artist-quiz">
-      <h4 class="quiz__question"><h4>Какую картину написал ${rightAnswer.author}</h4>
+      <div class="escape-cross escape-cross_top-left"></div>
+      <h4 class="quiz__question">Какую картину написал ${rightAnswer.author}?</h4>
       <div class="wrapper_2-col">
       ${images}
       </div>
     </div>
+    ${FooterComponent.render()}
     `;
   }
 } 
+
+
+
 const QuestionPictureComponent = {
   render: (imageNum, id) => {
     return `
@@ -137,12 +166,14 @@ const NextPictureComponent = {
     },'');
     return `
     <div class="quiz" id="artist-quiz">
-      <h4 class="quiz__question"><h4>Назовите автора этой картины?</h4>
+      <div class="escape-cross escape-cross_top-left"></div>
+      <h4 class="quiz__question">Назовите автора этой картины?</h4>
       <img class="quiz__img-question" src="./base-img/full/${rightAnswer.imageNum}full.jpg" alt="picture">
       <div class="wrapper_2-col">
       ${names}
       </div>
     </div>
+    ${FooterComponent.render()}
     `;
   }
 } 
@@ -183,11 +214,15 @@ const CheckAnswerComponent = {
 
 const QuizResultPage = {
   render: (id) => {
+    let timer = new Timer(id)
+    timer.removeTimer()
+
     let quiz = new Quiz(id)
     let type = quiz.type;
     let answeredRight = quiz.answeredRight;
     let amount = quiz.amount;
     quiz.finishThisQuiz(id)
+
     return `
     <div class="modal">
       <div class="modal__dialog-wrapper">
@@ -195,7 +230,7 @@ const QuizResultPage = {
         <h4 class="modal__congratulations">Congratulations!</h4>
         <h1 class=""modal__answered-questions">${answeredRight}/${amount}</h1>
         <div class="modal__buttons">
-          <button onclick="location.href = '#/'" class="button button_modal">Home</button>
+          <button onclick="location.href = '#/category&${type}'" class="button button_modal">Categories</button>
           <button onclick="location.href = '#/category/quiz&${getNextId(id)}'" class="button button_colored button_modal">Next Quiz</button>
         </div>
       </div>
@@ -228,7 +263,7 @@ const SettingsComponent = {
     settings.changeSettings();
     return `
     <div class="settings" id="settings-page"> 
-    <h4 class="header">Settings</h4>
+    <h4 class="settings__header">Settings</h4>
     <div class="settings__container ">
       <h2 class="settings__title">Volume</h2>
       <input class="volume__range" type="range" name="volume" id="volume-range">
@@ -251,10 +286,11 @@ const SettingsComponent = {
       </div>
     </div>
     <div class="settings__container settings__container_buttons">
-      <button class="button button_question">Default</button>
-      <button onclick="location.href = '#/'" class="button button_question button_colored">Save</button>
+      <button class="button button_question" id="default-btn">Default</button>
+      <button onclick="location.href = '#/'" class="button button_question button_colored">Home</button>
     </div>
   </div>
+  ${FooterComponent.render()}
   <iframe style="display:none" id="frame" onload="" src=""></iframe>
     `
   }
@@ -266,6 +302,7 @@ const routes = [
   { path: '/modal/settings', component: SettingsComponent, },
   { path: '/category', component: CategoryComponent, },
   { path: '/category/quiz', component: QuizPage, },
+  { path: '/category/quiz/header-timer', component: TimerComponent, },
   { path: '/modal/answer', component: CheckAnswerComponent, },
   { path: '/modal/result-quiz', component: QuizResultPage, },
 ];

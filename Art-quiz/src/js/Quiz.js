@@ -9,9 +9,8 @@ class Quiz {
     else Quiz._instance[id + this.settings.quizType] = this;
 
     console.log('Quiz id', id)
-    console.log('settings', this.settings)
     let category = this.settings.categories[this.settings.quizType].find(category => category.id === id)
-    console.log('category', category)
+    this.type = this.settings.quizType;
     this.categoryName = category.name;
     this.amount = this.settings.questionsInCategory;
     this.data = category.imgData;
