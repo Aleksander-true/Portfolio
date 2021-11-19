@@ -1,8 +1,11 @@
 import { Quiz } from "./Quiz";
 import { Settings } from "./Settings";
 import { Timer } from "./Timer";
+import { PlayAudio } from "./PlayAudio";
 
 // Components
+const playAudio = new PlayAudio()
+
 const HomeComponent = {
   render: () => {
     return `
@@ -44,6 +47,10 @@ const FooterComponent = {
 
 const CategoryComponent = {
   render: (type) => {
+   playAudio.sound('openPage')
+    let timer = new Timer()
+    timer.removeTimer()
+
     let settings = new Settings()
     console.log('CategoryComponent settings', settings)
     settings.quizType = type;
@@ -98,11 +105,12 @@ const FooterMenu = {
 
 const QuizPage = {
   render: (id) => {
+ playAudio.sound('openPage')
   console.log('quizPage id', id)
   let quiz = new Quiz(id);
   let answers = quiz.nextQuestion();
   let rightAnswer = quiz.rightAnswer;
-  new Timer(id)
+  new Timer()
 
   if (quiz.type === 'pictures') return NextPictureComponent.render(answers, rightAnswer, id)
   else return NextArtistComponent.render(answers, rightAnswer, id)
@@ -111,7 +119,6 @@ const QuizPage = {
 
 const TimerComponent = {
   render: (seconds,total) => {
-    console.log('seconds',seconds,'total',total )
   let percent = (seconds/total)*100
   if (total == '0') return ''
   else  return `
@@ -136,7 +143,9 @@ const NextArtistComponent = {
     },'');
     return `
     <div class="quiz" id="artist-quiz">
+    <a href="#/modal/confirm-exit&${id}"> 
       <div class="escape-cross escape-cross_top-left"></div>
+    </a>
       <h4 class="quiz__question">Какую картину написал ${rightAnswer.author}?</h4>
       <div class="wrapper_2-col">
       ${images}
@@ -146,8 +155,6 @@ const NextArtistComponent = {
     `;
   }
 } 
-
-
 
 const QuestionPictureComponent = {
   render: (imageNum, id) => {
@@ -166,7 +173,9 @@ const NextPictureComponent = {
     },'');
     return `
     <div class="quiz" id="artist-quiz">
-      <div class="escape-cross escape-cross_top-left"></div>
+      <a href="#/modal/confirm-exit&${id}"> 
+        <div class="escape-cross escape-cross_top-left"></div>
+      </a>
       <h4 class="quiz__question">Назовите автора этой картины?</h4>
       <img class="quiz__img-question" src="./base-img/full/${rightAnswer.imageNum}full.jpg" alt="picture">
       <div class="wrapper_2-col">
@@ -188,16 +197,13 @@ const QuestionAuthorComponent = {
 
 const CheckAnswerComponent = {
   render: (answerImageNum, id) => {
-    let quiz = new Quiz(id)
+    let quiz = new Quiz()
     let rightAnswer = quiz.rightAnswer;
-    let isRight = false;
-    if (answerImageNum === rightAnswer.imageNum)  {
-      isRight = true;
-      quiz.answeredRight++;
-    }
-    let href = `#/category/quiz&${id}`
-    if (quiz.isLastQuestion) href = `#/modal/result-quiz&${id}`
+    let isRight = quiz.checkRightAnswer(answerImageNum)
+    isRight ? playAudio.sound('rightAnswer') : playAudio.sound('falseAnswer')
 
+    let href = `#/category/quiz`
+    if (quiz.isLastQuestion) href = `#/modal/result-quiz`
     return `
     <div class="modal">
       <div class="modal__dialog-wrapper">
@@ -213,25 +219,35 @@ const CheckAnswerComponent = {
 } 
 
 const QuizResultPage = {
-  render: (id) => {
-    let timer = new Timer(id)
+  render: () => { 
+    let timer = new Timer()
     timer.removeTimer()
+    let quiz = new Quiz()
+    let isSuccess = quiz.checkSuccess() 
+    console.log('isSuccess',isSuccess)
+    if (isSuccess) return WinModal.render()
+    else return GameOverModal.render()
+  }
+}
 
-    let quiz = new Quiz(id)
-    let type = quiz.type;
-    let answeredRight = quiz.answeredRight;
-    let amount = quiz.amount;
-    quiz.finishThisQuiz(id)
-
+const WinModal = {
+  render: () => {
+    playAudio.sound('goodResult')
+    let quiz = new Quiz()
+    let nextID = quiz.getNextId();
+    let answeredRight = quiz.answeredRight
+    let amount = quiz.amount
+    let type = quiz.type
+    quiz.finishThisQuiz()   
     return `
     <div class="modal">
       <div class="modal__dialog-wrapper">
-        <div class="trophy-cup-icon modal__trophy-cup-icon"></div>
+        <div class="trophy-cup-icon trophy-cup-icon_star modal__trophy-cup-icon"></div>
         <h4 class="modal__congratulations">Congratulations!</h4>
         <h1 class=""modal__answered-questions">${answeredRight}/${amount}</h1>
         <div class="modal__buttons">
           <button onclick="location.href = '#/category&${type}'" class="button button_modal">Categories</button>
-          <button onclick="location.href = '#/category/quiz&${getNextId(id)}'" class="button button_colored button_modal">Next Quiz</button>
+          <button onclick="location.href = '#/category/quiz&${nextID}'" class="button button_colored button_modal">Next Quiz</button>
         </div>
       </div>
     </div>
@@ -239,12 +255,31 @@ const QuizResultPage = {
   }
 }
 
-function getNextId(id) {
-  let settings = new Settings()
-  let index = settings.categories[settings.quizType].findIndex(item => item.id === id)
-  if (index + 1 == settings.categories[settings.quizType].length) return settings.categories[settings.quizType][0].id
-  else return settings.categories[settings.quizType][index + 1].id
+const GameOverModal = {
+  render: () => {
+    playAudio.sound('badResult')
+    let quiz = new Quiz()
+    let id = quiz.id
+    let type = quiz.type
+    quiz.finishThisQuiz() 
+
+    return `
+    <div class="modal">
+      <div class="modal__dialog-wrapper">
+        <div class="trophy-cup-icon trophy-cup-icon_break modal__trophy-cup-icon"></div>
+        <h1 class="modal__answered-questions">Game over!</h1>
+        <h4 class="modal__congratulations">Play again?</h4>
+        <div class="modal__buttons">
+          <button onclick="location.href = '#/category&${type}'" class="button button_modal">Cancel</button>
+          <button onclick="location.href = '#/category/quiz&${id}'" class="button button_colored button_modal">Yes</button>
+        </div>
+      </div>
+    </div>
+    `;
+  }
 }
+
+
 
 const ErrorComponent = {
   render: () => {
@@ -253,6 +288,30 @@ const ErrorComponent = {
         <h1>Error</h1>
         <p>This is just a test</p>
       </section>
+    `;
+  }
+}
+
+const EmptyComponent = {
+  render: () => {
+    return ``;
+  }
+}
+
+const ExitConfirmComponent = {
+  render: (id) => {
+    let quiz = new Quiz()
+    let type = quiz.type;
+    return `
+    <div class="modal">
+      <div class="modal__dialog-wrapper">
+        <h4 class="modal__text">Do you want to quite the game?</h4>
+        <div class="modal__buttons">
+          <button onclick="location.href = '#/modal/cancel&${id}'" class="button button_modal">Cancel</button>
+          <button onclick="location.href = '#/category&${type}'" class="button button_colored button_modal">Quit</button>
+        </div>
+      </div>
+    </div>
     `;
   }
 }
@@ -305,6 +364,8 @@ const routes = [
   { path: '/category/quiz/header-timer', component: TimerComponent, },
   { path: '/modal/answer', component: CheckAnswerComponent, },
   { path: '/modal/result-quiz', component: QuizResultPage, },
+  { path: '/modal/confirm-exit', component: ExitConfirmComponent, },
+  { path: '/modal/cancel', component: EmptyComponent, },
 ];
 
 

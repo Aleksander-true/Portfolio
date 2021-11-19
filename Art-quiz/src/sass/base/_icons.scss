@@ -14,8 +14,17 @@
 }
 
 .trophy-cup-icon {
-  width: 16rem;
-  height: 15rem;
-  background: url("./assets/svg/trophy-cup.svg") no-repeat center;
+  width: 14rem;
+  height: 13rem;
   background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &_break {
+    background-image: url("./assets/svg/break-cup.svg");
+  }
+
+  &_star {
+    background-image: url("./assets/svg/trophy-cup.svg");
+  }
 }

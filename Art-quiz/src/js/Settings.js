@@ -9,7 +9,8 @@ class Settings {
     timeGame: true,
     secondToAnswer: 40,
     categoryQty:12,
-    questionsInCategory:4
+    questionsInCategory:4,
+    rightAnswerToWin: 2
   } 
   static  _categories = {
       artist: ['Apprentice','Master','Secret Master','Perfect Master','Intimate Secretary','Provost','Intendant', 'Sublime Master', 'Grand Master','Knight','Pontiff','Prince'], 
@@ -87,7 +88,6 @@ class Settings {
     /**Checking if load */
     
     if (document.querySelector('#settings-page')) {     
-      console.log('changeSettings SUCCSESS')
       let page = document.querySelector('#settings-page')
 
       /**Volume game settings */

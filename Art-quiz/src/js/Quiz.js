@@ -1,14 +1,14 @@
 import {Settings} from "./Settings"
 
 class Quiz {
-  static _instance = {}
+  static _instance = undefined
 
   constructor(id) {
     this.settings = new Settings()
-    if (Quiz._instance[id + this.settings.quizType]) return Quiz._instance[id + this.settings.quizType];
-    else Quiz._instance[id + this.settings.quizType] = this;
+    if (id) Quiz._instance = this;
+    else return Quiz._instance;
 
-    console.log('Quiz id', id)
+    this.id = id
     let category = this.settings.categories[this.settings.quizType].find(category => category.id === id)
     this.type = this.settings.quizType;
     this.categoryName = category.name;
@@ -19,7 +19,6 @@ class Quiz {
   }
 
   nextQuestion() {
-    console.log(' nextQuestion() ' )
     this.rightAnswer = this.data[this.numberOfQuestion];
     this.descriptions = this.getRandomDescriptions(this.rightAnswer)
     this.numberOfQuestion++;
@@ -44,16 +43,36 @@ class Quiz {
     return descriptions;
   }
 
-  finishThisQuiz(id) {
+  finishThisQuiz() {
 
     this.settings.categories[this.settings.quizType].forEach(category => {
-      if (category.id === id) {
+      if (category.id === this.id) {
         category.isPlayed = true;
         category.answeredQty = this.answeredRight;
       }
     })
-    Quiz._instance[id + this.settings.quizType] = undefined;
-    //console.log('settings', settings)
+    Quiz._instance = undefined;
+  }
+
+  getNextId() {
+    let settings = new Settings()
+    let id = this.id;
+    let index = settings.categories[settings.quizType].findIndex(item => item.id === id)
+    if (index + 1 == settings.categories[settings.quizType].length) return settings.categories[settings.quizType][0].id
+    else return settings.categories[settings.quizType][index + 1].id
+  }
+
+  checkRightAnswer(answerImageNum) {
+    let isRight = false;
+    if (answerImageNum === this.rightAnswer.imageNum)  {
+      isRight = true;
+      this.answeredRight++;
+    }
+    return isRight
+  }
+
+  checkSuccess() {
+    return  (this.answeredRight >= this.settings.rightAnswerToWin)
   }
 }
 
