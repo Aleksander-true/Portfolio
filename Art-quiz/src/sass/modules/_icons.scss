@@ -1,15 +1,20 @@
 .check-icon {
   width: 4rem;
   height: 4rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 
   &_true {
-    background: url("./assets/svg/check-success.svg") no-repeat center;
-    background-size: contain;
+    background-image: url("./assets/svg/check-success.svg");
   }
 
   &_false {
-    background: url("./assets/svg/check-error.svg") no-repeat center;
-    background-size: contain;
+    background-image: url("./assets/svg/check-error.svg");
+  }
+
+  &_undefined {
+    background-image: url("./assets/svg/lock.svg");
   }
 }
 

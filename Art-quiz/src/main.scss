@@ -3,7 +3,6 @@
 @import "./sass/base/normalize";
 @import "./sass/base/body";
 @import "./sass/base/buttons";
-@import "./sass/base/icons";
 @import "./sass/layout/header";
 @import "./sass/layout/footer";
 @import "./sass/layout/main-page";
@@ -14,9 +13,14 @@
 @import "./sass/layout/settings";
 @import "./sass/layout/cover-page";
 @import "./sass/layout/timer";
+@import "./sass/layout/score";
+@import "./sass/layout/modal";
+@import "./sass/modules/icons";
 @import "./sass/modules/logo";
 @import "./sass/modules/settings-icon";
 @import "./sass/modules/switch-btn";
-@import "./sass/modules/modal";
+@import "./sass/modules/card";
 @import "./sass/modules/escape-cross";
 @import "./sass/animation/show-page";
+@import "./sass/animation/scale-up";
+@import "./sass/animation/expose";

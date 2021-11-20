@@ -16,13 +16,15 @@ class Quiz {
     this.data = category.imgData;
     this.answeredRight =  0;
     this.numberOfQuestion = 0;
+    this.isLastQuestion = false;
   }
 
   nextQuestion() {
     this.rightAnswer = this.data[this.numberOfQuestion];
     this.descriptions = this.getRandomDescriptions(this.rightAnswer)
     this.numberOfQuestion++;
-    if (this.numberOfQuestion >= this.amount ) this.isLastQuestion = true;
+    if (this.numberOfQuestion >= this.amount ) this.isLastQuestion = true
+    else this.isLastQuestion = false;
     return this.descriptions
   }
 
@@ -31,7 +33,7 @@ class Quiz {
     while (descriptions.length < 4) {
       let randomNmbr = Math.floor(Math.random() * this.amount);
       let pictureData = this.data[randomNmbr]
-      if (!descriptions.includes(pictureData)) descriptions.push(pictureData)
+      if (!descriptions.find(item => item.author == pictureData.author)) descriptions.push(pictureData)
     }
     /* shuffle answers */
     for (let i=0; i < descriptions.length; i++ ) {
@@ -64,7 +66,9 @@ class Quiz {
 
   checkRightAnswer(answerImageNum) {
     let isRight = false;
+    this.rightAnswer.isGuested = false;
     if (answerImageNum === this.rightAnswer.imageNum)  {
+      this.rightAnswer.isGuested = true;
       isRight = true;
       this.answeredRight++;
     }

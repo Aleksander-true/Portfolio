@@ -1,0 +1,34 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+
+  &_solved-qty.visible__false {
+    display: none;
+  }
+
+  &_img {
+    position: relative;
+    width: 100%;
+    border-radius: 10%;
+    filter: grayscale(100%);
+  }
+
+  &.played__true .card_img {
+    filter: grayscale(0);
+  }
+}
+
+.cards-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  padding-bottom: 10rem;
+  gap: 1.8rem;
+
+  &_tree-column {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

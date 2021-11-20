@@ -9,8 +9,8 @@ class Settings {
     timeGame: true,
     secondToAnswer: 40,
     categoryQty:12,
-    questionsInCategory:4,
-    rightAnswerToWin: 2
+    questionsInCategory:10,
+    rightAnswerToWin: 6
   } 
   static  _categories = {
       artist: ['Apprentice','Master','Secret Master','Perfect Master','Intimate Secretary','Provost','Intendant', 'Sublime Master', 'Grand Master','Knight','Pontiff','Prince'], 
@@ -23,8 +23,10 @@ class Settings {
     else Settings._instance = this;
     
     /**Restoring settings and saves from localStorage */
+    
     if (localStorage.getItem('settings')) {
       try {
+        //throw new Error('test')
         this.settingsFromObject(JSON.parse(localStorage.getItem('settings')))
 
       } catch (e) {
@@ -36,14 +38,13 @@ class Settings {
       this.setDefaultSettings()
       this.setCategories();
     }
-    this.getSettings()
+    //this.getSettings()
     /**Save settings and saves */
     window.addEventListener('beforeunload', () => localStorage.setItem('settings', this.getSettings())); 
   }
 
   getSettings() {
     let set = Object.assign({}, this);
-    console.log('getSettings', set)
     return JSON.stringify(set)
   }
 
@@ -58,7 +59,6 @@ class Settings {
   setCategories() {
     this.categories = Settings._categories
     for (let type in  this.categories) {
-      console.log('categoryType set', type)
       this.categories[type] = this.categories[type].map( (catName,index) => {
         return {
         name: catName,
@@ -70,7 +70,6 @@ class Settings {
         }
       })
     }
-    console.log('settings set', this.categories)
   }
 
   convertToId(str) {
@@ -122,7 +121,6 @@ class Settings {
         containerSecondToAnswer.classList.toggle('hidden')
         this.timeGame = !this.timeGame
         text.textContent == "ON" ? text.textContent = "OFF" : text.textContent = "ON"
-        console.log('this.timeGame',this.timeGame)
       })
       secondToAnswer.value = this.secondToAnswer
       containerSecondToAnswer.addEventListener('click', (e)=> {

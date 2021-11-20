@@ -6,9 +6,14 @@
   padding: 1.5rem;
   background-color: $main-background;
 
+  &__question {
+    text-align: center;
+  }
+
   &__img-tile {
     width: 100%;
     border-radius: 10%;
+    animation: scale-up 0.5s ease-out;
   }
 
   &__img-question {

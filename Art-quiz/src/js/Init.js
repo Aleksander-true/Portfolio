@@ -1,6 +1,6 @@
 import {Settings}  from "./Settings"
 
-import {routes} from "./Components"
+import {routes} from "./Routes"
 
 class Game {
   constructor() {
@@ -19,7 +19,9 @@ class Game {
   
     const [path, ...param] = parseLocation();
     const { component = ErrorComponent } = findComponentByPath(path, routes) || {};
-    if (path.includes('modal')) coverPage.innerHTML = component.render(...param);
+    if (path.includes('modal')) {
+      coverPage.innerHTML = component.render(...param);
+    }
     else if (path.includes('header')) header.innerHTML = component.render(...param);
     else {
       coverPage.innerHTML = '';

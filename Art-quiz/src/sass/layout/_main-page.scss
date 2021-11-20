@@ -2,14 +2,11 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  position: relative;
+  position: absolute;
+  top: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-
-  &.hide-page {
-    display: none;
-  }
 
   &__menu {
     display: flex;
