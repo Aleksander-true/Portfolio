@@ -13,9 +13,11 @@ const HomeComponent = {
     
       <div class="main-page__menu" id="main-page-menu">
         <div class="logo"></div>
+        <div  class="main-page__buttons">
           <button onclick="location.href = '#/category&artist'" class="button" id="artist-quiz-btn">Artist quiz</button>
           <button onclick="location.href = '#/category&pictures'" class="button" id="picture-quiz-btn">Pictures quiz</button>
-      </div>
+        </div>
+        </div>
   
     ${FooterComponent.render()}
     `;

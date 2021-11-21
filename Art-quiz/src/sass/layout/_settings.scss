@@ -11,6 +11,10 @@
   background-color: #000;
   color: #fff;
 
+  @media (min-width: $break-tablet) {
+    padding: 2rem 2rem 4rem;
+  }
+
   &__container {
     position: relative;
     display: flex;
@@ -30,6 +34,11 @@
 
   &__title {
     align-self: center;
+
+    @media (min-width: $break-tablet) {
+      font-size: 2rem;
+      align-self: flex-start;
+    }
   }
 
   &__time {
@@ -37,6 +46,11 @@
     align-items: center;
     justify-content: center;
     column-gap: 2rem;
+
+    @media (min-width: $break-tablet) {
+      font-size: 2rem;
+      align-self: flex-start;
+    }
   }
 
   &__time-text {
@@ -55,6 +69,11 @@
     border: none;
     background-color: transparent;
     color: #fff;
+    text-align: center;
+
+    @media (min-width: $break-tablet) {
+      font-size: 2rem;
+    }
   }
 }
 .volume {
@@ -72,6 +91,10 @@
       #a4a4a4 100%
     );
 
+    @media (min-width: $break-tablet) {
+      height: 0.3rem;
+    }
+
     &::-webkit-slider-thumb {
       width: 2rem;
       height: 2rem;
@@ -80,6 +103,11 @@
       -webkit-appearance: none;
       cursor: ew-resize;
       background: #fff;
+
+      @media (min-width: $break-tablet) {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
     }
   }
   &__icon {

@@ -2,7 +2,7 @@ import { PlayAudio } from "../PlayAudio"
 import { Settings } from "../Settings"
 import { Timer } from "../Timer"
 import { HeaderComponent } from "./HeaderComponent"
-import { FooterMenu } from "./FooterMenu"
+import { Menu } from "./Menu"
 
 
 const CategoryComponent = {
@@ -26,7 +26,7 @@ const CategoryComponent = {
     <div class="cards-wrapper" id="cards-wrapper">
     ${cardsHTML}
     </div>
-    ${FooterMenu.render()}
+    ${Menu.render()}
     `
   }
 } 

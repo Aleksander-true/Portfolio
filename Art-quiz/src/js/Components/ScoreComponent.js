@@ -1,6 +1,6 @@
 import { PlayAudio } from "../PlayAudio";
 import { Settings } from "../Settings";
-import { FooterMenu } from "./FooterMenu";
+import { Menu } from "./Menu";
 
 const ScoreComponent = {
   render: (categoryNumber) => {
@@ -25,11 +25,11 @@ const ScoreComponent = {
       <h2 class="score__category-name"><span class="score__category-name_color" >${category.name}:</span> <br>${points} </h2>
       <button onclick="location.href = '#/score&${nextCategoryNumber}'" class="button button__arrow button__arrow_right">></button>
     </div>
-    <div class="cards-wrapper cards-wrapper_tree-column show-page">
+    <div class="cards-wrapper cards-wrapper_score show-page">
     ${cardsHTML} 
     </div>
   </div>
-  ${FooterMenu.render()}
+  ${Menu.render()}
     `;
   }
 } 

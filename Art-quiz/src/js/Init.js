@@ -4,12 +4,11 @@ import {routes} from "./Routes"
 
 class Game {
   constructor() {
-    new Settings()
-
-    window.addEventListener('load', () => {this.router();});    
-    window.addEventListener('hashchange', () => this.router());
+    let settings = new Settings()
+    this.router()
     
-    //this.setCategories()
+    window.addEventListener('load', () => {settings.preLoadedCategoryImg();});    
+    window.addEventListener('hashchange', () => this.router());
   }
 
   router()  {

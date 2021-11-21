@@ -1,4 +1,4 @@
-import {images} from "./Images"
+//import {images} from "./ImagesRus"
 
 
 class Settings {
@@ -21,7 +21,7 @@ class Settings {
     /** Singleton */
     if (Settings._instance) return Settings._instance;
     else Settings._instance = this;
-    
+
     /**Restoring settings and saves from localStorage */
     
     if (localStorage.getItem('settings')) {
@@ -32,13 +32,13 @@ class Settings {
       } catch (e) {
         console.log("Can't restore saves because:", e.message)
         this.setDefaultSettings()
-        this.setCategories();
+        this.getImagesFromJson()
       }
     } else {
       this.setDefaultSettings()
-      this.setCategories();
+      this.getImagesFromJson()
     }
-    //this.getSettings()
+    
     /**Save settings and saves */
     window.addEventListener('beforeunload', () => localStorage.setItem('settings', this.getSettings())); 
   }
@@ -56,7 +56,17 @@ class Settings {
     this.settingsFromObject(Settings._default)
   }
 
-  setCategories() {
+  async getImagesFromJson() {
+    try {
+      let response = await fetch('./js/Images.json');
+      const images = await response.json();
+      this.setCategories(images)
+    } catch (error) {
+      console.log("Can't read data", error.message)
+    }
+  }
+
+  setCategories(images) {
     this.categories = Settings._categories
     for (let type in  this.categories) {
       this.categories[type] = this.categories[type].map( (catName,index) => {
@@ -66,9 +76,21 @@ class Settings {
         isPlayed: false,
         answeredQty: undefined,
         totalQuestions: this.questionsInCategory,
-        imgData: this.getImgData(index, type)
+        imgData: this.getImgData(index, type, images)
         }
       })
+    }
+    console.log('this.categories', this.categories)
+  }
+
+  async preLoadedCategoryImg() {
+    for (let type in  this.categories) {
+      this.categories[type].forEach( category => {
+        console.log('category', category)
+        let img = new Image()
+        img.src = `./base-img/square/${category.imgData[0].imageNum}.jpg`
+        console.log('img.src', img.src)
+      });
     }
   }
 
@@ -76,12 +98,13 @@ class Settings {
     return str.replace(' ', '_').toLowerCase()
   }
 
-  getImgData(categoryNumber, type) {
-    let startIndex;
-    type == 'pictures'? startIndex = 120 + (categoryNumber * this.questionsInCategory) : startIndex = categoryNumber * this.questionsInCategory
-    return images.slice(startIndex, startIndex + this.questionsInCategory) 
+  getImgData(categoryNumber, type, images) {
+    const startIndex = (type == 'pictures')? 120 + categoryNumber * this.questionsInCategory : categoryNumber * this.questionsInCategory
+    return  images.slice(startIndex, startIndex + this.questionsInCategory) 
 
   }
+
+
 
   changeSettings() {
     /**Checking if load */
@@ -141,54 +164,6 @@ class Settings {
       setTimeout(() => this.changeSettings(), 10)
     }
   }
-
-  
-  
 }
 
 export {Settings}
-
-/*
-let settings = {
-quizType: '',
-volume: 50,
-timeGame: false,
-secondToAnswer: 20,
-categoryQty:12,
-questionsInCategory:4,
-categories: {
-  artist: [
-  {name: 'Apprentice', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Master', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Secret Master', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Perfect Master', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Intimate Secretary', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Provost', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Intendant', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Sublime Master', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Grand Master', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Knight', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Pontiff', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Prince', isPlayed: false, answeredQty: undefined, imgData: []}
-  ],
-  pictures: [
-  {name: 'Apprentice', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Master', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Secret Master', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Perfect Master', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Intimate Secretary', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Provost', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Intendant', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Sublime Master', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Grand Master', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Knight', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Pontiff', isPlayed: false, answeredQty: undefined, imgData: []},
-  {name: 'Prince', isPlayed: false, answeredQty: undefined, imgData: []}
-  ]}
-}
-if (localStorage.getItem('settings')) settings = Object.assign({},JSON.parse(localStorage.getItem('settings')))
-
-window.addEventListener('beforeunload', () => localStorage.setItem('settings', JSON.stringify(settings))); 
-console.log('settings', settings)
-
-*/

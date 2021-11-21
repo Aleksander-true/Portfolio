@@ -8,6 +8,10 @@
   border-radius: 5.6rem;
   background-color: transparent;
 
+  @media (min-width: $break-tablet) {
+    width: 20rem;
+  }
+
   &:hover {
     color: #000;
     background-color: #fff;
@@ -27,12 +31,17 @@
   }
 
   &_question {
-    width: 90%;
+    width: 100%;
     min-height: 4rem;
     font-size: 1.6rem;
     line-height: 1.7rem;
     color: #fff;
     border-color: #fff;
+
+    @media (min-width: $break-tablet) {
+      height: 3rem;
+      width: 20rem;
+    }
   }
 
   &_set-time {
@@ -44,6 +53,12 @@
     border-radius: 50%;
     background-color: #fff;
 
+    @media (min-width: $break-tablet) {
+      font-size: 2rem;
+      width: 3rem;
+      height: 3rem;
+    }
+
     &:after {
       display: block;
       position: relative;
@@ -52,6 +67,10 @@
       width: 2rem;
       border-radius: 1rem;
       background-color: #000;
+
+      @media (min-width: $break-tablet) {
+        width: 1.5rem;
+      }
     }
 
     &_plus:before {
@@ -63,6 +82,10 @@
       border-radius: 1rem;
       transform: rotate(90deg);
       background-color: #000;
+
+      @media (min-width: $break-tablet) {
+        width: 1.5rem;
+      }
     }
   }
 

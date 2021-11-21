@@ -27,8 +27,8 @@ const NextArtistComponent = {
     <a href="#/modal/confirm-exit&${id}"> 
       <div class="escape-cross escape-cross_top-left"></div>
     </a>
-      <h3 class="quiz__question">Какую картину написал ${rightAnswer.author}?</h3>
-      <div class="wrapper_2-col">
+      <h3 class="quiz__question">Which is ${rightAnswer.author} picture?</h3>
+      <div class="quiz__question-wrapper">
       ${images}
       </div>
     </div>
@@ -57,9 +57,9 @@ const NextPictureComponent = {
       <a href="#/modal/confirm-exit&${id}"> 
         <div class="escape-cross escape-cross_top-left"></div>
       </a>
-      <h3 class="quiz__question">Назовите автора этой картины?</h3>
+      <h3 class="quiz__question">Who is thr author of the picture?</h3>
       <img class="quiz__img-question" src="./base-img/full/${rightAnswer.imageNum}full.jpg" alt="picture">
-      <div class="wrapper_2-col">
+      <div class="quiz__question-wrapper">
       ${names}
       </div>
     </div>
