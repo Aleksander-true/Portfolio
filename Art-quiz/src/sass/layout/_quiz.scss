@@ -43,5 +43,6 @@
     border-radius: 10%;
     max-height: 50%;
     object-fit: contain;
+    animation: scale-up 0.5s ease-out;
   }
 }

@@ -4,17 +4,28 @@ import {routes} from "./Routes"
 
 class Game {
   constructor() {
-    let settings = new Settings()
-    this.router()
+    this.loadingGif = document.querySelector('#loading')
+    this.settings = new Settings()
     
-    window.addEventListener('load', () => {settings.preLoadedCategoryImg();});    
+    this.preLoadedCategoryImg()
+    window.addEventListener('load', () => {this.router(); this.loadingGif.style.display = 'none'});    
     window.addEventListener('hashchange', () => this.router());
+  }
+
+  preLoadedCategoryImg() {
+    for (let type in  this.settings.categories) {
+      this.settings.categories[type].forEach( category => {
+        let img = new Image()
+        img.src = `./base-img/square/${category.imgData[0].imageNum}.jpg`
+      });
+    }
   }
 
   router()  {
     const mainPage = document.getElementById('main-page')
     const coverPage = document.getElementById('cover-page')
     const header = document.getElementById('header-page')
+    const tempPage = document.getElementById('temp-page')
   
     const [path, ...param] = parseLocation();
     const { component = ErrorComponent } = findComponentByPath(path, routes) || {};
@@ -24,7 +35,9 @@ class Game {
     else if (path.includes('header')) header.innerHTML = component.render(...param);
     else {
       coverPage.innerHTML = '';
-      mainPage.innerHTML = component.render(...param);
+      tempPage.innerHTML = mainPage.innerHTML
+      mainPage.innerHTML = component.render(...param)
+      mainPage.addEventListener('animationend', () => {tempPage.innerHTML = ''},{once: true})
     }
   
     function findComponentByPath (path, routes) {

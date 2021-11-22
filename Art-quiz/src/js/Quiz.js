@@ -4,6 +4,7 @@ class Quiz {
   static _instance = undefined
 
   constructor(id) {
+    
     this.settings = new Settings()
     if (id) Quiz._instance = this;
     else return Quiz._instance;
@@ -18,6 +19,7 @@ class Quiz {
     this.numberOfQuestion = 0;
     this.isLastQuestion = false;
   }
+
 
   nextQuestion() {
     this.rightAnswer = this.data[this.numberOfQuestion];

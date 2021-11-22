@@ -68,7 +68,6 @@ module.exports = ({ development }) => ({
               '**/*.scss',
               '**/*.sass',
               '**/index.html',
-              'base-img/*',
             ],
           },
           noErrorOnMissing: true,
@@ -76,7 +75,7 @@ module.exports = ({ development }) => ({
         }
       ],
     }),
-    new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ['base-img/*']})
+    new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: []})
     //new ImageminWebpWebpackPlugin()
   ],
   resolve: {

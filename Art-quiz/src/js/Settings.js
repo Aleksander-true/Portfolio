@@ -1,5 +1,3 @@
-//import {images} from "./ImagesRus"
-
 
 class Settings {
   static _instance = undefined;
@@ -83,17 +81,6 @@ class Settings {
     console.log('this.categories', this.categories)
   }
 
-  async preLoadedCategoryImg() {
-    for (let type in  this.categories) {
-      this.categories[type].forEach( category => {
-        console.log('category', category)
-        let img = new Image()
-        img.src = `./base-img/square/${category.imgData[0].imageNum}.jpg`
-        console.log('img.src', img.src)
-      });
-    }
-  }
-
   convertToId(str) {
     return str.replace(' ', '_').toLowerCase()
   }
@@ -101,10 +88,7 @@ class Settings {
   getImgData(categoryNumber, type, images) {
     const startIndex = (type == 'pictures')? 120 + categoryNumber * this.questionsInCategory : categoryNumber * this.questionsInCategory
     return  images.slice(startIndex, startIndex + this.questionsInCategory) 
-
   }
-
-
 
   changeSettings() {
     /**Checking if load */

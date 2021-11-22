@@ -23,7 +23,7 @@ const NextArtistComponent = {
       return html + QuestionPictureComponent.render(item.imageNum, id)
     },'');
     return `
-    <div class="quiz" id="artist-quiz">
+    <div class="quiz">
     <a href="#/modal/confirm-exit&${id}"> 
       <div class="escape-cross escape-cross_top-left"></div>
     </a>
@@ -53,7 +53,7 @@ const NextPictureComponent = {
       return html + QuestionAuthorComponent.render(item, id)
     },'');
     return `
-    <div class="quiz" id="artist-quiz">
+    <div class="quiz">
       <a href="#/modal/confirm-exit&${id}"> 
         <div class="escape-cross escape-cross_top-left"></div>
       </a>
