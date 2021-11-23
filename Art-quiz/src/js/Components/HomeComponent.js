@@ -6,8 +6,8 @@ import { FooterComponent } from "./FooterComponent";
 
 const HomeComponent = {
   render: () => {
-    const playAudio = new PlayAudio()
-    playAudio.sound('openPage')
+    //const playAudio = new PlayAudio()
+    //playAudio.sound('openPage')
     return `
     ${HeaderComponent.render()}
     <div class="home-page" id="home-page"

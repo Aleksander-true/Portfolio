@@ -1,9 +1,9 @@
 import {Settings}  from "./Settings"
-
 import {routes} from "./Routes"
 
 class Game {
   constructor() {
+    document.location.assign(`#/`)
     this.loadingGif = document.querySelector('#loading')
     this.settings = new Settings()
     
@@ -15,7 +15,7 @@ class Game {
   preLoadedCategoryImg() {
     for (let type in  this.settings.categories) {
       this.settings.categories[type].forEach( category => {
-        let img = new Image()
+        let img = new Image(320,320)
         img.src = `./base-img/square/${category.imgData[0].imageNum}.jpg`
       });
     }
@@ -53,9 +53,7 @@ class Game {
   };
 
 }
-
-
-let game = new Game();
+new Game();
 
 
 

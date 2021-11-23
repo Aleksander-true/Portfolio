@@ -58,7 +58,7 @@ const NextPictureComponent = {
         <div class="escape-cross escape-cross_top-left"></div>
       </a>
       <h3 class="quiz__question">Who is thr author of the picture?</h3>
-      <img class="quiz__img-question" src="./base-img/full/${rightAnswer.imageNum}full.jpg" alt="picture">
+      <img class="quiz__img-question" src="./base-img/square/${rightAnswer.imageNum}.jpg" alt="picture">
       <div class="quiz__question-wrapper">
       ${names}
       </div>
