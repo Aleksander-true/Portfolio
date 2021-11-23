@@ -26,7 +26,7 @@ const SettingsComponent = {
       <h2 class="settings__title">Time to answer</h2>
       <div class="settings__time">
         <button class="button button_set-time button_colored" onclick="this.nextElementSibling.stepDown()"></button>
-        <input class="settings__input"   type="number" name="" id="time-to-answer" value="20" min="2" max="99">
+        <input class="settings__input"   type="number" name="" id="time-to-answer" value="40" min="2" max="99" readonly>
         <button class="button button_set-time button_set-time_plus" onclick="this.previousElementSibling.stepUp()"></button>
       </div>
     </div>

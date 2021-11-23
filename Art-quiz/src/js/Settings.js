@@ -138,14 +138,15 @@ class Settings {
       const defaultBtn = page.querySelector('#default-btn')
       const setDefault = () => {
         this.setDefaultSettings();
-        document.location.reload()
+        page.remove()
+        document.location.replace(`#/modal/settings&${Math.random()}`)
       }
       defaultBtn.addEventListener('click', () => setDefault())
     
     /**If hasn't load yet, try in 10ms */
     } else {
       console.log('try')
-      setTimeout(() => this.changeSettings(), 10)
+      setTimeout(() => this.changeSettings(), 100)
     }
   }
 }
