@@ -25,7 +25,10 @@ class Settings {
     if (localStorage.getItem('settings')) {
       try {
         //throw new Error('test')
-        this.settingsFromObject(JSON.parse(localStorage.getItem('settings')))
+        const saves = JSON.parse(localStorage.getItem('settings'))
+        let isSavesValid = this.validFormat(saves)
+        if (!isSavesValid) throw new Error('Saves not valid')
+        this.settingsFromObject(saves)
 
       } catch (e) {
         console.log("Can't restore saves because:", e.message)
@@ -36,9 +39,14 @@ class Settings {
       this.setDefaultSettings()
       this.getImagesFromJson()
     }
-    
+    this.getSettings()
     /**Save settings and saves */
     window.addEventListener('beforeunload', () => localStorage.setItem('settings', this.getSettings())); 
+  }
+
+  validFormat(saves) {
+    return  (saves.volume !==undefined & saves.secondToAnswer!==undefined & saves.categoryQty!==undefined
+       & saves.questionsInCategory!==undefined & saves.rightAnswerToWin!==undefined & saves.categories!==undefined) 
   }
 
   getSettings() {
@@ -78,7 +86,6 @@ class Settings {
         }
       })
     }
-    console.log('this.categories', this.categories)
   }
 
   convertToId(str) {
