@@ -16,11 +16,16 @@ class PlayAudio{
   }
 
   sound(soundName) {
-    this.player.volume = this.settings.volume / 100
-    this.player.pause()
-    this.player.currentTime = 0;
-    this.player.src = this.sounds[soundName]
-    this.player.play()
+    try {
+      this.player.volume = (this.settings.volume / 100) || 0
+      this.player.pause()
+      this.player.currentTime = 0;
+      this.player.src = this.sounds[soundName]
+      //this.player.play()
+      this.player.addEventListener('canplaythrough', () => this.player.play() , {once: true});
+    } catch(e) {
+      console.log('Audio can not play', e.message )
+    }
   }
 
 }
