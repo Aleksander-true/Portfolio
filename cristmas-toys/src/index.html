@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christmas-tree</title>
+</head>
+
+<body>
+
+  <head class="header">
+    <span class="logo"></span>
+    <nav class="header__nav">
+      <div class="menu"></div>
+      <input type="text" class="search">
+    </nav>
+    <span class="cart"></span>
+  </head>
+  <main class="main">
+    <section class="filter">
+      <div class="title">Фильтр по значению</div>
+      <div class="filter__shape">
+        <span class="filter__icon icon_ball"></span>
+        <span class="filter__icon icon_bell"></span>
+        <span class="filter__icon icon_cone"></span>
+        <span class="filter__icon icon_figure"></span>
+        <span class="filter__icon icon_snowflake"></span>
+      </div>
+      <div class="filter__color">
+        <span class="filter__square filter__square_white"></span>
+        <span class="filter__square filter__square_yellow"></span>
+        <span class="filter__square filter__square_red"></span>
+        <span class="filter__square filter__square_blue"></span>
+        <span class="filter__square filter__square_green"></span>
+      </div>
+      <div class="filter__size">
+        <span class="filter__icon icon_ball filter__icon_big"></span>
+        <span class="filter__icon icon_ball"></span>
+        <span class="filter__icon icon_ball filter__icon_small"></span>
+      </div>
+      <label for="check-favorite" class="filter__check">Только любимые:
+        <input type="checkbox" name="check-favorite" id="check-favorite">
+      </label>
+    </section>
+    <section class="range">
+      <label for="" class="range__qty">Количество экземпляров:</label>
+      <output class="range__output"></output>
+      <div class="range__input" id="qty-range"></div>
+      <output class="range__output"></output>
+
+      <label for="" class="range__qty">Год приобретения:</label>
+      <output class="range__output"></output>
+      <div class="range__input" id="year-range"></div>
+      <output class="range__output"></output>
+    </section>
+    <section class="sort">
+      <select class="sort__select" name="" id="">
+        <option selected value="sort-name-top">По названию от 'А' до 'Я'</option>
+        <option value="sort-name-bottom">По названию от 'Я' до 'А'</option>
+        <option value="sort-count-max">По количеству по возрастанию</option>
+        <option value="sort-count-min">По количеству по убыванию</option>
+      </select>
+      <button class="button button__reset"></button>
+    </section>
+    <section class="card-container"></section>
+  </main>
+  <footer class="footer"></footer>
+
+  <template id="card-template">
+    <div class="card">
+      <h2 class="card__title"></h2>
+      <img src="" alt="" class="card__img">
+      <div class="card__values">
+        <p class="count"></p>
+        <p class="year"></p>
+        <p class="shape"></p>
+        <p class="color"></p>
+        <p class="size"></p>
+        <p class="favorite"></p>
+      </div>
+      <div class="card__ribbon"></div>
+    </div>
+  </template>
+
+
+</body>
+
+</html>
