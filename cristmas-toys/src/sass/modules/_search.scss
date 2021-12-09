@@ -1,0 +1,17 @@
+.search {
+  width: 380px;
+  height: 40px;
+  padding: 5px 25px;
+  margin: 10px 0;
+  margin-right: 30px;
+  border-radius: 20px;
+  border: 1px solid #278D9F;
+  color: #fff;
+  font-size: 18px;
+  background-color: rgba(31, 112, 127, .3);
+  background-image: url('./assets/svg/search.svg');
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: 330px center;
+  backdrop-filter: blur(6px);
+}

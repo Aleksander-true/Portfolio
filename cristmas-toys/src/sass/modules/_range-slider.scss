@@ -1,0 +1,10 @@
+.range-slider{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0rem 0 2rem;
+
+  &__input {
+    flex-grow: 2;
+  }
+}

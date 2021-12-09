@@ -1,0 +1,17 @@
+.icon {
+  &_ball {
+    background-image: url('./assets/svg/ball.svg')
+  }
+  &_bell {
+    background-image: url('./assets/svg/bell.svg')
+  }
+  &_cone {
+    background-image: url('./assets/svg/cone.svg')
+  }
+  &_figure {
+    background-image: url('./assets/svg/toy.svg')
+  }
+  &_snowflake {
+    background-image: url('./assets/svg/snow.svg')
+  }
+}

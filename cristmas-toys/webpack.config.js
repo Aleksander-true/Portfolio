@@ -20,13 +20,12 @@ const esLintPlugin = (isDev) => (isDev ? [] : [new ESLintPlugin({ extensions: ['
 module.exports = ({ development }) => ({
     mode: development ? 'development' : 'production',
     devtool: development ? 'inline-source-map' : false,
-    entry: {
-        main: './src/index.ts',
-    },
+    entry: './index.ts',
+    context: path.resolve(__dirname, 'src'),
     output: {
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist'),
-        assetModuleFilename: 'assets/[hash][ext]',
+        assetModuleFilename: '[file]',
     },
     module: {
         rules: [
@@ -36,8 +35,12 @@ module.exports = ({ development }) => ({
                 exclude: /node_modules/,
             },
             {
-                test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
+                test: /\.(?:ico|gif|png|jpg|jpeg|svg|webp)$/i,
                 type: 'asset/resource',
+            },
+            {
+              test: /\.(?:mp3|wav|ogg|mp4)$/i,
+              type: 'asset/resource',
             },
             {
                 test: /\.(woff(2)?|eot|ttf|otf)$/i,
@@ -56,16 +59,28 @@ module.exports = ({ development }) => ({
     plugins: [
         ...esLintPlugin(development),
         new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
-        new HtmlWebpackPlugin({ template: './src/index.html' }),
+        new HtmlWebpackPlugin({ template: './index.html' }),
         new CopyPlugin({
             patterns: [
                 {
-                    from: 'public',
-                    noErrorOnMissing: true,
-                },
+                  from: '**/*',
+                  
+                  context: path.resolve(__dirname, './src'),
+                  globOptions: {
+                    ignore: [
+                      '**/*.js',
+                      '**/*.ts',
+                      '**/*.scss',
+                      '**/*.sass',
+                      '**/index.html',
+                    ],
+                  },
+                  noErrorOnMissing: true,
+                  force: true,
+                }
             ],
         }),
-        new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
+        new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: [] }),
     ],
     resolve: {
         extensions: ['.ts', '.js'],

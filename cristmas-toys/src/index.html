@@ -10,61 +10,95 @@
 
 <body>
 
-  <head class="header">
-    <span class="logo"></span>
-    <nav class="header__nav">
-      <div class="menu"></div>
-      <input type="text" class="search">
-    </nav>
-    <span class="cart"></span>
-  </head>
-  <main class="main">
-    <section class="filter">
-      <div class="title">Фильтр по значению</div>
-      <div class="filter__shape">
-        <span class="filter__icon icon_ball"></span>
-        <span class="filter__icon icon_bell"></span>
-        <span class="filter__icon icon_cone"></span>
-        <span class="filter__icon icon_figure"></span>
-        <span class="filter__icon icon_snowflake"></span>
+  <header class="header">
+    <div class="wrapper header__container">
+      <a class="logo"></a>
+      <nav class="nav">
+        <div class="nav__links">
+          <a href="" class="link link_pad active">Игрушки</a>
+          <a href="" class="link link_pad">Ёлка</a>
+        </div>
+        <input type="text" class="search nav__search">
+      </nav>
+      <div class="cart">
+        <span class="cart__count">0</span>
       </div>
-      <div class="filter__color">
-        <span class="filter__square filter__square_white"></span>
-        <span class="filter__square filter__square_yellow"></span>
-        <span class="filter__square filter__square_red"></span>
-        <span class="filter__square filter__square_blue"></span>
-        <span class="filter__square filter__square_green"></span>
+    </div>
+  </header>
+  <main class="main wrapper">
+    <section class="control">
+      <div class="control__item">
+        <h3 class="control__title">Фильтр по значению</h3>
+        <div class="filter">
+          <span class="filter__text">Форма:</span>
+          <button class="filter__icon icon_ball"></button>
+          <button class="filter__icon icon_bell"></button>
+          <button class="filter__icon icon_cone"></button>
+          <button class="filter__icon icon_figure"></button>
+          <button class="filter__icon icon_snowflake"></button>
+        </div>
+        <div class="filter">
+          <span class="filter__text">Цвет:</span>
+          <label for="color-white" class="filter__check filter__check_white">
+            <input class="filter_hidden" type="checkbox" name="color-white" id="color-white">
+          </label>
+          <label for="color-yellow" class="filter__check filter__check_yellow">
+            <input class="filter_hidden" type="checkbox" name="color-white" id="color-yellow">
+          </label>
+          <label for="color-red" class="filter__check filter__check_red">
+            <input class="filter_hidden" type="checkbox" name="color-white" id="color-red">
+          </label>
+          <label for="color-blue" class="filter__check filter__check_blue">
+            <input class="filter_hidden" type="checkbox" name="color-white" id="color-blue">
+          </label>
+          <label for="color-green" class="filter__check filter__check_green">
+            <input class="filter_hidden" type="checkbox" name="color-white" id="color-green">
+          </label>
+        </div>
+        <div class="filter">
+          <span class="filter__text">Размер:</span>
+          <span class="filter__icon icon_ball filter__icon_big"></span>
+          <span class="filter__icon icon_ball"></span>
+          <span class="filter__icon icon_ball filter__icon_small"></span>
+        </div>
+        <div class="filter">Только любимые:
+          <label for="check-favorite" class="filter__check">
+            <input class="filter_hidden" type="checkbox" name="check-favorite" id="check-favorite">
+          </label>
+        </div>
       </div>
-      <div class="filter__size">
-        <span class="filter__icon icon_ball filter__icon_big"></span>
-        <span class="filter__icon icon_ball"></span>
-        <span class="filter__icon icon_ball filter__icon_small"></span>
-      </div>
-      <label for="check-favorite" class="filter__check">Только любимые:
-        <input type="checkbox" name="check-favorite" id="check-favorite">
-      </label>
-    </section>
-    <section class="range">
-      <label for="" class="range__qty">Количество экземпляров:</label>
-      <output class="range__output"></output>
-      <div class="range__input" id="qty-range"></div>
-      <output class="range__output"></output>
+      <div class="range control__item">
+        <h3 class="control__title">Фильтр по диапазону</h3>
+        <div for="" class="range__qty">Количество экземпляров:</div>
+        <div class="range-slider">
+          <output class="output range-slider__output" id="qty-range-min"></output>
+          <div class="range-slider__input" id="qty-range"></div>
+          <output class="output range-slider__output" id="qty-range-max"></output>
+        </div>
 
-      <label for="" class="range__qty">Год приобретения:</label>
-      <output class="range__output"></output>
-      <div class="range__input" id="year-range"></div>
-      <output class="range__output"></output>
+        <label for="" class="range__qty">Год приобретения:</label>
+        <div class="range-slider">
+          <output class="output range-slider__output" id="year-range-min"></output>
+          <div class="range-slider__input" id="year-range"></div>
+          <output class="output range-slider__output" id="year-range-max"></output>
+        </div>
+
+      </div>
+      <div class="sort control__item">
+        <h3 class="control__title">Сортировка</h3>
+        <select class="sort__select" name="" id="">
+          <option class="sort__option" selected value="sort-name-top">По названию от 'А' до 'Я'</option>
+          <option class="sort__option" value="sort-name-bottom">По названию от 'Я' до 'А'</option>
+          <option class="sort__option" value="sort-count-max">По количеству по возрастанию</option>
+          <option class="sort__option" value="sort-count-min">По количеству по убыванию</option>
+        </select>
+        <button class="button button__reset">Сбросить фильтры</button>
+      </div>
     </section>
-    <section class="sort">
-      <select class="sort__select" name="" id="">
-        <option selected value="sort-name-top">По названию от 'А' до 'Я'</option>
-        <option value="sort-name-bottom">По названию от 'Я' до 'А'</option>
-        <option value="sort-count-max">По количеству по возрастанию</option>
-        <option value="sort-count-min">По количеству по убыванию</option>
-      </select>
-      <button class="button button__reset"></button>
+
+    <section class="card-container wrapper">
+
     </section>
-    <section class="card-container"></section>
   </main>
   <footer class="footer"></footer>
 
@@ -83,7 +117,6 @@
       <div class="card__ribbon"></div>
     </div>
   </template>
-
 
 </body>
 
