@@ -1,5 +1,7 @@
 import './components/noUiSlider/RangeSlider';
-import data from './data';
+import App from './app/app';
 import './global.scss';
 
+const app = new App();
+app.start();
 //console.log('data', data);

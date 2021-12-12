@@ -32,6 +32,11 @@
       transform: scale(1.1);
     }
 
+    &.active {
+      filter: invert(9%) sepia(63%) saturate(461%) hue-rotate(
+        322deg) brightness(83%) contrast(88%);
+    }
+
     &_big {
       transform: scale(1.2);
     }
@@ -49,6 +54,7 @@
     padding: 0;
     margin: 0;
     margin-left: 20px;
+    background-color: transparent;
     cursor: pointer;
     transition: .5s;
     filter:brightness(0.9);
@@ -58,7 +64,7 @@
       transform: scale(1.1);
     }
 
-    & input:checked::after {
+    &.active:after {
       content: '';
       display: block;
       position: absolute;
@@ -73,14 +79,14 @@
 
     &_white {
       background-color: white;
-      & input:checked::after {
+      &.active:after {
         border: solid #000;
         border-width: 0 4px 4px 0;
       }
     }
     &_yellow {
       background-color: yellow;
-      & input:checked::after {
+      &.active:after {
         border: solid #000;
         border-width: 0 4px 4px 0;
       }

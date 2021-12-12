@@ -5,18 +5,19 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="image/x-icon" rel="shortcut icon" href="./assets/favicon.ico">
   <title>Christmas-tree</title>
 </head>
 
 <body>
 
-  <header class="header">
-    <div class="wrapper header__container">
-      <a class="logo"></a>
+  <header class="header" id="header">
+    <div class="header__container">
+      <a href="#" class="logo"></a>
       <nav class="nav">
-        <div class="nav__links">
-          <a href="" class="link link_pad active">Игрушки</a>
-          <a href="" class="link link_pad">Ёлка</a>
+        <div class="nav__links" id="nav-links">
+          <a href="#toys" class="link link_pad">Игрушки</a>
+          <a href="#tree" class="link link_pad">Ёлка</a>
         </div>
         <input type="text" class="search nav__search">
       </nav>
@@ -25,46 +26,49 @@
       </div>
     </div>
   </header>
-  <main class="main wrapper">
-    <section class="control">
+  <main class="main wrapper" id="main">
+  </main>
+  <footer class="footer"></footer>
+
+  <template id="start-page">
+    <div class="ball"></div>
+    <div class="start-page__title">
+      <span>Decorate</span>
+      <h1 class="start-page__title_inherit">Christmas-tree</h1>
+    </div>
+    <button class="button button_start-page" id="start-button">Start</button>
+  </template>
+
+  <template id="toy-page-template">
+    <div class="control">
       <div class="control__item">
         <h3 class="control__title">Фильтр по значению</h3>
-        <div class="filter">
+        <div class="filter" data-filter-value="shape">
           <span class="filter__text">Форма:</span>
-          <button class="filter__icon icon_ball"></button>
-          <button class="filter__icon icon_bell"></button>
-          <button class="filter__icon icon_cone"></button>
-          <button class="filter__icon icon_figure"></button>
-          <button class="filter__icon icon_snowflake"></button>
+          <button class="filter__icon icon_ball active" data-filter-value="шар"></button>
+          <button class="filter__icon icon_cone active" data-filter-value="шишка"></button>
+          <button class="filter__icon icon_bell active" data-filter-value="колокольчик"></button>
+          <button class="filter__icon icon_snowflake active" data-filter-value="снежинка"></button>
+          <button class="filter__icon icon_figure active" data-filter-value="фигурка"></button>
         </div>
-        <div class="filter">
+        <div class="filter" data-filter-value="color">
           <span class="filter__text">Цвет:</span>
-          <label for="color-white" class="filter__check filter__check_white">
-            <input class="filter_hidden" type="checkbox" name="color-white" id="color-white">
-          </label>
-          <label for="color-yellow" class="filter__check filter__check_yellow">
-            <input class="filter_hidden" type="checkbox" name="color-white" id="color-yellow">
-          </label>
-          <label for="color-red" class="filter__check filter__check_red">
-            <input class="filter_hidden" type="checkbox" name="color-white" id="color-red">
-          </label>
-          <label for="color-blue" class="filter__check filter__check_blue">
-            <input class="filter_hidden" type="checkbox" name="color-white" id="color-blue">
-          </label>
-          <label for="color-green" class="filter__check filter__check_green">
-            <input class="filter_hidden" type="checkbox" name="color-white" id="color-green">
-          </label>
+          <button for="color-white" class="filter__check filter__check_white active" data-filter-value="белый"></button>
+          <button for="color-red" class="filter__check filter__check_red active" data-filter-value="красный"></button>
+          <button for="color-yellow" class="filter__check filter__check_yellow active"
+            data-filter-value="желтый"></button>
+          <button for="color-blue" class="filter__check filter__check_blue active" data-filter-value="синий"></button>
+          <button for="color-green" class="filter__check filter__check_green active"
+            data-filter-value="зелёный"></button>
         </div>
-        <div class="filter">
+        <div class="filter" data-filter-value="size">
           <span class="filter__text">Размер:</span>
-          <span class="filter__icon icon_ball filter__icon_big"></span>
-          <span class="filter__icon icon_ball"></span>
-          <span class="filter__icon icon_ball filter__icon_small"></span>
+          <button class="filter__icon icon_ball filter__icon_small active" data-filter-value="малый"></button>
+          <button class="filter__icon icon_ball active" data-filter-value="средний"></button>
+          <button class="filter__icon icon_ball filter__icon_big active" data-filter-value="большой"></button>
         </div>
-        <div class="filter">Только любимые:
-          <label for="check-favorite" class="filter__check">
-            <input class="filter_hidden" type="checkbox" name="check-favorite" id="check-favorite">
-          </label>
+        <div class="filter" data-filter-value="favorite">Только любимые:
+          <button class="filter__check" data-filter-value="нет"></button>
         </div>
       </div>
       <div class="range control__item">
@@ -94,13 +98,11 @@
         </select>
         <button class="button button__reset">Сбросить фильтры</button>
       </div>
-    </section>
+    </div>
 
-    <section class="card-container wrapper">
+    <div class="card-container" id="card-container"></div>
 
-    </section>
-  </main>
-  <footer class="footer"></footer>
+  </template>
 
   <template id="card-template">
     <div class="card">
