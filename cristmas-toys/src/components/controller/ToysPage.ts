@@ -22,28 +22,36 @@ export default class ToysPage {
   }
 
   clickHandler(e: MouseEvent) {
-    const target = e.target as HTMLElement;
-    if (target.tagName !== 'BUTTON' || !target.dataset.filterValue) return;
-    this.view.toggle(target);
+    let target = e.target as HTMLElement;
 
-    if (target.parentElement?.dataset.filterValue === 'shape') {
-      this.settings.toggle('shape', target.dataset.filterValue);
-    }
-    
-    if (target.parentElement?.dataset.filterValue === 'color') {
-      this.settings.toggle('color', target.dataset.filterValue);
+    while (target !== e.currentTarget) {
+    /** Filtering buttons */
+      if (target.tagName == 'BUTTON' && target.dataset.filterValue) {
+        this.view.toggle(target);
+        this.settings.toggle(target.dataset.filterValue);
+      
+        const filteredData = this.dataBase.filterOut( this.settings);
+        this.settings.filteredCardNumbers = filteredData.map(item => item.num);
+        this.view.renderCards( 'card-container', 'card-template', filteredData );
+        return;
+      }
+
+      /**Add to cart*/
+      if (target.classList.contains('card')) {
+        
+        const isUpdate = this.settings.updateCartStore(target.dataset.toyNumber);
+        this.view.updateCartNumber(this.settings.cartNumber);
+        if (isUpdate) {
+          this.view.toggle(target);
+        }
+        
+        return;
+      }
+
+      target = target.parentNode as HTMLElement;
     }
 
-    if (target.parentElement?.dataset.filterValue === 'size') {
-      this.settings.toggle('size', target.dataset.filterValue);
-    }
-
-    if (target.parentElement?.dataset.filterValue === 'favorite') {
-      this.settings.toggle('favorite', target.dataset.filterValue);
-    }
-
-    const filteredData = this.dataBase.filterOut( this.settings);
-    this.view.renderCards( 'card-container', 'card-template', filteredData );
-  }
+   
+  }  
 
 }

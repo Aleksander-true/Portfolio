@@ -12,14 +12,16 @@ export default class DataBase {
   }
 
   filterOut(setting: ISettings) {
-    let base = this.#data;
-    
-    base = base.filter( item => !setting.shape.includes(item.shape));
-    base = base.filter( item => !setting.color.includes(item.color));
-    base = base.filter( item => !setting.size.includes(item.size));
-    base = setting.favorite[0] == 'нет' ? base.filter( item => item.favorite) : base;
-    
-    //console.log('base', base);
+    let base = this.#data.filter( item => {
+      return (
+        !setting.shape.includes(item.shape) &&
+        !setting.color.includes(item.color) &&
+        !setting.size.includes(item.size) &&
+        (setting.favorite[0] == 'нет') == item.favorite
+      );
+    });
+    base = base.map(item => {item.checked = (setting.cart.includes(item.num)) ? true : false; return item; });
+    console.log('base', base);
     return base;
   }
 

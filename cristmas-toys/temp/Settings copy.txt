@@ -8,25 +8,19 @@ export default class Settings implements ISettings {
     favorite: ['нет'],
   };
   
-  shape: string[];  
-  
+  shape: string[];
+
   color: string[];
 
   size: string[];
 
   favorite : string[];
 
-  cart: string[];
-
-  filteredCardNumbers: string[];
-
   constructor() {
     this.shape =  [];
     this.color =  [];
     this.size =   [];
     this.favorite = [];
-    this.cart = [];
-    this.filteredCardNumbers = [];
 
     /** Singleton */
     if (Settings.#instance) return Settings.#instance;
@@ -48,26 +42,19 @@ export default class Settings implements ISettings {
     return Object.assign({}, this);
   }
 
-  toggle(str: string):void {
-    let key: keyof ISettings; 
-    switch (str) {
-      case 'шар': case 'шишка': case 'колокольчик': case 'снежинка': case 'фигурка':
-        key = 'shape';  
-        break;
-      case 'белый': case 'красный': case 'желтый': case 'синий': case 'зелёный':
-        key = 'color';  
-        break;
-      case 'малый': case 'средний': case 'большой':
-        key = 'size';  
-        break;
-      case 'нет':
-        key = 'favorite';
-        break;  
-      default: 
-        key = 'cart';  
-        break;  
-    }
+  setDefault() {
+    this.settings = Settings.#default;
+  }
 
+  toggle(key: keyof ISettings, str: string):void {
+    console.log('toggle', key, str);
+    console.log('this.favorite = []', this.favorite);
+    /*
+    if (key === 'favorite') {
+      this.favorite = (this.favorite[0] === 'да') ? ['нет'] : ['да'];
+      return; 
+    }
+    */
     const index = this[key].indexOf(str);
     if (index !== -1) {
       this[key].splice(index, 1);
@@ -80,17 +67,4 @@ export default class Settings implements ISettings {
     return  (saves.shape !== undefined); 
   }
 
-  updateCartStore(toyNumber:string | undefined):boolean {
-    if (!toyNumber) return false;
-    const MAX_CART_CAPACITY = 10;
-    if (this.cart.length >= MAX_CART_CAPACITY && !this.cart.includes(toyNumber)) return false;
-
-    this.toggle(toyNumber);
-    //console.log('cart', this.cart);
-    return true;
-  }
-
-  get cartNumber() {
-    return this.cart.length;
-  }
 }

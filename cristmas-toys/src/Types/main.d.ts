@@ -7,13 +7,15 @@ interface IData {
   color: string;
   size: string;
   favorite: boolean;
+  checked?: boolean;
 }
 
 interface ISettings {
   shape: string[];
   color: string[];
   size: string[];
-  favorite: string[];
+  favorite : string[];
+  cart: string[];
 }
 
 type DataKey = 'num' | 'name' | 'count' | 'year' | 'shape' | 'color' | 'size' ; 

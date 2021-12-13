@@ -32,7 +32,7 @@ export default class View {
     filteringData.forEach( card => {
       const template = document.getElementById(templateID) as HTMLTemplateElement;
       const templateClone = template.content.cloneNode(true) as HTMLElement;
-
+      (<HTMLElement>templateClone.querySelector('.card')).dataset.toyNumber = card.num;
       (<HTMLElement>templateClone.querySelector('.card__title')).textContent = card.name;
       (<HTMLElement>templateClone.querySelector('.count')).textContent = `Количество: ${card.count}`;
       (<HTMLElement>templateClone.querySelector('.year')).textContent = `Год: выпуска: ${card.year}`;
@@ -42,6 +42,7 @@ export default class View {
       (<HTMLElement>templateClone.querySelector('.favorite')).textContent = card.favorite ? 'Любимая: да' : 'Любимая: нет';
       (<HTMLImageElement>templateClone.querySelector('.card__img')).src = `./assets/toys/${card.num}.png`;
 
+      if (card.checked) (<HTMLElement>templateClone.querySelector('.card'))?.classList.add('active');
       parentElement.append(templateClone);
     });
   
@@ -51,6 +52,10 @@ export default class View {
     if (!Array.isArray(element)) element = [element];
 
     element.forEach( item => item.classList.toggle('active'));
+  }
+
+  updateCartNumber(n:number) {
+    (<HTMLElement>document.getElementById('cart-number')).textContent = String(n);
   }
 
 }

@@ -54,4 +54,17 @@
       top: -8px;
     }
   }
+
+  &.active &__ribbon{
+    background: #CBB77A;
+
+    &:after {
+      border-left: 15px solid #CBB77A;
+    }
+
+    &:before {
+      border-bottom: 8px solid #CBB77A;
+    }
+
+  }
 }
