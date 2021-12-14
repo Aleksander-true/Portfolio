@@ -1,11 +1,15 @@
-export default class Settings implements ISettings {
+import DataBase from './DataBase';
+
+export default class Settings extends DataBase implements ISettings {
   static #instance: Settings | undefined;
 
-  static #default: {
-    shape:  ['шар', 'шишка', 'колокольчик', 'снежинка', 'фигурка'];
-    color:  ['белый', 'красный', 'желтый', 'синий', 'зелённый'];
-    size:   ['малый', 'средний', 'большой'];
-    favorite: ['нет'],
+  static default: {
+    shape: [],
+    color: [],
+    size: [],
+    favorite: [],
+    qty: ['1', '12'],
+    year: ['1940', '2020']
   };
   
   shape: string[];  
@@ -20,17 +24,25 @@ export default class Settings implements ISettings {
 
   filteredCardNumbers: string[];
 
+  qty: string[];
+
+  year: string[];
+
   constructor() {
+    super();
     this.shape =  [];
     this.color =  [];
     this.size =   [];
     this.favorite = [];
     this.cart = [];
-    this.filteredCardNumbers = [];
+    this.filteredCardNumbers = super.getAllNumbers();
+    this.qty = ['1', '12'];
+    this.year = ['1940', '2020'];
+    console.log('Settings.#default.qtyRange', this.qtyRange);
 
     /** Singleton */
-    if (Settings.#instance) return Settings.#instance;
-    else Settings.#instance = this;
+    //if (Settings.#instance) return Settings.#instance;
+    //else Settings.#instance = this;
 
     /**Restoring settings and saves from localStorage */
     //const saves = JSON.parse(localStorage.getItem('settings') || '');
@@ -48,7 +60,74 @@ export default class Settings implements ISettings {
     return Object.assign({}, this);
   }
 
+  get cartNumber() {
+    return this.cart.length;
+  }
+
+  get toyCards() {
+    return super.filterByNumber(this.filteredCardNumbers)
+      .map(item => {
+        item.checked = (this.cart.includes(item.num)) ? true : false; 
+        return item; 
+      });
+  }
+
+  set qtyRange([min, max]: Array<string | null> ) {
+    if (min == null || max == null ) this.qty = Settings.default.qty;
+    else this.qty = [min, max];
+  }
+
+  get qtyRange() {
+    return this.qty;
+  }
+
+  set yearRange([min, max]: Array<string | null> ) {
+    if (min == null || max == null ) this.year = Settings.default.year;
+    else this.year = [min, max];
+  }
+
+  get yearRange() {
+    return this.year;
+  }
+
+
   toggle(str: string):void {
+    const key = this.getSettingsKey(str);
+
+    const index = this[key].indexOf(str);
+    if (index !== -1) {
+      this[key].splice(index, 1);
+    } else {
+      this[key].push(str);
+    }
+  }
+
+  filterOut() {
+    this.filteredCardNumbers = super.filterAllKeys(this);
+  }
+
+  exclude(str: string):void {
+    this.filteredCardNumbers = super.excludeValue(str, this.filteredCardNumbers);
+  }
+
+  add(str: string):void {
+    this.filteredCardNumbers = super.addValue(str, this.filteredCardNumbers);
+  }
+
+  isFormatValid(saves: ISettings) {
+    return  (saves.shape !== undefined); 
+  }
+
+  updateCartStore(toyNumber:string | undefined):boolean {
+    if (!toyNumber) return false;
+    const MAX_CART_CAPACITY = 10;
+    if (this.cart.length >= MAX_CART_CAPACITY && !this.cart.includes(toyNumber)) return false;
+
+    this.toggle(toyNumber);
+    return true;
+  }
+
+  getSettingsKey(str: string): keyof ISettings  {
     let key: keyof ISettings; 
     switch (str) {
       case 'шар': case 'шишка': case 'колокольчик': case 'снежинка': case 'фигурка':
@@ -67,30 +146,6 @@ export default class Settings implements ISettings {
         key = 'cart';  
         break;  
     }
-
-    const index = this[key].indexOf(str);
-    if (index !== -1) {
-      this[key].splice(index, 1);
-    } else {
-      this[key].push(str);
-    }
-  }
-
-  isFormatValid(saves: ISettings) {
-    return  (saves.shape !== undefined); 
-  }
-
-  updateCartStore(toyNumber:string | undefined):boolean {
-    if (!toyNumber) return false;
-    const MAX_CART_CAPACITY = 10;
-    if (this.cart.length >= MAX_CART_CAPACITY && !this.cart.includes(toyNumber)) return false;
-
-    this.toggle(toyNumber);
-    //console.log('cart', this.cart);
-    return true;
-  }
-
-  get cartNumber() {
-    return this.cart.length;
+    return key;
   }
 }

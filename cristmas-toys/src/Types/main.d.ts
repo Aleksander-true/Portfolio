@@ -16,6 +16,8 @@ interface ISettings {
   size: string[];
   favorite : string[];
   cart: string[];
+  qty: string[];
+  year: string[];
 }
 
 type DataKey = 'num' | 'name' | 'count' | 'year' | 'shape' | 'color' | 'size' ; 

@@ -1,7 +1,7 @@
 import View from '../view/View';
-import RangeSlider from '../noUiSlider/RangeSlider';
 import DataBase from '../DataBase/DataBase';
 import Settings from '../DataBase/Settings';
+import RangeSlider from '../noUiSlider/RangeSlider';
 
 export default class ToysPage {
   view: View;
@@ -16,9 +16,12 @@ export default class ToysPage {
     this.settings = new Settings();
 
     const toysPage = this.view.renderPage('main', 'toy-page-template');
-    new RangeSlider();
+    new RangeSlider('qty-range', { start:[1, 12], connect: true, range:{ 'min': 1, 'max': 12 }, step: 1 });
+    new RangeSlider('year-range', { start: [1940, 2020], connect: true, range: { 'min': 1940, 'max': 2020 }, step: 1 });
+    
     this.view.renderCards( 'card-container', 'card-template', this.dataBase.data );
     toysPage.addEventListener('click', (e) => this.clickHandler(e));
+    toysPage.addEventListener('update', (e) => this.updateHandler(e));
   }
 
   clickHandler(e: MouseEvent) {
@@ -27,12 +30,12 @@ export default class ToysPage {
     while (target !== e.currentTarget) {
     /** Filtering buttons */
       if (target.tagName == 'BUTTON' && target.dataset.filterValue) {
-        this.view.toggle(target);
+
         this.settings.toggle(target.dataset.filterValue);
-      
-        const filteredData = this.dataBase.filterOut( this.settings);
-        this.settings.filteredCardNumbers = filteredData.map(item => item.num);
-        this.view.renderCards( 'card-container', 'card-template', filteredData );
+        this.settings.filterOut();
+        
+        this.view.toggle(target);
+        this.view.renderCards( 'card-container', 'card-template', this.settings.toyCards );
         return;
       }
 
@@ -44,14 +47,30 @@ export default class ToysPage {
         if (isUpdate) {
           this.view.toggle(target);
         }
-        
         return;
       }
-
       target = target.parentNode as HTMLElement;
     }
+  }
+  
+  updateHandler(e: Event) {
+    const target = e.target as HTMLElement;
+    if (target.id === 'qty-range') {
+      const outputMin = document.getElementById('qty-range-min') as HTMLElement;
+      const outputMax = document.getElementById('qty-range-max') as HTMLElement;
 
-   
-  }  
+      this.settings.qtyRange = [outputMin.textContent, outputMax.textContent];
+    }
+
+    if (target.id === 'year-range') {
+      const outputMin = document.getElementById('year-range-min') as HTMLElement;
+      const outputMax = document.getElementById('year-range-max') as HTMLElement;
+
+      this.settings.yearRange = [outputMin.textContent, outputMax.textContent];
+    }
+    this.settings.filterOut();
+    this.view.renderCards( 'card-container', 'card-template', this.settings.toyCards );
+    console.log('this.settings', this.settings.qtyRange, this.settings.yearRange);
+  }
 
 }
