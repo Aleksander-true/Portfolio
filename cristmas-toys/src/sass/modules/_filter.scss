@@ -77,6 +77,26 @@
       transform: rotate(45deg);
     }
 
+    &_invert{
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 5px;
+        left: 9px;
+        width: 6px;
+        height: 10px;
+        border: solid #fff;
+        border-width: 0 4px 4px 0;
+        transform: rotate(45deg);
+      }
+
+      &.active:after {
+        display: none;
+      }
+
+    }
+
     &_white {
       background-color: white;
       &.active:after {

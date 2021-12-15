@@ -4,22 +4,36 @@ import 'nouislider/dist/nouislider.css';
 import './_range-slider.scss';
 
 export default class RangeSlider {
+  slider: target;
+
   constructor(targetID: string, options: Options) {
-    const qtyRange = document.getElementById(targetID) as target;
+    this.slider = document.getElementById(targetID) as target;
 
-    noUiSlider.create(qtyRange, options);
+    noUiSlider.create(this.slider, options);
 
-    qtyRange.noUiSlider?.on('update', () => this.setOutput( qtyRange.noUiSlider?.get(true) as number[], qtyRange.id ));
-    qtyRange.noUiSlider?.on('update', () => this.customEvent(qtyRange));
-
+    this.slider.noUiSlider?.on('update', () => this.setOutput( this.slider.noUiSlider?.get() as string[], this.slider.id ));
+    this.slider.noUiSlider?.on('update', () => this.customEvent(this.slider));
   }
 
-  setOutput([minValue, maxValue]: number[], elementID: string):void {
+  setRange( [min, max]: string[]) {
+    this.slider.noUiSlider?.set([min, max]);
+  }
+
+  getRange() {
+    const [min, max] = this.slider.noUiSlider?.get()  as string[];
+    return [this.format(min), this.format(max)];
+  }
+
+  setOutput([min, max]: string[], elementID: string):void {
     const outputMin = document.getElementById(`${elementID}-min`) as HTMLElement;
     const outputMax = document.getElementById(`${elementID}-max`) as HTMLElement;
   
-    outputMin.textContent = String(Math.round(minValue)); 
-    outputMax.textContent = String(Math.round(maxValue)); 
+    outputMin.textContent = this.format(min); 
+    outputMax.textContent = this.format(max); 
+  }
+
+  format(n:string) {
+    return String(Math.round(+n));
   }
 
   customEvent(element : target){

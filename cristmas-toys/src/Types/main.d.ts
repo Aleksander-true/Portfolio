@@ -11,13 +11,10 @@ interface IData {
 }
 
 interface ISettings {
-  shape: string[];
-  color: string[];
-  size: string[];
-  favorite : string[];
+  sortType: string;
   cart: string[];
-  qty: string[];
-  year: string[];
+  filteredCardNumbers: string[];
+  filter: { shape: string[]; color: string[]; size: string[]; favorite: string[]; qty: string[]; year: string[] };
 }
 
 type DataKey = 'num' | 'name' | 'count' | 'year' | 'shape' | 'color' | 'size' ; 

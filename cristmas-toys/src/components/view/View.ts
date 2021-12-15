@@ -1,12 +1,6 @@
 
 export default class View {
 
-  create( tag = 'div', className = '', id = ''){
-    const element = document.createElement(tag);
-    element.className = className;
-    element.id = id;
-    return element;
-  }
 
   renderPage(parentElementID :string, templateID: string, containerClass = '', isClearParent = true ): HTMLElement {
     const container = document.createElement('div');
@@ -44,14 +38,33 @@ export default class View {
 
       if (card.checked) (<HTMLElement>templateClone.querySelector('.card'))?.classList.add('active');
       parentElement.append(templateClone);
-    });
-  
+    }); 
   }
 
   toggle(element: HTMLElement[] | HTMLElement): void {
     if (!Array.isArray(element)) element = [element];
-
     element.forEach( item => item.classList.toggle('active'));
+  }
+
+  updateSelect(sortType: ISettings['sortType']){
+    const optionsElements = document.querySelectorAll('.sort__select option') as NodeListOf<HTMLOptionElement>;
+    optionsElements.forEach( option => {
+      option.selected = ( option.value == sortType) ? true : false;
+    });   
+  }
+
+  updateFilterButtons(filters:ISettings['filter']) {
+    const filtersElements = document.querySelectorAll('.filter button') as NodeListOf<HTMLElement>;
+    const allFilters = Object.values(filters).flat();
+    console.log('allFilters', allFilters);
+
+    filtersElements.forEach( element => {
+      if (allFilters.includes(element.dataset.filterValue || ''))  {
+        element.classList.remove('active');
+      } else {
+        element.classList.add('active');
+      }
+    });
   }
 
   updateCartNumber(n:number) {

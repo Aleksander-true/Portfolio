@@ -3,53 +3,34 @@ import DataBase from './DataBase';
 export default class Settings extends DataBase implements ISettings {
   static #instance: Settings | undefined;
 
-  static default: {
-    shape: [],
-    color: [],
-    size: [],
-    favorite: [],
-    qty: ['1', '12'],
-    year: ['1940', '2020']
-  };
-  
-  shape: string[];  
-  
-  color: string[];
-
-  size: string[];
-
-  favorite : string[];
+  static readonly default: ISettings['filter'] = { shape: [], color: [], size: [], favorite: [], qty: ['1', '12'], year: ['1940', '2020'] } ;
 
   cart: string[];
 
+  sortType: string;
+
   filteredCardNumbers: string[];
 
-  qty: string[];
-
-  year: string[];
+  filter: { shape: string[]; color: string[]; size: string[]; favorite: string[]; qty: string[]; year: string[] };
 
   constructor() {
-    super();
-    this.shape =  [];
-    this.color =  [];
-    this.size =   [];
-    this.favorite = [];
+    super(); 
+    this.sortType = 'sort-name-top';
     this.cart = [];
     this.filteredCardNumbers = super.getAllNumbers();
-    this.qty = ['1', '12'];
-    this.year = ['1940', '2020'];
-    console.log('Settings.#default.qtyRange', this.qtyRange);
+    this.filter = JSON.parse(JSON.stringify(Settings.default));
 
     /** Singleton */
-    //if (Settings.#instance) return Settings.#instance;
-    //else Settings.#instance = this;
+    if (Settings.#instance) return Settings.#instance;
+    else Settings.#instance = this;
 
     /**Restoring settings and saves from localStorage */
-    //const saves = JSON.parse(localStorage.getItem('settings') || '');
-    //if (this.isFormatValid(saves)) this.settings = saves;
+    const saves = JSON.parse(localStorage.getItem('settings') || '');
+    if (this.isFormatValid(saves)) this.settings = saves;
 
+    console.log('this.settings', this.settings);
     /**Save settings and saves */
-    //window.addEventListener('beforeunload', () => localStorage.setItem('settings', JSON.stringify(Object.assign({}, this)))); 
+    window.addEventListener('beforeunload', () => localStorage.setItem('settings', JSON.stringify(Object.assign({}, this)))); 
   }
 
   set settings(settingsObj: ISettings) {
@@ -73,32 +54,31 @@ export default class Settings extends DataBase implements ISettings {
   }
 
   set qtyRange([min, max]: Array<string | null> ) {
-    if (min == null || max == null ) this.qty = Settings.default.qty;
-    else this.qty = [min, max];
+    if (min == null || max == null ) this.filter.qty = Settings.default.qty.slice();
+    else this.filter.qty = [min, max];
   }
 
-  get qtyRange() {
-    return this.qty;
+  get qtyRange():string[] {
+    return this.filter.qty;
   }
 
   set yearRange([min, max]: Array<string | null> ) {
-    if (min == null || max == null ) this.year = Settings.default.year;
-    else this.year = [min, max];
+    if (min == null || max == null ) this.filter.year = Settings.default.year.slice();
+    else this.filter.year = [min, max];
   }
 
-  get yearRange() {
-    return this.year;
+  get yearRange():string[] {
+    return this.filter.year;
   }
-
 
   toggle(str: string):void {
     const key = this.getSettingsKey(str);
 
-    const index = this[key].indexOf(str);
+    const index = this.filter[key].indexOf(str);
     if (index !== -1) {
-      this[key].splice(index, 1);
+      this.filter[key].splice(index, 1);
     } else {
-      this[key].push(str);
+      this.filter[key].push(str);
     }
   }
 
@@ -106,16 +86,19 @@ export default class Settings extends DataBase implements ISettings {
     this.filteredCardNumbers = super.filterAllKeys(this);
   }
 
-  exclude(str: string):void {
-    this.filteredCardNumbers = super.excludeValue(str, this.filteredCardNumbers);
+  sort(sort = 'sort-name-top') {
+    this.sortType = sort;
+    const base = super.filterByNumber(this.filteredCardNumbers);
+    this.filteredCardNumbers = super.sortByKey(base, sort);
   }
-
-  add(str: string):void {
-    this.filteredCardNumbers = super.addValue(str, this.filteredCardNumbers);
+  
+  resetFilters() {
+    this.filteredCardNumbers = super.getAllNumbers();
+    this.filter = JSON.parse(JSON.stringify(Settings.default));
   }
 
   isFormatValid(saves: ISettings) {
-    return  (saves.shape !== undefined); 
+    return  (saves.filter !== undefined); 
   }
 
   updateCartStore(toyNumber:string | undefined):boolean {
@@ -123,12 +106,17 @@ export default class Settings extends DataBase implements ISettings {
     const MAX_CART_CAPACITY = 10;
     if (this.cart.length >= MAX_CART_CAPACITY && !this.cart.includes(toyNumber)) return false;
 
-    this.toggle(toyNumber);
+    const index = this.cart.indexOf(toyNumber);
+    if (index !== -1) {
+      this.cart.splice(index, 1);
+    } else {
+      this.cart.push(toyNumber);
+    }
     return true;
   }
 
-  getSettingsKey(str: string): keyof ISettings  {
-    let key: keyof ISettings; 
+  getSettingsKey(str: string): keyof ISettings['filter']  {
+    let key: keyof ISettings['filter']; 
     switch (str) {
       case 'шар': case 'шишка': case 'колокольчик': case 'снежинка': case 'фигурка':
         key = 'shape';  
@@ -139,11 +127,8 @@ export default class Settings extends DataBase implements ISettings {
       case 'малый': case 'средний': case 'большой':
         key = 'size';  
         break;
-      case 'нет':
+      default:
         key = 'favorite';
-        break;  
-      default: 
-        key = 'cart';  
         break;  
     }
     return key;
