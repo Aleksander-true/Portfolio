@@ -1,0 +1,35 @@
+.button {
+  width: 250px;
+  height: 40px;
+  margin: 10px 0;
+  border-radius: 20px;
+  border: 1px solid #278D9F;
+  background-color: rgba(31, 112, 127, .3);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  color: #fff;
+  font-size: 20px;
+  transition: all .3s;
+
+  &_start-page {
+    position: relative;
+    width: 320px;
+    height: 60px;
+    border: 3px solid #278D9F;
+    border-radius: 30px;
+    background-color: rgba(31, 112, 127, 0.3);
+    backdrop-filter: blur(6px);
+    font-size: 36px;  
+    text-transform: uppercase;
+    outline: 1px solid;
+    outline-color: #278D9F;
+    outline-offset: 0px;
+    transition: all 0.5s;
+
+    &:hover {
+      background-color: rgba(31, 112, 127, 0.7);
+      outline-color: rgba(255, 255, 255, 0);
+      outline-offset: 15px;
+    }
+  }
+}

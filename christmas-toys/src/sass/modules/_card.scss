@@ -1,0 +1,70 @@
+.card{
+  display: grid;
+  grid-template-areas: 
+    "title title"
+    "img values"
+    "ribbon values";
+  grid-template-columns: 40% 60%;
+  align-items: center;
+  width: 100%;
+  min-height: 200px;
+  padding: 20px 10px 10px 20px;
+  border-radius: 10px;
+  border: 1px solid #278D9F;
+  background-color: rgba(31, 112, 127, 0.3);
+  cursor: pointer;
+
+  &__title {
+    grid-area: title;
+  }
+
+  &__values {
+    grid-area: values;
+    font-size: 20px;
+  }
+
+  &__img {
+    grid-area: img;
+    width: 90%;
+    object-fit: contain;
+  }
+
+  &__ribbon {
+    position: relative;
+    left:-30px;
+    grid-area: ribbon;
+    width: 100px;
+    height: 40px;
+    background: #24C5DB;
+
+    &:after {
+      content: "";
+      position: absolute;
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      border-left: 15px solid #24C5DB;
+      right: -15px;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      border-bottom: 8px solid #00a9f5;
+      border-left: 8px solid transparent;
+      top: -8px;
+    }
+  }
+
+  &.active &__ribbon{
+    background: #CBB77A;
+
+    &:after {
+      border-left: 15px solid #CBB77A;
+    }
+
+    &:before {
+      border-bottom: 8px solid #CBB77A;
+    }
+
+  }
+}
