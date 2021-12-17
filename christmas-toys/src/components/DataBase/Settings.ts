@@ -3,8 +3,14 @@ import DataBase from './DataBase';
 export default class Settings extends DataBase implements ISettings {
   static #instance: Settings | undefined;
 
-  static readonly default: ISettings['filter'] = { shape: [], color: [], size: [], favorite: [], qty: ['1', '12'], year: ['1940', '2020'] } ;
-
+  static readonly default: ISettings = {
+    sortType: 'sort-name-top',
+    searchExp: /./,
+    cart: [],
+    filteredCardNumbers: [],
+    filter: { shape: [], color: [], size: [], favorite: [], qty: ['1', '12'], year: ['1940', '2020'] },
+  };
+  
   cart: string[];
 
   searchExp: RegExp;
@@ -17,22 +23,26 @@ export default class Settings extends DataBase implements ISettings {
 
   constructor() {
     super(); 
-    this.sortType = 'sort-name-top';
-    this.searchExp = /./;
-    this.cart = [];
+    this.sortType = Settings.default.sortType;
+    this.searchExp = Settings.default.searchExp;
+    this.cart = JSON.parse(JSON.stringify(Settings.default.cart));
     this.filteredCardNumbers = super.getAllNumbers();
-    this.filter = JSON.parse(JSON.stringify(Settings.default));
+    this.filter = JSON.parse(JSON.stringify(Settings.default.filter));
 
     /** Singleton */
     if (Settings.#instance) return Settings.#instance;
     else Settings.#instance = this;
 
     /**Restoring settings and saves from localStorage */
-    const saves = JSON.parse(localStorage.getItem('settings') || '');
+    const saves = JSON.parse(localStorage.getItem('settings') as string);
     if (this.isFormatValid(saves)) this.settings = saves;
 
     /**Save settings and saves */
     window.addEventListener('beforeunload', () => localStorage.setItem('settings', JSON.stringify(Object.assign({}, this)))); 
+  }
+
+  isFormatValid(saves: ISettings) {
+    return  (saves?.filter && saves?.cart && saves?.filteredCardNumbers && saves?.sortType); 
   }
 
   set settings(settingsObj: ISettings) {
@@ -56,7 +66,7 @@ export default class Settings extends DataBase implements ISettings {
   }
 
   set qtyRange([min, max]: Array<string | null> ) {
-    if (min == null || max == null ) this.filter.qty = Settings.default.qty.slice();
+    if (min == null || max == null ) this.filter.qty = Settings.default.filter.qty.slice();
     else this.filter.qty = [min, max];
   }
 
@@ -65,7 +75,7 @@ export default class Settings extends DataBase implements ISettings {
   }
 
   set yearRange([min, max]: Array<string | null> ) {
-    if (min == null || max == null ) this.filter.year = Settings.default.year.slice();
+    if (min == null || max == null ) this.filter.year = Settings.default.filter.year.slice();
     else this.filter.year = [min, max];
   }
 
@@ -96,12 +106,19 @@ export default class Settings extends DataBase implements ISettings {
   
   resetFilters() {
     this.filteredCardNumbers = super.getAllNumbers();
-    this.filter = JSON.parse(JSON.stringify(Settings.default));
+    this.filter = JSON.parse(JSON.stringify(Settings.default.filter));
   }
 
-  isFormatValid(saves: ISettings) {
-    return  (saves.filter !== undefined); 
+  setDefault() {
+    localStorage.removeItem('settings');
+    this.sortType = Settings.default.sortType;
+    this.searchExp = Settings.default.searchExp;
+    this.cart = JSON.parse(JSON.stringify(Settings.default.cart));
+    this.filteredCardNumbers = super.getAllNumbers();
+    this.filter = JSON.parse(JSON.stringify(Settings.default.filter));
+    console.log('localStorage', localStorage.getItem('settings'));
   }
+
 
   updateCartStore(toyNumber:string | undefined):boolean {
     if (!toyNumber) return false;

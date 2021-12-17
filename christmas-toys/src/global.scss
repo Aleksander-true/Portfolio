@@ -1,3 +1,5 @@
+@import "./sass/abstract/variables";
+@import "./sass/base/fonts";
 @import "./sass/base/normalize";
 @import "./sass/base/links";
 @import "./sass/base/body";
@@ -18,6 +20,8 @@
 @import "./sass/modules/range-slider";
 @import "./sass/modules/sort";
 @import "./sass/modules/card";
+@import "./sass/modules/modal";
+@import "./sass/modules/ball";
 
 
 

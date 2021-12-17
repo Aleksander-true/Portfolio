@@ -1,5 +1,7 @@
+import Warning from './Warning';
 
 export default class View {
+
 
   renderPage(parentElementID :string, templateID: string, containerClass = '', isClearParent = true ): HTMLElement {
     const container = document.createElement('div');
@@ -21,6 +23,11 @@ export default class View {
 
     const parentElement = document.getElementById(parentElementID) as HTMLElement;
     parentElement.innerHTML = '';
+
+    if (filteringData.length == 0) {
+      new Warning(parentElement, 'Извините,', 'совпадений не обнаружено');
+      return;
+    }
 
     filteringData.forEach( card => {
       const template = document.getElementById(templateID) as HTMLTemplateElement;

@@ -1,3 +1,5 @@
+import Settings from '../DataBase/Settings';
+import View from '../view/View';
 import Search from './Search';
 import StartPage from './StartPage';
 import ToysPage from './ToysPage';
@@ -8,6 +10,7 @@ export default class Header {
 
   constructor() {
     this.search = new Search('input-search');
+    (new View).updateCartNumber((new Settings).cartNumber);
     const header = document.getElementById('header') as HTMLElement;
     header.addEventListener('click', (e) => this.clickHandler(e));
   }

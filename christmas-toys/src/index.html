@@ -30,11 +30,12 @@
     </div>
   </header>
   <main class="main wrapper" id="main">
+
   </main>
   <footer class="footer"></footer>
 
   <template id="start-page">
-    <div class="ball"></div>
+    <div class="ball ball_1"></div>
     <div class="start-page__title">
       <span>Decorate</span>
       <h1 class="start-page__title_inherit">Christmas-tree</h1>
@@ -99,7 +100,10 @@
           <option class="sort__option" value="sort-count-max">По количеству по возрастанию</option>
           <option class="sort__option" value="sort-count-min">По количеству по убыванию</option>
         </select>
-        <button class="button button__reset">Сбросить фильтры</button>
+        <div class="sort__buttons">
+          <button class="button button_reset" id="reset-filters">Сбросить фильтры</button>
+          <button class="button button_reset" id="reset-settings">По умолчанию</button>
+        </div>
       </div>
     </div>
 

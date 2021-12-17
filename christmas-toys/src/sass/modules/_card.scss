@@ -14,14 +14,25 @@
   background-color: rgba(31, 112, 127, 0.3);
   cursor: pointer;
 
+
   &__title {
     grid-area: title;
+    font-size: var(--h2-font-size);
+    letter-spacing: 0.2rem;
+    font-weight: 600;
   }
 
   &__values {
     grid-area: values;
     font-size: 20px;
   }
+
+  &__values p {
+    @media (max-width: $break-laptop) {
+      margin: 0.7rem 0;
+    }
+  }
+    
 
   &__img {
     grid-area: img;

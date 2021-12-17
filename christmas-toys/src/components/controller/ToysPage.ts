@@ -40,7 +40,7 @@ export default class ToysPage {
     return {
       start: this.settings.filter.qty, 
       connect: true, 
-      range:{ min: +Settings.default.qty[0], max: +Settings.default.qty[1] }, 
+      range:{ min: +Settings.default.filter.qty[0], max: +Settings.default.filter.qty[1] }, 
       step: 1,
     };
   }
@@ -49,7 +49,7 @@ export default class ToysPage {
     return {
       start: this.settings.filter.year, 
       connect: true, 
-      range:{ min: +Settings.default.year[0], max: +Settings.default.year[1] }, 
+      range:{ min: +Settings.default.filter.year[0], max: +Settings.default.filter.year[1] }, 
       step: 5,
     };
   }
@@ -58,8 +58,11 @@ export default class ToysPage {
     let target = e.target as HTMLElement;
 
     while (target !== e.currentTarget) {
+
+      //if (target.tagName !== 'BUTTON') break;
+
       /** Filtering buttons */
-      if (target.tagName == 'BUTTON' && target.dataset.filterValue) {
+      if (target?.dataset.filterValue) {
 
         this.settings.toggle(target.dataset.filterValue);
         this.settings.filterOut();
@@ -70,17 +73,24 @@ export default class ToysPage {
       }
 
       /**Reset all filters */
-      if (target.tagName == 'BUTTON' && target.classList.contains('button__reset')) {
+      if (target?.id == 'reset-filters') {
         this.settings.resetFilters();
         this.view.updateFilterButtons(this.settings.filter);
-        this.qtyRangeSlider.setRange(Settings.default.qty);
-        this.yearRangeSlider.setRange(Settings.default.year);
+        this.qtyRangeSlider.setRange(Settings.default.filter.qty);
+        this.yearRangeSlider.setRange(Settings.default.filter.year);
         this.view.renderCards( 'card-container', 'card-template', this.settings.toyCards );
         return;
       }
 
+      if (target?.id == 'reset-settings') {
+        this.settings.setDefault();
+        new ToysPage();
+        this.view.updateCartNumber(this.settings.cartNumber);
+        return;
+      }
+
       /**Add to cart*/
-      if (target.classList.contains('card')) {
+      if (target?.classList.contains('card')) {
         
         const isUpdate = this.settings.updateCartStore(target.dataset.toyNumber);
         this.view.updateCartNumber(this.settings.cartNumber);
