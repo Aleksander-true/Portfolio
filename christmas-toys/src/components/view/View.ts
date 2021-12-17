@@ -1,7 +1,6 @@
 
 export default class View {
 
-
   renderPage(parentElementID :string, templateID: string, containerClass = '', isClearParent = true ): HTMLElement {
     const container = document.createElement('div');
     container.className = containerClass;
@@ -56,7 +55,6 @@ export default class View {
   updateFilterButtons(filters:ISettings['filter']) {
     const filtersElements = document.querySelectorAll('.filter button') as NodeListOf<HTMLElement>;
     const allFilters = Object.values(filters).flat();
-    console.log('allFilters', allFilters);
 
     filtersElements.forEach( element => {
       if (allFilters.includes(element.dataset.filterValue || ''))  {

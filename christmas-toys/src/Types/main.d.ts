@@ -12,6 +12,7 @@ interface IData {
 
 interface ISettings {
   sortType: string;
+  searchExp: RegExp;
   cart: string[];
   filteredCardNumbers: string[];
   filter: { shape: string[]; color: string[]; size: string[]; favorite: string[]; qty: string[]; year: string[] };

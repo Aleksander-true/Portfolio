@@ -21,11 +21,12 @@ export default class ToysPage {
     this.settings = new Settings();
 
     const toysPage = this.view.renderPage('main', 'toy-page-template');
+
     this.qtyRangeSlider = new RangeSlider('qty-range', this.qtyRangeSliderOptions );
     this.yearRangeSlider = new RangeSlider('year-range', this.yearRangeSliderOptions);
+
     this.settings.sort(this.settings.sortType);
 
-    console.log('this.settings.sortType', this.settings.sortType);
     this.view.updateFilterButtons(this.settings.filter);
     this.view.updateSelect(this.settings.sortType);
     this.view.renderCards( 'card-container', 'card-template', this.settings.toyCards );
@@ -65,7 +66,6 @@ export default class ToysPage {
         
         this.view.toggle(target);
         this.view.renderCards( 'card-container', 'card-template', this.settings.toyCards );
-        console.log('this.settings.filter', this.settings.filter);
         return;
       }
 

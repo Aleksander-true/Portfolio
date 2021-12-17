@@ -19,7 +19,10 @@
           <a href="#toys" class="link link_pad">Игрушки</a>
           <a href="#tree" class="link link_pad">Ёлка</a>
         </div>
-        <input type="text" class="search nav__search">
+        <form action="" class="search-container">
+          <input type="text" class="search nav__search" id="input-search" autocomplete="off" placeholder="Search toy">
+          <div class="close search__close" id="clear-btn"></div>
+        </form>
       </nav>
       <div class="cart">
         <span class="cart__count" id="cart-number">0</span>

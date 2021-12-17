@@ -23,7 +23,8 @@ export default class DataBase {
         !setting.filter.size.includes(item.size) &&
         ((setting.filter.favorite[0] == 'да') ? item.favorite : true) &&
         (+item.count >= +setting.filter.qty[0] && +item.count <= +setting.filter.qty[1]) &&
-        (+item.year >= +setting.filter.year[0] && +item.year <= +setting.filter.year[1])
+        (+item.year >= +setting.filter.year[0] && +item.year <= +setting.filter.year[1]) && 
+        setting.searchExp.test(item.name)
       );
     });
     return this.sortByKey(base, setting.sortType);

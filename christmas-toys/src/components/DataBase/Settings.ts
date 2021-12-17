@@ -7,6 +7,8 @@ export default class Settings extends DataBase implements ISettings {
 
   cart: string[];
 
+  searchExp: RegExp;
+
   sortType: string;
 
   filteredCardNumbers: string[];
@@ -16,6 +18,7 @@ export default class Settings extends DataBase implements ISettings {
   constructor() {
     super(); 
     this.sortType = 'sort-name-top';
+    this.searchExp = /./;
     this.cart = [];
     this.filteredCardNumbers = super.getAllNumbers();
     this.filter = JSON.parse(JSON.stringify(Settings.default));
@@ -28,7 +31,6 @@ export default class Settings extends DataBase implements ISettings {
     const saves = JSON.parse(localStorage.getItem('settings') || '');
     if (this.isFormatValid(saves)) this.settings = saves;
 
-    console.log('this.settings', this.settings);
     /**Save settings and saves */
     window.addEventListener('beforeunload', () => localStorage.setItem('settings', JSON.stringify(Object.assign({}, this)))); 
   }
@@ -132,5 +134,10 @@ export default class Settings extends DataBase implements ISettings {
         break;  
     }
     return key;
+  }
+
+  search(str: string) {
+    this.searchExp = new RegExp(str, 'i');
+    this.filterOut();
   }
 }
