@@ -1,0 +1,31 @@
+.link {
+  display: block;
+  color: #fff;
+  transition: all 0.3s;
+
+  
+
+  &_pad {
+    padding: 10px 20px;
+    position: relative;
+    
+  }
+
+  &.active {
+    color: #3ce2ff;
+  }
+
+  &.active:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+    height: 3px;
+    background-color: #278D9F;
+  }
+  
+  &:hover {
+    color: #278D9F;
+  }
+}

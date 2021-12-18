@@ -1,0 +1,52 @@
+.button {
+  max-width: 25rem;
+  height: 4rem;
+  margin: 1rem 0;
+  border-radius: 20px;
+  border: 1px solid #278D9F;
+  background-color: rgba(31, 112, 127, .7);
+  cursor: pointer;
+  color: #fff;
+  font-size: 2.5rem;
+  transition: all .3s;
+
+  &_reset {
+    width: calc(100% - 1rem);
+
+    @media (max-width: $break-laptop) {
+      width: 25rem;
+      font-family: $condensed-font;
+    }
+
+    @media (max-width: $break-mobile-M) {
+      width: calc(100% - 1rem);
+      font-family: $condensed-font;
+    }
+  }
+
+  &_start-page {
+    position: relative;
+    width: 32rem;
+    height: 6rem;
+    border: 3px solid #278D9F;
+    border-radius: 30px;
+    background-color: rgba(31, 112, 127, 0.3);
+    backdrop-filter: blur(6px);
+    font-size: var(--h2-font-size);  
+    text-transform: uppercase;
+    outline: 1px solid;
+    outline-color: #278D9F;
+    outline-offset: 0px;
+    transition: all 0.5s;
+
+    @media (max-width: $break-laptop) {
+      width: 20rem;
+    }
+  }
+
+  &:hover {
+    background-color: rgba(31, 112, 127, 0.7);
+    outline-color: rgba(255, 255, 255, 0);
+    outline-offset: 15px;
+  }
+}
