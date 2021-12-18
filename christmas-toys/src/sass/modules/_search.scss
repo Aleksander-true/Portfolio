@@ -2,8 +2,7 @@
   width: 38rem;
   height: 4rem;
   padding: 0.5rem 2.5rem;
-  margin: 1rem 0;
-  margin-right: 3rem;
+  margin: 1rem 3rem 1rem 0;
   border-radius: 2rem;
   border: 1px solid #278D9F;
   color: #fff;
@@ -19,6 +18,11 @@
     width: 28rem;
   }
 
+  @media (max-width: $break-mobile-L) {
+    width: 20rem;
+    margin: 0.5rem
+  }
+
   &.active {
     background-image: none;
   }
@@ -27,6 +31,11 @@
     display: none;
     right: 5rem;
     top: 2rem;
+
+    @media (max-width: $break-mobile-L) {
+      right: -4rem;
+      top: 1rem;
+    }
   }
 
   &.active + .search__close {

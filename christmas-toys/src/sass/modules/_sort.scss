@@ -7,6 +7,10 @@
     font-family: $condensed-font;
   }
 
+  @media (max-width: $break-mobile-L) {
+    flex-direction: column;
+  }
+
   &__select {
     appearance: none;
     border: 0;
@@ -28,6 +32,10 @@
     @media (max-width: $break-laptop) {
       width: 50%;
       margin: 0 0 3rem;
+    }
+
+    @media (max-width: $break-mobile-L) {
+      width: 100%;
     }
   }
 

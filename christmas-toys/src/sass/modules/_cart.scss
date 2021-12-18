@@ -1,24 +1,36 @@
 .cart {
   display: flex;
-  width: 48px;
-  height: 60px;
+  width: 4.8rem;
+  height: 6rem;
   justify-content: center;
   align-items: center;
   background: url('./assets/svg/ball-2.svg') no-repeat ;
   background-size: cover;
   background-position: left -8px;
-  transition: .3s;
+  transition: 0.3s;
+
+  @media (max-width: $break-mobile-L) {
+    width: 4rem;
+    height: 5rem;
+  }
 
   &__count {
     display: block;
     position: relative;
-    top: 4px;
-    min-width: 43px;
-    height: 43px;
+    top: 0.4rem;
+    width: 4rem;
+    height: 4rem;
     border-radius: 50%;
     text-align: center;
-    line-height: 43px;
+    line-height: 4.3rem;
     font-size: 20px;
-    background-color: #278D9F
+    background-color: #278D9F;
+
+    @media (max-width: $break-mobile-L) {
+      width: 3.33rem;
+      height: 3.33rem;
+      line-height: 3.33rem;
+      top: 0.2rem;
+    }
   }
 }

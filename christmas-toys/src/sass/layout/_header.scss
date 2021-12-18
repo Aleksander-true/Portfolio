@@ -12,5 +12,10 @@
     max-width: 1600px;
     margin: 0 auto;
     padding: 0 1rem;
+
+    @media (max-width: $break-mobile-L) {
+      align-items: flex-start;
+      padding: 1rem;
+    }
   }
 }

@@ -17,6 +17,11 @@
       width: 25rem;
       font-family: $condensed-font;
     }
+
+    @media (max-width: $break-mobile-M) {
+      width: calc(100% - 1rem);
+      font-family: $condensed-font;
+    }
   }
 
   &_start-page {

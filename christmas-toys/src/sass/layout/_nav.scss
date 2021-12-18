@@ -4,6 +4,11 @@
   align-items: center;
   flex-grow: 2;
 
+  @media (max-width: $break-mobile-L) {
+    flex-direction: column;
+
+  }
+
   &__links {
     display: flex;
     position: relative;
@@ -11,7 +16,11 @@
     color: #fff;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 20px;
+    padding: 2rem;
     transition: .3s;
+
+    @media (max-width: $break-mobile-L) {
+      padding: 1rem;
+    }
   }
 }

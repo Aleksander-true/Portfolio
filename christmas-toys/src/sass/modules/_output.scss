@@ -8,4 +8,9 @@
   backdrop-filter: blur(6px);
   border-radius: 20px;
   border: 1px solid #278D9F;
+
+  @media (max-width: $break-mobile-L) {
+    min-width: 5rem;
+    height: 3rem;
+  }
 }

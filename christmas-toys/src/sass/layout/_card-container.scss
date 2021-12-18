@@ -12,4 +12,8 @@
   @media (max-width: $break-laptop) {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  @media (max-width: $break-mobile-L) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
