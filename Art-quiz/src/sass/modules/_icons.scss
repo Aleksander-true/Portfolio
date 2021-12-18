@@ -1,0 +1,39 @@
+.check-icon {
+  width: 4rem;
+  height: 4rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &_true {
+    background-image: url("./assets/svg/check-success.svg");
+  }
+
+  &_false {
+    background-image: url("./assets/svg/check-error.svg");
+  }
+
+  &_undefined {
+    background-image: url("./assets/svg/lock.svg");
+  }
+}
+
+.trophy-cup-icon {
+  width: 14rem;
+  height: 13rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @media (min-width: $break-tablet) {
+    width: 400px;
+  }
+
+  &_break {
+    background-image: url("./assets/svg/break-cup.svg");
+  }
+
+  &_star {
+    background-image: url("./assets/svg/trophy-cup.svg");
+  }
+}
