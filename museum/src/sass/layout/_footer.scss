@@ -1,0 +1,104 @@
+.footer {
+  padding: 75px 0 45px 0;
+
+  @media (max-width: $break-small-laptop) {
+    padding: 50px 0 40px 0;
+  }
+
+  @media (max-width: $break-tablet) {
+    padding: 40px 0;
+  }
+
+  & .navigation__link {
+    @media (max-width: $break-tablet) {
+      font-size: $font-size-4-tablet;
+      line-height: 21px;
+      font-weight: 200;
+    }
+
+    @media (max-width: $break-phone) {
+      font-size: $font-size-3-phone;
+      line-height: 19px;
+    }
+  }
+
+  &__logo {
+    max-width: 330px;
+    flex-grow: 2;
+
+    @media (max-width: $break-tablet) {
+      justify-self: flex-start;
+    }
+
+    @media (max-width: $break-phone) {
+      margin-right: 55px;
+    }
+  }
+
+  &__social-icon-wrapper {
+    max-width: 360px;
+    column-gap: 25px;
+    padding: 15px 0;
+    align-self: flex-end;
+
+    @media (max-width: $break-small-laptop) {
+      padding: 10px 0;
+    }
+
+    @media (max-width: $break-tablet) {
+      padding: 0;
+      margin: 30px 90px 0 0;
+    }
+
+    @media (max-width: 500px) {
+      column-gap: 5px;
+      margin: 30px 0 0;
+    }
+  }
+
+  & .wrapper__flex {
+    @media (max-width: $break-tablet) {
+      justify-content: flex-end;
+    }
+
+    @media (max-width: $break-phone) {
+      justify-content: center;
+    }
+
+    & .navigation_footer {
+      @media (max-width: $break-phone) {
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+.footer-rsschool {
+  padding: 50px 0;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 200;
+  font-size: $font-size-4;
+  line-height: 22px;
+
+  @media (max-width: $break-phone) {
+    font-size: $font-size-3-phone;
+  }
+
+  @media (max-width: $break-tablet) {
+    padding: 40px 0;
+  }
+
+  &__school {
+    @media (max-width: $break-phone) {
+      display: none;
+    }
+  }
+}
+
+.separator {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #666666;
+}

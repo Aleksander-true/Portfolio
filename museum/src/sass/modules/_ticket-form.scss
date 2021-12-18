@@ -1,0 +1,133 @@
+.ticket-form {
+  display: block;
+  font-size: $font-size-4;
+  font-weight: 300;
+  line-height: 26px;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: 300;
+  }
+
+  &__customize-radio-button,
+  &__radio-button {
+    box-sizing: border-box;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 5px;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  }
+
+  &__customize-radio-button {
+    opacity: 1;
+    border: 3px solid $bg-dark;
+    border-radius: 50%;
+
+    &:after {
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      display: none;
+      height: 6px;
+      width: 6px;
+      border-radius: 50%;
+      background-color: $bg-dark;
+    }
+  }
+
+  &__radio-label {
+    display: block;
+    position: relative;
+    padding-left: 40px;
+    margin: 50px 0 -25px;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__uppertext {
+    width: 100%;
+    margin-top: -22px;
+    margin-bottom: 15px;
+    text-align: left;
+
+    @media (max-width: $break-small-laptop) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__amount-number {
+    width: 70px;
+    height: 45px;
+    padding: 0;
+    background: transparent;
+    color: $font-color-dark;
+    font-size: $font-size-4;
+    line-height: 50px;
+    font-weight: 700;
+    border: none;
+    text-align: center;
+    margin: 0 auto;
+
+    &_wide {
+      font-size: $font-size-3;
+      font-weight: 700;
+      width: 70px;
+
+      @media (max-width: $break-phone) {
+        font-size: $font-size-3-phone;
+        line-height: 21px;
+        width: 40px;
+      }
+    }
+
+    &_small {
+      width: 35px;
+      height: 25px;
+      font-size: $font-size-5;
+      line-height: 21px;
+      text-align: end;
+    }
+  }
+}
+
+.ticket-form__radio-button:checked
+  ~ .ticket-form__customize-radio-button::after {
+  display: block;
+}
+
+.buy-ticket__calculator {
+  position: relative;
+  font-size: $font-size-3;
+  font-weight: 700;
+  line-height: 33px;
+  letter-spacing: 1.65px;
+  margin-top: 45px;
+
+  @media (max-width: $break-small-laptop) {
+    left: 0;
+    margin-top: 20px;
+  }
+
+  @media (max-width: $break-tablet) {
+    margin-top: 50px;
+  }
+
+  @media (max-width: $break-phone) {
+    font-size: $font-size-3-phone;
+    line-height: 19px;
+    margin-top: 25px;
+    letter-spacing: 0;
+  }
+}

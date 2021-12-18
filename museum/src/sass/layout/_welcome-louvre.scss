@@ -1,0 +1,101 @@
+.welcome-louvre {
+  position: relative;
+  //height: 810px;
+
+  @media (max-width: $break-small-laptop) {
+  }
+  & .wrapper {
+    @media (max-width: $break-tablet) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: auto;
+    }
+  }
+
+  &__title-wrapper {
+    position: absolute;
+    top: 150px;
+    left: 0;
+    max-width: 600px;
+
+    @media (max-width: $break-laptop) {
+      top: 20%;
+    }
+
+    @media (max-width: $break-small-laptop) {
+      top: 50px;
+    }
+
+    @media (max-width: $break-tablet) {
+      position: relative;
+      top: 0;
+    }
+
+    @media (max-width: $break-phone) {
+      padding: 10px 0;
+    }
+  }
+
+  &__title {
+    @media (max-width: $break-small-laptop) {
+      max-width: 400px;
+      line-height: 90px;
+    }
+
+    @media (max-width: $break-tablet) {
+      text-align: center;
+      margin-top: -10px;
+      line-height: 60px;
+    }
+
+    @media (max-width: $break-phone) {
+      line-height: 40px;
+    }
+  }
+
+  &__subtitle {
+    position: relative;
+    margin: 25px 0 75px;
+    font-size: $font-size-3;
+    line-height: 33px;
+    letter-spacing: 2px;
+
+    @media (max-width: $break-laptop) {
+      margin: 25px 0 50px;
+    }
+
+    @media (max-width: $break-small-laptop) {
+      margin: 25px 0 50px;
+      font-size: $font-size-subtitle-laptop;
+      line-height: 28px;
+    }
+
+    @media (max-width: $break-tablet) {
+      position: relative;
+      margin: 25px 0 50px;
+      font-size: $font-size-subtitle-tablet;
+      line-height: 23px;
+    }
+
+    @media (max-width: $break-phone) {
+      font-size: $font-size-subtitle-phone;
+      line-height: 19px;
+      margin: 25px 0 40px;
+    }
+  }
+
+  &__button {
+    @media (max-width: $break-tablet) {
+      display: none;
+    }
+  }
+
+  &.open .welcome-louvre__title-wrapper {
+    visibility: hidden;
+
+    @media (max-width: $break-tablet) {
+      visibility: visible;
+    }
+  }
+}

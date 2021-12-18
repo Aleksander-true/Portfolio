@@ -1,0 +1,236 @@
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 75px 0;
+  padding-bottom: 85px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+
+  @media (max-width: $break-laptop) {
+    height: 0;
+    padding-bottom: 45.1%;
+    margin-top: 35px;
+  }
+
+  @media (max-width: $break-tablet) {
+    margin-top: 20px;
+  }
+
+  @media (max-width: $break-tablet) {
+    margin-top: 15px;
+  }
+
+  &__tool-bar {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 5px;
+    column-gap: 5px;
+    width: 1440px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 85px;
+    padding: 0 30px;
+    background-color: rgba(0, 0, 0);
+
+    @media (max-width: $break-small-laptop) {
+      height: 62px;
+      padding: 0 40px;
+      column-gap: 30px;
+    }
+
+    @media (max-width: $break-tablet) {
+      height: 55px;
+      padding: 0 30px;
+      column-gap: 30px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: $break-phone) {
+      padding: 0 20px;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 220px;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+
+    @media (max-width: $break-small-laptop) {
+      width: 152px;
+    }
+
+    @media (max-width: $break-tablet) {
+      width: 80px;
+    }
+
+    @media (max-width: $break-phone) {
+      width: 50px;
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+
+.video-player {
+  height: 100%;
+  width: 100%;
+}
+
+.speed-rate {
+  width: fit-content;
+  padding: 5px;
+  position: absolute;
+  visibility: hidden;
+  bottom: 180px;
+  left: 40px;
+  color: white;
+  font-size: 1.5em;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.video-player.shift-left {
+  animation: right 1s linear reverse;
+  visibility: visible;
+}
+
+.video-player.shift-right {
+  animation: left 1s linear reverse;
+  visibility: visible;
+}
+
+.video-wrapper__video-preview {
+  position: absolute;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 85px);
+  width: 100%;
+  visibility: hidden;
+}
+
+.video-wrapper__video-preview img {
+  height: 100%;
+  width: auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .video-wrapper__video-preview img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.shift-right {
+  animation: right 1s linear;
+  visibility: visible;
+}
+
+.shift-left {
+  animation: left 1s linear;
+  visibility: visible;
+}
+
+@keyframes right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.button_playlist {
+  position: absolute;
+  top: 45px;
+  right: 50px;
+  width: 140px;
+  height: 40px;
+  padding: 5px;
+  font-weight: normal;
+  font-size: 20px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+
+.button_playlist:hover {
+  background-color: rgb(0, 0, 0);
+  text-decoration: underline;
+}
+
+.video-player__playlist {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: flex-start;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 50px;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+}
+
+.playlist__close-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  background-image: url("../assets/svg/ballot.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.playlist__close-button:hover {
+  opacity: 0.5;
+}
+
+.playlist__poster {
+  width: 400px;
+  height: 300px;
+  padding: 20px;
+  color: #fff;
+  font-size: 20px;
+}
+
+.playlist__poster:hover {
+  background-color: rgba(255, 255, 255, 0.22);
+  border-radius: 20px;
+}
+
+.playlist__poster img {
+  width: 100%;
+}
+
+.marked {
+  font-weight: 400;
+  color: #24809e;
+}

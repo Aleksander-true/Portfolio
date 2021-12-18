@@ -1,0 +1,155 @@
+.button {
+  border-radius: 10px;
+  border: none;
+  font-size: $font-size-4;
+  font-family: $font-family-main;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-align: center;
+  transition: all 0.3s;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+
+  &:hover {
+    background-color: $font-gold;
+  }
+
+  &_colored {
+    width: 360px;
+    height: 75px;
+    line-height: 75px;
+    background-color: $dark-red;
+    color: $font-color-light;
+
+    @media (max-width: $break-small-laptop) {
+      font-size: $font-size-subtitle-tablet;
+      line-height: 60px;
+      width: 300px;
+      height: 60px;
+    }
+  }
+
+  &_book {
+    width: 220px;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    border-radius: 0;
+  }
+
+  &_small {
+    position: relative;
+    width: 175px;
+    height: 50px;
+
+    border-radius: 2px;
+    line-height: 50px;
+    color: $font-color-light;
+    background-color: $bg-dark;
+  }
+}
+
+.button__sign_minus {
+  display: block;
+  position: relative;
+  height: 3px;
+  width: 18px;
+  background-color: $font-color-dark;
+  cursor: pointer;
+
+  &_light {
+    height: 2px;
+    width: 10px;
+    background-color: $font-color-light;
+  }
+}
+
+.button__sign_plus {
+  display: block;
+  position: relative;
+  right: 0;
+  height: 3px;
+  width: 18px;
+  background-color: $font-color-dark;
+
+  &:after {
+    content: "";
+    display: block;
+    position: relative;
+    right: 0;
+    transform: rotate(90deg);
+    height: 3px;
+    width: 18px;
+    background-color: $font-color-dark;
+  }
+
+  &_light {
+    height: 2px;
+    width: 10px;
+    background-color: $font-color-light;
+
+    &:after {
+      height: 2px;
+      width: 10px;
+      background-color: $font-color-light;
+    }
+  }
+}
+
+.button_ticket-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 45px;
+  background-color: transparent;
+  font-size: 36px;
+  color: $font-color-light;
+  border: none;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.button_booking-tickets {
+  width: 35px;
+  height: 24px;
+  background-color: $bg-dark;
+  border-radius: 0;
+  padding: 10px 12px;
+}
+
+.button_credit-card {
+  position: relative;
+  width: 28px;
+  height: 16px;
+  border-radius: 0;
+  background-color: #ffffff;
+  background-image: url("../assets/svg/arrow_small.svg");
+  background-repeat: no-repeat;
+  background-position: 11px 10px;
+  //border: 1px solid $border-credit-sard;
+
+  &_mirror {
+    transform: rotate(180deg);
+  }
+}
+
+.circle {
+  position: absolute;
+  background-color: #fff;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: scale 0.5s ease-out;
+}
+
+@keyframes scale {
+  to {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
+}

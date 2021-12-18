@@ -1,0 +1,119 @@
+.video-journey {
+  & .section__text {
+    @media (max-width: $break-small-laptop) {
+      display: none;
+    }
+  }
+  & .wrapper {
+    overflow: hidden;
+  }
+
+  &__slider {
+    position: relative;
+    width: 100%;
+  }
+
+  &__slider__container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    left: calc(-33% - 42px);
+    //column-gap: 20px;
+    width: 1000%;
+    height: auto;
+    transition: left 0.8s ease-in-out;
+
+    & .iframe-slide {
+      box-sizing: content-box;
+      position: relative;
+      width: 452px;
+      height: 254px;
+      border: none;
+      border-right: 42px solid transparent;
+
+      @media (max-width: $break-laptop) {
+        width: calc(33.4vw - 42px);
+        height: calc((33.4vw - 42px) * 0.567);
+      }
+
+      @media (max-width: $break-tablet) {
+        width: calc(48.7vw - 20px);
+        height: calc((48.7vw - 20px) * 0.567);
+      }
+
+      @media (max-width: $break-phone) {
+        width: calc(47.7vw - 20px);
+        height: calc((47.7vw - 20px) * 0.567);
+      }
+
+      &_link,
+      &_img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &.wrapper__flex {
+      column-gap: 42px;
+      @media (max-width: $break-tablet) {
+        column-gap: 20px;
+      }
+    }
+  }
+}
+
+.iframe-slide {
+  background-size: cover;
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+#_2OR0OCr6uRE {
+  background-image: url("https://i.ytimg.com/vi/2OR0OCr6uRE/sddefault.jpg");
+}
+#_zp1BXPX8jcU {
+  background-image: url("https://i.ytimg.com/vi/zp1BXPX8jcU/sddefault.jpg");
+}
+#_Vi5D6FKhRmo {
+  background-image: url("https://i.ytimg.com/vi/Vi5D6FKhRmo/sddefault.jpg");
+}
+#_NOhDysLnTvY {
+  background-image: url("https://i.ytimg.com/vi/NOhDysLnTvY/sddefault.jpg");
+}
+#_aWmJ5DgyWPI {
+  background-image: url("https://i.ytimg.com/vi/aWmJ5DgyWPI/sddefault.jpg");
+}
+
+.video__button-shape {
+  fill: #212121;
+  fill-opacity: 0.8;
+}
+
+.video__button-icon {
+  fill: #ffffff;
+}
+
+.video__button:focus {
+  outline: none;
+}
+
+.iframe-slide:hover .video__button-shape,
+.video__button:focus .video__button-shape {
+  fill: #ff0000;
+  fill-opacity: 1;
+}
+
+.video__button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  padding: 0;
+  width: 100px;
+  height: 72px;
+  border: none;
+  background-color: transparent;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
