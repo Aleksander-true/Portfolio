@@ -1,0 +1,16 @@
+.virtual-tour {
+  & .wrapper__flex {
+    @media (max-width: $break-laptop) {
+      justify-content: space-evenly;
+      column-gap: 0;
+    }
+
+    @media (max-width: $break-tablet) {
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: $break-phone) {
+      margin-bottom: 0;
+    }
+  }
+}

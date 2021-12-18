@@ -1,0 +1,18 @@
+.section_visible {
+  animation: title-arriving 0.8s ease-out;
+}
+
+@keyframes title-arriving {
+  0% {
+    transform: translateY(100px) scale(0.6);
+    opacity: 0;
+  }
+  80% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+  }
+}

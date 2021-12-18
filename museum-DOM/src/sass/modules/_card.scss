@@ -1,0 +1,104 @@
+.card {
+  display: block;
+  text-decoration: none;
+  color: $font-color-dark;
+  margin-top: 75px;
+
+  @media (max-width: $break-laptop) {
+    margin-top: 60px;
+  }
+  @media (max-width: $break-tablet) {
+    margin-top: 42px;
+  }
+
+  &:hover .title {
+    color: $font-gold;
+  }
+
+  &:hover .card__title:after {
+    width: 100%;
+  }
+
+  &__img {
+    width: 440px;
+
+    @media (max-width: $break-laptop) {
+      width: 330px;
+    }
+
+    @media (max-width: $break-tablet) {
+      width: 280px;
+    }
+  }
+
+  &__title {
+    position: relative;
+    font-size: $font-size-2;
+    font-weight: 400;
+    margin: 20px 0;
+
+    @media (max-width: $break-laptop) {
+      font-size: $font-size-2-laptop;
+      line-height: 31px;
+      letter-spacing: 3px;
+    }
+
+    @media (max-width: $break-tablet) {
+      font-size: $font-size-2-tablet;
+      line-height: 28px;
+      margin: 15px 0;
+    }
+
+    @media (max-width: $break-phone) {
+      font-size: $font-size-2-phone;
+      line-height: 20px;
+      letter-spacing: 5px;
+      margin: 17px 0 20px;
+    }
+
+    &:after {
+      display: block;
+      position: relative;
+      top: 10px;
+      content: "";
+      width: 300px;
+      height: 2px;
+      background-color: #710707;
+      transition: width 0.5s;
+
+      @media (max-width: $break-laptop) {
+        width: 150px;
+      }
+    }
+  }
+
+  &__subtitle {
+    font-size: $font-size-4;
+    font-weight: 200;
+    margin-bottom: 10px;
+
+    @media (max-width: $break-laptop) {
+      font-size: $font-size-4-laptop;
+      line-height: 24px;
+    }
+
+    @media (max-width: $break-tablet) {
+      font-size: $font-size-4-tablet;
+      line-height: 22px;
+    }
+
+    @media (max-width: $break-phone) {
+      font-size: $font-size-4-phone;
+      line-height: 19px;
+    }
+
+    &-description {
+      font-size: $font-size-5;
+      font-weight: 200;
+
+      @media (max-width: $break-laptop) {
+        font-size: $font-size-5-laptop;
+      }
+    }
+  }
+}

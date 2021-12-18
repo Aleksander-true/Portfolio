@@ -1,0 +1,13 @@
+.parallax {
+  height: 400px;
+  width: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../assets/img/parallax.jpg");
+
+  @media (max-width: $break-tablet) {
+    height: 300px;
+  }
+}

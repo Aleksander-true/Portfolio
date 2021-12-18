@@ -1,0 +1,38 @@
+.gallery__colomns {
+  position: relative;
+  column-width: auto;
+  column-count: 3;
+  column-gap: 36px;
+  row-gap: 24px;
+  width: 100%;
+  margin-top: 75px;
+  overflow: hidden;
+
+  @media (max-width: $break-laptop) {
+    margin-top: 60px;
+  }
+
+  @media (max-width: $break-tablet) {
+    margin-top: 40px;
+    column-count: 2;
+    column-gap: 24px;
+  }
+}
+
+.gallery_img {
+  display: block;
+  width: 456px;
+  margin-bottom: 24px;
+
+  @media (max-width: $break-laptop) {
+    width: 100%;
+  }
+
+  &:nth-child(5n) {
+    break-after: column;
+  }
+
+  &:nth-child(10n + 1) {
+    margin-top: 50px;
+  }
+}

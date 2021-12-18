@@ -1,0 +1,15 @@
+.header {
+  padding: 50px 0;
+
+  @media (max-width: $break-laptop) {
+    padding: 40px 0;
+  }
+
+  @media (max-width: $break-tablet) {
+    padding: 35px 0;
+  }
+
+  @media (max-width: $break-phone) {
+    padding: 30px 0;
+  }
+}
