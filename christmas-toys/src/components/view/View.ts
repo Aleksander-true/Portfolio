@@ -1,4 +1,4 @@
-import Warning from './Warning';
+import InfoWindow from './InfoWindow';
 
 export default class View {
 
@@ -25,7 +25,7 @@ export default class View {
     parentElement.innerHTML = '';
 
     if (filteringData.length == 0) {
-      new Warning(parentElement, 'Извините,', 'совпадений не обнаружено');
+      new InfoWindow(parentElement, 'Извините,', 'совпадений не обнаружено');
       return;
     }
 

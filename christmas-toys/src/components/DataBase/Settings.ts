@@ -1,3 +1,4 @@
+import Modal from '../view/Modal';
 import DataBase from './DataBase';
 
 export default class Settings extends DataBase implements ISettings {
@@ -122,8 +123,11 @@ export default class Settings extends DataBase implements ISettings {
 
   updateCartStore(toyNumber:string | undefined):boolean {
     if (!toyNumber) return false;
-    const MAX_CART_CAPACITY = 10;
-    if (this.cart.length >= MAX_CART_CAPACITY && !this.cart.includes(toyNumber)) return false;
+    const MAX_CART_CAPACITY = 20;
+    if (this.cart.length >= MAX_CART_CAPACITY && !this.cart.includes(toyNumber)) {
+      new Modal(document.body, 'Извините,', 'все слоты заполнены');
+      return false;
+    } 
 
     const index = this.cart.indexOf(toyNumber);
     if (index !== -1) {

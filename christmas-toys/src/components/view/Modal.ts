@@ -1,12 +1,17 @@
-export default class Warning{
+export default class Modal {
 
   modal: HTMLElement;
   
-  constructor(parentElement:HTMLElement, title:string, description: string){
-    this.modal = this.create(parentElement, 'div', ['modal', 'modal_warning']);
+  constructor(parentElement:HTMLElement, title:string, description: string, classes: string[] | string = 'modal', isCloseBtn = true){
+    this.modal = this.create(parentElement, 'div', classes);
     const modalContainer = this.create(this.modal, 'div', 'modal__container');
     this.create(modalContainer, 'h2', 'modal__title', title);
     this.create(modalContainer, 'p', 'modal__description', description);
+    if (isCloseBtn) {
+      const closeBtn = this.create(modalContainer, 'div', 'close');
+      closeBtn.addEventListener('click', () => this.remove());
+    }
+    
   }
 
   create(parentElement: HTMLElement, tag = 'div', classNames: string[] | string = '', innerHtm = '') {
@@ -16,5 +21,9 @@ export default class Warning{
     element.innerHTML = innerHtm;
     parentElement.append(element);
     return element;
+  }
+
+  remove(){
+    this.modal.remove();
   }
 }
