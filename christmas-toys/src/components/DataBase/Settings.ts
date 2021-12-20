@@ -162,3 +162,7 @@ export default class Settings extends DataBase implements ISettings {
     this.filterOut();
   }
 }
+
+const settings = new Settings();
+
+export settings;
