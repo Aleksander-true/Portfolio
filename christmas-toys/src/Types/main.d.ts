@@ -12,10 +12,19 @@ interface IData {
 
 interface ISettings {
   sortType: string;
-  searchExp: RegExp;
-  cart: string[];
-  filteredCardNumbers: string[];
-  filter: { shape: string[]; color: string[]; size: string[]; favorite: string[]; qty: string[]; year: string[] };
+  filters: Record<keyof IData, string[]> | Record<string, never>;
+  sortFuncs: SortFunc[];
+  chosenToyNums: string[];
+
+  toggleFilter(key: keyof IData, value: string): void;
+  SortFilter(func: SortFunc): void;
 }
 
-type DataKey = 'num' | 'name' | 'count' | 'year' | 'shape' | 'color' | 'size' ; 
+type IFilters<T> = {
+  [Property in keyof T]: string[];
+};
+
+type FilterFunc = (value:IData)=>boolean;
+type SortFunc = (a:IData, b:IData)=>number;
+
+

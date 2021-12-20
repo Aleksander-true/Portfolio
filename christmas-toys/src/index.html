@@ -47,35 +47,9 @@
     <input type="checkbox" class="settings__check" id="settings-check">
     <label class="settings" for="settings-check"></label>
     <div class="control">
-      <div class="control__item">
+      <div class="control__item" id="filter-by-value">
         <h3 class="control__title">Фильтр по значению</h3>
-        <div class="filter" data-filter-value="shape">
-          <span class="filter__text">Форма:</span>
-          <button class="filter__icon icon_ball active" data-filter-value="шар"></button>
-          <button class="filter__icon icon_cone active" data-filter-value="шишка"></button>
-          <button class="filter__icon icon_bell active" data-filter-value="колокольчик"></button>
-          <button class="filter__icon icon_snowflake active" data-filter-value="снежинка"></button>
-          <button class="filter__icon icon_figure active" data-filter-value="фигурка"></button>
-        </div>
-        <div class="filter" data-filter-value="color">
-          <span class="filter__text">Цвет:</span>
-          <button for="color-white" class="filter__check filter__check_white active" data-filter-value="белый"></button>
-          <button for="color-red" class="filter__check filter__check_red active" data-filter-value="красный"></button>
-          <button for="color-yellow" class="filter__check filter__check_yellow active"
-            data-filter-value="желтый"></button>
-          <button for="color-blue" class="filter__check filter__check_blue active" data-filter-value="синий"></button>
-          <button for="color-green" class="filter__check filter__check_green active"
-            data-filter-value="зелёный"></button>
-        </div>
-        <div class="filter" data-filter-value="size">
-          <span class="filter__text">Размер:</span>
-          <button class="filter__icon icon_ball filter__icon_small active" data-filter-value="малый"></button>
-          <button class="filter__icon icon_ball active" data-filter-value="средний"></button>
-          <button class="filter__icon icon_ball filter__icon_big active" data-filter-value="большой"></button>
-        </div>
-        <div class="filter" data-filter-value="favorite">Только любимые:
-          <button class="filter__check filter__check_invert" data-filter-value="да"></button>
-        </div>
+
       </div>
       <div class="range control__item">
         <h3 class="control__title">Фильтр по диапазону</h3>

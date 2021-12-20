@@ -1,0 +1,23 @@
+.filter {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  @media (max-width: $break-mobile-M) {
+    justify-content: space-between;
+  }
+
+  &_hidden {
+    
+    width: 0;
+    height: 0;
+  }
+
+  &__text {
+    flex-basis: 4rem;
+
+    @media (max-width: $break-mobile-M) {
+      display: none;
+    }
+  }
+} 

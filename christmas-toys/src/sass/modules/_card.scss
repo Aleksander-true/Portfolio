@@ -13,8 +13,8 @@
   border: 1px solid #278D9F;
   background-color: rgba(31, 112, 127, 0.3);
   cursor: pointer;
-
-
+  animation: scale 0.5s;
+  
   &__title {
     grid-area: title;
     font-size: var(--h2-font-size);
@@ -77,5 +77,14 @@
       border-bottom: 8px solid #CBB77A;
     }
 
+  }
+}
+
+@keyframes scale {
+  from {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
   }
 }
