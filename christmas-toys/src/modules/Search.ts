@@ -1,3 +1,4 @@
+import { settings } from './Settings';
 
 export default class Search {
   input: HTMLInputElement;
@@ -14,6 +15,18 @@ export default class Search {
 
   inputHandler(e:Event) {
     const target = e.target as HTMLInputElement;
+
+    if (target.value) {
+      this.input.classList.add('active');
+    } else {
+      this.input.classList.remove('active');
+    }
+
+    settings.filters[CardKeys.Name] = [target.value];
+
+    const controlElement = document.getElementById('control') as HTMLElement;
+    const customEvent = new Event( 'updateInput', { bubbles: true });
+    controlElement.dispatchEvent(customEvent);
   }
 
   clearSearch(){

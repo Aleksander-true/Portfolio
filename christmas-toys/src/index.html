@@ -46,21 +46,20 @@
   <template id="toy-page-template">
     <input type="checkbox" class="settings__check" id="settings-check">
     <label class="settings" for="settings-check"></label>
-    <div class="control">
+    <div class="control" id="control">
       <div class="control__item" id="filter-by-value">
         <h3 class="control__title">Фильтр по значению</h3>
-
       </div>
       <div class="range control__item">
         <h3 class="control__title">Фильтр по диапазону</h3>
-        <div for="" class="range__qty">Количество экземпляров:</div>
+        <div for="" class="range__quantity">Количество экземпляров:</div>
         <div class="range-slider">
-          <output class="output range-slider__output" id="qty-range-min"></output>
-          <div class="range-slider__input" id="qty-range"></div>
-          <output class="output range-slider__output" id="qty-range-max"></output>
+          <output class="output range-slider__output" id="quantity-range-min"></output>
+          <div class="range-slider__input" id="quantity-range"></div>
+          <output class="output range-slider__output" id="quantity-range-max"></output>
         </div>
 
-        <label for="" class="range__qty">Год приобретения:</label>
+        <label for="" class="range__quantity">Год приобретения:</label>
         <div class="range-slider">
           <output class="output range-slider__output" id="year-range-min"></output>
           <div class="range-slider__input" id="year-range"></div>
@@ -68,22 +67,12 @@
         </div>
 
       </div>
-      <div class="sort control__item">
+      <div class="sort control__item" id="sorting-cards">
         <h3 class="control__title">Сортировка</h3>
-        <select class="sort__select" name="" id="">
-          <option class="sort__option" value="sort-name-top">По названию от 'А' до 'Я'</option>
-          <option class="sort__option" value="sort-name-bottom">По названию от 'Я' до 'А'</option>
-          <option class="sort__option" value="sort-count-max">По количеству по возрастанию</option>
-          <option class="sort__option" value="sort-count-min">По количеству по убыванию</option>
-        </select>
-        <div class="sort__buttons">
-          <button class="button button_reset" id="reset-filters">Сбросить фильтры</button>
-          <button class="button button_reset" id="reset-settings">По умолчанию</button>
-        </div>
       </div>
     </div>
 
-    <div class="card-container" id="card-container"></div>
+    <!--<div class="card-container" id="card-container"></div>-->
 
   </template>
 

@@ -1,4 +1,28 @@
-interface IData {
+const enum CardKeys {
+  Number = 'num',
+  Name = 'name',
+  Count = 'count',
+  Year = 'year',
+  Shape = 'shape',
+  Color = 'color',
+  Size = 'size',
+  Favorite = 'favorite',
+}
+
+enum Shape { 
+  Ball = 'шар',
+  Bell = 'колокольчик',
+  Con = 'шишка',
+  Snowflake = 'снежинка',
+  Figure = 'фигурка',
+}
+
+const enum Favorite {
+  True = 'да',
+  False = 'нет',
+}
+
+type Card = {
   num: string;
   name: string;
   count: string;
@@ -6,25 +30,28 @@ interface IData {
   shape: string;
   color: string;
   size: string;
+  favorite: string;
+};
+
+interface IToy extends Card{
   favorite: boolean;
-  checked?: boolean;
 }
 
 interface ISettings {
-  sortType: string;
-  filters: Record<keyof IData, string[]> | Record<string, never>;
-  sortFuncs: SortFunc[];
+  filters: Record<keyof IToy, string[]> | Record<string, never>;
+  sortFunc: SortFunc;
   chosenToyNums: string[];
 
-  toggleFilter(key: keyof IData, value: string): void;
-  SortFilter(func: SortFunc): void;
+  toggleFilter(key: keyof ICard, value: string): void;
+  toggleRangeFilter(key: keyof ICard, value: string[]):void;
 }
 
-type IFilters<T> = {
-  [Property in keyof T]: string[];
-};
+const enum Direction {
+  Direct = 'direct',
+  Reverse = 'reverse',
+}
 
-type FilterFunc = (value:IData)=>boolean;
-type SortFunc = (a:IData, b:IData)=>number;
+type FilterFunc = (value:IToy)=>boolean;
+type SortFunc = (a:IToy, b:IToy)=>number;
 
 

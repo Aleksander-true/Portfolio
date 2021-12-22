@@ -1,11 +1,15 @@
-import StartPage from './StartPage';
-import ToysPage from './ToysPage';
+import Search from './Search';
+import StartPage from '../pages/StartPage';
+import ToysPage from '../pages/ToysPage';
+import ToyCart from './ToyCart';
 
-export default class Header {
+export default class Header { 
 
   constructor() {
     const header = document.getElementById('header') as HTMLElement;
     header.addEventListener('click', (e) => this.clickHandler(e));
+    new Search('input-search');
+    new ToyCart('cart-number');
   }
 
   clickHandler(e: Event) {

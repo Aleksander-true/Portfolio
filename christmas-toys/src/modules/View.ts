@@ -1,4 +1,4 @@
-import { settings } from './settings';
+import { settings } from './Settings';
 
 export default class View {
 
@@ -6,7 +6,6 @@ export default class View {
     if (typeof parentElement === 'string') {
       parentElement = document.getElementById(parentElement) as HTMLElement;
     }
-    
     const element = document.createElement(tag);
 
     if (!Array.isArray(classNames)) classNames = [classNames];
@@ -24,7 +23,7 @@ export default class View {
     element.forEach( item => item.classList.toggle('active'));
   }
 
-  newCard(card:IData): HTMLElement{
+  newCard(card:IToy): HTMLElement{
     const CARD_LEGEND_COUNT = 'Количество: ';
     const CARD_LEGEND_YEAR = 'Год выпуска: ';
     const CARD_LEGEND_SHAPE = 'Форма: ';

@@ -3,8 +3,9 @@ import { Options } from 'nouislider';
 export const config = {
   filters: [
     { 
+      parentElementID: 'filter-by-value',
       text:'Форма: ', 
-      key: 'shape' as keyof IData, 
+      key: CardKeys.Shape, 
       classes: ['filter'],
       options:[
         { value:'шар', classes: ['filter__icon', 'filter__icon_ball'] }, 
@@ -15,8 +16,9 @@ export const config = {
       ],
     },
     { 
+      parentElementID: 'filter-by-value',
       text:'Цвет: ', 
-      key: 'color' as keyof IData, 
+      key: CardKeys.Color, 
       classes: ['filter'],
       options:[
         { value:'белый', classes: ['filter__check', 'filter__check_white'] }, 
@@ -27,8 +29,9 @@ export const config = {
       ],
     },
     { 
+      parentElementID: 'filter-by-value',
       text:'Размер: ', 
-      key: 'size' as keyof IData, 
+      key: CardKeys.Size, 
       classes: ['filter'],
       options:[
         { value:'большой', classes: ['filter__icon', 'filter__icon_ball', 'filter__icon_big'] },
@@ -37,24 +40,29 @@ export const config = {
       ],
     },
     { 
+      parentElementID: 'filter-by-value',
       text:'Любимые: ', 
-      key: 'favorite' as keyof IData, 
+      key: CardKeys.Favorite, 
       classes: ['filter'],
       options:[
         { value:'да', classes: ['filter__check'] }, 
       ],
     },
   ],
-  sorts: [
-    { name: 'sort-name-top', value: 'name', direction: 'direct' },
-    { name: 'sort-name-bottom', value: 'name', direction: 'reverse' },
-    { name: 'sort-count-max', value: 'count', direction: 'direct' },
-    { name: 'sort-count-min', value: 'count', direction: 'reverse' },
-  ],
+  select: {
+    parentElementID: 'sorting-cards',
+    classes: 'sort__select',
+    options: [
+      { value: 'sort-name-top', text: 'По названию от "А" до "Я"', key: CardKeys.Name, direction: Direction.Direct, classes: 'sort__option' },
+      { value: 'sort-name-bottom', text: 'По названию от "Я" до "А"', key: CardKeys.Name, direction: Direction.Reverse, classes: 'sort__option' },
+      { value: 'sort-count-max', text: 'По количеству по возрастанию', key: CardKeys.Count, direction: Direction.Direct, classes: 'sort__option' },
+      { value: 'sort-count-min', text: 'По количеству по убыванию', key: CardKeys.Count, direction: Direction.Reverse, classes: 'sort__option' },
+    ],
+  },
   rangeFilters: {
-    qtyRange: {
-      key: 'count' as keyof IData, 
-      classes: 'qty-range',
+    quantityRange: {
+      key: 'count' as keyof IToy, 
+      classes: 'quantity-range',
       options: {
         start: [1, 12], 
         connect: true, 
@@ -63,13 +71,13 @@ export const config = {
       } as Options,
     },
     yearRange: {
-      key: 'year' as keyof IData, 
-      classes: 'qty-range',
+      key: 'year' as keyof IToy, 
+      classes: 'quantity-range',
       options: {
         start: [1940, 2020], 
         connect: true, 
         range:{ min: 1940, max: 2020 }, 
-        step: 5,
+        step: 10,
       } as Options,
     },
   },
