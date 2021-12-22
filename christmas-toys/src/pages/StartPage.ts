@@ -1,4 +1,4 @@
-import View from '../view/View';
+import View from '../modules/View';
 import ToysPage from './ToysPage';
 
 export default class StartPage {

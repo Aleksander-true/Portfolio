@@ -1,27 +1,26 @@
 
-import noUiSlider, { Options, target } from 'nouislider';
+import noUiSlider, { target } from 'nouislider';
 import 'nouislider/dist/nouislider.css';
+import { config } from '../../config';
+import { settings } from '../../modules/Settings';
 import './_range-slider.scss';
 
 export default class RangeSlider {
   slider: target;
 
-  constructor(targetID: string, options: Options) {
+  configRange: typeof config.rangeFilters.quantityRange;
+
+  constructor(targetID: string, configRange: typeof config.rangeFilters.quantityRange) {
+    this.configRange = configRange;
     this.slider = document.getElementById(targetID) as target;
-
-    noUiSlider.create(this.slider, options);
-
+    
+    noUiSlider.create(this.slider, configRange.options);
+    if (settings.filters[configRange.key]) {
+      this.slider.noUiSlider?.set(settings.filters[configRange.key]);
+    }
+    
     this.slider.noUiSlider?.on('update', () => this.setOutput( this.slider.noUiSlider?.get() as string[], this.slider.id ));
-    this.slider.noUiSlider?.on('update', () => this.customEvent(this.slider));
-  }
-
-  setRange( [min, max]: string[]) {
-    this.slider.noUiSlider?.set([min, max]);
-  }
-
-  getRange() {
-    const [min, max] = this.slider.noUiSlider?.get()  as string[];
-    return [this.format(min), this.format(max)];
+    this.slider.noUiSlider?.on('update', () => this.updateSettings(this.slider, configRange.key, this.slider.noUiSlider?.get() as string[]));
   }
 
   setOutput([min, max]: string[], elementID: string):void {
@@ -32,13 +31,19 @@ export default class RangeSlider {
     outputMax.textContent = this.format(max); 
   }
 
-  format(n:string) {
-    return String(Math.round(+n));
+  updateSettings(targetElement: HTMLElement, key: keyof IToy, [min, max]: string[]) {
+    settings.toggleRangeFilter(key, [this.format(min), this.format(max)]);
+
+    const customEvent = new Event( 'updateFilter', { bubbles: true });
+    targetElement.dispatchEvent(customEvent);
   }
 
-  customEvent(element : target){
-    const event = new Event( 'update', { bubbles: true });
-    element.dispatchEvent(event);
+  setDefault(){
+    this.slider.noUiSlider?.set(this.configRange.options.start as number[]);
+  }
+
+  format(n:string) {
+    return String(Math.round(+n));
   }
 }
 

@@ -1,18 +1,15 @@
-import Settings from '../DataBase/Settings';
-import View from '../view/View';
 import Search from './Search';
-import StartPage from './StartPage';
-import ToysPage from './ToysPage';
+import StartPage from '../pages/StartPage';
+import ToysPage from '../pages/ToysPage';
+import ToyCart from './ToyCart';
 
-export default class Header {
-
-  search: Search;
+export default class Header { 
 
   constructor() {
-    this.search = new Search('input-search');
-    (new View).updateCartNumber((new Settings).cartNumber);
     const header = document.getElementById('header') as HTMLElement;
     header.addEventListener('click', (e) => this.clickHandler(e));
+    new Search('input-search');
+    new ToyCart('cart-number');
   }
 
   clickHandler(e: Event) {
@@ -26,8 +23,6 @@ export default class Header {
     if (target.getAttribute('href') === '#toys') {
       target.classList.add('active');
       new ToysPage();
-      this.search.focus();
-      this.search.select();
     } 
     
     if (target.getAttribute('href') === '#') {
