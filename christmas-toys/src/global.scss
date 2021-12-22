@@ -4,7 +4,6 @@
 @import "./sass/base/links";
 @import "./sass/base/body";
 @import "./sass/base/wrapper";
-@import "./sass/base/icons";
 @import "./sass/base/button";
 @import "./sass/base/close";
 @import "./sass/layout/header";
@@ -13,10 +12,10 @@
 @import "./sass/layout/card-container";
 @import "./sass/layout/start-page";
 @import "./sass/layout/main";
+@import "./sass/layout/filter";
 @import "./sass/modules/logo";
 @import "./sass/modules/search";
 @import "./sass/modules/cart";
-@import "./sass/modules/filter";
 @import "./sass/modules/output";
 @import "./sass/modules/range-slider";
 @import "./sass/modules/sort";
@@ -24,6 +23,8 @@
 @import "./sass/modules/modal";
 @import "./sass/modules/ball";
 @import "./sass/modules/settings";
+@import "./sass/modules/check";
+@import "./sass/modules/icons";
 
 
 

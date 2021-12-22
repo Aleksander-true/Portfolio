@@ -10,7 +10,7 @@ const devServer = (isDev) =>
         : {
               devServer: {
                   open: true,
-                  port: 3000,
+                  port: 3030,
                   contentBase: path.join(__dirname, 'public'),
               },
           };
