@@ -1,4 +1,4 @@
-import Header from './modules/Header';
+import Header from './components/Header';
 import StartPage from './pages/StartPage';
 
 export default class App {

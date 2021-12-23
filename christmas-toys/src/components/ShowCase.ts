@@ -1,4 +1,4 @@
-import InfoWindow from '../components/modal/InfoWindow';
+import InfoWindow from './modal/InfoWindow';
 import Card from './Card';
 import { settings } from './Settings';
 import View from './View';
@@ -33,7 +33,7 @@ export default class ShowCase extends View {
   }
 
   async filterCards(){
-    let base = await this.getData();
+    let base = await super.getData();
     for (const [keyOfData, values] of Object.entries(settings.filters)) {
       const key = keyOfData as keyof IToy;
       if (key === CardKeys.Favorite) {
@@ -48,17 +48,6 @@ export default class ShowCase extends View {
       }
     }
     return base;
-  }
-
-  async getData(){
-    const response = await fetch('../data.json');
-    let data: IToy[] | never[] = [];
-    try {
-      data = await response.json() as IToy[];
-    } catch {
-      console.log( 'Error getData' );
-    }
-    return data;
   }
 
   sortCards(){

@@ -22,12 +22,12 @@ class Settings implements ISettings{
     }
   }
 
-  toggleChosenToyNums(str: string) {
-    const index = this.chosenToyNums.indexOf(str);
+  toggleChosenToy(num: string, count: string ) {
+    const index = this.chosenToyNums.indexOf(`${num}&${count}`);
     if (index !== -1) {
       this.chosenToyNums.splice(index, 1);
     } else {
-      this.chosenToyNums.push(str);
+      this.chosenToyNums.push(`${num}&${count}`);
     }
   }
 

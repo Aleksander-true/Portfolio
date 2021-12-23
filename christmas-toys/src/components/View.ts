@@ -64,4 +64,15 @@ export default class View {
 
     return container;
   }
+
+  async getData(){
+    const response = await fetch('../data.json');
+    let data: IToy[] | never[] = [];
+    try {
+      data = await response.json() as IToy[];
+    } catch {
+      console.log( 'Error getData' );
+    }
+    return data;
+  }
 }

@@ -2,7 +2,7 @@
 import noUiSlider, { target } from 'nouislider';
 import 'nouislider/dist/nouislider.css';
 import { config } from '../../config';
-import { settings } from '../../modules/Settings';
+import { settings } from '../Settings';
 import './_range-slider.scss';
 
 export default class RangeSlider {

@@ -1,6 +1,7 @@
 import Search from './Search';
 import StartPage from '../pages/StartPage';
 import ToysPage from '../pages/ToysPage';
+import TreePage from '../pages/TreePage';
 import ToyCart from './ToyCart';
 
 export default class Header { 
@@ -18,15 +19,19 @@ export default class Header {
    
     const headerLinks = document.querySelectorAll('.header a');
     headerLinks.forEach( link => link.classList.remove('active'));
-
     
+    if (target.getAttribute('href') === '#') {
+      new StartPage();
+    }
+
     if (target.getAttribute('href') === '#toys') {
       target.classList.add('active');
       new ToysPage();
     } 
-    
-    if (target.getAttribute('href') === '#') {
-      new StartPage();
+
+    if (target.getAttribute('href') === '#tree') {
+      target.classList.add('active');
+      new TreePage();
     }
   }
 

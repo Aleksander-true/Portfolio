@@ -1,4 +1,4 @@
-import Modal from '../components/modal/Modal';
+import Modal from './modal/Modal';
 import { settings } from './Settings';
 import View from './View';
 
@@ -29,21 +29,21 @@ export default class Card extends View {
     (<HTMLElement>templateClone.querySelector('.favorite')).textContent = card.favorite ? (CARD_LEGEND_FAVORITE + Favorite.True) : (CARD_LEGEND_FAVORITE + Favorite.False);
     (<HTMLImageElement>templateClone.querySelector('.card__img')).src = IMG_URL + card.num + IMG_EXTENSION;
   
-    if (settings.chosenToyNums.includes(card.num)) (<HTMLElement>templateClone.querySelector('.card'))?.classList.add('active');
+    if (settings.chosenToyNums.includes(`${card.num}&${card.count}`)) (<HTMLElement>templateClone.querySelector('.card'))?.classList.add('active');
 
-    cardElement.addEventListener('click', (e) => this.clickHandler(e, card.num));
+    cardElement.addEventListener('click', (e) => this.clickHandler(e, card.num, card.count));
     
     parentElement.append(templateClone);
   }
 
-  clickHandler(e:Event, toyNumber: string){
+  clickHandler(e:Event, toyNumber: string, toyCount: string){
     const currentTarget = e.currentTarget as HTMLElement;
     if (settings.chosenToyNums.length >= MAX_CART_CAPACITY && !settings.chosenToyNums.includes(toyNumber)) {
       new Modal(document.body, 'Извините,', 'все слоты заполнены');
       return;
     } 
     super.toggleActive(currentTarget);
-    settings.toggleChosenToyNums(toyNumber);
+    settings.toggleChosenToy(toyNumber, toyCount);
 
     const customEvent = new Event( 'updateToyNums', { bubbles: true });
     currentTarget.dispatchEvent(customEvent);

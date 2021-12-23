@@ -81,4 +81,24 @@ export const config = {
       } as Options,
     },
   },
+  menus: {
+    background: {
+      classes: ['menu', 'menu_background'],
+      text: 'Выберете фон',
+      textClasses: 'menu__title',
+      imgClasses: ['menu__item', 'menu__item_background'],
+      imgURLs: [
+        './assets/bg/1.jpg',
+        './assets/bg/2.jpg',
+        './assets/bg/3.jpg',
+        './assets/bg/4.jpg',
+        './assets/bg/5.jpg',
+        './assets/bg/6.jpg',
+        './assets/bg/7.jpg',
+        './assets/bg/8.jpg',
+        './assets/bg/9.jpg',
+        './assets/bg/10.jpg',
+      ],
+    },
+  },
 };

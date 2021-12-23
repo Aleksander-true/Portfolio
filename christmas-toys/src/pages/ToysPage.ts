@@ -1,9 +1,9 @@
-import View from '../modules/View';
+import View from '../components/View';
 import RangeSlider from '../components/noUiSlider/RangeSlider';
-import Filter from '../modules/Filter';
-import ShowCase from '../modules/ShowCase';
+import Filter from '../components/Filter';
+import ShowCase from '../components/ShowCase';
 import { config } from '../config';
-import Select from '../modules/Select';
+import Select from '../components/Select';
 
 const RESET_BTN_TEXT = 'Сбросить фильтры';
 const DEFAULT_BTN_TEXT = 'По умолчанию';

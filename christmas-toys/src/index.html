@@ -58,22 +58,59 @@
           <div class="range-slider__input" id="quantity-range"></div>
           <output class="output range-slider__output" id="quantity-range-max"></output>
         </div>
-
         <label for="" class="range__quantity">Год приобретения:</label>
         <div class="range-slider">
           <output class="output range-slider__output" id="year-range-min"></output>
           <div class="range-slider__input" id="year-range"></div>
           <output class="output range-slider__output" id="year-range-max"></output>
         </div>
-
       </div>
       <div class="sort control__item" id="sorting-cards">
         <h3 class="control__title">Сортировка</h3>
       </div>
     </div>
+  </template>
 
-    <!--<div class="card-container" id="card-container"></div>-->
+  <template id="tree-page-template">
+    <div class="left-menu" id="left-menu">
+      <div class="menu menu_tree">
+        <h3 class="menu__title">Выберете ёлку</h3>
+        <img class="menu__item" src="./assets/tree/1.png" alt="tree">
+        <img class="menu__item" src="./assets/tree/2.png" alt="tree">
+        <img class="menu__item" src="./assets/tree/3.png" alt="tree">
+        <img class="menu__item" src="./assets/tree/4.png" alt="tree">
+        <img class="menu__item" src="./assets/tree/5.png" alt="tree">
+        <img class="menu__item" src="./assets/tree/6.png" alt="tree">
 
+      </div>
+      <div class="menu menu_garland">
+        <h3 class="menu__title">Гирлянда</h3>
+        <button class="garland-btn garland-btn_multi-color"></button>
+        <button class=" garland-btn garland-btn_red"></button>
+        <button class="garland-btn garland-btn_blue"></button>
+        <button class="garland-btn garland-btn_yellow"></button>
+        <button class="garland-btn garland-btn_green"></button>
+        <div class="switch">
+          <input type="checkbox" name="switch" class="switch__checkbox" id="switch" checked="">
+          <label class="switch__label" for="switch">
+            <div class="switch__inner"></div>
+            <div class="switch__button"></div>
+          </label>
+        </div>
+      </div>
+
+    </div>
+    <div class="tree-container" id="tree-container">
+
+    </div>
+    <div class="right-menu">
+      <div class="menu menu_toys" id="toys-menu">
+        <h3 class="menu__title">Игрушки</h3>
+      </div>
+      <div class="menu menu_toys">
+        <h3 class="menu__title">Вы нарядили</h3>
+      </div>
+    </div>
   </template>
 
   <template id="card-template">
