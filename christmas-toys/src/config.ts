@@ -100,5 +100,19 @@ export const config = {
         './assets/bg/10.jpg',
       ],
     },
+    tree: {
+      classes: ['menu', 'menu_tree'],
+      text: 'Выберете ёлку`',
+      textClasses: 'menu__title',
+      imgClasses: 'menu__item',
+      imgURLs: [
+        './assets/tree/1.png',
+        './assets/tree/2.png',
+        './assets/tree/3.png',
+        './assets/tree/4.png',
+        './assets/tree/5.png',
+        './assets/tree/6.png',
+      ],
+    },
   },
 };

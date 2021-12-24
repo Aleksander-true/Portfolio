@@ -3,11 +3,14 @@ class Settings implements ISettings{
 
   chosenToyNums: string[];
 
+  decorateToyNums: string[];
+
   sortFunc: SortFunc;
 
   constructor() {
     this.filters = {};
     this.chosenToyNums = [];
+    this.decorateToyNums = [];
     this.sortFunc = (a, b)=>0;
   }
 

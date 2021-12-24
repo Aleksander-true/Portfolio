@@ -1,3 +1,4 @@
+import ChoseTree from '../components/ChoseTree';
 import ToysMenu from '../components/ToysMenu';
 import TreeBackground from '../components/TreeBackground';
 import View from '../components/View';
@@ -9,5 +10,6 @@ export default class TreePage extends View{
     const treePage = super.renderPage('main', 'tree-page-template', 'tree');
     new ToysMenu('toys-menu');
     new TreeBackground('left-menu', 'tree-container');
+    new ChoseTree('left-menu', 'tree-container');
   }
 }

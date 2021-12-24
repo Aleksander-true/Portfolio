@@ -47,7 +47,8 @@
   }
 
   &__item_toy {
-    height: 8rem;
+    height: 10rem;
+    width: 10rem;
     padding: 1rem;
   }
 
@@ -63,6 +64,10 @@
     background-color: #278D9F;
     font-size: 1.6rem;
     font-weight: 400;
+  }
+
+  &__toy {
+    height: 8rem;
   }
 
 }
