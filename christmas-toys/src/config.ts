@@ -82,10 +82,20 @@ export const config = {
     },
   },
   menus: {
+    decorateToys: {
+      parentElementID: 'right-menu',
+      classes: ['menu', 'menu_toys'],
+      text: 'Игрушки',
+      textClasses: ['menu__title'],
+      itemClasses: ['menu__item', 'menu__item_toy'],
+      imgClasses: ['menu__toy'],
+      countClasses :['menu__item_count'],
+    },
     background: {
+      parentElementID: 'left-menu',
       classes: ['menu', 'menu_background'],
       text: 'Выберете фон',
-      textClasses: 'menu__title',
+      textClasses: ['menu__title'],
       imgClasses: ['menu__item', 'menu__item_background'],
       imgURLs: [
         './assets/bg/1.jpg',
@@ -101,8 +111,10 @@ export const config = {
       ],
     },
     tree: {
+      parentElementID: 'left-menu',
+      targetElementID: 'tree-container',
       classes: ['menu', 'menu_tree'],
-      text: 'Выберете ёлку`',
+      text: 'Выберете ёлку',
       textClasses: 'menu__title',
       imgClasses: 'menu__item',
       imgURLs: [
@@ -112,6 +124,20 @@ export const config = {
         './assets/tree/4.png',
         './assets/tree/5.png',
         './assets/tree/6.png',
+      ],
+    },
+    garland: {
+      parentElementID: 'left-menu',
+      targetElementID: 'tree-img-container',
+      classes: ['menu', 'menu_garland'],
+      text: 'Гирлянда',
+      textClasses: 'menu__title',
+      buttons: [
+        { animationName: 'multi-color', classes: ['garland-btn', 'garland-btn_multi-color'] },
+        { animationName: 'red', classes: ['garland-btn', 'garland-btn_red'] },
+        { animationName: 'blue', classes: ['garland-btn', 'garland-btn_blue'] },
+        { animationName: 'yellow', classes: ['garland-btn', 'garland-btn_yellow'] },
+        { animationName: 'green', classes: ['garland-btn', 'garland-btn_green'] },
       ],
     },
   },

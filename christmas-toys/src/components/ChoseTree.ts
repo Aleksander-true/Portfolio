@@ -12,11 +12,12 @@ export default class ChoseTree extends View {
   constructor(parentMenuID: string, parentBackgroundID:string) {
     super();
     this.area = document.getElementById('tree-area') as HTMLElement;
-    this.area .addEventListener('drop', (e)=> this.dropHandler(e));
-    this.area .addEventListener('dragover', (e)=> this.dragoverHandler(e));
-    this.area .addEventListener('dragstart', (e)=> this.dragstartHandler(e));
-
-    this.background = super.create(parentBackgroundID, 'div', 'tree__background');
+    this.area.addEventListener('drop', (e)=> this.dropHandler(e));
+    this.area.addEventListener('dragover', (e)=> this.dragoverHandler(e));
+    
+    this.background = super.create(parentBackgroundID, 'div', 'tree__img-container');
+    this.background.id = 'tree-img-container';
+    this.background.addEventListener('dragstart', (e)=> this.dragstartHandler(e));
 
     this.menu = super.create(parentMenuID, 'div', config.menus.tree.classes);
 
@@ -28,6 +29,8 @@ export default class ChoseTree extends View {
       img.alt = 'tree';
 
       img.addEventListener('click', () => this.renderImage(url));
+      img.addEventListener('dragstart', (e) => e.preventDefault());
+
     });
 
     this.renderImage(config.menus.tree.imgURLs[0]);
@@ -38,23 +41,23 @@ export default class ChoseTree extends View {
     const img = super.create(this.background, 'img', 'tree__img') as HTMLImageElement;
     img.src = url;
     img.useMap = '#tree-map';
+
   }
 
   dropHandler(e: DragEvent){
     e.preventDefault();
-
     const innerCords = e.dataTransfer?.getData('text/plain');
     const [targetInnerX, targetInnerY] = innerCords?.split('&') || ['0', '0'];
-
+    
     const data = e.dataTransfer?.getData('text/html');
-    const img = this.create(this.area, 'div', 'tree__toy', data);
-
-    const containerOffset = img.getBoundingClientRect();
-
-    img.style.left = `${e.pageX - containerOffset.left - +targetInnerX}px`;
-    img.style.top = `${e.pageY  - containerOffset.top - +targetInnerY}px`;
+    const img = this.create(this.background, 'div', 'tree__toy', data);
+    
+    const containerOffset = this.background.getBoundingClientRect();
+    
+    img.style.left = `${(e.pageX - containerOffset.left - +targetInnerX) * 100 / containerOffset.width}%`;
+    img.style.top = `${(e.pageY  - containerOffset.top - +targetInnerY) * 100  / containerOffset.height}%`;
+    console.log('e.pageY', e.pageY, 'containerOffset.top', containerOffset.top, containerOffset.bottom );
   }
-
 
   dragoverHandler(e: DragEvent) {
     e.preventDefault();

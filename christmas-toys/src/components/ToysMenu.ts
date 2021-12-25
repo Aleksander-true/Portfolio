@@ -1,3 +1,4 @@
+import { config } from '../config';
 import { settings } from './Settings';
 import View from './View';
 
@@ -8,9 +9,12 @@ const MAX_CART_CAPACITY = 20;
 export default class ToysMenu extends View{
   container: HTMLElement;
 
-  constructor(parentElementID: string){
+  config: typeof config.menus.decorateToys;
+
+  constructor(toyConfig: typeof config.menus.decorateToys){
     super();
-    this.container = document.getElementById(parentElementID) as HTMLElement;
+    this.config = toyConfig;
+    this.container = super.create(this.config.parentElementID, 'div', this.config.classes);
     this.getNumbers();
 
     document.addEventListener('updateToyCount', () => this.renderToys(settings.decorateToyNums));
@@ -29,6 +33,8 @@ export default class ToysMenu extends View{
 
   renderToys(toyNumbers: string[]){
     this.container.innerHTML = '';
+    super.create(this.container, 'h3', this.config.textClasses, this.config.text);
+    console.log('renderToys');
 
     toyNumbers.forEach( item => {
       const [number, count] = item.split('&');
@@ -41,6 +47,7 @@ export default class ToysMenu extends View{
       img.setAttribute('src', IMG_URL + number + IMG_EXTENSION);
       img.setAttribute('draggable', 'true');
       img.setAttribute('data-number', number);
+      
       img.addEventListener('dragstart', (e) => this.dragstartHandler(e));
     });   
   }

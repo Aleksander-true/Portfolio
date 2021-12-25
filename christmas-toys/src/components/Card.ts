@@ -29,7 +29,9 @@ export default class Card extends View {
     (<HTMLElement>templateClone.querySelector('.favorite')).textContent = card.favorite ? (CARD_LEGEND_FAVORITE + Favorite.True) : (CARD_LEGEND_FAVORITE + Favorite.False);
     (<HTMLImageElement>templateClone.querySelector('.card__img')).src = IMG_URL + card.num + IMG_EXTENSION;
   
-    if (settings.chosenToyNums.includes(`${card.num}&${card.count}`)) (<HTMLElement>templateClone.querySelector('.card'))?.classList.add('active');
+    if (settings.chosenToyNums.includes(`${card.num}&${card.count}`)) {
+      (<HTMLElement>templateClone.querySelector('.card')).classList.add('active');
+    }
 
     cardElement.addEventListener('click', (e) => this.clickHandler(e, card.num, card.count));
     

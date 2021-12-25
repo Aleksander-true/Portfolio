@@ -19,6 +19,7 @@ export default class TreeBackground extends View{
       img.alt = 'background';
 
       img.addEventListener('click', () => this.renderBackground(url));
+      img.addEventListener('dragstart', (e) => e.preventDefault());
     });
 
     this.renderBackground(config.menus.background.imgURLs[0]);
