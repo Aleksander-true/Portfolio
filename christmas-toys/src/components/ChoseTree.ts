@@ -42,6 +42,8 @@ export default class ChoseTree extends View {
     img.src = url;
     img.useMap = '#tree-map';
 
+    const customEvent = new Event( 'changingTree', { bubbles: true });
+    img.dispatchEvent(customEvent);
   }
 
   dropHandler(e: DragEvent){
