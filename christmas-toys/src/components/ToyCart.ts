@@ -6,6 +6,7 @@ export default class  ToyCart {
   constructor(elementID: string) {
     this.cartNumber = document.getElementById(elementID) as HTMLElement;
     document.addEventListener('updateToyNums', () => this.updateCartNumber());
+    this.updateCartNumber();
   }
 
   updateCartNumber() {

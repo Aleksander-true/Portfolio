@@ -25,6 +25,7 @@ export default class ShowCase extends View {
     this.stockCards = await this.filterCards();
     this.sortCards();
     this.renderCards();
+    console.log('updateFilter');
   }
 
   updateSort(){

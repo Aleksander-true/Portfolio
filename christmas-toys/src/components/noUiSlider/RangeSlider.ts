@@ -34,8 +34,6 @@ export default class RangeSlider {
   updateSettings(targetElement: HTMLElement, key: keyof IToy, [min, max]: string[]) {
     settings.toggleRangeFilter(key, [this.format(min), this.format(max)]);
 
-    const customEvent = new Event( 'updateFilter', { bubbles: true });
-    targetElement.dispatchEvent(customEvent);
   }
 
   setDefault(){

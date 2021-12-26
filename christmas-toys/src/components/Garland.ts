@@ -20,11 +20,10 @@ export default class Garland extends View{
 
       button.addEventListener('click', ()=> this.clickHandler(btn.animationName));
     });
+
     const checkbox = new SwitchButton(this.menu);
     checkbox.input.addEventListener('change', (e) => this.switchGarland(e));
     this.container = super.create(configGarland.targetElementID, 'div', 'multi-color');
-
-    this.renderGarland();
 
     document.addEventListener('changingTree', () => checkbox.input.checked = false );
   }

@@ -2,14 +2,14 @@ import './_switch.scss';
 
 export default class  SwitchButton {
   input: HTMLInputElement;
-  
+
   constructor(parentElement: string | HTMLElement) {
     const container = this.create(parentElement, 'div', 'switch');
 
     this.input = this.create(container, 'input', 'switch__checkbox') as HTMLInputElement;
     this.input.type = 'checkbox';
     this.input.id = 'switch';
-    this.input.checked = true;
+    this.input.checked = false;
 
     const label = this.create(container, 'label', 'switch__label') as HTMLLabelElement;
     label.setAttribute('for', 'switch');

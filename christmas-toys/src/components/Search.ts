@@ -25,6 +25,7 @@ export default class Search {
     settings.filters[CardKeys.Name] = [target.value];
 
     const controlElement = document.getElementById('control') as HTMLElement;
+    
     const customEvent = new Event( 'updateInput', { bubbles: true });
     controlElement.dispatchEvent(customEvent);
   }
