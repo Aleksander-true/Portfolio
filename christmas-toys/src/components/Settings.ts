@@ -1,17 +1,24 @@
-class Settings implements ISettings{
+export class Settings implements ISettings{
   filters: ISettings['filters'];
 
   chosenToyNums: string[];
 
   decorateToyNums: string[];
 
-  sortFunc: SortFunc;
+  sort: { key: keyof IToy; direction: Direction; };
 
-  constructor({ filters = {}, chosenToyNums = [], decorateToyNums = [] } ) {
+  constructor({ filters = {}, chosenToyNums = [], decorateToyNums = [], sort =  { key: CardKeys.Name, direction: Direction.Direct } }) {
     this.filters = filters;
     this.chosenToyNums = chosenToyNums;
     this.decorateToyNums = decorateToyNums;
-    this.sortFunc = (a:IToy, b:IToy)=>0;
+    this.sort = sort;
+  }
+
+  setDefault() {
+    this.filters = {};
+    this.chosenToyNums = [];
+    this.decorateToyNums = [];
+    this.sort = { key: CardKeys.Name, direction: Direction.Direct };
   }
 
   toggleFilter(key: keyof IToy, value: string) {
@@ -41,7 +48,6 @@ class Settings implements ISettings{
 
 type Save = {
   filters: Record<keyof IToy, string[]> | Record<string, never>;
-  sortFunc: SortFunc;
   chosenToyNums: string[]; 
   decorateToyNums: string[]; 
 };
@@ -53,6 +59,7 @@ function isFormatValid(saveObj: Save) {
 /**Restoring settings from localStorage */
 const saves = JSON.parse(localStorage.getItem('settings') as string || '{}');
 const settings = (isFormatValid(saves)) ? new Settings(saves) : new Settings({});
+console.log('settings start', settings);
 
 /**Save settings */
 window.addEventListener('beforeunload', () => localStorage.setItem('settings', JSON.stringify(Object.assign({}, settings)))); 

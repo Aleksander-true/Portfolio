@@ -11,10 +11,25 @@ export default class Select extends View{
     configSelect.options.forEach(option => {
       const optionElement = this.create(this.select, 'option', option.classes, option.text) as HTMLOptionElement;
       optionElement.value = `${option.key}&${option.direction}`;
+
+      if (option.key == settings.sort.key && option.direction == settings.sort.direction) {
+        optionElement.selected = true;
+      }
     });
 
-    this.addSort();
+    this.addSort(settings.sort.key, settings.sort.direction);
     this.select.addEventListener('change', () => this.changeHandler());
+    document.addEventListener('updateSelect', () => this.update());
+  }
+
+  update() {
+    const options = this.select.querySelectorAll('option');
+    options.forEach(option => {
+      const [key, direction] = option.value.split('&');
+      if (key == settings.sort.key && direction == settings.sort.direction) {
+        option.selected = true;
+      }
+    });
   }
 
   changeHandler(){
@@ -29,19 +44,8 @@ export default class Select extends View{
   }
     
   addSort(key: keyof IToy = CardKeys.Name, direction = Direction.Direct){
-    let func: SortFunc = (a, b) => a[key] > b[key] ? 1 : -1 ;
-  
-    if (key === CardKeys.Name && direction === Direction.Reverse) {
-      func = (a, b) => a[key] < b[key] ? 1 : -1 ;
-      
-    } else if (key === CardKeys.Count && direction === Direction.Direct) {
-      func = (a, b) => +a[key] > +b[key] ? 1 : -1 ;
-  
-    } else if (key === CardKeys.Count && direction === Direction.Reverse) {
-      func = (a, b) => +a[key] < +b[key] ? 1 : -1 ;
-    } 
-    
-    settings.sortFunc = func;
+    settings.sort = { key: key, direction: direction };
+
     const customEvent = new Event( 'updateSort', { bubbles: true });
     this.select.dispatchEvent(customEvent);
   }

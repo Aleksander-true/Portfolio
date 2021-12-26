@@ -52,7 +52,20 @@ export default class ShowCase extends View {
   }
 
   sortCards(){
-    this.stockCards.sort(settings.sortFunc);
+    const { key, direction } = settings.sort;
+    let func: SortFunc = (a, b) => a[key] > b[key] ? 1 : -1 ;
+    
+    if (key === CardKeys.Name && direction === Direction.Reverse) {
+      func = (a, b) => a[key] < b[key] ? 1 : -1 ;
+        
+    } else if (key === CardKeys.Count && direction === Direction.Direct) {
+      func = (a, b) => +a[key] > +b[key] ? 1 : -1 ;
+    
+    } else if (key === CardKeys.Count && direction === Direction.Reverse) {
+      func = (a, b) => +a[key] < +b[key] ? 1 : -1 ;
+    } 
+
+    this.stockCards.sort(func);
   }
 
   renderCards(){

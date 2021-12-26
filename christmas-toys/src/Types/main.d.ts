@@ -39,8 +39,8 @@ interface IToy extends Card{
 
 interface ISettings {
   filters: Record<keyof IToy, string[]> | Record<string, never>;
-  sortFunc: SortFunc;
   chosenToyNums: string[];
+  sort: { key: keyof IToy; direction: Direction; };
 
   toggleFilter(key: keyof ICard, value: string): void;
   toggleRangeFilter(key: keyof ICard, value: string[]):void;

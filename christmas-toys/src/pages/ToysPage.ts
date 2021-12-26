@@ -4,6 +4,7 @@ import Filter from '../components/Filter';
 import ShowCase from '../components/ShowCase';
 import { config } from '../config';
 import Select from '../components/Select';
+import { settings } from '../components/Settings';
 
 const RESET_BTN_TEXT = 'Сбросить фильтры';
 const DEFAULT_BTN_TEXT = 'По умолчанию';
@@ -26,23 +27,34 @@ export default class ToysPage extends View {
     const btnContainer = super.create('sorting-cards', 'div', 'sort__buttons');
   
     const resetFiltersBtn = super.create(btnContainer, 'button', ['button', 'button_reset'], RESET_BTN_TEXT);
-    resetFiltersBtn.addEventListener('click', () => this.resetFilters());
+    resetFiltersBtn.addEventListener('click', (e) => this.resetFilters(e));
 
     const resetDefaultBtn = super.create(btnContainer, 'button', ['button', 'button_reset'], DEFAULT_BTN_TEXT);
-    resetDefaultBtn.addEventListener('click', () => this.resetDefault());
+    resetDefaultBtn.addEventListener('click', (e) => this.resetDefault(e));
 
     new ShowCase();
   }
 
-  resetFilters(){
+  resetFilters(e:Event){
+    const target = e.target as HTMLElement;
+
     this.filter.setDefault();
     this.quantityRangeSlider.setDefault();
     this.yearRangeSlider.setDefault();
+
+    const customEvent = new Event( 'updateFilter', { bubbles: true });
+    target.dispatchEvent(customEvent);
   }
 
-  resetDefault(){
-    this.resetFilters();
+  resetDefault(e:Event){
+    const target = e.target as HTMLElement;
+    settings.setDefault();
     localStorage.setItem('settings', '');
+    this.resetFilters(e);
+
+    target.dispatchEvent(new Event( 'updateToyNums', { bubbles: true }));
+
+    target.dispatchEvent(new Event( 'updateSelect', { bubbles: true }));
   }
   
 }

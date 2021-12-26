@@ -57,7 +57,6 @@ export default class ChoseTree extends View {
     
     img.style.left = `${(e.pageX - containerOffset.left - +targetInnerX) * 100 / containerOffset.width}%`;
     img.style.top = `${(e.pageY  - containerOffset.top - +targetInnerY) * 100  / containerOffset.height}%`;
-    console.log('e.pageY', e.pageY, 'containerOffset.top', containerOffset.top, containerOffset.bottom );
   }
 
   dragoverHandler(e: DragEvent) {
