@@ -1,4 +1,5 @@
 import { config } from '../config';
+import { settings } from './Settings';
 import View from './View';
 
 export default class TreeBackground extends View{
@@ -22,11 +23,12 @@ export default class TreeBackground extends View{
       img.addEventListener('dragstart', (e) => e.preventDefault());
     });
 
-    this.renderBackground(config.menus.background.imgURLs[0]);
+    this.renderBackground(settings.treePage.backgroundImgURL);
   }
 
   renderBackground(url: string){
     console.log('URL', url);
+    settings.treePage.backgroundImgURL = url;
     this.background.style.backgroundImage = `url("${url}")`;
   }
 }

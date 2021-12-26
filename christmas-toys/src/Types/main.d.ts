@@ -38,9 +38,18 @@ interface IToy extends Card{
 }
 
 interface ISettings {
-  filters: Record<keyof IToy, string[]> | Record<string, never>;
-  chosenToyNums: string[];
-  sort: { key: keyof IToy; direction: Direction; };
+  toyPage : {
+    filters: Record<keyof IToy, string[]> | Record<string, never>;
+    chosenToyNums: string[];
+    sort: { key: keyof IToy; direction: Direction; };
+  };
+
+  treePage : {
+    decorateToyNums: string[];
+    backgroundImgURL: string;
+    treeImgURL: string;
+    garlandColor: string;
+  };
 
   toggleFilter(key: keyof ICard, value: string): void;
   toggleRangeFilter(key: keyof ICard, value: string[]):void;
@@ -55,3 +64,17 @@ type FilterFunc = (value:IToy)=>boolean;
 type SortFunc = (a:IToy, b:IToy)=>number;
 
 
+type Save = {
+  toyPage : {
+    filters: Record<keyof IToy, string[]> | Record<string, never>;
+    chosenToyNums: string[];
+    sort: { key: keyof IToy; direction: Direction; };
+  };
+
+  treePage : {
+    decorateToyNums: string[];
+    backgroundImgNum: number;
+    treeImgNum: number;
+    garlandColor: string;
+  };
+};

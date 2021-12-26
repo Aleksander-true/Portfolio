@@ -35,7 +35,7 @@
 @mixin location($count, $radius) {
   $index: 0;
   @for $i from 0 to $count {
-    $deg: 39 / (6 + $i*3);
+    $deg: 40 / (6 + $i*3);
     @for $j from 0 to 6 + $i*3 {
       $index: $index + 1;
       &:nth-child(#{$index}) {

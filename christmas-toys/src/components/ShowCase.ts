@@ -35,7 +35,7 @@ export default class ShowCase extends View {
 
   async filterCards(){
     let base = await super.getData();
-    for (const [keyOfData, values] of Object.entries(settings.filters)) {
+    for (const [keyOfData, values] of Object.entries(settings.toyPage.filters)) {
       const key = keyOfData as keyof IToy;
       if (key === CardKeys.Favorite) {
         base = base.filter(item => (values[0] === 'да') ? item[key] : true );
@@ -52,7 +52,7 @@ export default class ShowCase extends View {
   }
 
   sortCards(){
-    const { key, direction } = settings.sort;
+    const { key, direction } = settings.toyPage.sort;
     let func: SortFunc = (a, b) => a[key] > b[key] ? 1 : -1 ;
     
     if (key === CardKeys.Name && direction === Direction.Reverse) {

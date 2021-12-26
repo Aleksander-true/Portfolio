@@ -32,10 +32,12 @@ export default class ChoseTree extends View {
       img.addEventListener('dragstart', (e) => e.preventDefault());
     });
 
-    this.renderImage(config.menus.tree.imgURLs[0]);
+    this.renderImage(settings.treePage.treeImgURL);
   }
 
   renderImage(url: string){
+    settings.treePage.treeImgURL = url;
+    
     this.treeImg.innerHTML = '';
     const img = super.create(this.treeImg, 'img', 'tree__img') as HTMLImageElement;
     img.src = url;
@@ -83,7 +85,7 @@ export default class ChoseTree extends View {
 
     const regExp = new RegExp(`^${target.dataset.number}&`);
 
-    settings.decorateToyNums = settings.decorateToyNums.map(item => {
+    settings.treePage.decorateToyNums = settings.treePage.decorateToyNums.map(item => {
       if (regExp.test(item)) {
         const [number, count] = item.split('&');
         return `${number}&${+count + 1}`;

@@ -29,7 +29,7 @@ export default class Card extends View {
     (<HTMLElement>templateClone.querySelector('.favorite')).textContent = card.favorite ? (CARD_LEGEND_FAVORITE + Favorite.True) : (CARD_LEGEND_FAVORITE + Favorite.False);
     (<HTMLImageElement>templateClone.querySelector('.card__img')).src = IMG_URL + card.num + IMG_EXTENSION;
   
-    if (settings.chosenToyNums.includes(`${card.num}&${card.count}`)) {
+    if (settings.toyPage.chosenToyNums.includes(`${card.num}&${card.count}`)) {
       (<HTMLElement>templateClone.querySelector('.card')).classList.add('active');
     }
 
@@ -40,7 +40,7 @@ export default class Card extends View {
 
   clickHandler(e:Event, toyNumber: string, toyCount: string){
     const currentTarget = e.currentTarget as HTMLElement;
-    if (settings.chosenToyNums.length >= MAX_CART_CAPACITY && !settings.chosenToyNums.includes(toyNumber)) {
+    if (settings.toyPage.chosenToyNums.length >= MAX_CART_CAPACITY && !settings.toyPage.chosenToyNums.includes(toyNumber)) {
       new Modal(document.body, 'Извините,', 'все слоты заполнены');
       return;
     } 

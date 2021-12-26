@@ -15,8 +15,8 @@ export default class RangeSlider {
     this.slider = document.getElementById(targetID) as target;
     
     noUiSlider.create(this.slider, configRange.options);
-    if (settings.filters[configRange.key]) {
-      this.slider.noUiSlider?.set(settings.filters[configRange.key]);
+    if (settings.toyPage.filters[configRange.key]) {
+      this.slider.noUiSlider?.set(settings.toyPage.filters[configRange.key]);
     }
     
     this.slider.noUiSlider?.on('update', () => this.setOutput( this.slider.noUiSlider?.get() as string[], this.slider.id ));
@@ -34,6 +34,8 @@ export default class RangeSlider {
   updateSettings(targetElement: HTMLElement, key: keyof IToy, [min, max]: string[]) {
     settings.toggleRangeFilter(key, [this.format(min), this.format(max)]);
 
+    const customEvent = new Event( 'updateFilter', { bubbles: true });
+    targetElement.dispatchEvent(customEvent);
   }
 
   setDefault(){

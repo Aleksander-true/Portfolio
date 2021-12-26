@@ -140,5 +140,10 @@ export const config = {
         { animationName: 'green', classes: ['garland-btn', 'garland-btn_green'] },
       ],
     },
+    song: {
+      parentElementID: 'left-menu',
+      classes: ['menu', 'menu_audio'],
+      songUrl: './assets/audio/audio.mp3',
+    },
   },
 };

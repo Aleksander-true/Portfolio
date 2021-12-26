@@ -45,7 +45,7 @@ export default class View {
     (<HTMLElement>templateClone.querySelector('.favorite')).textContent = card.favorite ? (CARD_LEGEND_FAVORITE + 'да') : (CARD_LEGEND_FAVORITE + 'нет');
     (<HTMLImageElement>templateClone.querySelector('.card__img')).src = IMG_URL + card.num + IMG_EXTENSION;
 
-    if (settings.chosenToyNums.includes(card.num)) (<HTMLElement>templateClone.querySelector('.card'))?.classList.add('active');
+    if (settings.toyPage.chosenToyNums.includes(card.num)) (<HTMLElement>templateClone.querySelector('.card'))?.classList.add('active');
     return  templateClone;
   }
 

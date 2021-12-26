@@ -24,7 +24,7 @@ export default class Filter extends View {
       filter.options.forEach(option => {
         const button = super.create(element, 'button', option.classes);
         this.filterButtons.push(button);
-        if (settings.filters[filter.key] && settings.filters[filter.key].includes(option.value) ) {
+        if (settings.toyPage.filters[filter.key] && settings.toyPage.filters[filter.key].includes(option.value) ) {
           super.toggleActive(button);
         }
         button.addEventListener('click', (e) => this.buttonClickHandler(e, filter.key, option.value));
@@ -44,7 +44,7 @@ export default class Filter extends View {
   }
 
   setDefault(){
-    settings.filters = {};
+    settings.toyPage.filters = {};
     this.filterButtons.forEach( button => button.classList.remove('active'));
   }
 }

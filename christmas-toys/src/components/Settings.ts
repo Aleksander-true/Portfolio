@@ -1,65 +1,100 @@
+import { config } from '../config';
+
 export class Settings implements ISettings{
-  filters: ISettings['filters'];
+  
+  toyPage : {
+    filters: ISettings['toyPage']['filters'];
+    chosenToyNums: string[];
+    sort: { key: keyof IToy; direction: Direction; };
+  };
 
-  chosenToyNums: string[];
+  treePage : {
+    decorateToyNums: string[];
+    backgroundImgURL: string;
+    treeImgURL: string;
+    garlandColor: string;
+    garlandSwitch: boolean;
+  };
 
-  decorateToyNums: string[];
+  constructor(
+    { 
+      toyPage: {
+        filters = {}, 
+        chosenToyNums = [], 
+        decorateToyNums = [], 
+        sort =  { key: CardKeys.Name, direction: Direction.Direct },
+      },
+      treePage: {
+        backgroundImgURL = config.menus.background.imgURLs[0],
+        treeImgURL = config.menus.tree.imgURLs[0],
+        garlandColor = 'multi-color',
+        garlandSwitch = false,
+      },
+    }) {
 
-  sort: { key: keyof IToy; direction: Direction; };
-
-  constructor({ filters = {}, chosenToyNums = [], decorateToyNums = [], sort =  { key: CardKeys.Name, direction: Direction.Direct } }) {
-    this.filters = filters;
-    this.chosenToyNums = chosenToyNums;
-    this.decorateToyNums = decorateToyNums;
-    this.sort = sort;
+    this.toyPage = {
+      filters: filters,
+      chosenToyNums: chosenToyNums,
+      sort: sort,
+    };
+    this.treePage = {
+      decorateToyNums: decorateToyNums,
+      backgroundImgURL: backgroundImgURL,
+      treeImgURL: treeImgURL,
+      garlandColor: garlandColor,
+      garlandSwitch: garlandSwitch,
+    };
   }
 
   setDefault() {
-    this.filters = {};
-    this.chosenToyNums = [];
-    this.decorateToyNums = [];
-    this.sort = { key: CardKeys.Name, direction: Direction.Direct };
+    this.toyPage = {
+      filters: {},
+      chosenToyNums: [],
+      sort: { key: CardKeys.Name, direction: Direction.Direct },
+    };
+    this.treePage = {
+      decorateToyNums: [],
+      backgroundImgURL: config.menus.background.imgURLs[0],
+      treeImgURL: config.menus.tree.imgURLs[0],
+      garlandColor: 'multi-color',
+      garlandSwitch: false,
+    };
   }
 
   toggleFilter(key: keyof IToy, value: string) {
-    if ( !this.filters[key] ) this.filters[key] = [];
+    if ( !this.toyPage.filters[key] ) this.toyPage.filters[key] = [];
 
-    const index = this.filters[key].indexOf(value);
+    const index = this.toyPage.filters[key].indexOf(value);
     if (index !== -1) {
-      this.filters[key].splice(index, 1);
+      this.toyPage.filters[key].splice(index, 1);
     } else {
-      this.filters[key].push(value);
+      this.toyPage.filters[key].push(value);
     }
   }
 
   toggleChosenToy(num: string, count: string ) {
-    const index = this.chosenToyNums.indexOf(`${num}&${count}`);
+    const index = this.toyPage.chosenToyNums.indexOf(`${num}&${count}`);
     if (index !== -1) {
-      this.chosenToyNums.splice(index, 1);
+      this.toyPage.chosenToyNums.splice(index, 1);
     } else {
-      this.chosenToyNums.push(`${num}&${count}`);
+      this.toyPage.chosenToyNums.push(`${num}&${count}`);
     }
   }
 
   toggleRangeFilter(key: keyof IToy, value: string[]) {
-    this.filters[key] = value;
+    this.toyPage.filters[key] = value;
   }
 }
 
-type Save = {
-  filters: Record<keyof IToy, string[]> | Record<string, never>;
-  chosenToyNums: string[]; 
-  decorateToyNums: string[]; 
-};
-
 function isFormatValid(saveObj: Save) {
-  return Boolean(saveObj.filters && saveObj.chosenToyNums && saveObj.decorateToyNums);
+  return Boolean(saveObj.toyPage && saveObj.treePage);
 }
 
 /**Restoring settings from localStorage */
 const saves = JSON.parse(localStorage.getItem('settings') as string || '{}');
-const settings = (isFormatValid(saves)) ? new Settings(saves) : new Settings({});
-console.log('settings start', settings);
+//const settings = (isFormatValid(saves)) ? new Settings(saves) : new Settings({});
+const settings = new Settings(saves);
+console.log('settings start', settings, 'saves', saves);
 
 /**Save settings */
 window.addEventListener('beforeunload', () => localStorage.setItem('settings', JSON.stringify(Object.assign({}, settings)))); 

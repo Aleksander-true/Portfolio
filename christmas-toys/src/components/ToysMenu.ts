@@ -17,18 +17,18 @@ export default class ToysMenu extends View{
     this.container = super.create(this.config.parentElementID, 'div', this.config.classes);
     this.getNumbers();
 
-    document.addEventListener('updateToyCount', () => this.renderToys(settings.decorateToyNums));
+    document.addEventListener('updateToyCount', () => this.renderToys(settings.treePage.decorateToyNums));
   }
 
   async getNumbers(){
-    if (settings.chosenToyNums.length !== 0) {
-      settings.decorateToyNums = settings.chosenToyNums.slice();
+    if (settings.toyPage.chosenToyNums.length !== 0) {
+      settings.treePage.decorateToyNums = settings.toyPage.chosenToyNums.slice();
     } else {
       let base = await super.getData();
       base = base.slice(0, MAX_CART_CAPACITY);
-      settings.decorateToyNums  =  base.map(item => `${item.num}&${item.count}`);
+      settings.treePage.decorateToyNums  =  base.map(item => `${item.num}&${item.count}`);
     }
-    this.renderToys(settings.decorateToyNums);
+    this.renderToys(settings.treePage.decorateToyNums);
   }
 
   renderToys(toyNumbers: string[]){
@@ -70,7 +70,7 @@ export default class ToysMenu extends View{
 
     const regExp = new RegExp(`^${target.dataset.number}&`);
 
-    settings.decorateToyNums = settings.decorateToyNums.map(item => {
+    settings.treePage.decorateToyNums = settings.treePage.decorateToyNums.map(item => {
       if (regExp.test(item)) {
         const [number, count] = item.split('&');
         return `${number}&${+count - 1}`;
@@ -78,6 +78,6 @@ export default class ToysMenu extends View{
         return item;
       }
     });
-    this.renderToys(settings.decorateToyNums);  
+    this.renderToys(settings.treePage.decorateToyNums);  
   }
 }

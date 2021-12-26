@@ -22,7 +22,7 @@ export default class Search {
       this.input.classList.remove('active');
     }
 
-    settings.filters[CardKeys.Name] = [target.value];
+    settings.toyPage.filters[CardKeys.Name] = [target.value];
 
     const controlElement = document.getElementById('control') as HTMLElement;
     

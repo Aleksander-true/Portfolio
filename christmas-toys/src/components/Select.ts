@@ -12,12 +12,12 @@ export default class Select extends View{
       const optionElement = this.create(this.select, 'option', option.classes, option.text) as HTMLOptionElement;
       optionElement.value = `${option.key}&${option.direction}`;
 
-      if (option.key == settings.sort.key && option.direction == settings.sort.direction) {
+      if (option.key == settings.toyPage.sort.key && option.direction == settings.toyPage.sort.direction) {
         optionElement.selected = true;
       }
     });
 
-    this.addSort(settings.sort.key, settings.sort.direction);
+    this.addSort(settings.toyPage.sort.key, settings.toyPage.sort.direction);
     this.select.addEventListener('change', () => this.changeHandler());
     document.addEventListener('updateSelect', () => this.update());
   }
@@ -26,7 +26,7 @@ export default class Select extends View{
     const options = this.select.querySelectorAll('option');
     options.forEach(option => {
       const [key, direction] = option.value.split('&');
-      if (key == settings.sort.key && direction == settings.sort.direction) {
+      if (key == settings.toyPage.sort.key && direction == settings.toyPage.sort.direction) {
         option.selected = true;
       }
     });
@@ -44,7 +44,7 @@ export default class Select extends View{
   }
     
   addSort(key: keyof IToy = CardKeys.Name, direction = Direction.Direct){
-    settings.sort = { key: key, direction: direction };
+    settings.toyPage.sort = { key: key, direction: direction };
 
     const customEvent = new Event( 'updateSort', { bubbles: true });
     this.select.dispatchEvent(customEvent);

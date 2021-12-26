@@ -21,6 +21,18 @@
     grid-template-columns: repeat(4, 1fr);
   }
 
+  &_audio {
+    background-image: url('./assets/svg/mute.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 4rem;
+    height: 4rem;
+
+    &.active {
+      background-image: url('./assets/svg/audio.svg');
+    }
+  }
+
   &__title {
     width: 100%; 
     font-size: var(--h3-font-size);
@@ -69,5 +81,6 @@
   &__toy {
     height: 8rem;
   }
+
 
 }

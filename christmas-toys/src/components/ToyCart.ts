@@ -10,6 +10,6 @@ export default class  ToyCart {
   }
 
   updateCartNumber() {
-    this.cartNumber.textContent = String(settings.chosenToyNums.length);
+    this.cartNumber.textContent = String(settings.toyPage.chosenToyNums.length);
   }
 }
