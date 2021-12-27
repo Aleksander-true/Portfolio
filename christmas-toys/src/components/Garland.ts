@@ -3,7 +3,7 @@ import { settings } from './Settings';
 import SwitchButton from './switch/Switch';
 import View from './View';
 
-const GARLAND_LIGHT_QUANTITY = 195;
+const GARLAND_LIGHT_QUANTITY = 80;
 
 export default class Garland extends View{
   menu: HTMLElement;

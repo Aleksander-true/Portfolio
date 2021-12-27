@@ -16,7 +16,6 @@ export default class Song extends View {
   render() {
     const button = super.create(this.configSong.parentElementID, 'div', this.configSong.classes);
     button.addEventListener('click', ()=> this.toggleAudio(button));
-
   }
 
   toggleAudio(button: HTMLElement){
