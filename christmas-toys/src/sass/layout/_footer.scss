@@ -1,0 +1,27 @@
+.footer {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  font-size: 2.4rem;
+  z-index: 100;
+  background-color: #17181c;
+}
+
+.rss-logo {
+  width: 6rem;
+  height: 5rem;
+  background: url("./assets/svg/logo_rs2.svg") no-repeat center;
+  background-size: contain;
+}
+
+.developer {
+color: #fff;
+text-align: none;
+cursor: pointer;
+}

@@ -29,13 +29,13 @@ export default class Garland extends View{
     this.checkbox = new SwitchButton(this.menu);
     this.checkbox.input.checked = settings.treePage.garlandSwitch;
     this.checkbox.input.addEventListener('change', (e) => this.switchGarland(e));
+    
     this.container = super.create(configGarland.targetElementID, 'div', settings.treePage.garlandColor);
 
     if (this.checkbox.input.checked) {
       this.renderGarland(settings.treePage.garlandColor);
     }
 
-    document.addEventListener('changingTree', () => this.checkbox.input.checked = false );
   }
 
   clickHandler(animationName:string){

@@ -28,6 +28,7 @@ export default class ChoseTree extends View {
       img.src = url;
       img.alt = 'tree';
 
+
       img.addEventListener('click', () => this.renderImage(url));
       img.addEventListener('dragstart', (e) => e.preventDefault());
     });
@@ -38,7 +39,7 @@ export default class ChoseTree extends View {
   renderImage(url: string){
     settings.treePage.treeImgURL = url;
     
-    this.treeImg.innerHTML = '';
+    this.treeImg.querySelector('.tree__img')?.remove();
     const img = super.create(this.treeImg, 'img', 'tree__img') as HTMLImageElement;
     img.src = url;
     img.useMap = '#tree-map';
