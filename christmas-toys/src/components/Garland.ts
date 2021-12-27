@@ -39,7 +39,6 @@ export default class Garland extends View{
   }
 
   clickHandler(animationName:string){
-    console.log('animationName', animationName);
     settings.treePage.garlandColor = animationName;
     this.container.className = animationName;
     if (!this.checkbox.input.checked) {

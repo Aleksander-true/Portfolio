@@ -31,7 +31,6 @@ export class Settings implements ISettings{
         garlandSwitch = false,
       },
     }) {
-
     this.toyPage = {
       filters: filters,
       chosenToyNums: chosenToyNums,
@@ -92,9 +91,7 @@ function isFormatValid(saveObj: Save) {
 
 /**Restoring settings from localStorage */
 const saves = JSON.parse(localStorage.getItem('settings') as string || '{}');
-//const settings = (isFormatValid(saves)) ? new Settings(saves) : new Settings({});
-const settings = new Settings(saves);
-console.log('settings start', settings, 'saves', saves);
+const settings = (isFormatValid(saves)) ? new Settings(saves) : new Settings({ toyPage:{}, treePage:{} });
 
 /**Save settings */
 window.addEventListener('beforeunload', () => localStorage.setItem('settings', JSON.stringify(Object.assign({}, settings)))); 

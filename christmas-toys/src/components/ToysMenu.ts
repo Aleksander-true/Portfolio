@@ -34,7 +34,6 @@ export default class ToysMenu extends View{
   renderToys(toyNumbers: string[]){
     this.container.innerHTML = '';
     super.create(this.container, 'h3', this.config.textClasses, this.config.text);
-    console.log('renderToys');
 
     toyNumbers.forEach( item => {
       const [number, count] = item.split('&');

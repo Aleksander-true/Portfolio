@@ -27,7 +27,6 @@ export default class TreeBackground extends View{
   }
 
   renderBackground(url: string){
-    console.log('URL', url);
     settings.treePage.backgroundImgURL = url;
     this.background.style.backgroundImage = `url("${url}")`;
   }

@@ -66,7 +66,7 @@ export default class View {
   }
 
   async getData(){
-    const response = await fetch('../data.json');
+    const response = await fetch('./data.json');
     let data: IToy[] | never[] = [];
     try {
       data = await response.json() as IToy[];
