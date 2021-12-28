@@ -38,17 +38,32 @@
     }
   }
 
-  &_audio {
+  &_audio,
+  &_snow {
+    display: inline-block;
     width: 4rem;
     height: 4rem;
-    background-image: url('./assets/svg/mute.svg');
+    margin: 1rem;
+    background-image: url('./assets/svg/snow.svg');
     background-repeat: no-repeat;
     background-size: contain;
+
+    &:hover {
+      opacity: 0.6;
+    }
 
     @media (max-width: $break-laptop) {
       width: 3rem;
       height: 3rem;
-    }
+      }
+  }
+
+  &_snow {
+    background-image: url('./assets/svg/snow.svg');
+  }
+
+  &_audio {
+    background-image: url('./assets/svg/mute.svg');
 
     &.active {
       background-image: url('./assets/svg/audio.svg');

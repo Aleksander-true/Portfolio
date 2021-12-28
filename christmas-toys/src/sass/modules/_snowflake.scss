@@ -1,0 +1,98 @@
+.snowflake {
+  position: relative;
+  top: -5rem;
+  display: inline-block;
+  background: white;
+  animation-duration: 6s;
+  animation-iteration-count: 45;
+  transform-origin: right -30px;
+  animation: snowflakes 3s linear 2s 20;
+  opacity: 0.8;
+
+  &::before,
+  &::after {
+    height: 100%;
+    width: 100%;
+    content: '.';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: white;
+    pointer-events: none;
+    transform: rotate(-120deg);
+  }
+
+  &::after{
+    transform: rotate(120deg);
+  }
+}
+
+.snowflake:nth-child(3n) {
+  width: 16px;
+  height: 4px;
+  animation-duration: 4s;
+  animation-iteration-count: 30;
+  transform-origin: right -45px;
+}
+.snowflake:nth-child(3n + 1) {
+  width: 24px;
+  height: 6px;
+  animation-duration: 6s;
+  animation-iteration-count: 45;
+  transform-origin: right -30px;
+}
+.snowflake:nth-child(3n + 2) {
+  width: 32px;
+  height: 8px;
+  animation-duration: 8s;
+  animation-iteration-count: 60;
+  transform-origin: right -15px;
+}
+
+/* different delays so they don't all start at the same time */
+.snowflake:nth-child(n) {
+  opacity: 0.3;
+  animation-delay: 0s;
+  animation-timing-function: ease-in;
+}
+
+.snowflake:nth-child(7n + 1) {
+  opacity: 0.4;
+  animation-delay: 2s;
+  animation-timing-function: ease-out;
+}
+.snowflake:nth-child(7n + 2) {
+  opacity: 0.5;
+  animation-delay: 1.5s;
+  animation-timing-function: linear;
+}
+.snowflake:nth-child(7n + 3) {
+  opacity: 0.6;
+  animation-delay: 4s;
+  animation-timing-function: ease-in;
+}
+.snowflake:nth-child(7n + 4) {
+  opacity: 0.7;
+  animation-delay: 2.5s;
+  animation-timing-function: linear;
+}
+.snowflake:nth-child(7n + 5) {
+  opacity: 0.8;
+  animation-delay: 3s;
+  animation-timing-function: ease-out;
+}
+.snowflakes:nth-child(7n + 6) {
+  opacity: 0.9;
+  animation-delay: 3.5s;
+  animation-timing-function: ease-in;
+}
+
+@keyframes snowflakes {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.6);
+  }
+  100% {
+    transform: translate3d(15px, 1200px, 0px) rotate(360deg) scale(0.6);
+  }
+}
+

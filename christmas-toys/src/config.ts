@@ -145,5 +145,11 @@ export const config = {
       classes: ['menu', 'menu_audio'],
       songUrl: './assets/audio/audio.mp3',
     },
+    snow: {
+      parentElementID: 'left-menu',
+      targetElementID: 'tree-container',
+      menuClasses: ['menu', 'menu_snow'],
+      snowFlakeClasses: ['snowflake'],
+    },
   },
 };
