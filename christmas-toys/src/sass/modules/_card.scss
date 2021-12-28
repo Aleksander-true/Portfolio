@@ -7,19 +7,30 @@
   grid-template-columns: 40% 60%;
   align-items: center;
   width: 100%;
-  min-height: 200px;
-  padding: 20px 10px 10px 20px;
+  min-height: 20rem;
+  padding: 2rem 1rem 1rem 2rem;
   border-radius: 10px;
   border: 1px solid #278D9F;
   background-color: rgba(31, 112, 127, 0.3);
   cursor: pointer;
   animation: scale 0.5s;
+
+  @media (max-width: $break-laptop) {
+    font-size: var(--h3-font-size);
+    padding: 1rem 0.7rem 1rem 0.7rem;
+  }
+
   
   &__title {
     grid-area: title;
     font-size: var(--h2-font-size);
     letter-spacing: 0.2rem;
     font-weight: 600;
+
+    @media (max-width: $break-laptop) {
+      font-size: var(--h3-font-size);
+      font-weight: 400;
+    }
   }
 
   &__values {
@@ -42,19 +53,32 @@
 
   &__ribbon {
     position: relative;
-    left:-30px;
+    left:-3rem;
     grid-area: ribbon;
-    width: 100px;
-    height: 40px;
+    width: 10rem;
+    height: 4rem;
     background: #24C5DB;
+
+    @media (max-width: $break-laptop) {
+      left:-1.5rem;
+      width: 6rem;
+      height: 3rem;
+    }
 
     &:after {
       content: "";
       position: absolute;
-      border-top: 20px solid transparent;
-      border-bottom: 20px solid transparent;
-      border-left: 15px solid #24C5DB;
-      right: -15px;
+      border-top: 2rem solid transparent;
+      border-bottom: 2rem solid transparent;
+      border-left: 1.5rem solid #24C5DB;
+      right: -1.5rem;
+
+      @media (max-width: $break-laptop) {
+        border-top: 1.5rem solid transparent;
+        border-bottom: 1.5rem solid transparent;
+        border-left: 1rem solid #24C5DB;
+        right: -1rem;
+      }
     }
 
     &:before {
@@ -70,11 +94,14 @@
     background: #CBB77A;
 
     &:after {
-      border-left: 15px solid #CBB77A;
+      border-left: 1.5rem solid #CBB77A;
+      @media (max-width: $break-laptop) {
+      border-left: 1rem solid #CBB77A;
+      }
     }
 
     &:before {
-      border-bottom: 8px solid #CBB77A;
+      border-bottom: 0.8rem solid #CBB77A;
     }
 
   }

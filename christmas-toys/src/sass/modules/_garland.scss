@@ -1,8 +1,12 @@
 .garland {
+
+  @media (max-width: $break-laptop) {
+    gap: 2rem;
+  }
   
   &-btn {
-    width: 24px;
-    height: 24px;
+    width: 2.4rem;
+    height: 2.4rem;
     border-radius: 50%;
 
     &_multi-color {
@@ -49,7 +53,7 @@
 .light {
   position: absolute;
   top: 10px;
-  left: 50%;
+  left: calc(50% - 5px);
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -60,6 +64,12 @@
   z-index: 1;
 
   @include location(6, 100);
+
+  @media (max-width: $break-laptop) {
+    @include location(6, 55);
+    width: 6px;
+    height: 6px;
+  }
 }
 
 

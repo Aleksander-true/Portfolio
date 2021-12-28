@@ -8,9 +8,14 @@
   bottom: 0;
   width: 100%;
   padding: 1rem 2rem;
-  font-size: 2.4rem;
+  font-size: var(--h3-font-size);
   z-index: 100;
   background-color: #17181c;
+
+  @media (max-width: $break-laptop) {
+    padding: 0.5rem 1rem;
+    font-size: var(--h4-font-size)
+  }
 }
 
 .rss-logo {
@@ -18,6 +23,11 @@
   height: 5rem;
   background: url("./assets/svg/logo_rs2.svg") no-repeat center;
   background-size: contain;
+
+  @media (max-width: $break-laptop) {
+    width: 5rem;
+    height: 4rem;
+  }
 }
 
 .developer {

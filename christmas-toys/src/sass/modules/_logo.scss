@@ -7,8 +7,8 @@
   cursor: pointer;
   transition: 0.3s;
 
-  @media (max-width: $break-mobile-L) {
+  @media (max-width: $break-laptop) {
     width: 4rem;
-  height: 5rem;
+    height: 5rem;
   }
 }

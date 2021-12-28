@@ -2,7 +2,7 @@
   width: 38rem;
   height: 4rem;
   padding: 0.5rem 2.5rem;
-  margin: 1rem 3rem 1rem 0;
+  margin-right: 3rem;
   border-radius: 2rem;
   border: 1px solid #278D9F;
   color: #fff;
@@ -16,6 +16,8 @@
 
   @media (max-width: $break-laptop) {
     width: 28rem;
+    height: 3rem;
+
   }
 
   @media (max-width: $break-mobile-L) {

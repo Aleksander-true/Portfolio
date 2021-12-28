@@ -3,6 +3,11 @@
   width: 8.5rem;
   height: 3.4rem;
 
+  @media (max-width: 1024px) {
+    width: 5rem;
+    height: 2rem;
+  }
+
   &__checkbox {
     display: none;
   }
@@ -35,6 +40,15 @@
       background-color: #237E8F;
       color: #fff;
       text-transform: uppercase;
+
+      @media (max-width: 1024px) {
+        height: 2rem;
+        padding: 0;
+        padding-left: 1rem;
+        line-height: 2rem;
+        font-size: 1.2rem;
+        font-weight: 400;
+      }
     }
 
     &:after {
@@ -52,6 +66,15 @@
       font-size: 1.8rem;
       font-weight: 600;
       text-transform: uppercase;
+
+      @media (max-width: 1024px) {
+        height: 2rem;
+        padding: 0;
+        padding-right: 0.2rem;
+        line-height: 2rem;
+        font-size: 1.2rem;
+        font-weight: 400;
+      }
     }
 
   }
@@ -65,13 +88,21 @@
     top: 0;
     bottom: 0;
     right: 5.5rem;
-    width: 26px;
+    width: 2.6rem;
     margin: 2px;
     background: #fff;
     border: 2px solid #999;
     border-radius: 2rem;
     transition: all 0.3s ease-in 0s;
+
+    @media (max-width: 1024px) {
+
+      right: 2.9rem;
+      width: 1.6rem;
+    }
   }
+
+  
 
   &__checkbox:checked + &__label  &__button {
     right: 0px;
