@@ -63,7 +63,7 @@
   animation-timing-function: ease-in-out;
   z-index: 1;
 
-  @include location(6, 100);
+  @include location(7, 100);
 
   @media (max-width: $break-laptop) {
     @include location(6, 55);
