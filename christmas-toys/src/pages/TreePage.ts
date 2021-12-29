@@ -11,7 +11,7 @@ export default class TreePage extends View{
 
   constructor() {
     super();
-    const treePage = super.renderPage('main', 'tree-page-template', 'tree');
+    super.renderPage('main', 'tree-page-template', 'tree');
     new Song(config.menus.song);
     new Snow(config.menus.snow);
     new ToysMenu(config.menus.decorateToys);

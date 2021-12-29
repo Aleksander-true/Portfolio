@@ -37,14 +37,15 @@ export default class ShowCase extends View {
     for (const [keyOfData, values] of Object.entries(settings.toyPage.filters)) {
       const key = keyOfData as keyof IToy;
       if (key === CardKeys.Favorite) {
-        base = base.filter(item => (values[0] === 'да') ? item[key] : true );
+        // eslint-disable-next-line @typescript-eslint/no-loop-func
+        base = base.filter(item => (values[0] === Favorite.True) ? item[key] : true );
       } else if (key === CardKeys.Count || key === CardKeys.Year) {
         base = base.filter(item => ((+item[key] >= +values[0]) && (+item[key] <= +values[1])));
       } else if (key === CardKeys.Name) {
         const regExp = new RegExp(values[0], 'i');
         base = base.filter(item => regExp.test(item[key]));
       } else {
-        base = base.filter(item => values.includes(item[key]));
+        base = (values.length != 0) ? base.filter(item => values.includes(item[key])) : base;
       }
     }
     return base;
@@ -52,16 +53,16 @@ export default class ShowCase extends View {
 
   sortCards(){
     const { key, direction } = settings.toyPage.sort;
-    let func: SortFunc = (a, b) => a[key] > b[key] ? 1 : -1 ;
+    let func: SortFunc = (a, b) => (a[key] == b[key]) ? 0 : (a[key] > b[key] ? 1 : -1);
     
     if (key === CardKeys.Name && direction === Direction.Reverse) {
-      func = (a, b) => a[key] < b[key] ? 1 : -1 ;
+      func = (a, b) => (a[key] == b[key]) ? 0 : (a[key] < b[key] ? 1 : -1) ;
         
     } else if (key === CardKeys.Count && direction === Direction.Direct) {
-      func = (a, b) => +a[key] > +b[key] ? 1 : -1 ;
+      func = (a, b) => (a[key] == b[key]) ? 0 : (+a[key] > +b[key] ? 1 : -1) ;
     
     } else if (key === CardKeys.Count && direction === Direction.Reverse) {
-      func = (a, b) => +a[key] < +b[key] ? 1 : -1 ;
+      func = (a, b) => (a[key] == b[key]) ? 0 : (+a[key] < +b[key] ? 1 : -1);
     } 
 
     this.stockCards.sort(func);

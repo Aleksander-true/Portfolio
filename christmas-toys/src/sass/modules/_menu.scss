@@ -143,11 +143,10 @@
   }
 
   &__toy {
-    //height: 6rem;
     width: 8rem;
 
     @media (max-width: $break-laptop) {
-      width: 6rem;
+      width: 5rem;
     }
   }
 

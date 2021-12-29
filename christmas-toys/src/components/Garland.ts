@@ -10,15 +10,15 @@ export default class Garland extends View{
 
   container: HTMLElement;
 
-  configGarland: { parentElementID: string; targetElementID: string; classes: string[]; text: string; textClasses: string; buttons: { animationName: string; classes: string[]; }[]; };
-  
   checkbox: SwitchButton;
+
+  configGarland: { parentElementID: string; targetElementID: string; menuClasses: string[]; text: string; textClasses: string; garlandClasses: string[]; buttons: { animationName: string; classes: string[]; }[]; };
 
   constructor(configGarland: typeof config.menus.garland) {
     super();
     this.configGarland = configGarland;
 
-    this.menu = super.create(configGarland.parentElementID, 'div', configGarland.classes);
+    this.menu = super.create(configGarland.parentElementID, 'div', configGarland.menuClasses);
     super.create(this.menu, 'h3', configGarland.textClasses, configGarland.text);
     configGarland.buttons.forEach( btn => {
       const button = super.create(this.menu, 'button', btn.classes);
@@ -64,7 +64,7 @@ export default class Garland extends View{
     this.container.remove();
     this.container = super.create(this.configGarland.targetElementID, 'div', animationName);
     for (let i = 0; i < GARLAND_LIGHT_QUANTITY; i++ ) {
-      super.create(this.container, 'div', 'light');
+      super.create(this.container, 'div', this.configGarland.garlandClasses);
     }
   }
 }

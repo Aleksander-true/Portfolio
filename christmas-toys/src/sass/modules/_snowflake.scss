@@ -1,13 +1,13 @@
 .snowflake {
+  display: none;
   position: relative;
-  top: -5rem;
-  display: inline-block;
+  top: -60px;
   background: white;
   animation-duration: 6s;
   animation-iteration-count: 45;
   transform-origin: right -30px;
   animation: snowflakes 3s linear 2s 20;
-  opacity: 0.8;
+  z-index: 10;
 
   &::before,
   &::after {
@@ -20,6 +20,10 @@
     background: white;
     pointer-events: none;
     transform: rotate(-120deg);
+  }
+
+  .snow-ON &{
+    display: inline-block;
   }
 
   &::after{
@@ -50,7 +54,7 @@
 }
 
 /* different delays so they don't all start at the same time */
-.snowflake:nth-child(n) {
+.snowflake:nth-child(7n) {
   opacity: 0.3;
   animation-delay: 0s;
   animation-timing-function: ease-in;

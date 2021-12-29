@@ -129,9 +129,10 @@ export const config = {
     garland: {
       parentElementID: 'left-menu',
       targetElementID: 'tree-img-container',
-      classes: ['menu', 'menu_garland'],
+      menuClasses: ['menu', 'menu_garland'],
       text: 'Гирлянда',
       textClasses: 'menu__title',
+      garlandClasses: ['light'],
       buttons: [
         { animationName: 'multi-color', classes: ['garland-btn', 'garland-btn_multi-color'] },
         { animationName: 'red', classes: ['garland-btn', 'garland-btn_red'] },

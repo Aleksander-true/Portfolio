@@ -16,7 +16,7 @@ export default class Header {
   clickHandler(e: Event) {
     const target = e.target as HTMLElement;
     if (target.tagName !== 'A') return;
-   
+
     const headerLinks = document.querySelectorAll('.header a');
     headerLinks.forEach( link => link.classList.remove('active'));
     

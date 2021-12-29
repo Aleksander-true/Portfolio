@@ -14,6 +14,8 @@ export class Settings implements ISettings{
     treeImgURL: string;
     garlandColor: string;
     garlandSwitch: boolean;
+    isPlaySong: boolean,
+    isSnow: boolean,
   };
 
   constructor(
@@ -29,6 +31,8 @@ export class Settings implements ISettings{
         treeImgURL = config.menus.tree.imgURLs[0],
         garlandColor = 'multi-color',
         garlandSwitch = false,
+        isPlaySong = false,
+        isSnow = false,
       },
     }) {
     this.toyPage = {
@@ -42,6 +46,8 @@ export class Settings implements ISettings{
       treeImgURL: treeImgURL,
       garlandColor: garlandColor,
       garlandSwitch: garlandSwitch,
+      isPlaySong: isPlaySong,
+      isSnow: isSnow,
     };
   }
 
@@ -57,6 +63,8 @@ export class Settings implements ISettings{
       treeImgURL: config.menus.tree.imgURLs[0],
       garlandColor: 'multi-color',
       garlandSwitch: false,
+      isPlaySong: false,
+      isSnow: false,
     };
   }
 
