@@ -1,3 +1,2 @@
-# aleksander-true-JSFEPRESCHOOL
-Private repository for @aleksander-true
-https://rolling-scopes-school.github.io/aleksander-true-JSFEPRESCHOOL/museum/
+# SPA Christmas-tree
+https://aleksander-true.github.io/Portfolio/christmas-toys/
